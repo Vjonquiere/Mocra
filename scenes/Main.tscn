@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://images/backgrounds/main/bg2.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Default_font.tres" type="Theme" id=3]
+[ext_resource path="res://images/buttons/login_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://images/buttons/login_button.png" type="Texture" id=5]
+[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture" id=6]
+[ext_resource path="res://images/buttons/register_button.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -628.042
+margin_top = -360.0
+margin_right = 395.958
+margin_bottom = 240.0
+rect_scale = Vector2( 1.22572, 1.22572 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 170.019 ],
+"_edit_vertical_guides_": [ 362.026, 662.1 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -54.3905
+margin_top = -12.5635
+margin_right = 1865.61
+margin_bottom = 1067.44
+rect_scale = Vector2( 0.580554, 0.580554 )
+texture = ExtResource( 2 )
+
+[node name="ErrorLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1.06396
+margin_top = 132.444
+margin_right = 16.064
+margin_bottom = 164.444
+grow_horizontal = 2
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.47451, 0.47451, 0.47451, 1 )
+text = "R"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 527.752
+margin_top = 383.127
+margin_right = 607.752
+margin_bottom = 423.127
+focus_mode = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+script = ExtResource( 1 )
+
+[node name="LoginEntry" type="LineEdit" parent="."]
+margin_left = 437.282
+margin_top = 240.536
+margin_right = 606.282
+margin_bottom = 282.536
+focus_neighbour_left = NodePath("../Label")
+focus_neighbour_bottom = NodePath("../PasswordEntry")
+theme = ExtResource( 3 )
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+max_length = 21
+
+[node name="PasswordEntry" type="LineEdit" parent="."]
+margin_left = 439.282
+margin_top = 310.536
+margin_right = 606.282
+margin_bottom = 352.536
+focus_neighbour_left = NodePath("../Label2")
+focus_neighbour_top = NodePath("../LoginEntry")
+focus_neighbour_bottom = NodePath("../Button")
+theme = ExtResource( 3 )
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+max_length = 22
+secret = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 354.282
+margin_top = 244.748
+margin_right = 428.282
+margin_bottom = 276.748
+focus_neighbour_right = NodePath("../LoginEntry")
+focus_neighbour_bottom = NodePath("../Label2")
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "LOGIN: "
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 301.746
+margin_top = 312.536
+margin_right = 425.746
+margin_bottom = 344.536
+focus_neighbour_top = NodePath("../Label")
+focus_neighbour_right = NodePath("../PasswordEntry")
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_constants/shadow_offset_x = 0
+text = "PASSWORD:"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 438.683
+margin_top = 383.096
+margin_right = 518.683
+margin_bottom = 423.096
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

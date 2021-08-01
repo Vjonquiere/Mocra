@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Register.gd" type="Script" id=1]
+[ext_resource path="res://images/backgrounds/main/bg2.png" type="Texture" id=2]
+[ext_resource path="res://fonts/Default_font.tres" type="Theme" id=3]
+[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://images/buttons/register_button.png" type="Texture" id=5]
+[ext_resource path="res://images/buttons/back_button_hover.png" type="Texture" id=6]
+[ext_resource path="res://images/buttons/back_button .png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -619.373
+margin_top = -379.04
+margin_right = 660.627
+margin_bottom = 340.96
+rect_scale = Vector2( 1.2392, 1.2392 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Bckground" type="TextureRect" parent="."]
+margin_left = -45.2325
+margin_top = -5.16943
+margin_right = 1874.77
+margin_bottom = 1074.83
+rect_scale = Vector2( 0.565545, 0.565545 )
+texture = ExtResource( 2 )
+
+[node name="LoginLabel" type="Label" parent="."]
+margin_left = 342.75
+margin_top = 198.965
+margin_right = 401.966
+margin_bottom = 230.965
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Login:"
+
+[node name="LoginLineEdit" type="LineEdit" parent="LoginLabel"]
+margin_left = 65.0
+margin_top = -2.0
+margin_right = 274.0
+margin_bottom = 40.0
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+
+[node name="PasswordLabel" type="Label" parent="."]
+margin_left = 303.8
+margin_top = 245.643
+margin_right = 400.8
+margin_bottom = 277.643
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Password:"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="PasswordLabel"]
+margin_left = 104.0
+margin_top = -1.66341
+margin_right = 313.0
+margin_bottom = 40.3366
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+secret = true
+
+[node name="PasswordConfirmLabel" type="Label" parent="."]
+margin_left = 220.813
+margin_top = 291.901
+margin_right = 400.813
+margin_bottom = 323.901
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Confirm password:"
+
+[node name="ConfirmPasswordLineEdit" type="LineEdit" parent="PasswordConfirmLabel"]
+margin_left = 187.0
+margin_top = -1.0
+margin_right = 396.0
+margin_bottom = 41.0
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+secret = true
+
+[node name="EmailLabel" type="Label" parent="."]
+margin_left = 341.823
+margin_top = 343.202
+margin_right = 400.823
+margin_bottom = 375.202
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Email:"
+
+[node name="EmailEntry" type="LineEdit" parent="EmailLabel"]
+margin_left = 66.0
+margin_top = -4.0
+margin_right = 275.0
+margin_bottom = 38.0
+custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 523.272
+margin_top = 392.762
+margin_right = 603.272
+margin_bottom = 432.762
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 420.513
+margin_top = 392.97
+margin_right = 500.513
+margin_bottom = 432.97
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="LabelERROR" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.765
+margin_top = 79.6649
+margin_right = -113.765
+margin_bottom = 111.665
+grow_horizontal = 2
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "NA"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

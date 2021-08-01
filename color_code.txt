@@ -1,0 +1,19 @@
+card_edition_color = cdd814
+outline_color = cea415
+
+##BUTTON
+outline = 424242
+in = 515151
+text = 424242
+
+###BUTTON HOVER
+outline = 515151
+in = 424242
+text = 515151
+
+###CUSTOM ENTRY
+
+selection = 424242
+cursor = 808080
+font_color_selection = 515151
+font_color = 515151

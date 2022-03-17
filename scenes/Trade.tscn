@@ -1,0 +1,342 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Trade.gd" type="Script" id=1]
+[ext_resource path="res://background.png" type="Texture" id=2]
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://images/trade_mode/box.png" type="Texture" id=4]
+[ext_resource path="res://cards/collection_backgrounds/card_back.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Collection_card.tscn" type="PackedScene" id=6]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 2 )
+
+[node name="TradeMenu" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 413.0
+margin_bottom = 305.0
+
+[node name="CreateRoomButton" type="Button" parent="TradeMenu"]
+margin_left = 31.492
+margin_top = 106.0
+margin_right = 124.492
+margin_bottom = 141.0
+theme = ExtResource( 3 )
+text = "Create"
+
+[node name="CancelButton" type="Button" parent="TradeMenu/CreateRoomButton"]
+visible = false
+margin_left = 115.0
+margin_right = 203.0
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "Cancel"
+
+[node name="RoomCodeLabel" type="Label" parent="TradeMenu/CreateRoomButton/CancelButton"]
+margin_left = -3.03006
+margin_top = -40.8224
+margin_right = 124.97
+margin_bottom = -6.82236
+text = "Room Code:"
+
+[node name="RoomCodeVarLabel" type="Label" parent="TradeMenu/CreateRoomButton/CancelButton/RoomCodeLabel"]
+margin_left = 134.131
+margin_top = -1.16635
+margin_right = 174.131
+margin_bottom = 32.8336
+text = "NA"
+
+[node name="RoomJoinLineEdit" type="LineEdit" parent="TradeMenu"]
+margin_left = 43.0
+margin_top = 183.0
+margin_right = 184.0
+margin_bottom = 227.0
+theme = ExtResource( 3 )
+
+[node name="JoinRoomButton" type="Button" parent="TradeMenu/RoomJoinLineEdit"]
+margin_left = 157.648
+margin_top = 2.49906
+margin_right = 227.648
+margin_bottom = 36.4991
+text = "Join"
+
+[node name="Button" type="Button" parent="TradeMenu"]
+margin_left = 29.1588
+margin_top = 20.9944
+margin_right = 91.1588
+margin_bottom = 54.9944
+theme = ExtResource( 3 )
+text = "back"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TradeMenu"]
+margin_left = 385.0
+margin_top = 20.0
+margin_right = 1278.0
+margin_bottom = 314.0
+theme = ExtResource( 3 )
+text = "Welcome to Mocra Trade! Here you can exchange your cards with other players (only one you know). To trade with your friend:
+
+	1) Somebody click \"create\" button and a code will appear  
+	2) The other paste the code next to \"join\" button and then press the button
+	
+Have a nice Tarde!"
+
+[node name="TradeRoom" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="OpponentOffer" type="Control" parent="TradeRoom"]
+editor/display_folded = true
+margin_left = 302.186
+margin_top = 84.0668
+margin_right = 342.186
+margin_bottom = 124.067
+
+[node name="BoxTexture" type="TextureRect" parent="TradeRoom/OpponentOffer"]
+margin_left = 851.438
+margin_top = 19.828
+margin_right = 1251.44
+margin_bottom = 219.828
+texture = ExtResource( 4 )
+
+[node name="OfferLabel" type="Label" parent="TradeRoom/OpponentOffer"]
+margin_left = 868.933
+margin_top = 31.4915
+margin_right = 1048.93
+margin_bottom = 65.4915
+theme = ExtResource( 3 )
+text = "Opponent Offer:"
+
+[node name="Card1Texture" type="TextureRect" parent="TradeRoom/OpponentOffer"]
+margin_left = 872.472
+margin_top = 66.9043
+margin_right = 997.472
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card1" parent="TradeRoom/OpponentOffer/Card1Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 66.6814, 75.7134 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Card2Texture" type="TextureRect" parent="TradeRoom/OpponentOffer"]
+margin_left = 993.48
+margin_top = 66.9043
+margin_right = 1118.48
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card2" parent="TradeRoom/OpponentOffer/Card2Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 64.4906, 75.7134 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Card3Texture" type="TextureRect" parent="TradeRoom/OpponentOffer"]
+margin_left = 1117.01
+margin_top = 66.9043
+margin_right = 1242.01
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card3" parent="TradeRoom/OpponentOffer/Card3Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 62.8594, 75.7134 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="MyOffer" type="Control" parent="TradeRoom"]
+editor/display_folded = true
+margin_left = -511.779
+margin_top = 84.0668
+margin_right = -471.779
+margin_bottom = 124.067
+
+[node name="BoxTexture" type="TextureRect" parent="TradeRoom/MyOffer"]
+margin_left = 851.438
+margin_top = 19.828
+margin_right = 1251.44
+margin_bottom = 219.828
+texture = ExtResource( 4 )
+
+[node name="OfferLabel" type="Label" parent="TradeRoom/MyOffer"]
+margin_left = 868.933
+margin_top = 31.4915
+margin_right = 1048.93
+margin_bottom = 65.4915
+theme = ExtResource( 3 )
+text = "My Offer:"
+
+[node name="Card1Texture" type="TextureRect" parent="TradeRoom/MyOffer"]
+margin_left = 872.472
+margin_top = 66.9043
+margin_right = 997.472
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card1" parent="TradeRoom/MyOffer/Card1Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 61.544, 75.7134 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Card2Texture" type="TextureRect" parent="TradeRoom/MyOffer"]
+margin_left = 993.48
+margin_top = 66.9043
+margin_right = 1118.48
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card2" parent="TradeRoom/MyOffer/Card2Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 64.7224, 75.7134 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Card3Texture" type="TextureRect" parent="TradeRoom/MyOffer"]
+margin_left = 1117.01
+margin_top = 66.9043
+margin_right = 1242.01
+margin_bottom = 216.904
+rect_scale = Vector2( 0.88, 0.88 )
+texture = ExtResource( 5 )
+
+[node name="card3" parent="TradeRoom/MyOffer/Card3Texture" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 65.9142, 75.7133 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="MyCards" type="Control" parent="TradeRoom"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -475.002
+margin_top = 36.2959
+margin_right = 475.002
+margin_bottom = 436.296
+
+[node name="TextureRect" type="TextureRect" parent="TradeRoom/MyCards"]
+margin_right = 950.0
+margin_bottom = 400.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="TradeRoom/MyCards"]
+margin_left = 583.33
+margin_top = 23.8
+margin_right = 690.33
+margin_bottom = 57.8
+theme = ExtResource( 3 )
+text = "My Cards:"
+
+[node name="PreviousPageButton" type="Button" parent="TradeRoom/MyCards"]
+margin_left = 28.3932
+margin_top = 151.987
+margin_right = 61.3932
+margin_bottom = 229.987
+theme = ExtResource( 3 )
+text = "<"
+
+[node name="NextPageButton" type="Button" parent="TradeRoom/MyCards"]
+margin_left = 883.528
+margin_top = 151.987
+margin_right = 916.528
+margin_bottom = 229.987
+theme = ExtResource( 3 )
+text = ">"
+
+[node name="Lock" type="Control" parent="TradeRoom"]
+editor/display_folded = true
+margin_left = 761.186
+margin_top = 82.5595
+margin_right = 1120.19
+margin_bottom = 311.56
+
+[node name="LockButton" type="Button" parent="TradeRoom/Lock"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.5
+margin_top = -53.4936
+margin_right = 74.5
+margin_bottom = -19.4936
+theme = ExtResource( 3 )
+toggle_mode = true
+text = "Lock Trade"
+
+[node name="ConfirmButton" type="Button" parent="TradeRoom/Lock"]
+margin_left = 88.6532
+margin_top = 117.0
+margin_right = 269.653
+margin_bottom = 151.0
+theme = ExtResource( 3 )
+disabled = true
+text = "Confirm Trade"
+
+[node name="TradeInfos" type="Control" parent="TradeRoom"]
+editor/display_folded = true
+margin_left = 772.186
+margin_top = 238.067
+margin_right = 1117.19
+margin_bottom = 354.067
+
+[node name="TradingWithLabel" type="Label" parent="TradeRoom/TradeInfos"]
+margin_left = -7.47998
+margin_top = 17.6533
+margin_right = 147.52
+margin_bottom = 51.6533
+theme = ExtResource( 3 )
+text = "Trading with:"
+
+[node name="TradingWithVar" type="Label" parent="TradeRoom/TradeInfos/TradingWithLabel"]
+margin_left = 160.254
+margin_right = 315.254
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "Nobody :'("
+
+[node name="RoomCodeLabel" type="Label" parent="TradeRoom/TradeInfos"]
+margin_left = -7.47998
+margin_top = 50.9735
+margin_right = 147.52
+margin_bottom = 84.9735
+theme = ExtResource( 3 )
+text = "Room Code:"
+
+[node name="RoomCodeVar" type="Label" parent="TradeRoom/TradeInfos/RoomCodeLabel"]
+margin_left = 136.454
+margin_right = 291.454
+margin_bottom = 34.0
+theme = ExtResource( 3 )
+text = "Na"
+
+[node name="LeaveButton" type="Button" parent="TradeRoom/TradeInfos"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -68.0
+margin_top = -38.0
+margin_right = 68.0
+theme = ExtResource( 3 )
+text = "Leave Trade"
+
+[connection signal="pressed" from="TradeMenu/CreateRoomButton" to="." method="_on_CreateRoomButton_pressed"]
+[connection signal="pressed" from="TradeMenu/RoomJoinLineEdit/JoinRoomButton" to="." method="_on_JoinRoomButton_pressed"]
+[connection signal="pressed" from="TradeMenu/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="TradeRoom/MyCards/PreviousPageButton" to="." method="_on_PreviousPageButton_pressed"]
+[connection signal="pressed" from="TradeRoom/MyCards/NextPageButton" to="." method="_on_NextPageButton2_pressed"]
+[connection signal="toggled" from="TradeRoom/Lock/LockButton" to="." method="_on_LockButton_toggled"]
+[connection signal="pressed" from="TradeRoom/Lock/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
+[connection signal="pressed" from="TradeRoom/TradeInfos/LeaveButton" to="." method="_on_LeaveButton_pressed"]

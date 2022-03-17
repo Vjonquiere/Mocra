@@ -55,7 +55,7 @@ animations = [ {
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 900, 500 )
 frames = SubResource( 1 )
 animation = "open_pack"
 

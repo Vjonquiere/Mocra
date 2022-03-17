@@ -13,9 +13,9 @@ Mocra is a game project wich aims to improve my dev skills, especially in Networ
 The collection is divided into **series**, that are sets of cards in link. The collection is also divided into **editions**. A new edtion is created when there is big drop of new cards.
 
 So cards can be classified easily beacause on top of the series and editions, there are many scarcities with different drop rate:
-|Common|Not Much Common  |Unusual | Rare | Extremely rare | Unbeleivable |Mythic|Rainbow
-|--|--|--|--|--|--|--|--|--|
-| 1 - 0,7 | 0,7 - 0,1 |  0,1 - 0,05 | 0,04 - 0,01 | 0,01 - 0,007 | 0,006 - 0,003 | 0,002 - 0,001 | 0,0099 - -∞
+| Common  | Not Much Common | Unusual    | Rare        | Extremely rare | Unbelievable  | Mythic        | Rainbow    |
+|---------|-----------------|------------|-------------|----------------|---------------|---------------|------------|
+| 1 - 0,7 | 0,7 - 0,1       | 0,1 - 0,05 | 0,04 - 0,01 | 0,01 - 0,007   | 0,006 - 0,003 | 0,002 - 0,001 | 0,0099 - 0 |
 
 The goal of the game is to cellect all of the cards but to do it with different ways: by opening packs, by trade, by playing mini-games.
 

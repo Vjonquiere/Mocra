@@ -1,82 +1,67 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Register.gd" type="Script" id=1]
-[ext_resource path="res://images/backgrounds/main/bg2.png" type="Texture" id=2]
-[ext_resource path="res://fonts/Default_font.tres" type="Theme" id=3]
-[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture" id=4]
-[ext_resource path="res://images/buttons/register_button.png" type="Texture" id=5]
-[ext_resource path="res://images/buttons/back_button_hover.png" type="Texture" id=6]
-[ext_resource path="res://images/buttons/back_button .png" type="Texture" id=7]
+[ext_resource path="res://background.png" type="Texture" id=2]
+[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture" id=3]
+[ext_resource path="res://images/buttons/register_button.png" type="Texture" id=4]
+[ext_resource path="res://images/buttons/back_button_hover.png" type="Texture" id=5]
+[ext_resource path="res://images/buttons/back_button .png" type="Texture" id=6]
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=7]
+[ext_resource path="res://debugTextures/background_debug.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 300, 150 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 300, 150 )
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 300, 150 )
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 300, 150 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.964706, 0.843137, 0.0235294, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.858824, 0.654902, 0, 1 )
 
 [node name="Control" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -619.373
-margin_top = -379.04
-margin_right = 660.627
-margin_bottom = 340.96
-rect_scale = Vector2( 1.2392, 1.2392 )
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ],
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="Bckground" type="TextureRect" parent="."]
-margin_left = -45.2325
-margin_top = -5.16943
-margin_right = 1874.77
-margin_bottom = 1074.83
-rect_scale = Vector2( 0.565545, 0.565545 )
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
-[node name="LoginLabel" type="Label" parent="."]
-margin_left = 342.75
-margin_top = 198.965
-margin_right = 401.966
-margin_bottom = 230.965
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
-text = "Login:"
-
-[node name="LoginLineEdit" type="LineEdit" parent="LoginLabel"]
-margin_left = 65.0
-margin_top = -2.0
-margin_right = 274.0
-margin_bottom = 40.0
-custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
-custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
-custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
-custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
-
 [node name="PasswordLabel" type="Label" parent="."]
+visible = false
 margin_left = 303.8
 margin_top = 245.643
 margin_right = 400.8
 margin_bottom = 277.643
-theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Password:"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="PasswordLabel"]
+visible = false
 margin_left = 104.0
 margin_top = -1.66341
 margin_right = 313.0
@@ -88,15 +73,16 @@ custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 secret = true
 
 [node name="PasswordConfirmLabel" type="Label" parent="."]
+visible = false
 margin_left = 220.813
 margin_top = 291.901
 margin_right = 400.813
 margin_bottom = 323.901
-theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Confirm password:"
 
 [node name="ConfirmPasswordLineEdit" type="LineEdit" parent="PasswordConfirmLabel"]
+visible = false
 margin_left = 187.0
 margin_top = -1.0
 margin_right = 396.0
@@ -108,15 +94,16 @@ custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 secret = true
 
 [node name="EmailLabel" type="Label" parent="."]
+visible = false
 margin_left = 341.823
 margin_top = 343.202
 margin_right = 400.823
 margin_bottom = 375.202
-theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Email:"
 
 [node name="EmailEntry" type="LineEdit" parent="EmailLabel"]
+visible = false
 margin_left = 66.0
 margin_top = -4.0
 margin_right = 275.0
@@ -127,6 +114,7 @@ custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 523.272
 margin_top = 392.762
 margin_right = 603.272
@@ -135,6 +123,7 @@ custom_styles/hover = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 
 [node name="Button2" type="Button" parent="."]
+visible = false
 margin_left = 420.513
 margin_top = 392.97
 margin_right = 500.513
@@ -142,20 +131,260 @@ margin_bottom = 432.97
 custom_styles/hover = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
+[node name="Step1" type="Control" parent="."]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -250.0
+margin_right = 350.0
+margin_bottom = 250.0
+theme = ExtResource( 7 )
+
+[node name="debugTexture" type="TextureRect" parent="Step1"]
+visible = false
+margin_right = 700.0
+margin_bottom = 500.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="LoginLabel" type="Label" parent="Step1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.961
+margin_top = -105.785
+margin_right = -86.9606
+margin_bottom = -73.7847
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Login:"
+
+[node name="LoginLineEdit" type="LineEdit" parent="Step1/LoginLabel"]
+margin_left = 90.847
+margin_top = -3.36035
+margin_right = 299.847
+margin_bottom = 38.6396
+
+[node name="Step1Label" type="RichTextLabel" parent="Step1"]
+margin_left = 97.0
+margin_top = 34.0
+margin_right = 568.0
+margin_bottom = 66.0
+text = "Step 1/4: choose your login"
+
+[node name="Step1NextButton" type="Button" parent="Step1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+text = "Next"
+
+[node name="Step2" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -250.0
+margin_right = 350.0
+margin_bottom = 250.0
+theme = ExtResource( 7 )
+
+[node name="debugTexture" type="TextureRect" parent="Step2"]
+visible = false
+margin_right = 700.0
+margin_bottom = 500.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="PasswordLabel" type="Label" parent="Step2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.925
+margin_top = -105.785
+margin_right = -67.9247
+margin_bottom = -73.7847
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Password"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="Step2/PasswordLabel"]
+margin_left = 112.613
+margin_top = -3.36035
+margin_right = 321.613
+margin_bottom = 38.6396
+secret = true
+
+[node name="ConfirmPasswordLabel" type="Label" parent="Step2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.925
+margin_top = -48.6493
+margin_right = -67.9247
+margin_bottom = -16.649
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Confirm"
+
+[node name="ConfirmPasswordLineEdit" type="LineEdit" parent="Step2/ConfirmPasswordLabel"]
+margin_left = 112.613
+margin_top = -3.36035
+margin_right = 321.613
+margin_bottom = 38.6396
+secret = true
+
+[node name="Step2Label" type="RichTextLabel" parent="Step2"]
+margin_left = 97.0
+margin_top = 34.0
+margin_right = 568.0
+margin_bottom = 66.0
+text = "Step 2/4: Create your password"
+
+[node name="Step2NextButton" type="Button" parent="Step2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 30.7394
+margin_top = 20.0
+margin_right = 110.739
+margin_bottom = 60.0
+text = "Next"
+
+[node name="Step2PreviousButton" type="Button" parent="Step2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.3696
+margin_top = 20.0
+margin_right = 19.6304
+margin_bottom = 60.0
+text = "Previous"
+
+[node name="Step3" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -250.0
+margin_right = 350.0
+margin_bottom = 250.0
+theme = ExtResource( 7 )
+
+[node name="debugTexture" type="TextureRect" parent="Step3"]
+visible = false
+margin_right = 700.0
+margin_bottom = 500.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="EmailLabel" type="Label" parent="Step3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.961
+margin_top = -105.785
+margin_right = -86.9606
+margin_bottom = -73.7847
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
+text = "Email:"
+
+[node name="EmailLineEdit" type="LineEdit" parent="Step3/EmailLabel"]
+margin_left = 90.847
+margin_top = -3.36035
+margin_right = 299.847
+margin_bottom = 38.6396
+
+[node name="Step3Label" type="RichTextLabel" parent="Step3"]
+margin_left = 97.0
+margin_top = 34.0
+margin_right = 568.0
+margin_bottom = 66.0
+text = "Step 3/4: Email address"
+
+[node name="Step3NextButton" type="Button" parent="Step3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 18.4961
+margin_top = -20.0
+margin_right = 98.4961
+margin_bottom = 20.0
+text = "Next"
+
+[node name="Step3PreviousButton" type="Button" parent="Step3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.775
+margin_top = -20.0
+margin_right = -0.77533
+margin_bottom = 20.0
+text = "Previous"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 362.1
+margin_right = 250.0
+margin_bottom = 376.1
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+percent_visible = false
+
 [node name="LabelERROR" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -149.765
-margin_top = 79.6649
-margin_right = -113.765
-margin_bottom = 111.665
+margin_left = -18.0
+margin_top = 125.479
+margin_right = 18.0
+margin_bottom = 157.479
 grow_horizontal = 2
-theme = ExtResource( 3 )
+grow_vertical = 2
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "NA"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="draw" from="Step1" to="." method="_on_Step1_draw"]
+[connection signal="pressed" from="Step1/Step1NextButton" to="." method="_on_Step1NextButton_pressed"]
+[connection signal="draw" from="Step2" to="." method="_on_Step2_draw"]
+[connection signal="pressed" from="Step2/Step2NextButton" to="." method="_on_Step2NextButton_pressed"]
+[connection signal="pressed" from="Step2/Step2PreviousButton" to="." method="_on_Step2PreviousButton_pressed"]
+[connection signal="draw" from="Step3" to="." method="_on_Step3_draw"]
+[connection signal="pressed" from="Step3/Step3NextButton" to="." method="_on_Step3NextButton_pressed"]
+[connection signal="pressed" from="Step3/Step3PreviousButton" to="." method="_on_Step3PreviousButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

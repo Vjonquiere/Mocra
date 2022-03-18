@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mocraAdventure/object_cards/script.gd" type="Script" id=1]
+[ext_resource path="res://cards/collection_backgrounds/Mythical.png" type="Texture" id=2]
+[ext_resource path="res://cards/avatar/Turtle.png" type="Texture" id=3]
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=4]
+
+[node name="Node2D" type="Control"]
+rect_min_size = Vector2( 250, 300 )
+script = ExtResource( 1 )
+
+[node name="backround" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
+[node name="Avatar" type="Sprite" parent="."]
+position = Vector2( 125, 70 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="EffectLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -13.0
+margin_right = 38.0
+margin_bottom = 13.0
+theme = ExtResource( 4 )
+text = "EFFECT"
+
+[node name="EffectVar" type="Label" parent="EffectLabel"]
+margin_left = -71.1881
+margin_top = 21.6659
+margin_right = -31.1881
+margin_bottom = 47.6659
+
+[node name="CooldownLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = 50.0
+margin_right = 64.0
+margin_bottom = 76.0
+grow_horizontal = 2
+theme = ExtResource( 4 )
+text = "COOLDOWN"
+
+[node name="CooldownVar" type="Label" parent="CooldownLabel"]
+margin_left = -41.0105
+margin_top = 27.0824
+margin_right = -1.01053
+margin_bottom = 53.0824

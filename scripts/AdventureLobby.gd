@@ -1,0 +1,118 @@
+extends Node2D
+
+var SERVER_IP = "127.0.0.1"
+var SERVER_PORT = 2556
+var timer = Timer.new()
+var peer = NetworkedMultiplayerENet.new()
+var timed_out_counter = 0
+var selection = load("res://mocraAdventure/lobby/lobby.tscn").instance()
+var selected_cards = {}
+
+signal selection_updated(data)
+
+func _ready():
+	$AnimatedSprite.play("loop")
+	get_tree().connect("network_peer_connected", self, "_player_connected")
+	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
+	get_tree().connect("connected_to_server", self, "_connected_ok")
+	get_tree().connect("connection_failed", self, "_connected_fail")
+	get_tree().connect("server_disconnected", self, "_server_disconnected")
+	peer.create_client(SERVER_IP, SERVER_PORT)
+	get_tree().network_peer = peer
+	connection_timer()
+	timer.start(0.5)
+
+
+remote var current_room = null
+# Player info, associate ID to data
+var player_info = {}
+var card_selection_node = {}
+# Info we send to other players
+var my_info = { name = Global.username, current_room = null, mocra_ID = Global.mocra_ID}
+
+func connection_timer():
+	timer.connect("timeout",self,"_on_timer_timeout")
+	get_node(".").add_child(timer)
+
+func _on_timer_timeout():
+	if peer.get_connection_status() != 2:
+		print("disconnected")
+		timed_out_counter += 1
+		if timed_out_counter == 20:
+			$AnimatedSprite.hide()
+			$AcceptDialog.popup()
+	else:
+		print("connected")
+		$AnimatedSprite.stop()
+		$AnimatedSprite.hide()
+		$Menu.show()
+		timer.stop()
+
+func _player_connected(id):
+	rpc_id(id, "register_player", my_info)
+
+func _player_disconnected(id):
+	player_info.erase(id)
+
+func _connected_ok():
+	pass
+
+func _server_disconnected():
+	pass
+
+func _connected_fail():
+	print("echec de la connection")
+
+remote func register_player(info):
+	var id = get_tree().get_rpc_sender_id()
+	player_info[id] = info
+
+func _on_CreateRoomButton_pressed():
+	rpc_id(1, "create_room")
+
+remote func error(error):
+	$Menu/ErrorLabel.set_text(error)
+	$Menu/ErrorLabel.visible = true
+
+#data -> [LobbyCodeVar:String, PlayerNumberVar:String, StatusVar:String]
+remote func card_selection(data:Array):
+
+	selection.set_lobby_infos(data[0], data[1], data[2])
+	get_node(".").add_child(selection)
+
+remote func new_client_join_room(client_data):
+
+	player_info[client_data[0]] = client_data
+	card_selection_node[client_data[0]] = load("res://mocraAdventure/player_tag/Player_tag.tscn").instance()
+	selection.player_list.add_child(card_selection_node[client_data[0]])
+	card_selection_node[client_data[0]].set_name(client_data[1])
+
+remote func room_joined(room_data:Array):
+
+	for i in range(len(room_data)):
+		card_selection_node[room_data[i]["rpc_id"]] = load("res://mocraAdventure/player_tag/Player_tag.tscn").instance()
+		selection.player_list.add_child(card_selection_node[room_data[i]["rpc_id"]])
+		card_selection_node[room_data[i]["rpc_id"]].set_name(room_data[i]["name"])
+
+remote func card_changed(updated_data:Array):
+
+	var card_type_array = ["character", "object1", "object2", "object3"]
+	#Array -> [rpc_id, {character:["example", "8"], object1:"example", "8"] ,object2:"example", "8"] , object3:"example", "8"] , ground:"example", "8"]}]
+	for i in range(len(card_type_array)):
+		card_selection_node[updated_data[0]].set_new_card(card_type_array[i], updated_data[1][card_type_array[i]][0], updated_data[1][card_type_array[i]][1])
+
+remote func level_changed(level):
+	selection.set_level(level) ## Need to complete function
+
+remote func player_leave(rpc_id):
+	card_selection_node[rpc_id].queue_free()
+
+func _on_JoinRoomButton_pressed():
+	rpc_id(1, "join_room", $Menu/JoinRoomEntry.get_text())
+
+
+func _on_AcceptDialog_confirmed():
+	get_tree().change_scene("res://scenes/Menu.tscn")
+
+func _on_Node2D_selection_updated(data):
+	rpc_id(1, "update_card_selection", data)

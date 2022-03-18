@@ -10,7 +10,7 @@ func _ready():
 
 func _change_informations(serie, name, scarcity, owned_number):
 	$CardBackground/Avatar.texture = load("res://cards/avatar/{character}.png".format({"character": name}))
-	$".".texture = load("res://cards/backgrounds/{scarcity}.png".format({"scarcity": scarcity}))
+	$CardBackground.texture = load("res://cards/collection_backgrounds/{scarcity}.png".format({"scarcity": scarcity}))
 	$CardBackground/NameLabel/Name.set_text(name)
 	$CardBackground/SerieLabel/Serie.set_text(serie)
 	$CardBackground/Owned.set_text(owned_number)
@@ -19,3 +19,6 @@ func _change_informations(serie, name, scarcity, owned_number):
 
 func _display_card():
 	get_node(".").visible = true
+
+func _hide_card():
+	get_node(".").visible = false

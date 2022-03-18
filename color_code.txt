@@ -17,3 +17,11 @@ selection = 424242
 cursor = 808080
 font_color_selection = 515151
 font_color = 515151
+
+
+### BUTTONs
+
+font 424242
+disable 535353
+hover 313131
+pressed 353535

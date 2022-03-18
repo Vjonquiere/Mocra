@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mocraAdventure/ground_cards/script.gd" type="Script" id=1]
+[ext_resource path="res://cards/collection_backgrounds/RAINBOW.png" type="Texture" id=2]
+[ext_resource path="res://cards/avatar/Faces.png" type="Texture" id=3]
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=4]
+
+[node name="Node2D" type="Control"]
+rect_min_size = Vector2( 300, 250 )
+script = ExtResource( 1 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_top = 250.0
+margin_right = 250.0
+margin_bottom = 550.0
+rect_rotation = -90.0
+texture = ExtResource( 2 )
+
+[node name="Avatar" type="Sprite" parent="."]
+position = Vector2( 150, 100 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="TitleVar" type="Label" parent="."]
+margin_left = 120.0
+margin_top = 15.0
+margin_right = 186.0
+margin_bottom = 41.0
+theme = ExtResource( 4 )
+text = "FACES"
+
+[node name="DescriptionVar" type="Label" parent="."]
+margin_left = 18.5708
+margin_top = 149.34
+margin_right = 58.5708
+margin_bottom = 163.34
+theme = ExtResource( 4 )
+text = "sdsdsjdljnfsnkgslknv"

@@ -1,0 +1,29 @@
+extends Control
+
+var node
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print("player_tag init")
+
+func set_name(name:String) -> void:
+	$Profile/NameLabel.set_text(name)
+
+func set_profile_pic(path:String) -> void:
+	pass
+
+
+func set_new_card(card_usage:String, card_name:String, amount:String) -> void:
+	match card_usage:
+		"character":
+			node = "Selection/Character"
+		"object1":
+			node = "Selection/Object1"
+		"object2":
+			node = "Selection/Object2"
+		"object3":
+			node = "Selection/Object3"
+
+	get_node(node + "/Avatar").set_texture(load("res://cards/avatar/{path}.png".format({"path":card_name})))
+	get_node(node + "/CardNameLabel").set_text(card_name)
+	get_node(node + "/AmountLabel").set_text(amount)

@@ -1,0 +1,33 @@
+{
+  "name": "Adventures",
+  "Adventures_list": [
+    {
+      "name": "Adventure 1",
+      "level number": 4,
+      "levels": [
+        {
+          "name":"level 1",
+          "difficulty": "easy",
+          "description": "a level to introduce Mocra Adventure"
+        },
+        {
+          "name": "level 2",
+          "difficulty": "easy",
+          "description": "Introduction to Avdentures"
+        }
+      ]
+    },
+    {
+      "name": "Adventure 2",
+      "level number": 1,
+      "levels": [
+        {
+          "name":"level 735Y378",
+          "difficulty": "pas easy",
+          "description": "sdsddfsnfs"
+        }
+      ]
+    },
+
+  ]
+}

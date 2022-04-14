@@ -1,6 +1,6 @@
 extends Node2D
 
-var SERVER_IP = "127.0.0.1"
+var SERVER_IP = "51.91.98.102"
 var SERVER_PORT = 2556
 var timer = Timer.new()
 var peer = NetworkedMultiplayerENet.new()
@@ -9,6 +9,8 @@ var selection = load("res://mocraAdventure/lobby/lobby.tscn").instance()
 var selected_cards = {}
 
 signal selection_updated(data)
+signal level_changed(selected_level)
+signal ready_update(state)
 
 func _ready():
 	$AnimatedSprite.play("loop")
@@ -76,8 +78,8 @@ remote func error(error):
 
 #data -> [LobbyCodeVar:String, PlayerNumberVar:String, StatusVar:String]
 remote func card_selection(data:Array):
-
-	selection.set_lobby_infos(data[0], data[1], data[2])
+	print(data)
+	selection.set_lobby_infos(str(data[0]), str(data[1]), str(data[2]))
 	get_node(".").add_child(selection)
 
 remote func new_client_join_room(client_data):
@@ -107,6 +109,15 @@ remote func level_changed(level):
 remote func player_leave(rpc_id):
 	card_selection_node[rpc_id].queue_free()
 
+remote func set_level(level_id:String):
+	selection.set_level(level_id)
+
+remote func set_room_leader():
+	selection.set_room_leader()
+
+remote func toggle_player_ready(data):
+	card_selection_node[data[0]].toggle_ready_state(data[1])
+
 func _on_JoinRoomButton_pressed():
 	rpc_id(1, "join_room", $Menu/JoinRoomEntry.get_text())
 
@@ -116,3 +127,10 @@ func _on_AcceptDialog_confirmed():
 
 func _on_Node2D_selection_updated(data):
 	rpc_id(1, "update_card_selection", data)
+
+
+func _on_Node2D_level_changed(selected_level):
+	rpc_id(1, "set_selected_level", selected_level)
+
+func _on_Node2D_ready_update(state):
+	rpc_id(1, "ready_update", state)

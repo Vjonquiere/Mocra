@@ -70,6 +70,8 @@ text = "Mocra Adventure server is unavailable, report us if
  persisting or try again"
 align = 1
 
+[connection signal="level_changed" from="." to="." method="_on_Node2D_level_changed"]
+[connection signal="ready_update" from="." to="." method="_on_Node2D_ready_update"]
 [connection signal="selection_updated" from="." to="." method="_on_Node2D_selection_updated"]
 [connection signal="pressed" from="Menu/CreateRoomButton" to="." method="_on_CreateRoomButton_pressed"]
 [connection signal="pressed" from="Menu/JoinRoomButton" to="." method="_on_JoinRoomButton_pressed"]

@@ -1,15 +1,18 @@
 extends Control
 
 var levels = "res://mocraAdventure/level_selector/level_list.json"
+var levels2 = "user://level_list.txt"
+var c = "sdsdgauivqod"
+var adventure = load("res://mocraAdventure/level_selector/adventure_template.tscn")
 var selected_level
 
-signal selection_changed 
+var adventures = {}
+
+signal selection_changed(level_id)
 
 func _ready():
 	var t = get_from_json(levels)
-	$Node2D.add_level("test","hard","je sais pas quoi mettre donc voila")
-	$Node2D.add_level("test2", "normal", "ca a interet a marcher")
-	print("z")
+	generate_adventures(t)
 
 func get_from_json(filepath:String) -> Dictionary:
 	var file = File.new()
@@ -19,8 +22,25 @@ func get_from_json(filepath:String) -> Dictionary:
 	file.close()
 	return data
 
-func extract_data(parsed_json):
-	var adventure_number = len(parsed_json["Adventures_list"])
+func generate_adventures(parsed_json):
+	for i in range(len(parsed_json["Adventures_list"])):
+		adventures[i] = adventure.instance()
+		adventures[i].set_name(parsed_json["Adventures_list"][i]["name"])
+		generate_levels(parsed_json["Adventures_list"][i]["levels"], adventures[i])
+		get_node("AdventuresContainer").add_child(adventures[i])
 
-func _on_Control_selection_changed():
-	pass
+func generate_levels(adventure_infos:Array, adventure_object):
+	for i in range(len(adventure_infos)):
+		adventure_object.add_level(adventure_infos[i]["name"], adventure_infos[i]["difficulty"], adventure_infos[i]["description"], adventure_infos[i]["id"])
+
+func _on_Control_selection_changed(level_id):
+	for i in range(len(adventures)):
+		if selected_level in adventures[i].get_levels_ids():
+			adventures[i].set_level_unselected(selected_level)
+	selected_level = level_id
+
+
+func _on_SelectButton_pressed():
+	if selected_level != null:
+		get_node("../../").emit_signal("level_changed", selected_level)
+		self.queue_free()

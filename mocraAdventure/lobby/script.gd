@@ -6,6 +6,7 @@ onready var player_list = get_node("PlayerList")
 var selection_dic = {"character":["Wood", "1"], "object1":["Flamingo", "1"] ,"object2":["Cow", "1"] , "object3":["Snake", "1"] , "ground":["Phantom", "1"]}
 
 signal selection_done(card, card_id, card_name, number_of_cards)
+signal level_changed(level_id)
 
 func _ready():
 	var card_type_array = ["object1", "object2", "object3"]
@@ -64,6 +65,9 @@ func _on_LevelSelector_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and locked == false and selection == false:
 		print("Level selection clicked")
 		selection = true
+		var level_selector = load("res://mocraAdventure/level_selector/level_selector.tscn").instance()
+		level_selector.set_scale(Vector2(0.5,0.5))
+		get_node(".").add_child(level_selector)
 
 
 func card_selection_gui(type:String, card_usage:String):
@@ -74,9 +78,11 @@ func card_selection_gui(type:String, card_usage:String):
 		var card_array = card_selector.search_cards()
 		card_selector.construct_cards(card_array)
 
-func set_level(level):
-	## Need to complete (change the level_var_label to the new value)
-	pass
+func set_level(level_id:String):
+	$LevelSelected/SelectedLevelLabel.set_text("Selected level: " + level_id)
+
+func set_room_leader():
+	$LevelSelector.visible = true
 
 func _on_Control_selection_done(card, card_id, card_name, number_of_cards):
 	if card == null:
@@ -119,5 +125,18 @@ func _on_Control_selection_done(card, card_id, card_name, number_of_cards):
 
 
 func _on_LeaveButton_pressed():
-	var rpc_id = 121
-	rpc_id(1, "leave_room", rpc_id)
+	rpc_id(1, "leave_room")
+
+
+func _on_Control_level_changed(level_id):
+	selection = false
+	rpc_id(1, "set_selected_level", level_id)
+
+
+func _on_ReadyButton_toggled(button_pressed):
+	if button_pressed:
+		selection = true
+		get_parent().emit_signal("ready_update", true)
+	else:
+		selection = false
+		get_parent().emit_signal("ready_update", false)

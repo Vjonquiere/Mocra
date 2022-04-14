@@ -2,29 +2,32 @@
   "name": "Adventures",
   "Adventures_list": [
     {
-      "name": "Adventure 1",
+      "name": "Introduction",
       "level number": 4,
       "levels": [
         {
-          "name":"level 1",
+          "name":"How to play",
+          "id": "101",
           "difficulty": "easy",
-          "description": "a level to introduce Mocra Adventure"
+          "description": "A level to introduce Mocra Adventure, learn how to move, attack, defend..."
         },
         {
-          "name": "level 2",
+          "name": "Practice",
+          "id": "102",
           "difficulty": "easy",
-          "description": "Introduction to Avdentures"
+          "description": "Now you know how to play, pracice and win!"
         }
       ]
     },
     {
-      "name": "Adventure 2",
+      "name": "Adventure 2: leave earth",
       "level number": 1,
       "levels": [
         {
-          "name":"level 735Y378",
-          "difficulty": "pas easy",
-          "description": "sdsddfsnfs"
+          "name":"Portal init",
+          "id": "201",
+          "difficulty": "normal",
+          "description": "you are searching for the a portal frame"
         }
       ]
     },

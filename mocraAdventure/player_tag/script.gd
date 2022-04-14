@@ -12,6 +12,11 @@ func set_name(name:String) -> void:
 func set_profile_pic(path:String) -> void:
 	pass
 
+func toggle_ready_state(state):
+	if state:
+		$ReadyTexture.set_texture(load("res://mocraAdventure/player_tag/ready.png"))
+	else:
+		$ReadyTexture.set_texture(load("res://mocraAdventure/player_tag/not_ready.png"))
 
 func set_new_card(card_usage:String, card_name:String, amount:String) -> void:
 	match card_usage:

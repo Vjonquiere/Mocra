@@ -19,7 +19,26 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 3 )
 
+[node name="LevelSelected" type="Control" parent="."]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 1150.0
+margin_bottom = 200.0
+
+[node name="SelectedLevelLabel" type="Label" parent="LevelSelected"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.5
+margin_top = -13.0
+margin_right = 94.5
+margin_bottom = 13.0
+theme = ExtResource( 1 )
+text = "Selected Level: 000"
+
 [node name="LevelSelector" type="CenterContainer" parent="."]
+visible = false
 margin_left = 50.0
 margin_top = 100.0
 margin_right = 1150.0
@@ -58,32 +77,20 @@ margin_bottom = 1050.0
 
 [node name="LobbyInfos" type="HBoxContainer" parent="."]
 anchor_left = 0.5
+anchor_top = 0.04
 anchor_right = 0.5
-margin_left = -1012.5
-margin_top = 18.0
-margin_right = 1012.5
-margin_bottom = 68.0
+anchor_bottom = 0.04
+margin_left = -966.129
+margin_top = -25.2
+margin_right = 941.871
+margin_bottom = 24.8
 custom_constants/separation = 150
 alignment = 1
 
-[node name="LeaveButton" type="Button" parent="LobbyInfos"]
-margin_left = 356.0
-margin_right = 506.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 150, 50 )
-text = "Leave Room"
-
-[node name="InviteFriendsButton" type="Button" parent="LobbyInfos"]
-margin_left = 656.0
-margin_right = 816.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 160, 50 )
-text = "Invite Friends"
-
 [node name="LobbyCodeLabel" type="Label" parent="LobbyInfos"]
-margin_left = 966.0
+margin_left = 603.0
 margin_top = 12.0
-margin_right = 1095.0
+margin_right = 732.0
 margin_bottom = 38.0
 text = "Lobby code : "
 
@@ -94,9 +101,9 @@ margin_bottom = 26.0
 text = "212121"
 
 [node name="PlayerNumberLabel" type="Label" parent="LobbyInfos"]
-margin_left = 1245.0
+margin_left = 882.0
 margin_top = 12.0
-margin_right = 1449.0
+margin_right = 1086.0
 margin_bottom = 38.0
 text = "Player in this lobby : "
 
@@ -107,9 +114,9 @@ margin_bottom = 26.0
 text = "1"
 
 [node name="StatusLabel" type="Label" parent="LobbyInfos"]
-margin_left = 1599.0
+margin_left = 1236.0
 margin_top = 12.0
-margin_right = 1668.0
+margin_right = 1305.0
 margin_bottom = 38.0
 text = "Status:"
 
@@ -118,6 +125,30 @@ margin_left = 75.598
 margin_right = 115.598
 margin_bottom = 26.0
 text = "Waiting for players"
+
+[node name="InviteFriendsButton" type="Button" parent="."]
+anchor_left = 0.839
+anchor_top = 0.038
+anchor_right = 0.839
+anchor_bottom = 0.038
+margin_left = -80.8801
+margin_top = -25.04
+margin_right = 79.1199
+margin_bottom = 24.96
+rect_min_size = Vector2( 160, 50 )
+text = "Invite Friends"
+
+[node name="LeaveButton" type="Button" parent="."]
+anchor_left = 5.524
+anchor_top = 0.5
+anchor_right = 5.524
+anchor_bottom = 0.5
+margin_left = -8867.08
+margin_top = -522.0
+margin_right = -8717.08
+margin_bottom = -472.0
+rect_min_size = Vector2( 150, 50 )
+text = "Leave Room"
 
 [node name="CardsSelector2" type="Control" parent="."]
 margin_left = 50.0
@@ -334,11 +365,25 @@ margin_right = 343.539
 margin_bottom = 224.607
 rect_scale = Vector2( 0.5, 0.5 )
 
+[node name="ReadyButton" type="Button" parent="CardsSelector2"]
+anchor_left = 0.5
+anchor_top = 0.865
+anchor_right = 0.5
+anchor_bottom = 0.865
+margin_left = -59.0
+margin_top = -24.7501
+margin_right = 59.0
+margin_bottom = 25.2499
+toggle_mode = true
+text = "Ready"
+
+[connection signal="level_changed" from="." to="." method="_on_Control_level_changed"]
 [connection signal="selection_done" from="." to="." method="_on_Control_selection_done"]
 [connection signal="gui_input" from="LevelSelector" to="." method="_on_LevelSelector_gui_input"]
-[connection signal="pressed" from="LobbyInfos/LeaveButton" to="." method="_on_LeaveButton_pressed"]
+[connection signal="pressed" from="LeaveButton" to="." method="_on_LeaveButton_pressed"]
 [connection signal="gui_input" from="CardsSelector2/CardsSelector/CardSelection" to="." method="_on_CardSelection_gui_input"]
 [connection signal="gui_input" from="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object1" to="." method="_on_Object1_gui_input"]
 [connection signal="gui_input" from="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object2" to="." method="_on_Object2_gui_input"]
 [connection signal="gui_input" from="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3" to="." method="_on_Object3_gui_input"]
 [connection signal="gui_input" from="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector" to="." method="_on_TerrainSelector_gui_input"]
+[connection signal="toggled" from="CardsSelector2/ReadyButton" to="." method="_on_ReadyButton_toggled"]

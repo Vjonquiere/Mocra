@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://mocraAdventure/player_tag/script.gd" type="Script" id=1]
 [ext_resource path="res://images/default2.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=4]
 [ext_resource path="res://images/default1.png" type="Texture" id=5]
 [ext_resource path="res://images/default3.png" type="Texture" id=6]
+[ext_resource path="res://mocraAdventure/player_tag/not_ready.png" type="Texture" id=7]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -250,3 +251,14 @@ margin_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "1"
+
+[node name="ReadyTexture" type="TextureRect" parent="."]
+anchor_left = 0.942
+anchor_top = 0.117
+anchor_right = 0.942
+anchor_bottom = 0.117
+margin_left = -25.3
+margin_top = -28.1
+margin_right = 24.7
+margin_bottom = 21.9
+texture = ExtResource( 7 )

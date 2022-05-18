@@ -18,6 +18,8 @@ func init_selection(card_type:String, usage:String):
 			card_preload = load("res://mocraAdventure/character_cards/card.tscn")
 		"ground":
 			card_preload = load("res://mocraAdventure/ground_cards/card.tscn")
+		"all":
+			card_preload = load("")
 	card_usage = usage
 	card_type_selected = card_type
 

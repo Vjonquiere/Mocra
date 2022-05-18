@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/player_shop.gd" type="Script" id=2]
+[ext_resource path="res://images/shop/player_shop/background.png" type="Texture" id=3]
+[ext_resource path="res://images/Menu_interface/credits.png" type="Texture" id=4]
+[ext_resource path="res://cards/collection_backgrounds/card_back.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+margin_left = 0.598755
+margin_right = 0.598755
+rect_scale = Vector2( 0.7, 0.7 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="backgoundTexture" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="Sell" type="Control" parent="."]
+margin_left = 1520.0
+margin_right = 1920.0
+margin_bottom = 370.0
+
+[node name="AmoutSpinBox" type="SpinBox" parent="Sell"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -2.33511
+margin_right = 85.0
+margin_bottom = 37.6649
+min_value = 1.0
+value = 1.0
+
+[node name="AmountLabel" type="Label" parent="Sell/AmoutSpinBox"]
+margin_left = -108.83
+margin_top = 5.72791
+margin_right = -16.83
+margin_bottom = 31.7279
+text = "Amount :"
+
+[node name="UnitPriceLineEdit" type="LineEdit" parent="Sell"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = 47.6649
+margin_right = 62.0
+margin_bottom = 88.6649
+placeholder_text = "100"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="UnitPriceLabel" type="Label" parent="Sell/UnitPriceLineEdit"]
+margin_left = -131.741
+margin_top = 8.5918
+margin_right = -16.7415
+margin_bottom = 34.5918
+text = "Price/Unit : "
+
+[node name="SellButton" type="Button" parent="Sell"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = 131.658
+margin_right = 40.0
+margin_bottom = 176.658
+text = "SELL"
+
+[node name="TotalLabel" type="Label" parent="Sell"]
+margin_left = 54.415
+margin_top = 280.172
+margin_right = 310.415
+margin_bottom = 306.172
+text = "Total amount will be 100 "
+
+[node name="CreditTexture" type="TextureRect" parent="Sell/TotalLabel"]
+margin_left = 256.323
+margin_top = -2.86395
+margin_right = 356.323
+margin_bottom = 97.136
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="SelectCardButton" type="Button" parent="Sell"]
+margin_left = 97.7549
+margin_top = 61.9304
+margin_right = 224.755
+margin_bottom = 256.93
+rect_scale = Vector2( 0.6, 0.6 )
+icon = ExtResource( 5 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 15.0
+margin_top = 380.0
+margin_right = 1915.0
+margin_bottom = 1060.0
+
+[node name="Buy" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1880.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 1880, 680 )
+custom_constants/separation = 20
+
+[connection signal="buy" from="." to="." method="_on_Control_buy"]
+[connection signal="value_changed" from="Sell/AmoutSpinBox" to="." method="_on_AmoutSpinBox_value_changed"]
+[connection signal="text_changed" from="Sell/UnitPriceLineEdit" to="." method="_on_UnitPriceLineEdit_text_changed"]
+[connection signal="pressed" from="Sell/SelectCardButton" to="." method="_on_SelectCardButton_pressed"]

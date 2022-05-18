@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://mocraClassic/player_shop/card_template/card_template.gd" type="Script" id=2]
+[ext_resource path="res://images/shop/card_background1.png" type="Texture" id=3]
+[ext_resource path="res://cards/avatar/Cow.png" type="Texture" id=4]
+[ext_resource path="res://images/Menu_interface/credits.png" type="Texture" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1520.0
+margin_bottom = -880.0
+rect_min_size = Vector2( 400, 200 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+margin_right = 400.0
+margin_bottom = 200.0
+texture = ExtResource( 3 )
+
+[node name="AvatarTexture" type="TextureRect" parent="."]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 120.0
+margin_bottom = 150.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 204.256
+margin_top = 27.018
+margin_right = 255.256
+margin_bottom = 53.018
+text = "COW"
+
+[node name="ScarcityLabel" type="Label" parent="."]
+margin_left = 224.249
+margin_top = 52.4149
+margin_right = 275.249
+margin_bottom = 78.4149
+text = "common"
+
+[node name="PriceLabel" type="Label" parent="."]
+margin_left = 245.0
+margin_top = 82.0
+margin_right = 281.0
+margin_bottom = 108.0
+text = "200"
+
+[node name="BuyLabel" type="Label" parent="."]
+margin_left = 141.0
+margin_top = 115.0
+margin_right = 375.0
+margin_bottom = 141.0
+text = "Buy                  for XXX"
+
+[node name="SpinBox" type="SpinBox" parent="BuyLabel"]
+margin_left = 57.8185
+margin_top = 0.162994
+margin_right = 133.819
+margin_bottom = 34.163
+rect_scale = Vector2( 0.8, 0.8 )
+min_value = 1.0
+value = 1.0
+
+[node name="CreditTexture" type="TextureRect" parent="BuyLabel"]
+margin_left = 208.039
+margin_top = 3.24216
+margin_right = 308.039
+margin_bottom = 103.242
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -43.0
+margin_right = 38.0
+margin_bottom = -17.0
+text = "BUY"
+
+[node name="SellerLabel" type="Label" parent="."]
+margin_left = 14.3395
+margin_top = 160.376
+margin_right = 111.339
+margin_bottom = 186.376
+text = "NA"
+
+[connection signal="value_changed" from="BuyLabel/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

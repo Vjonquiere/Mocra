@@ -108,3 +108,7 @@ func _on_FriendButton_pressed():
 
 func _on_MocraAdventureButton_pressed():
 	get_tree().change_scene("res://scenes/AdventureLobby.tscn")
+
+
+func _on_PlayerShopButton_pressed():
+	get_node(".").add_child(load("res://scenes/player_shop.tscn").instance())

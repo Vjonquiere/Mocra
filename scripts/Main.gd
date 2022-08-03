@@ -53,5 +53,8 @@ func _on_Button3_pressed():
 func _on_ServerLabel_ready():
 	Networking.con.put_data("get_server_infos".to_utf8())
 	var rcv = Networking.waiting_for_server()
-	$ServerLabel.set_text("Connected to: " + rcv[0])
-	$OnlinePlayerLabel.set_text("Online players: " + rcv[1])
+	if rcv[0] == "null":
+		pass
+	else:
+		$ServerLabel.set_text("Connected to: " + rcv[0])
+		$OnlinePlayerLabel.set_text("Online players: " + rcv[1])

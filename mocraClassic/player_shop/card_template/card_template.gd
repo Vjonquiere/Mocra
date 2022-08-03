@@ -8,6 +8,10 @@ var cardID
 func _ready():
 	pass
 
+func set_type_to_current_sell():
+	$BackgroundTexture.set_texture(load("res://images/shop/card_background.png"))
+	$Button.visible = false
+
 func set_infos(number, seller_name, quantity, price, cardId):
 	transactionID = number
 	cardID = cardId

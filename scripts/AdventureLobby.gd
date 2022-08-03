@@ -1,6 +1,6 @@
 extends Node2D
 
-var SERVER_IP = "51.91.98.102"
+var SERVER_IP = "localhost"
 var SERVER_PORT = 2556
 var timer = Timer.new()
 var peer = NetworkedMultiplayerENet.new()
@@ -134,3 +134,11 @@ func _on_Node2D_level_changed(selected_level):
 
 func _on_Node2D_ready_update(state):
 	rpc_id(1, "ready_update", state)
+
+remote func load_players(test):
+	print("LOADING PLAYERS")
+	print(test)
+
+remote func load_map(test):
+	print("LOADING MAP")
+	print(test)

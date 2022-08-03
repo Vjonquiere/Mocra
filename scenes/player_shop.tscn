@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/player_shop.gd" type="Script" id=2]
 [ext_resource path="res://images/shop/player_shop/background.png" type="Texture" id=3]
 [ext_resource path="res://images/Menu_interface/credits.png" type="Texture" id=4]
 [ext_resource path="res://cards/collection_backgrounds/card_back.png" type="Texture" id=5]
+[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=6]
 
 [node name="Control" type="Control"]
 margin_left = 0.598755
@@ -96,6 +97,13 @@ margin_bottom = 256.93
 rect_scale = Vector2( 0.6, 0.6 )
 icon = ExtResource( 5 )
 
+[node name="SelectedCardNameLabel" type="Label" parent="Sell"]
+visible = false
+margin_left = 185.868
+margin_top = 108.801
+margin_right = 225.868
+margin_bottom = 134.801
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 15.0
 margin_top = 380.0
@@ -108,7 +116,40 @@ margin_bottom = 680.0
 rect_min_size = Vector2( 1880, 680 )
 custom_constants/separation = 20
 
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 1869.75
+margin_top = 10.2284
+margin_right = 1908.75
+margin_bottom = 50.2284
+text = "X"
+
+[node name="CurrentCardToSell" type="ScrollContainer" parent="."]
+margin_left = 15.0
+margin_top = 150.0
+margin_right = 27.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 1500, 230 )
+
+[node name="Container" type="HBoxContainer" parent="CurrentCardToSell"]
+margin_right = 1450.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 1450, 215 )
+
+[node name="EmptyLabel" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+margin_left = 451.069
+margin_top = 571.203
+margin_right = 2697.07
+margin_bottom = 740.203
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 6 )
+text = "THE SHOP IS CURRENTLY EMPTY"
+
 [connection signal="buy" from="." to="." method="_on_Control_buy"]
+[connection signal="selection_done" from="." to="." method="_on_Control_selection_done"]
 [connection signal="value_changed" from="Sell/AmoutSpinBox" to="." method="_on_AmoutSpinBox_value_changed"]
 [connection signal="text_changed" from="Sell/UnitPriceLineEdit" to="." method="_on_UnitPriceLineEdit_text_changed"]
+[connection signal="pressed" from="Sell/SellButton" to="." method="_on_SellButton_pressed"]
 [connection signal="pressed" from="Sell/SelectCardButton" to="." method="_on_SelectCardButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

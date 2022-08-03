@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://mocraAdventure/lobby/script.gd" type="Script" id=2]
 [ext_resource path="res://background.png" type="Texture" id=3]
 [ext_resource path="res://images/default.png" type="Texture" id=4]
-[ext_resource path="res://images/default1.png" type="Texture" id=5]
-[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=6]
-[ext_resource path="res://images/default2.png" type="Texture" id=7]
+[ext_resource path="res://debugTextures/background_debug.png" type="Texture" id=5]
+[ext_resource path="res://images/default1.png" type="Texture" id=6]
+[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=7]
+[ext_resource path="res://images/default2.png" type="Texture" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -75,22 +76,25 @@ margin_top = 100.0
 margin_right = 1900.0
 margin_bottom = 1050.0
 
-[node name="LobbyInfos" type="HBoxContainer" parent="."]
+[node name="LobbyInfos" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.04
 anchor_right = 0.5
 anchor_bottom = 0.04
-margin_left = -966.129
-margin_top = -25.2
-margin_right = 941.871
-margin_bottom = 24.8
-custom_constants/separation = 150
-alignment = 1
+margin_left = 24.9651
+margin_top = 51.2841
+margin_right = 1236.97
+margin_bottom = 101.284
+
+[node name="TextureRect" type="TextureRect" parent="LobbyInfos"]
+margin_right = 1212.0
+margin_bottom = 50.0
+texture = ExtResource( 5 )
+expand = true
 
 [node name="LobbyCodeLabel" type="Label" parent="LobbyInfos"]
-margin_left = 603.0
 margin_top = 12.0
-margin_right = 732.0
+margin_right = 129.0
 margin_bottom = 38.0
 text = "Lobby code : "
 
@@ -101,9 +105,9 @@ margin_bottom = 26.0
 text = "212121"
 
 [node name="PlayerNumberLabel" type="Label" parent="LobbyInfos"]
-margin_left = 882.0
+margin_left = 279.0
 margin_top = 12.0
-margin_right = 1086.0
+margin_right = 483.0
 margin_bottom = 38.0
 text = "Player in this lobby : "
 
@@ -114,9 +118,9 @@ margin_bottom = 26.0
 text = "1"
 
 [node name="StatusLabel" type="Label" parent="LobbyInfos"]
-margin_left = 1236.0
+margin_left = 633.0
 margin_top = 12.0
-margin_right = 1305.0
+margin_right = 702.0
 margin_bottom = 38.0
 text = "Status:"
 
@@ -126,22 +130,10 @@ margin_right = 115.598
 margin_bottom = 26.0
 text = "Waiting for players"
 
-[node name="InviteFriendsButton" type="Button" parent="."]
-anchor_left = 0.839
-anchor_top = 0.038
-anchor_right = 0.839
-anchor_bottom = 0.038
-margin_left = -80.8801
-margin_top = -25.04
-margin_right = 79.1199
-margin_bottom = 24.96
-rect_min_size = Vector2( 160, 50 )
-text = "Invite Friends"
-
 [node name="LeaveButton" type="Button" parent="."]
-anchor_left = 5.524
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 5.524
+anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -8867.08
 margin_top = -522.0
@@ -179,7 +171,7 @@ rect_min_size = Vector2( 300, 400 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 300, 400 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/CardSelection"]
@@ -190,7 +182,7 @@ margin_bottom = 482.735
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/CardSelection"]
 anchor_left = 0.5
@@ -204,7 +196,7 @@ margin_bottom = 159.001
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
 
@@ -231,7 +223,7 @@ margin_bottom = 200.0
 margin_right = 180.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 150, 200 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object1"]
@@ -270,7 +262,7 @@ margin_bottom = 200.0
 margin_right = 180.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 150, 200 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object2"]
@@ -305,7 +297,7 @@ margin_bottom = 200.0
 margin_right = 180.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 150, 200 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3"]
@@ -341,7 +333,7 @@ margin_bottom = 400.0
 margin_right = 600.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 600, 150 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector"]

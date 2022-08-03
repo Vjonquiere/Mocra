@@ -145,7 +145,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [  ]
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="background" type="TextureRect" parent="."]
@@ -186,7 +187,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 30
+frame = 1
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -217,7 +218,7 @@ custom_styles/normal = ExtResource( 51 )
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
-frame = 9
+frame = 17
 playing = true
 
 [node name="credits_label" type="Label" parent="."]
@@ -436,18 +437,19 @@ custom_fonts/font = ExtResource( 93 )
 text = "Pack of the mounth"
 
 [node name="MocraAdventureButton" type="Button" parent="."]
-margin_left = 278.475
-margin_top = 664.607
-margin_right = 503.475
-margin_bottom = 743.607
+margin_left = 390.0
+margin_top = 430.0
+margin_right = 615.0
+margin_bottom = 509.0
 theme = ExtResource( 83 )
 text = "Mocra Adventure"
 
 [node name="PlayerShopButton" type="Button" parent="."]
-margin_left = 334.037
-margin_top = 472.925
-margin_right = 432.037
-margin_bottom = 492.925
+margin_left = 130.0
+margin_top = 430.0
+margin_right = 360.0
+margin_bottom = 507.0
+theme = ExtResource( 83 )
 text = "PLAYER SHOP"
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

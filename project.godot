@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Map",
+"language": "GDScript",
+"path": "res://mocraAdventure/map/map.gd"
+}, {
+"base": "Reference",
+"class": "MapConstrucor",
+"language": "GDScript",
+"path": "res://mocraAdventure/map/map_constructor.gd"
+}, {
 "base": "Node",
 "class": "Pile",
 "language": "GDScript",
 "path": "res://scripts/TAD.gd"
+}, {
+"base": "Reference",
+"class": "Player",
+"language": "GDScript",
+"path": "res://mocraAdventure/player/player.gd"
+}, {
+"base": "Reference",
+"class": "PlayerConstructor",
+"language": "GDScript",
+"path": "res://mocraAdventure/player/player_constructor.gd"
 } ]
 _global_script_class_icons={
-"Pile": ""
+"Map": "",
+"MapConstrucor": "",
+"Pile": "",
+"Player": "",
+"PlayerConstructor": ""
 }
 
 [application]
@@ -32,6 +56,7 @@ config/icon="res://icon.png"
 Global="*res://Global.gd"
 Networking="*res://Networking.gd"
 TAD="*res://scripts/TAD.gd"
+JsonParser="*res://JsonParser.gd"
 
 [display]
 
@@ -58,10 +83,6 @@ next_card={
 [logging]
 
 file_logging/enable_file_logging=true
-
-[network]
-
-ssl/certificates="res://custom_cert.crt"
 
 [rendering]
 

@@ -147,6 +147,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "THE SHOP IS CURRENTLY EMPTY"
 
 [connection signal="buy" from="." to="." method="_on_Control_buy"]
+[connection signal="retrieve" from="." to="." method="_on_Control_retrieve"]
 [connection signal="selection_done" from="." to="." method="_on_Control_selection_done"]
 [connection signal="value_changed" from="Sell/AmoutSpinBox" to="." method="_on_AmoutSpinBox_value_changed"]
 [connection signal="text_changed" from="Sell/UnitPriceLineEdit" to="." method="_on_UnitPriceLineEdit_text_changed"]

@@ -11,6 +11,7 @@ func _ready():
 func set_type_to_current_sell():
 	$BackgroundTexture.set_texture(load("res://images/shop/card_background.png"))
 	$Button.visible = false
+	$RetrieveButton.visible = true
 
 func set_infos(number, seller_name, quantity, price, cardId):
 	transactionID = number
@@ -33,6 +34,7 @@ func card_init(name, price, scarcity, quantity, seller_name):
 	$ScarcityLabel.set_text(scarcity)
 	$ScarcityLabel.set("custom_colors/font_color", Color(Global.colors[scarcity])) 
 	$SellerLabel.set_text(seller_name)
+	$QuantityLabel.set_text(str(quantity) + " Available")
 	var path = "res://cards/avatar/" + name + ".png"
 	$AvatarTexture.set_texture(load(path))
 	unit_price = price
@@ -47,3 +49,7 @@ func _on_SpinBox_value_changed(value):
 
 func _on_Button_pressed():
 	get_node("../../../../").emit_signal("buy", transactionID, quantity)
+
+
+func _on_RetrieveButton_pressed():
+	get_node("../../../").emit_signal("retrieve", transactionID)

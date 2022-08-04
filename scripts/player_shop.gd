@@ -7,6 +7,7 @@ var selected_card = {"id":null}
 var sell_card_template = load("res://mocraClassic/player_shop/card_template/card_template.tscn")
 signal buy(transactionID, quantity)
 signal selection_done(card_usage, card_id, card_name, amount)
+signal retrieve(transactionID)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	display_cards()
@@ -64,7 +65,15 @@ func display_cards():
 func parse_card(card:Array) -> Dictionary:
 	return {"number":card[0], "seller_name":card[1], "quantity":card[4], "price":card[2], "cardId":card[3]}
 
-
+func refresh(): ## BORDEL => A REFAIRE
+	var children = $ScrollContainer/Buy.get_children()
+	for i in range(len(children)):
+		children[i].queue_free()
+	children = $CurrentCardToSell/Container.get_children()
+	for i in range(len(children)):
+		children[i].queue_free()
+	display_cards()
+	search_current_cards_to_sell()
 
 func _on_Control_buy(transactionID, quantity):
 	var req = "buy_card/" + str(transactionID) + "/" + str(quantity) 
@@ -86,9 +95,7 @@ func _on_SellButton_pressed():
 		print(Networking.waiting_for_server())
 	else:
 		print("ERROR")
-	display_cards()
-	search_current_cards_to_sell()
-
+	refresh()
 
 
 func _on_Control_selection_done(card_usage, card_id, card_name, amount):
@@ -119,5 +126,15 @@ func init_card_to_sell(card_infos:String):
 	return card_template
 	
 
+##########################
+### RETREIVE CARD PART ###
+##########################
 
-
+func _on_Control_retrieve(transactionID):
+	print("retrieve_card")
+	var req = "retrieve_card/" + transactionID
+	Networking.con.put_data(req.to_utf8())
+	var res = Networking.waiting_for_server()
+	print(res)
+	if res[0] == "DONE":
+		refresh()

@@ -20,14 +20,10 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="EffectLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -38.0
-margin_top = -13.0
-margin_right = 38.0
-margin_bottom = 13.0
+margin_left = 89.0
+margin_top = 129.0
+margin_right = 165.0
+margin_bottom = 155.0
 theme = ExtResource( 4 )
 text = "EFFECT"
 
@@ -38,14 +34,10 @@ margin_right = -31.1881
 margin_bottom = 47.6659
 
 [node name="CooldownLabel" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = 50.0
-margin_right = 64.0
-margin_bottom = 76.0
+margin_left = 63.0
+margin_top = 217.0
+margin_right = 191.0
+margin_bottom = 243.0
 grow_horizontal = 2
 theme = ExtResource( 4 )
 text = "COOLDOWN"

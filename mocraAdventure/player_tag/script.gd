@@ -12,6 +12,16 @@ func set_name(name:String) -> void:
 func set_profile_pic(path:String) -> void:
 	pass
 
+func play_loading_anim() -> void:
+	$LoadingSprite.visible = true
+	$ReadyTexture.visible = false
+	$AnimationPlayer.play("loading")
+
+func stop_loading_anim() -> void:
+	$LoadingSprite.visible = false
+	$ReadyTexture.visible = true
+	$AnimationPlayer.stop()
+
 func toggle_ready_state(state):
 	if state:
 		$ReadyTexture.set_texture(load("res://mocraAdventure/player_tag/ready.png"))

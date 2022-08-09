@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://mocraAdventure/player_tag/script.gd" type="Script" id=1]
 [ext_resource path="res://images/default2.png" type="Texture" id=2]
@@ -7,6 +7,21 @@
 [ext_resource path="res://images/default1.png" type="Texture" id=5]
 [ext_resource path="res://images/default3.png" type="Texture" id=6]
 [ext_resource path="res://mocraAdventure/player_tag/not_ready.png" type="Texture" id=7]
+[ext_resource path="res://mocraAdventure/player_tag/loading.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "loading"
+length = 8.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("LoadingSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -90, -0.25, 0, 0.25, 0, -180, -0.25, 0, 0.25, 0, -270, -0.25, 0, 0.25, 0, -360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4, 6, 8 )
+}
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -253,13 +268,16 @@ grow_vertical = 2
 text = "1"
 
 [node name="ReadyTexture" type="TextureRect" parent="."]
-anchor_left = 0.942
-anchor_top = 0.117
-anchor_right = 0.942
-anchor_bottom = 0.117
-margin_left = -25.3
-margin_top = -28.1
-margin_right = 24.7
-margin_bottom = 21.9
+margin_left = 555.0
+margin_top = 49.0
+margin_right = 605.0
+margin_bottom = 99.0
 texture = ExtResource( 7 )
 
+[node name="LoadingSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 580, 77 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/loading = SubResource( 1 )

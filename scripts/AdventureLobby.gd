@@ -7,6 +7,7 @@ var peer = NetworkedMultiplayerENet.new()
 var timed_out_counter = 0
 var selection = load("res://mocraAdventure/lobby/lobby.tscn").instance()
 var selected_cards = {}
+var loading = {"map":false, "players":false}
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -135,10 +136,33 @@ func _on_Node2D_level_changed(selected_level):
 func _on_Node2D_ready_update(state):
 	rpc_id(1, "ready_update", state)
 
-remote func load_players(test):
-	print("LOADING PLAYERS")
-	print(test)
+remote func set_all_to_loading_state(player_ids:Array) -> void:
+	for i in range(len(player_ids)):
+		card_selection_node[player_ids[i]].play_loading_anim()
 
-remote func load_map(test):
-	print("LOADING MAP")
-	print(test)
+remote func player_load_finished(player_id):
+	card_selection_node[player_id].stop_loading_anim()
+
+remote func load_players(player_array:Array):
+	pass
+#	for i in range(len(player_array)):
+#		create players
+
+remote func load_map(map_path):
+	var map_load = Map.new()
+	map_load.load_map(map_path)
+	var map = MapConstrucor.new()
+	map.set_map(map_load)
+	map.load_tileSet()
+	$".".add_child(map.displayMap())
+	loading["map"] = true
+	loading_complete_check()
+
+func loading_complete_check() -> void:
+	if loading["map"] == true and loading["players"] == true:
+		rpc_id(1, "load_finished")
+	else:
+		print("Incomplete Loading")
+
+remote func start():
+	print(get_node(".").children())

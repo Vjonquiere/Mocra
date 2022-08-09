@@ -4,8 +4,8 @@ var map = null
 var tileMap = TileMap.new()
 var counter = 0
 
-func set_map(map1):
-	map = map1
+func set_map(chosen_map:Map):
+	map = chosen_map
 
 func load_tileSet():
 	tileMap.set_tileset(load(map.get_tileSet())) 
@@ -13,7 +13,7 @@ func load_tileSet():
 
 func displayMap():
 	if map == null:
-		return
+		return null
 	for i in range(map.get_number_of_y_tiles()):
 		for j in range(map.get_number_of_x_tiles()):
 			tileMap.set_cell(j, i, map.tiles[counter])

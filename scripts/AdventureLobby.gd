@@ -8,6 +8,7 @@ var timed_out_counter = 0
 var selection = load("res://mocraAdventure/lobby/lobby.tscn").instance()
 var selected_cards = {}
 var loading = {"map":false, "players":false}
+var players = {}
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -143,10 +144,17 @@ remote func set_all_to_loading_state(player_ids:Array) -> void:
 remote func player_load_finished(player_id):
 	card_selection_node[player_id].stop_loading_anim()
 
-remote func load_players(player_array:Array):
-	pass
-#	for i in range(len(player_array)):
-#		create players
+remote func load_players(player_array, player_cards):
+	print("RECEIVED PLAYER DATA : ", player_array , " PLAYER DATA : ", player_cards)
+	var player_template = load("res://mocraAdventure/character/template/template.tscn")
+	for i in range(len(player_array)):
+		var rpc_id = player_array[i]
+		players[rpc_id] = player_template.instance()
+		print("TEMPLATES : ", players)
+		players[rpc_id].set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"})) ## A verfier player_cards[rpc_id]["character"][0]
+		players[rpc_id].set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"})) ## Egalement
+	loading["players"] = true
+	loading_complete_check()
 
 remote func load_map(map_path):
 	var map_load = Map.new()
@@ -160,6 +168,7 @@ remote func load_map(map_path):
 
 func loading_complete_check() -> void:
 	if loading["map"] == true and loading["players"] == true:
+		print("Complete Loading")
 		rpc_id(1, "load_finished")
 	else:
 		print("Incomplete Loading")

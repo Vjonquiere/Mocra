@@ -5,6 +5,7 @@ var node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("player_tag init")
+	$AnimationPlayer.get_animation("loading").set_loop(true)
 
 func set_name(name:String) -> void:
 	$Profile/NameLabel.set_text(name)

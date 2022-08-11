@@ -9,6 +9,9 @@ var selection = load("res://mocraAdventure/lobby/lobby.tscn").instance()
 var selected_cards = {}
 var loading = {"map":false, "players":false}
 var players = {}
+var players_ids = []
+var self_player 
+var tile_map 
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -145,16 +148,21 @@ remote func player_load_finished(player_id):
 	card_selection_node[player_id].stop_loading_anim()
 
 remote func load_players(player_array, player_cards):
-	print("RECEIVED PLAYER DATA : ", player_array , " PLAYER DATA : ", player_cards)
-	var player_template = load("res://mocraAdventure/character/template/template.tscn")
+	var player_template = load("res://mocraAdventure/character/remote_template/template.tscn")
 	for i in range(len(player_array)):
 		var rpc_id = player_array[i]
+		players_ids.append(rpc_id)
 		players[rpc_id] = player_template.instance()
-		print("TEMPLATES : ", players)
 		players[rpc_id].set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"})) ## A verfier player_cards[rpc_id]["character"][0]
 		players[rpc_id].set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"})) ## Egalement
 	loading["players"] = true
 	loading_complete_check()
+
+remote func load_self_player(player_card):
+	var player_template = load("res://mocraAdventure/character/template/template.tscn")
+	self_player = player_template.instance()
+	self_player.set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"}))
+	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
 remote func load_map(map_path):
 	var map_load = Map.new()
@@ -162,7 +170,7 @@ remote func load_map(map_path):
 	var map = MapConstrucor.new()
 	map.set_map(map_load)
 	map.load_tileSet()
-	$".".add_child(map.displayMap())
+	tile_map = map
 	loading["map"] = true
 	loading_complete_check()
 
@@ -174,4 +182,20 @@ func loading_complete_check() -> void:
 		print("Incomplete Loading")
 
 remote func start():
-	print(get_node(".").children())
+	var children = self.get_children()
+	for i in range(len(children)):
+		children[i].queue_free()
+	$".".add_child(tile_map.displayMap())
+	$".".add_child(self_player)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var my_random_number = rng.randf_range(0, 600)
+	self_player.set_position(Vector2(my_random_number,100))
+	for i in range(len(players_ids)):
+		$".".add_child(players[players_ids[i]])
+
+func move(new_pos):
+	rpc_id(1, "player_moved", new_pos)
+
+remote func player_moved(player_id, new_pos):
+	players[player_id].move(new_pos)

@@ -23,6 +23,7 @@ func set_sprite_sheet(sprite_shape_path:String) -> void:
 func get_input():
 	velocity = Vector2()
 	if Input.is_action_just_pressed("offensive"):
+		offensive_1()
 		$AnimatedSprite.play("offensive_1")
 		anim_playing = true
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
@@ -66,6 +67,8 @@ func _physics_process(delta):
 		$Label.set_text("pos (" + str(round(pos[0])) + "," + str(round(pos[1])) + ")")
 		get_parent().move(self.get_position())
 
+func offensive_1():
+	get_parent().offensive_1()
 
 func _on_CharacterController_anim_playing_finished():
 	anim_playing = false

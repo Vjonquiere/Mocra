@@ -1,0 +1,5 @@
+{
+    "entity_number": 1,
+    "1": {"path":"path_to_entity", "flip_h": false, "flip_v": false, "scale": 1, "coords": [0,0], "args": []} 
+  }
+

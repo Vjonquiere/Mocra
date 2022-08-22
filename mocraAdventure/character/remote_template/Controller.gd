@@ -21,7 +21,8 @@ func move(new_pos):
 	if round(current_pos[0]) == round(new_pos[0]) and round(current_pos[1]) == round(new_pos[1]):
 		$AnimatedSprite.play("idle")
 
-
+func offensive_1():
+	$AnimatedSprite.play("offensive_1")
 
 func set_collision(collision_shape_path:String) -> void:
 	$CollisionShape2D.set_shape(load(collision_shape_path))

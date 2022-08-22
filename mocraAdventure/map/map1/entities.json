@@ -1,0 +1,6 @@
+{
+    "entity_number": 2,
+    "0": {"path":"res://mocraAdventure/map/borders/fences/corner_fence/corner_fence.tscn", "flip_h": false, "flip_v": false, "scale": 1, "coords": [50,50], "args": []},
+    "1": {"path":"res://mocraAdventure/map/borders/fences/corner_fence/corner_fence.tscn", "flip_h": true, "flip_v": false, "scale": 1, "coords": [950,50], "args": []} 
+  }
+  

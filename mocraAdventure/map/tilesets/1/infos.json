@@ -1,0 +1,285 @@
+{
+    "tile_number": 47,
+    "0": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/1.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "1": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/2.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "2": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/3.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "3": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/4.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "4": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/5.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "5": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/6.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "6": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/7.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "7": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/8.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "8": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/9.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "9": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/10.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "10": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/11.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "11": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/12.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "12": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/13.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "13": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/14.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "14": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/15.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "15": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/16.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "16": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/17.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "17": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/18.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "18": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/19.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "19": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/20.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "20": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/21.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "21": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/22.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "22": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/23.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "23": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/24.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "24": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/25.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "25": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/26.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "26": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/27.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "27": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/28.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "28": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/29.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "29": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/30.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "30": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/31.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "31": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/32.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "32": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/33.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "33": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/34.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "34": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/35.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "35": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/36.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "36": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/37.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "37": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/38.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "38": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/39.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "39": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/40.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "40": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/41.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "41": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/42.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "42": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/43.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "43": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/44.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "44": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/45.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "45": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/46.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "46": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/47.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    }
+}

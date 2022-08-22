@@ -1,6 +1,6 @@
 extends Node2D
 
-var SERVER_IP = "localhost"
+var SERVER_IP = "poschocnetwork.eu"
 var SERVER_PORT = 2556
 var timer = Timer.new()
 var peer = NetworkedMultiplayerENet.new()
@@ -169,6 +169,7 @@ remote func load_map(map_path):
 	map_load.load_map(map_path)
 	var map = MapConstrucor.new()
 	map.set_map(map_load)
+	map.set_map_path(map_path)
 	map.load_tileSet()
 	tile_map = map
 	loading["map"] = true
@@ -197,5 +198,15 @@ remote func start():
 func move(new_pos):
 	rpc_id(1, "player_moved", new_pos)
 
+func offensive_1():
+	rpc_id(1, "offensive_1")
+
 remote func player_moved(player_id, new_pos):
 	players[player_id].move(new_pos)
+
+remote func remote_offensive_1(player_id):
+	players[player_id].offensive_1()
+
+
+func _on_MapEditorButton_pressed():
+	get_tree().change_scene("res://mocraAdventure/map_editor/map_editor.tscn")

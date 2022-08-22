@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mocraAdventure/map_editor/selector/Selector.gd" type="Script" id=1]
+[ext_resource path="res://images/default.png" type="Texture" id=2]
+
+[node name="Selector" type="Control"]
+rect_min_size = Vector2( 1500, 200 )
+script = ExtResource( 1 )
+
+[node name="backgroundTexture" type="TextureRect" parent="."]
+margin_right = 1500.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 1500, 200 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 1500.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 1500, 200 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+
+[connection signal="tile_selected" from="." to="." method="_on_Selector_tile_selected"]

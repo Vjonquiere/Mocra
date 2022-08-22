@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://mocraAdventure/map_editor/Menu/Menu.gd" type="Script" id=2]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1620.0
+margin_bottom = -780.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_top = 22.0
+margin_right = 58.0
+margin_bottom = 48.0
+text = "Name : "
+
+[node name="NameLineEdit" type="LineEdit" parent="NameLabel"]
+margin_left = 83.0
+margin_right = 257.0
+margin_bottom = 34.0
+
+[node name="sizeLabel" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 58.0
+margin_right = 71.0
+margin_bottom = 72.0
+text = "Map size : "
+
+[node name="xSizeLineEdit" type="LineEdit" parent="sizeLabel"]
+margin_left = 113.0
+margin_right = 171.0
+margin_bottom = 34.0
+
+[node name="ySizeLineEdit" type="LineEdit" parent="sizeLabel"]
+margin_left = 198.0
+margin_right = 256.0
+margin_bottom = 34.0
+
+[node name="XLabel" type="Label" parent="sizeLabel"]
+margin_left = 171.0
+margin_right = 211.0
+margin_bottom = 26.0
+text = "X"
+
+[node name="tileSizeLabel" type="Label" parent="."]
+margin_top = 98.0
+margin_right = 63.0
+margin_bottom = 112.0
+text = "Tile size : "
+
+[node name="tileSizeLineEdit" type="LineEdit" parent="tileSizeLabel"]
+margin_left = 102.0
+margin_right = 160.0
+margin_bottom = 34.0
+text = "100"
+
+[node name="pxLabel" type="Label" parent="tileSizeLabel"]
+margin_left = 165.0
+margin_right = 205.0
+margin_bottom = 26.0
+text = "px"
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 83.0
+margin_top = 240.0
+margin_right = 192.0
+margin_bottom = 266.0
+text = "Confirm"
+
+[node name="tileSetLabel" type="Label" parent="."]
+margin_top = 143.0
+margin_right = 40.0
+margin_bottom = 169.0
+text = "Tile set: "
+
+[node name="tileSetItemList" type="ItemList" parent="tileSetLabel"]
+margin_left = 82.0
+margin_right = 252.0
+margin_bottom = 84.0
+
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]

@@ -48,6 +48,14 @@ margin_bottom = 604.256
 theme = ExtResource( 3 )
 text = "error : can't find this room"
 
+[node name="MapEditorButton" type="Button" parent="Menu"]
+margin_left = 283.0
+margin_top = 257.0
+margin_right = 363.0
+margin_bottom = 277.0
+rect_scale = Vector2( 2.2, 2.2 )
+text = "Map Editor"
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 947.205, 484.563 )
 frames = ExtResource( 4 )
@@ -75,4 +83,5 @@ align = 1
 [connection signal="selection_updated" from="." to="." method="_on_Node2D_selection_updated"]
 [connection signal="pressed" from="Menu/CreateRoomButton" to="." method="_on_CreateRoomButton_pressed"]
 [connection signal="pressed" from="Menu/JoinRoomButton" to="." method="_on_JoinRoomButton_pressed"]
+[connection signal="pressed" from="Menu/MapEditorButton" to="." method="_on_MapEditorButton_pressed"]
 [connection signal="confirmed" from="AcceptDialog" to="." method="_on_AcceptDialog_confirmed"]

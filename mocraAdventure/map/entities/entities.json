@@ -1,0 +1,10 @@
+{
+    "entities_number": 1,
+    "0": {
+        "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
+        "name": "scarecrow",
+        "type":"p"
+
+    }
+}

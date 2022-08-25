@@ -19,7 +19,6 @@ func get_tileset_infos_path(tileset_path:String) -> String:
 
 
 func init_selector(tileset_path:String):
-	print(get_tileset_infos_path(tileset_path))
 	var tileset_infos = JsonParser.get_data_from_json(get_tileset_infos_path(tileset_path))
 	for i in range(tileset_infos["tile_number"]):
 		var tile = tileTemplate.instance()

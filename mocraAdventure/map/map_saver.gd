@@ -2,9 +2,9 @@ extends Node
 
 func tile_map_to_array(size:Array, map:TileMap) -> Array:
 	var map_array = []
-	for i in range(size[0]):
-		for j in range(size[1]):
-			map_array.append(map.get_cell(i, j))
+	for i in range(size[1]):
+		for j in range(size[0]):
+			map_array.append(map.get_cell(j, i))
 	return map_array
 
 func save_map(size:Array, tile_size:int, name:String, tileset_path:String, tiles:Array):

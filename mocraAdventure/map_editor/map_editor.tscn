@@ -31,6 +31,7 @@ min_value = 1.0
 max_value = 2.0
 step = 0.01
 value = 1.0
+scrollable = false
 
 [node name="cameraZoomLabel" type="Label" parent="Camera2D/CanvasLayer/GUI/cameraZoomVSlider"]
 anchor_left = 0.5
@@ -63,9 +64,19 @@ margin_right = 45.5
 margin_bottom = -102.0
 text = "Camera Speed"
 
+[node name="deleteEntityButton" type="Button" parent="Camera2D/CanvasLayer/GUI"]
+margin_left = 48.0
+margin_top = 39.0
+margin_right = 248.0
+margin_bottom = 81.0
+theme = ExtResource( 2 )
+toggle_mode = true
+text = "Delete Entity"
+
 [connection signal="entity_selected" from="." to="." method="_on_Node2D_entity_selected"]
 [connection signal="init_editor" from="." to="." method="_on_Node2D_init_editor"]
 [connection signal="tile_selected" from="." to="." method="_on_Node2D_tile_selected"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/GUI/saveButton" to="." method="_on_saveButton_pressed"]
 [connection signal="value_changed" from="Camera2D/CanvasLayer/GUI/cameraZoomVSlider" to="." method="_on_cameraZoomVSlider_value_changed"]
 [connection signal="value_changed" from="Camera2D/CanvasLayer/GUI/cameraSpeedVSlider" to="." method="_on_cameraSpeedVSlider_value_changed"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/GUI/deleteEntityButton" to="." method="_on_deleteEntityButton_toggled"]

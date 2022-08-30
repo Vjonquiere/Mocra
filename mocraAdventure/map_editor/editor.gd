@@ -46,12 +46,14 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	$Camera2D/CanvasLayer.add_child(tile_selector)
 	$Camera2D/CanvasLayer.add_child(entity_selector)
 	tile_selector.set_position(Vector2(210,850))
+	entity_selector.set_position(Vector2(10,200))
 #	selector.set_z_index(1)
-	tile_selector.visible = false
-	entity_selector.visible = false
+	tile_selector.visible = true
+	entity_selector.visible = true
 	tile_map.set_z_index(-1)
 	$Camera2D._set_current(true)
 	edition = true
+	$Camera2D/CanvasLayer/GUI.visible = true
 	print("EDITOR INITIED : map_size = ", map_size, " tile_size = ", tile_size, " name = ", name, " tile_set_path: ", tile_set_path)
 
 func get_input():
@@ -74,11 +76,11 @@ func _process(delta):
 	var input = get_input()
 	if input == "zoom_-":
 		$Camera2D.set_zoom(Vector2($Camera2D.get_zoom()[0] +0.01 , $Camera2D.get_zoom()[1] +0.01))
-		$Camera2D/CanvasLayer/cameraZoomVSlider.value = $Camera2D.get_zoom()[0]
+		$Camera2D/CanvasLayer/GUI/cameraZoomVSlider.value = $Camera2D.get_zoom()[0]
 
 	elif input == "zoom_+":
 		$Camera2D.set_zoom(Vector2($Camera2D.get_zoom()[0] -0.01 , $Camera2D.get_zoom()[1] -0.01))
-		$Camera2D/CanvasLayer/cameraZoomVSlider.value = $Camera2D.get_zoom()[0]
+		$Camera2D/CanvasLayer/GUI/cameraZoomVSlider.value = $Camera2D.get_zoom()[0]
 
 	elif input == "translate_up":
 		if $Camera2D.get_offset()[1] > -200:
@@ -107,8 +109,17 @@ func _process(delta):
 			place_tile(selected_tile)
 		elif selected_type == "entity":
 			place_entity(selected_entity)
+		elif selected_type == "deleting_entities":
+			remove_entity()
 #		print("MOUSE POSITION => ", tile_map.get_local_mouse_position())
 #		print("TILE => ", tile)
+
+func remove_entity():
+	if entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == false:
+		var closest = get_closest_entity([int(raw_tile[0]),int(raw_tile[1])])
+		if closest != null:
+			placed_entities[closest]["model"].queue_free()
+			placed_entities.remove(closest)
 
 func place_tile(tile_number):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_tile != null:
@@ -120,13 +131,9 @@ func place_entity(entity_number):
 		var entity = load(entities[str(entity_number)]["path"]).instance()
 		tile_map.add_child(entity)
 		entity.position = Vector2(raw_tile[0], raw_tile[1])
-		entity.scale = Vector2(0.3,0.3)
-		placed_entities.append({"model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.3, "coords":[int(raw_tile[0]), int(raw_tile[1])], "args": []})
-	elif entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == false:
-		var closest = get_closest_entity([int(raw_tile[0]),int(raw_tile[1])])
-		if closest != null:
-			placed_entities[closest]["model"].queue_free()
-			placed_entities.remove(closest)
+		entity.scale = Vector2(0.25,0.25)
+		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(raw_tile[0]), int(raw_tile[1])], "args": []})
+
 
 func entity_place_checker(entity_coords) -> bool:
 	if len(placed_entities) == 0:
@@ -154,14 +161,18 @@ func get_closest_entity(coords):
 func _on_Node2D_tile_selected(tile_number):
 	selected_tile = tile_number
 	selected_type = "tile"
+	$Camera2D/CanvasLayer/GUI/deleteEntityButton.pressed = false
 
 func _on_saveButton_pressed():
+	MapSaver.create_save_folder(map_name)
 	MapSaver.save_map(size, tileset_tile_size, map_name, tile_set_p, MapSaver.tile_map_to_array(size, tile_map))
+	MapSaver.save_entities(placed_entities, map_name)
 
 func _on_Node2D_entity_selected(entity_number):
 	selected_entity = entity_number
 	selected_type = "entity"
-
+	$Camera2D/CanvasLayer/GUI/deleteEntityButton.pressed = false
+	tile_selector.set_selected_tile(null)
 
 func _on_cameraSpeedVSlider_value_changed(value):
 	camera_speed = value
@@ -169,3 +180,11 @@ func _on_cameraSpeedVSlider_value_changed(value):
 
 func _on_cameraZoomVSlider_value_changed(value):
 	$Camera2D.set_zoom(Vector2(value , value))
+
+func _on_deleteEntityButton_toggled(button_pressed):
+	if button_pressed:
+		selected_type = "deleting_entities"
+		tile_selector.set_selected_tile(null)
+	else:
+		if selected_type == "deleting_entities":
+			selected_type = "entity"

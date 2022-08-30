@@ -24,6 +24,7 @@ func get_input():
 	velocity = Vector2()
 	if Input.is_action_just_pressed("offensive"):
 		offensive_1()
+		$offensive1Area/offensive1CollisionShape.disabled = false
 		$AnimatedSprite.play("offensive_1")
 		anim_playing = true
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
@@ -71,4 +72,9 @@ func offensive_1():
 	get_parent().offensive_1()
 
 func _on_CharacterController_anim_playing_finished():
+	$offensive1Area/offensive1CollisionShape.disabled = true
 	anim_playing = false
+
+
+func _on_offensive1Area_body_entered(body):
+	print("touched: ", body)

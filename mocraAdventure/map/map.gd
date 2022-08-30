@@ -8,6 +8,8 @@ var objectives = []
 var challenges = {'50': null, '75': null, '100': null}
 var tiles = []
 var tileSet
+var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D.tscn"}
+
 
 func load_map(map_path:String):
 	var path = map_path + "/map.json"
@@ -25,8 +27,12 @@ func load_entities(map_path:String, entity_node):
 	var entities_data = JsonParser.get_data_from_json(path)
 	for i in range(entities_data['entity_number']):
 		var entity = entities_data[str(i)]
+		print(entity)
+		var type = load(entity_types[entity['type']]).instance()
 		var model = load(entity['path']).instance()
-		entity_node.add_child(model)
+		entity_node.add_child(type)
+		type.add_child(model)
+		model.set_scale(Vector2(entity["scale"], entity["scale"]))
 		model.set_position(Vector2(entity['coords'][0],entity['coords'][1]))
 		if entity['flip_h']:
 			model.flip_h()

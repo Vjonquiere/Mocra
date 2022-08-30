@@ -1,10 +1,17 @@
 {
-    "entities_number": 1,
+    "entities_number": 2,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
         "name": "scarecrow",
-        "type":"p"
+        "type":"life"
+
+    },
+    "1": {
+        "path":"res://mocraAdventure/map/entities/interest_point/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/interest_point/texture.png",
+        "name": "interest_point",
+        "type":"life"
 
     }
 }

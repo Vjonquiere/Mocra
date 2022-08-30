@@ -1,15 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://mocraAdventure/character/template/Controller.gd" type="Script" id=2]
 [ext_resource path="res://mocraAdventure/character/template/AnimatedSprite.gd" type="Script" id=3]
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.28087
+height = 13.2774
+
 [node name="CharacterController" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-script = ExtResource( 3 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="offensive1Area" type="Area2D" parent="."]
+
+[node name="offensive1CollisionShape" type="CollisionShape2D" parent="offensive1Area"]
+position = Vector2( -52, -7 )
+rotation = -1.46357
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+animation = "idle"
+script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -19.0
@@ -19,4 +32,5 @@ margin_bottom = -4.0
 text = "pos ()"
 
 [connection signal="anim_playing_finished" from="." to="." method="_on_CharacterController_anim_playing_finished"]
+[connection signal="body_entered" from="offensive1Area" to="." method="_on_offensive1Area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_animation_finished"]

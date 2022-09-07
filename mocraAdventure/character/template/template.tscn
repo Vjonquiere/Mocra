@@ -21,7 +21,6 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-animation = "idle"
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]

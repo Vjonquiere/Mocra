@@ -32,8 +32,8 @@ func load_entities(map_path:String, entity_node):
 		var model = load(entity['path']).instance()
 		entity_node.add_child(type)
 		type.add_child(model)
-		model.set_scale(Vector2(entity["scale"], entity["scale"]))
-		model.set_position(Vector2(entity['coords'][0],entity['coords'][1]))
+		type.set_scale(Vector2(entity["scale"], entity["scale"]))
+		type.set_position(Vector2(entity['coords'][0],entity['coords'][1]))
 		if entity['flip_h']:
 			model.flip_h()
 

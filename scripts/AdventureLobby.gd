@@ -205,9 +205,7 @@ remote func player_moved(player_id, new_pos):
 	players[player_id].move(new_pos)
 
 remote func remote_offensive_1(player_id):
-	print("-- offensive 1")
-	print(player_id)
-	print(players)
+
 	players[player_id].offensive_1()
 
 

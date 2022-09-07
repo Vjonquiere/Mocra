@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal anim_playing_finished()
 
 var anim_playing = false
-
+var idle = true
 
 func _ready():
 	set_collision("res://mocraAdventure/character/debug/CollisionShape.tres")
@@ -17,12 +17,19 @@ func move(new_pos):
 #	move_and_slide(new_pos)
 #	translate(new_pos)
 	self.set_position(new_pos)
-	$AnimatedSprite.play("walk")
-	if round(current_pos[0]) == round(new_pos[0]) and round(current_pos[1]) == round(new_pos[1]):
-		$AnimatedSprite.play("idle")
+	if !anim_playing:
+		if round(current_pos[0]) == round(new_pos[0]) and round(current_pos[1]) == round(new_pos[1]) and idle == false:
+			idle = true
+			$AnimatedSprite.play("idle")
+		if round(current_pos[0]) != round(new_pos[0]) or round(current_pos[1]) != round(new_pos[1]):
+			idle = false
+			$AnimatedSprite.play("walk")
 
 func offensive_1():
+	idle = false
+	anim_playing = true
 	$AnimatedSprite.play("offensive_1")
+	$AnimatedSprite.set_frame(0)
 
 func set_collision(collision_shape_path:String) -> void:
 	$CollisionShape2D.set_shape(load(collision_shape_path))

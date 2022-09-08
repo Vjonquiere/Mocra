@@ -4,6 +4,7 @@ extends Node2D
 var max_health = 100
 var min_health = 0
 var health = max_health
+var id
 
 func _ready():
 	pass

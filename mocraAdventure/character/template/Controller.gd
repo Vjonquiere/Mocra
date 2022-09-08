@@ -77,4 +77,4 @@ func _on_CharacterController_anim_playing_finished():
 
 
 func _on_offensive1Area_body_entered(body):
-	print("touched: ", body)
+	get_parent().entity_hurt(body.get_id())

@@ -10,6 +10,7 @@ var tiles = []
 var tileSet
 var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D.tscn"}
 
+var entities = {}
 
 func load_map(map_path:String):
 	var path = map_path + "/map.json"
@@ -30,10 +31,12 @@ func load_entities(map_path:String, entity_node):
 		print(entity)
 		var type = load(entity_types[entity['type']]).instance()
 		var model = load(entity['path']).instance()
+		model.set_id(str(i))
 		entity_node.add_child(type)
 		type.add_child(model)
 		type.set_scale(Vector2(entity["scale"], entity["scale"]))
 		type.set_position(Vector2(entity['coords'][0],entity['coords'][1]))
+		entities[str(i)] = type
 		if entity['flip_h']:
 			model.flip_h()
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-var SERVER_IP = "poschocnetwork.eu"
+var SERVER_IP = "localhost"
 var SERVER_PORT = 2556
 var timer = Timer.new()
 var peer = NetworkedMultiplayerENet.new()
@@ -12,6 +12,9 @@ var players = {}
 var players_ids = []
 var self_player 
 var tile_map 
+var map_load
+
+var overlay = load("res://mocraAdventure/overlay/overlay.tscn").instance()
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -165,7 +168,7 @@ remote func load_self_player(player_card):
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
 remote func load_map(map_path):
-	var map_load = Map.new()
+	map_load = Map.new()
 	map_load.load_map(map_path)
 	var map = MapConstrucor.new()
 	map.set_map(map_load)
@@ -188,6 +191,7 @@ remote func start():
 		children[i].queue_free()
 	$".".add_child(tile_map.displayMap())
 	$".".add_child(self_player)
+	$".".add_child(overlay)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randf_range(0, 600)
@@ -205,9 +209,19 @@ remote func player_moved(player_id, new_pos):
 	players[player_id].move(new_pos)
 
 remote func remote_offensive_1(player_id):
-
 	players[player_id].offensive_1()
 
+func entity_hurt(id):
+	rpc_id(1, "entity_hurt", id)
+
+remote func remove_life_entity(entity_id, amount):
+	map_load.entities[str(entity_id)].remove_health(amount)
+
+remote func set_next_objective(title, subhead):
+	overlay.next_objective(title, subhead)
+
+remote func first_objective(title, subhead):
+	overlay.first_objective(title, subhead)
 
 func _on_MapEditorButton_pressed():
 	get_tree().change_scene("res://mocraAdventure/map_editor/map_editor.tscn")

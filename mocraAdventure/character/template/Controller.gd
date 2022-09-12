@@ -10,7 +10,8 @@ func _ready():
 	set_collision("res://mocraAdventure/character/debug/CollisionShape.tres")
 	set_sprite_sheet("res://mocraAdventure/character/debug/SpriteFrame.tres")
 
-
+func is_player():
+	return true
 
 func set_collision(collision_shape_path:String) -> void:
 	$CollisionShape2D.set_shape(load(collision_shape_path))
@@ -74,7 +75,6 @@ func offensive_1():
 func _on_CharacterController_anim_playing_finished():
 	$offensive1Area/offensive1CollisionShape.disabled = true
 	anim_playing = false
-
 
 func _on_offensive1Area_body_entered(body):
 	get_parent().entity_hurt(body.get_id())

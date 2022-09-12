@@ -1,6 +1,6 @@
 extends Node2D
 
-var SERVER_IP = "localhost"
+var SERVER_IP = "poschocnetwork.eu"
 var SERVER_PORT = 2556
 var timer = Timer.new()
 var peer = NetworkedMultiplayerENet.new()
@@ -168,7 +168,7 @@ remote func load_self_player(player_card):
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
 remote func load_map(map_path):
-	map_load = Map.new()
+	map_load = Map.new(self)
 	map_load.load_map(map_path)
 	var map = MapConstrucor.new()
 	map.set_map(map_load)
@@ -192,6 +192,8 @@ remote func start():
 	$".".add_child(tile_map.displayMap())
 	$".".add_child(self_player)
 	$".".add_child(overlay)
+	var emul = load("res://mocraAdventure/touch_control/CanvasLayer.tscn").instance()
+	$".".add_child(emul)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randf_range(0, 600)
@@ -213,6 +215,10 @@ remote func remote_offensive_1(player_id):
 
 func entity_hurt(id):
 	rpc_id(1, "entity_hurt", id)
+
+func entity_reach(id):
+	rpc_id(1, "entity_reach", id)
+	print("entity_reach")
 
 remote func remove_life_entity(entity_id, amount):
 	map_load.entities[str(entity_id)].remove_health(amount)

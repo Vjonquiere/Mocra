@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://mocraAdventure/map_editor/editor.gd" type="Script" id=1]
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://images/default.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -73,10 +74,49 @@ theme = ExtResource( 2 )
 toggle_mode = true
 text = "Delete Entity"
 
+[node name="gameScriptButton" type="Button" parent="Camera2D/CanvasLayer/GUI"]
+margin_left = 352.0
+margin_top = 33.0
+margin_right = 595.0
+margin_bottom = 83.0
+theme = ExtResource( 2 )
+text = "My game script"
+
+[node name="script_editor" type="Control" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 1920, 1080 )
+theme = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="script_editor"]
+margin_right = 960.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 960, 600 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="addSciptButton" type="Button" parent="script_editor"]
+margin_left = 455.0
+margin_top = 620.0
+margin_right = 505.0
+margin_bottom = 670.0
+text = "+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="script_editor"]
+margin_right = 960.0
+margin_bottom = 600.0
+
+[node name="scriptEditorCamera" type="Camera2D" parent="script_editor"]
+offset = Vector2( 960, 540 )
+
 [connection signal="entity_selected" from="." to="." method="_on_Node2D_entity_selected"]
 [connection signal="init_editor" from="." to="." method="_on_Node2D_init_editor"]
+[connection signal="remove_script_state" from="." to="." method="_on_Node2D_remove_script_state"]
 [connection signal="tile_selected" from="." to="." method="_on_Node2D_tile_selected"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/GUI/saveButton" to="." method="_on_saveButton_pressed"]
 [connection signal="value_changed" from="Camera2D/CanvasLayer/GUI/cameraZoomVSlider" to="." method="_on_cameraZoomVSlider_value_changed"]
 [connection signal="value_changed" from="Camera2D/CanvasLayer/GUI/cameraSpeedVSlider" to="." method="_on_cameraSpeedVSlider_value_changed"]
 [connection signal="toggled" from="Camera2D/CanvasLayer/GUI/deleteEntityButton" to="." method="_on_deleteEntityButton_toggled"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/GUI/gameScriptButton" to="." method="_on_gameScriptButton_pressed"]
+[connection signal="pressed" from="script_editor/addSciptButton" to="." method="_on_addSciptButton_pressed"]

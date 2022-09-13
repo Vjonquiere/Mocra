@@ -1,5 +1,7 @@
 extends Node
 
+const types = {"life":"kill", "reach":"reach"}
+
 func tile_map_to_array(size:Array, map:TileMap) -> Array:
 	var map_array = []
 	for i in range(size[1]):
@@ -27,6 +29,17 @@ func save_entities(entity_array:Array, name:String):
 	content += '"' + str(last_index) + '": {"path": "' + str(entity_array[last_index]["path"]) + '", "flip_h":' + str(entity_array[last_index]["flip_h"]).to_lower() + ', "flip_v":' + str(entity_array[last_index]["flip_v"]).to_lower() + ', "scale":' + str(entity_array[last_index]["scale"]) + ', "coords":' + str(entity_array[last_index]["coords"]) + ', "args":' + str(entity_array[last_index]["args"]) + ', "type":"' + entity_array[last_index]["type"] + '"} }'
 	var file = File.new()
 	file.open("user://" + name + "/entities.json", File.WRITE)
+	file.store_string(content)
+	file.close()
+
+func save_script(script_array:Array, name:String):
+	var content = '{ "state_number": ' + str(len(script_array)) + ', \n'
+	for i in range(len(script_array)-1):
+		content += '"' + str(i) + '": ["' + str(script_array[i]["entity_id"]) + '", "' + types[script_array[i]["action"]] + '", "test", "test"], \n'
+	var index = len(script_array)-1
+	content += '"' + str(index) + '": ["' + str(script_array[index]["entity_id"]) + '", "' + types[script_array[index]["action"]] + '", "test", "test"] }'
+	var file = File.new()
+	file.open("user://" + name + "/script.json", File.WRITE)
 	file.store_string(content)
 	file.close()
 

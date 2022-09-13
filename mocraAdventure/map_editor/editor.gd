@@ -18,9 +18,15 @@ var selected_entity = null
 var selected_type = null
 var camera_speed = 1
 
+## SCRIPT EDITOR
+var script_states = []
+var script_state_template = load("res://mocraAdventure/map_editor/script/script_state_template.tscn")
+var script_state_objects = []
+
 signal tile_selected(tile_number)
 signal entity_selected(entity_number)
 signal init_editor(map_size, tile_size, name, tile_set_path)
+signal remove_script_state(entity_id)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
@@ -57,7 +63,7 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	print("EDITOR INITIED : map_size = ", map_size, " tile_size = ", tile_size, " name = ", name, " tile_set_path: ", tile_set_path)
 
 func get_input():
-	if Input.is_action_pressed("editor_zoom_-"):
+	if Input.is_action_just_released("editor_zoom_-"):
 		return "zoom_-"
 	if Input.is_action_pressed("editor_zoom_+"):
 		return "zoom_+"
@@ -69,7 +75,7 @@ func get_input():
 		return "translate_left"
 	if Input.is_action_pressed("editor_translate_right"):
 		return "translate_right"
-	if Input.is_action_just_pressed("editor_mouse_l"):
+	if Input.is_action_pressed("editor_mouse_l"):
 		return "get_pos"
 	
 func _process(delta):
@@ -111,8 +117,31 @@ func _process(delta):
 			place_entity(selected_entity)
 		elif selected_type == "deleting_entities":
 			remove_entity()
-#		print("MOUSE POSITION => ", tile_map.get_local_mouse_position())
-#		print("TILE => ", tile)
+	
+	elif input == "get_pos" and !edition:
+		raw_tile = [int(tile_map.get_local_mouse_position()[0]), int(tile_map.get_local_mouse_position()[1])]
+		if selected_type == "script":
+			add_script_state()
+
+
+func add_script_state():
+	if entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == false:
+		var closest = get_closest_entity([int(raw_tile[0]),int(raw_tile[1])])
+		if closest != null and check_if_unic_state(closest):
+			var template = script_state_template.instance()
+			template.init_identity(placed_entities[closest]["path"], "avatar_path:String", placed_entities[closest]["coords"], placed_entities[closest]["type"], closest, $".")
+			$script_editor/VBoxContainer.add_child(template)
+			script_state_objects.append(template)
+			script_states.append({"entity_id": closest, "action": placed_entities[closest]["type"]})
+		selected_type = "tile"
+		display_overlay()
+		edition = true
+
+func check_if_unic_state(entity_id):
+	for i in range(len(script_states)):
+		if script_states[i]["entity_id"] == entity_id:
+			return false
+	return true
 
 func remove_entity():
 	if entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == false:
@@ -120,6 +149,7 @@ func remove_entity():
 		if closest != null:
 			placed_entities[closest]["model"].queue_free()
 			placed_entities.remove(closest)
+			emit_signal("remove_script_state", closest)
 
 func place_tile(tile_number):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_tile != null:
@@ -167,6 +197,7 @@ func _on_saveButton_pressed():
 	MapSaver.create_save_folder(map_name)
 	MapSaver.save_map(size, tileset_tile_size, map_name, tile_set_p, MapSaver.tile_map_to_array(size, tile_map))
 	MapSaver.save_entities(placed_entities, map_name)
+	MapSaver.save_script(script_states, map_name)
 
 func _on_Node2D_entity_selected(entity_number):
 	selected_entity = entity_number
@@ -188,3 +219,35 @@ func _on_deleteEntityButton_toggled(button_pressed):
 	else:
 		if selected_type == "deleting_entities":
 			selected_type = "entity"
+
+
+func display_overlay():
+	$Camera2D/CanvasLayer/GUI.visible = true
+
+
+func _on_addSciptButton_pressed():
+	$script_editor.visible = false
+	tile_map.visible = true
+	$Camera2D.current = true
+	tile_selector.visible = false
+	entity_selector.visible = false
+	selected_type = "script"
+
+
+func _on_gameScriptButton_pressed():
+	edition = false
+	$script_editor.visible = true
+	$script_editor/scriptEditorCamera.current = true
+	$Camera2D/CanvasLayer/GUI.set_visible(false)
+	tile_selector.visible = false
+	entity_selector.visible = false
+	tile_map.visible = false
+
+
+func _on_Node2D_remove_script_state(entity_id):
+	for i in range(len(script_state_objects)):
+		if script_state_objects[i].get_entity_id() == entity_id:
+			script_states.remove(i)
+			script_state_objects[i].queue_free()
+			script_state_objects.remove(i)
+			break

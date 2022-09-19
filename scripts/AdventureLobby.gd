@@ -15,6 +15,7 @@ var tile_map
 var map_load
 
 var overlay = load("res://mocraAdventure/overlay/overlay.tscn").instance()
+var emul = load("res://mocraAdventure/touch_control/CanvasLayer.tscn").instance()
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -192,7 +193,6 @@ remote func start():
 	$".".add_child(tile_map.displayMap())
 	$".".add_child(self_player)
 	$".".add_child(overlay)
-	var emul = load("res://mocraAdventure/touch_control/CanvasLayer.tscn").instance()
 	$".".add_child(emul)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -228,6 +228,13 @@ remote func set_next_objective(title, subhead):
 
 remote func first_objective(title, subhead):
 	overlay.first_objective(title, subhead)
+
+remote func game_ends(room_stats):
+	var end_screen = load("res://mocraAdventure/game_end/Control.tscn").instance()
+	$".".add_child(end_screen)
+	end_screen.init("test", room_stats)
+	$".".remove_child(overlay)
+	$".".remove_child(emul)
 
 func _on_MapEditorButton_pressed():
 	get_tree().change_scene("res://mocraAdventure/map_editor/map_editor.tscn")

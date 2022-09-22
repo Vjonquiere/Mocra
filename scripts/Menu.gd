@@ -3,6 +3,8 @@ extends Control
 var width_center = ( int(ProjectSettings.get_setting("display/window/size/width")) / 2)
 var height_center = ( int(ProjectSettings.get_setting("display/window/size/height")) / 2)
 
+signal remove_blur()
+
 func _ready():
 	
 	update_client_infos()
@@ -112,3 +114,12 @@ func _on_MocraAdventureButton_pressed():
 
 func _on_PlayerShopButton_pressed():
 	get_node(".").add_child(load("res://scenes/player_shop.tscn").instance())
+
+
+func _on_OptionsButton_pressed():
+	get_node(".").add_child(load("res://mocraClassic/parameters/Control.tscn").instance())
+	$blur.visible = true
+
+
+func _on_Control_remove_blur():
+	$blur.visible = false

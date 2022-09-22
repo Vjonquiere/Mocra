@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -93,6 +93,7 @@
 [ext_resource path="res://scripts/News.gd" type="Script" id=91]
 [ext_resource path="res://animations/loading/full_animation.tres" type="SpriteFrames" id=92]
 [ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=93]
+[ext_resource path="res://mocraClassic/shaders/blur.tres" type="Material" id=95]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 1.38729e-43, 1 )
@@ -187,7 +188,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 27
+frame = 26
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -218,7 +219,7 @@ custom_styles/normal = ExtResource( 51 )
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
-frame = 16
+frame = 23
 playing = true
 
 [node name="credits_label" type="Label" parent="."]
@@ -452,6 +453,22 @@ margin_bottom = 507.0
 theme = ExtResource( 83 )
 text = "PLAYER SHOP"
 
+[node name="OptionsButton" type="Button" parent="."]
+margin_left = 1834.0
+margin_top = 1054.0
+margin_right = 1905.0
+margin_bottom = 1074.0
+text = "OPTIONS"
+
+[node name="blur" type="TextureRect" parent="."]
+visible = false
+material = ExtResource( 95 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 2 )
+expand = true
+
+[connection signal="remove_blur" from="." to="." method="_on_Control_remove_blur"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="TextureRect2/ShinyButton" to="." method="_on_ShinyButton_pressed"]
@@ -461,3 +478,4 @@ text = "PLAYER SHOP"
 [connection signal="pressed" from="FriendButton" to="." method="_on_FriendButton_pressed"]
 [connection signal="pressed" from="MocraAdventureButton" to="." method="_on_MocraAdventureButton_pressed"]
 [connection signal="pressed" from="PlayerShopButton" to="." method="_on_PlayerShopButton_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]

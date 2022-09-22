@@ -1,6 +1,8 @@
 extends Control
 
 func _ready():
+	if is_first_launch():
+		generate_user_files()
 	print('game launched')
 
 
@@ -58,3 +60,20 @@ func _on_ServerLabel_ready():
 	else:
 		$ServerLabel.set_text("Connected to: " + rcv[0])
 		$OnlinePlayerLabel.set_text("Online players: " + rcv[1])
+
+func is_first_launch() -> bool:
+	var file = File.new()
+	if file.file_exists("user://options.json"):
+		return false
+	else:
+		return true
+
+func generate_user_files():
+	var file = File.new()
+	file.open("res://options.json", File.READ)
+	var content = file.get_as_text()
+	var copy_file = File.new()
+	copy_file.open("user://options.json", File.WRITE)
+	copy_file.store_string(content)
+	copy_file.close()
+	file.close()

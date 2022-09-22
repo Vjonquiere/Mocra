@@ -65,6 +65,10 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 func get_input():
 	if Input.is_action_just_released("editor_zoom_-"):
 		return "zoom_-"
+	if Input.is_action_just_released("editor_zoom_+"):
+		return "zoom_+"
+	if Input.is_action_pressed("editor_zoom_-"):
+		return "zoom_-"
 	if Input.is_action_pressed("editor_zoom_+"):
 		return "zoom_+"
 	if Input.is_action_pressed("editor_translate_up"):

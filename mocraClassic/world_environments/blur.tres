@@ -1,0 +1,8 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+background_mode = 4
+dof_blur_near_enabled = true
+dof_blur_near_distance = 58.51
+dof_blur_near_transition = 0.09
+dof_blur_near_amount = 0.09

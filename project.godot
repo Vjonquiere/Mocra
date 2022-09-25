@@ -58,6 +58,7 @@ Networking="*res://Networking.gd"
 TAD="*res://scripts/TAD.gd"
 JsonParser="*res://JsonParser.gd"
 MapSaver="*res://mocraAdventure/map/map_saver.gd"
+Options="*res://Options.gd"
 
 [display]
 

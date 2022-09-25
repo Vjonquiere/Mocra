@@ -7,6 +7,7 @@ var set_event = false
 var event_type
 var event_name
 var node
+var bind_input = [null, null, null]
 
 func _ready():
 	pass # Replace with function body.
@@ -19,36 +20,38 @@ func set_name(name:String):
 
 func set_node(master_node):
 	node = master_node
+ 
+func get_name():
+	return event_name
+
+func get_input():
+	return bind_input
 
 func set_input(input:String, event):
-	if "InputEventMouseButton" in input:
-		$mousechangeButton.set_text(mouse_match[event.get_button_index() - 1])
-	elif "InputEventJoypadButton" in input:
-		$joystickchangeButton.set_text(joystick_match["x"][event.get_button_index()]) ### NEED TO GET JOYSTICK TYPE
-	else:
-		$keyboardchangeButton.set_text(input)
- 
-func update_input(input:String, event):
 	if event is InputEventKey:
 		$keyboardchangeButton.set_text(input)
+		bind_input[0] = event
 	if event is InputEventMouseButton:
 		$mousechangeButton.set_text(mouse_match[event.get_button_index() - 1])
+		bind_input[1] = event
 	if event is InputEventJoypadButton:
 		$joystickchangeButton.set_text(joystick_match["x"][event.get_button_index()])
-	node.emit_signal("alter_input", event_name, event)
+		bind_input[2] = event
 #	$GridContainer/keyboardchangeButton.set_size(Vector2(100 + 100*len($GridContainer/keyboardchangeButton.get_text()), 100))
 
 func _input(event):
 	if set_event and "Escape" == event.as_text():
 		set_event = false
 	elif set_event and event is InputEventKey and event_type == "keyboard":
-		update_input(event.as_text(), event)
+		set_input(event.as_text(), event)
 		set_event = false
 	elif set_event and event is InputEventMouseButton and event_type == "mouse":
-		update_input(event.as_text(), event)
+		set_input(event.as_text(), event)
 		set_event = false
 	elif set_event and event is InputEventJoypadButton and event_type == "joypadbutton":
-		update_input(event.as_text(), event)
+		set_input(event.as_text(), event)
+		set_event = false
+	else:
 		set_event = false
 
 func _on_changeButton_pressed():

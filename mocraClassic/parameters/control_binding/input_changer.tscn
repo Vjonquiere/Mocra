@@ -7,9 +7,9 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1420.0
-margin_bottom = -1080.0
-rect_min_size = Vector2( 1000, 150 )
+margin_right = -770.0
+margin_bottom = -930.0
+rect_min_size = Vector2( 1150, 150 )
 script = ExtResource( 3 )
 
 [node name="keyboardchangeButton" type="Button" parent="."]

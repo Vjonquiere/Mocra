@@ -20,11 +20,10 @@ func _on_soundSlider_value_changed(value):
 
 
 func _on_saveButton_pressed():
-	var json = '{\n"music_vol": ' + str($VBoxContainer/musicContainer/musicSlider.get_value()) + ',\n"sound_vol": '  + str($VBoxContainer/soundContainer/soundSlider.get_value()) + '\n}'
-	var file = File.new()
-	file.open("user://options.json", File.WRITE)
-	file.store_string(json)
-	file.close()
+	var json = JsonParser.get_data_from_json("user://options.json")
+	json["music_vol"] = $VBoxContainer/musicContainer/musicSlider.get_value()
+	json["sound_vol"] = $VBoxContainer/soundContainer/soundSlider.get_value()
+	Options.save_options("user://options.json", Options.options_to_string(json))
 	get_parent().emit_signal("remove_blur")
 	self.queue_free()
 

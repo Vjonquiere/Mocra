@@ -3,7 +3,7 @@ extends Control
 
 var template = load("res://mocraClassic/parameters/control_binding/input_changer.tscn")
 
-var alterable_inputs = ["editor_zoom_-", "editor_zoom_+", "offensive", "ui_left", "ui_right"]
+
 
 var type = {"mouse":"InputEventMouseButton ", "joystick":"InputEventJoypadButton "}
 
@@ -14,7 +14,7 @@ func _ready():
 	var inputs = InputMap
 	var actions = inputs.get_actions()
 	for i in range(len(actions)):
-		if actions[i] in alterable_inputs:
+		if actions[i] in Global.alterable_inputs:
 			var events_text
 			var events = InputMap.get_action_list(actions[i])
 			var instance = template.instance()
@@ -26,21 +26,14 @@ func _ready():
 				instance.set_input(events_text, events[j])
 			$ScrollContainer/VBoxContainer.add_child(instance)
 
-# ADD INPUT TYPE KEYBOARD/MOUSE/JOYSTICK
-func _on_alter_input(input_name, event):
-	var events = InputMap.get_action_list(input_name)
-	var to_clear = null
-	for i in range(len(events)):
-		if events[i] is InputEventKey and event is InputEventKey:
-			to_clear = events[i]
-		if events[i] is InputEventJoypadButton and event is InputEventJoypadButton:
-			to_clear = events[i]
-		if events[i] is InputEventMouseButton and event is InputEventMouseButton:
-			to_clear = events[i]
-	if to_clear != null:
-		InputMap.action_erase_event(input_name, to_clear)
-	InputMap.action_add_event(input_name, event)
-
+func save_inputs():
+	var children = $ScrollContainer/VBoxContainer.get_children()
+	var actions = []
+	for i in range(len(children)):
+		actions.append({"input_name": children[i].get_name(), "keys": children[i].get_input()})
+	Options.save_inputs(actions, "user://options.json")
 
 func _on_quitButton_pressed():
+	save_inputs()
+	Options.load_inputs("user://options.json")
 	self.queue_free()

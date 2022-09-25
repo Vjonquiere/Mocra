@@ -2,7 +2,10 @@ extends Control
 
 func _ready():
 	if is_first_launch():
+		print("Mocra: Online card collection first launch \nGenerating files ....")
 		generate_user_files()
+	else:
+		Options.load_inputs("user://options.json")
 	print('game launched')
 
 
@@ -70,7 +73,7 @@ func is_first_launch() -> bool:
 
 func generate_user_files():
 	var file = File.new()
-	file.open("res://options.json", File.READ)
+	file.open("res://mocraClassic/parameters/options.json", File.READ)
 	var content = file.get_as_text()
 	var copy_file = File.new()
 	copy_file.open("user://options.json", File.WRITE)

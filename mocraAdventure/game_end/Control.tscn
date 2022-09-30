@@ -235,4 +235,7 @@ text = "quit"
 anims/display = SubResource( 1 )
 anims/init = SubResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 540 )
+
 [connection signal="pressed" from="quitButton" to="." method="_on_quitButton_pressed"]

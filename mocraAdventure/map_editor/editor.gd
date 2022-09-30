@@ -1,6 +1,7 @@
 extends Node2D
 
 var tile_map = TileMap.new()
+var control_tile_map = Control.new()
 var tile_set
 var tile_set_p
 var tileset_tile_size
@@ -17,6 +18,7 @@ var selected_tile = null
 var selected_entity = null 
 var selected_type = null
 var camera_speed = 1
+var mouse_in = false
 
 ## SCRIPT EDITOR
 var script_states = []
@@ -32,6 +34,8 @@ func _ready():
 	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
 	$".".add_child(menu)
 	entity_selector.set_node($".")
+	control_tile_map.connect("mouse_entered", self, "_on_mouse_entered")
+	control_tile_map.connect("mouse_exited", self, "_on_mouse_exited")
 
 func load_tileset(path:String):
 	tile_set = load(path)
@@ -49,6 +53,8 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 		for j in range(int(map_size[0])):
 			tile_map.set_cell(j,i,0)
 	$".".add_child(tile_map)
+	control_tile_map.set_size(Vector2(tile_size*map_size[0],tile_size*map_size[1]))
+	tile_map.add_child(control_tile_map)
 	$Camera2D/CanvasLayer.add_child(tile_selector)
 	$Camera2D/CanvasLayer.add_child(entity_selector)
 	tile_selector.set_position(Vector2(210,850))
@@ -79,7 +85,7 @@ func get_input():
 		return "translate_left"
 	if Input.is_action_pressed("editor_translate_right"):
 		return "translate_right"
-	if Input.is_action_pressed("editor_mouse_l"):
+	if Input.is_action_pressed("editor_mouse_l") and mouse_in == true:
 		return "get_pos"
 	
 func _process(delta):
@@ -255,3 +261,9 @@ func _on_Node2D_remove_script_state(entity_id):
 			script_state_objects[i].queue_free()
 			script_state_objects.remove(i)
 			break
+
+func _on_mouse_entered():
+	mouse_in = true
+
+func _on_mouse_exited():
+	mouse_in = false

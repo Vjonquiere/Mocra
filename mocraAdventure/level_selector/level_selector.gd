@@ -2,7 +2,6 @@ extends Control
 
 var levels = "res://mocraAdventure/level_selector/level_list.json"
 var levels2 = "user://level_list.txt"
-var c = "sdsdgauivqod"
 var adventure = load("res://mocraAdventure/level_selector/adventure_template.tscn")
 var selected_level
 

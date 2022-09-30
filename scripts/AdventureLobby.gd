@@ -193,11 +193,12 @@ remote func start():
 	$".".add_child(tile_map.displayMap())
 	$".".add_child(self_player)
 	$".".add_child(overlay)
-	$".".add_child(emul)
+#	$".".add_child(emul)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randf_range(0, 600)
 	self_player.set_position(Vector2(my_random_number,100))
+	self_player.set_current_camera(true)
 	for i in range(len(players_ids)):
 		$".".add_child(players[players_ids[i]])
 
@@ -238,3 +239,6 @@ remote func game_ends(room_stats):
 
 func _on_MapEditorButton_pressed():
 	get_tree().change_scene("res://mocraAdventure/map_editor/map_editor.tscn")
+
+func update_offensive_remaining_cooldown(value):
+	overlay.set_offensive_progress_value(value)

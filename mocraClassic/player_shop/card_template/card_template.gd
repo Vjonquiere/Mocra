@@ -12,6 +12,7 @@ func set_type_to_current_sell():
 	$BackgroundTexture.set_texture(load("res://images/shop/card_background.png"))
 	$Button.visible = false
 	$RetrieveButton.visible = true
+	$BuyLabel.visible = false
 
 func set_infos(number, seller_name, quantity, price, cardId):
 	transactionID = number

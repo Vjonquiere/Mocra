@@ -97,7 +97,6 @@ frames = SubResource( 2 )
 animation = "opening"
 
 [node name="ResultOverlay" type="Control" parent="."]
-editor/display_folded = true
 visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0

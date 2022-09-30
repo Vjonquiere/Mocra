@@ -5,7 +5,7 @@ onready var playerTags = [$playerTag1, $playerTag2, $playerTag3]
 var cardTypes = ["character", "object1", "object2", "object3", "ground"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Camera2D.current = true
 
 #room_stats = {"completed_objectives": 50/75/100 "player_array": [rpc_ids] "player_id":{"cards": card_dict "name": player_name}}
 

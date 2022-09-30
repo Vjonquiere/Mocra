@@ -26,10 +26,15 @@ scale = Vector2( 0.665259, 0.665259 )
 normal = ExtResource( 2 )
 action = "ui_right"
 
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="."]
+position = Vector2( 1617, 772.694 )
+scale = Vector2( 0.665259, 0.665259 )
+normal = ExtResource( 2 )
+action = "offensive"
+
 [node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
 position = Vector2( 139.475, 875.906 )
 rotation = 3.14159
 scale = Vector2( 0.665259, 0.665259 )
 normal = ExtResource( 2 )
 action = "ui_left"
-

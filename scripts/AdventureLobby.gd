@@ -193,7 +193,8 @@ remote func start():
 	$".".add_child(tile_map.displayMap())
 	$".".add_child(self_player)
 	$".".add_child(overlay)
-#	$".".add_child(emul)
+	if Global.options["visual_control"]:
+		$".".add_child(emul)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randf_range(0, 600)

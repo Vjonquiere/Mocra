@@ -6,6 +6,7 @@ func _ready():
 		generate_user_files()
 	else:
 		Options.load_inputs("user://options.json")
+		Options.load_options("user://options.json")
 	print('game launched')
 
 

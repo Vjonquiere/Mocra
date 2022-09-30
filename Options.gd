@@ -1,6 +1,6 @@
 extends Control
 
-var single_parameters_options = ["music_vol", "sound_vol"]
+var single_parameters_options = ["music_vol", "sound_vol", "visual_control"]
 
 
 func load_inputs(option_path:String):
@@ -20,6 +20,11 @@ func load_inputs(option_path:String):
 					event = InputEventJoypadButton.new()
 					event.set_button_index(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
 			InputMap.action_add_event(options["input_names"][i], event)
+
+func load_options(option_path:String):
+	var options = JsonParser.get_data_from_json(option_path)
+	for i in range(len(single_parameters_options)):
+		Global.options[single_parameters_options[i]] = options[single_parameters_options[i]]
 
 func save_inputs(input_array:Array, option_path:String):
 	var json = JsonParser.get_data_from_json(option_path)
@@ -51,7 +56,7 @@ func options_to_string(options:Dictionary):
 	var content = "{"
 	for i in range(len(single_parameters_options)):
 		if options.has(single_parameters_options[i]):
-			content += '"' + single_parameters_options[i] + '" : ' + str(options[single_parameters_options[i]]) + ",\n"
+			content += '"' + single_parameters_options[i] + '" : ' + str(options[single_parameters_options[i]]).to_lower() + ",\n"
 	content += '"input_names": ['
 	for i in range(len(options["input_names"])):
 		content += '"' + options["input_names"][i] + '"'

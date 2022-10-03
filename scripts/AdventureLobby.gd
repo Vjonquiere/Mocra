@@ -78,6 +78,15 @@ remote func register_player(info):
 	var id = get_tree().get_rpc_sender_id()
 	player_info[id] = info
 
+remote func make_mocraID_var(rpc_id):
+	var req = "register_mocra_adventure/" + str(rpc_id)
+	Networking.con.put_data(req.to_utf8())
+	var res = Networking.waiting_for_server()
+	if res[0] == "done":
+		rpc_id(1, "mocra_id_verification_done", rpc_id)
+	else:
+		print("An error has occured when trying to link Mocra and Mocra Adventure")
+
 func _on_CreateRoomButton_pressed():
 	rpc_id(1, "create_room")
 

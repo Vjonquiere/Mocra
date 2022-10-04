@@ -130,6 +130,10 @@ editor_mouse_drag={
  ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [logging]
 
 file_logging/enable_file_logging=true

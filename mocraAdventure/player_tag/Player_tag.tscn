@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://mocraAdventure/player_tag/script.gd" type="Script" id=1]
 [ext_resource path="res://images/default2.png" type="Texture" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://images/default3.png" type="Texture" id=6]
 [ext_resource path="res://mocraAdventure/player_tag/not_ready.png" type="Texture" id=7]
 [ext_resource path="res://mocraAdventure/player_tag/loading.png" type="Texture" id=8]
+[ext_resource path="res://fonts/Ubuntu-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/ubuntu30.tres" type="DynamicFont" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 9 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "loading"
@@ -93,38 +99,35 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="Avatar" type="TextureRect" parent="Selection/Character"]
-margin_left = 37.5
+margin_left = 11.0
 margin_top = 5.0
-margin_right = 237.5
+margin_right = 211.0
 margin_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.2, 0.2 )
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="AmountLabel" type="Label" parent="Selection/Character"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = 2.5
-margin_right = 4.0
-margin_bottom = 16.5
-grow_horizontal = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -17.0
+margin_bottom = 34.0
+grow_horizontal = 0
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="CardNameLabel" type="Label" parent="Selection/Character"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = 22.5
-margin_right = 4.0
-margin_bottom = 36.5
+anchor_bottom = 1.0
+margin_left = -8.5
+margin_top = -34.0
+margin_right = 8.5
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="Object1" type="Control" parent="Selection"]
@@ -150,29 +153,26 @@ grow_vertical = 2
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="AmountLabel" type="Label" parent="Selection/Object1"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 50.5
-margin_top = -59.5
-margin_right = 58.5
-margin_bottom = -45.5
-grow_horizontal = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_bottom = 40.0
+grow_horizontal = 0
 grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
 text = "1"
 
 [node name="CardNameLabel" type="Label" parent="Selection/Object1"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -3.5
-margin_top = 40.5
-margin_right = 4.5
-margin_bottom = 54.5
+anchor_bottom = 1.0
+margin_left = -8.5
+margin_top = -34.0
+margin_right = 8.5
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="Object2" type="Control" parent="Selection"]
@@ -190,9 +190,9 @@ expand = true
 
 [node name="Avatar" type="TextureRect" parent="Selection/Object2"]
 margin_left = 11.0
-margin_top = 2.0
+margin_top = 5.0
 margin_right = 211.0
-margin_bottom = 202.0
+margin_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.5, 0.5 )
@@ -200,23 +200,24 @@ rect_scale = Vector2( 0.5, 0.5 )
 [node name="AmountLabel" type="Label" parent="Selection/Object2"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -8.0
-margin_bottom = 14.0
+margin_left = -17.0
+margin_bottom = 34.0
 grow_horizontal = 0
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="CardNameLabel" type="Label" parent="Selection/Object2"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -3.5
-margin_top = 41.5
-margin_right = 4.5
-margin_bottom = 55.5
+anchor_bottom = 1.0
+margin_left = -8.5
+margin_top = -34.0
+margin_right = 8.5
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="Object3" type="Control" parent="Selection"]
@@ -233,38 +234,35 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="Avatar" type="TextureRect" parent="Selection/Object3"]
-margin_left = 30.0
+margin_left = 11.0
 margin_top = 5.0
-margin_right = 230.0
+margin_right = 211.0
 margin_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.3, 0.3 )
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="AmountLabel" type="Label" parent="Selection/Object3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = 2.5
-margin_right = 4.0
-margin_bottom = 16.5
-grow_horizontal = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -17.0
+margin_bottom = 34.0
+grow_horizontal = 0
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="CardNameLabel" type="Label" parent="Selection/Object3"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = 22.5
-margin_right = 4.0
-margin_bottom = 36.5
+anchor_bottom = 1.0
+margin_left = -8.5
+margin_top = -34.0
+margin_right = 8.5
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 10 )
 text = "1"
 
 [node name="ReadyTexture" type="TextureRect" parent="."]

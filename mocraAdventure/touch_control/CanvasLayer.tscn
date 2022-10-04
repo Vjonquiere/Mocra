@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://mocraAdventure/touch_control/CanvasLayer.gd" type="Script" id=1]
 [ext_resource path="res://mocraAdventure/touch_control/texture.png" type="Texture" id=2]
+[ext_resource path="res://mocraAdventure/touch_control/D-pad.tscn" type="PackedScene" id=3]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 239.898, 867.537 )
 rotation = 1.5708
 scale = Vector2( 0.665259, 0.665259 )
@@ -14,6 +16,7 @@ normal = ExtResource( 2 )
 action = "ui_down"
 
 [node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 139.475, 772.694 )
 rotation = 4.71239
 scale = Vector2( 0.665259, 0.665259 )
@@ -21,6 +24,7 @@ normal = ExtResource( 2 )
 action = "ui_up"
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 242.687, 772.694 )
 scale = Vector2( 0.665259, 0.665259 )
 normal = ExtResource( 2 )
@@ -33,8 +37,15 @@ normal = ExtResource( 2 )
 action = "offensive"
 
 [node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 139.475, 875.906 )
 rotation = 3.14159
 scale = Vector2( 0.665259, 0.665259 )
 normal = ExtResource( 2 )
 action = "ui_left"
+
+[node name="UnderTexture" parent="." instance=ExtResource( 3 )]
+margin_left = 145.0
+margin_top = 450.0
+margin_right = 645.0
+margin_bottom = 950.0

@@ -9,6 +9,8 @@ var anim_playing = false
 var offensive_timer = Timer.new()
 var offensive_cooldown_active = false
 
+var usable_entity = null
+
 func _ready():
 	set_collision("res://mocraAdventure/character/debug/CollisionShape.tres")
 	set_sprite_sheet("res://mocraAdventure/character/debug/SpriteFrame.tres")
@@ -66,6 +68,9 @@ func get_input():
 	elif Input.is_action_pressed("ui_up"):
 		velocity.y -= 1
 		anim_to_play = "walk"
+	elif Input.is_action_just_pressed("use") and usable_entity != null:
+		anim_to_play = "idle"
+		get_parent().entity_use(usable_entity)
 	else:
 		anim_to_play = "idle"
 	if !anim_playing:
@@ -100,3 +105,10 @@ func _on_offensive_timeout():
 
 func set_current_camera(state):
 	$Camera2D.current = state
+
+
+func entity_can_be_used(id):
+	usable_entity = id
+
+func entity_cant_be_used(id):
+	usable_entity = null

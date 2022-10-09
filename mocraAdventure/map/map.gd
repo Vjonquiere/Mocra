@@ -8,7 +8,7 @@ var objectives = []
 var challenges = {'50': null, '75': null, '100': null}
 var tiles = []
 var tileSet
-var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D.tscn", "reach": "res://mocraAdventure/map/entities/types/reach/Node2D.tscn"}
+var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D.tscn", "reach": "res://mocraAdventure/map/entities/types/reach/Node2D.tscn", "use": "res://mocraAdventure/map/entities/types/use/Node2D.tscn"}
 var master_node
 
 var entities = {}

@@ -231,6 +231,19 @@ func entity_reach(id):
 	rpc_id(1, "entity_reach", id)
 	print("entity_reach")
 
+func entity_can_be_used(id):
+	self_player.entity_can_be_used(id)
+
+func entity_cant_be_used(id):
+	self_player.enity_cant_be_used(id)
+
+func entity_use(id):
+	rpc_id(1, "enity_use", id)
+	print("Try to use entity ", id)
+
+remote func remote_entity_use(id):
+	map_load.entities[str(id)].use()
+
 remote func remove_life_entity(entity_id, amount):
 	map_load.entities[str(entity_id)].remove_health(amount)
 

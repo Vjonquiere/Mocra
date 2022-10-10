@@ -3,7 +3,7 @@
 [ext_resource path="res://mocraAdventure/level_selector/adventure_template.gd" type="Script" id=1]
 [ext_resource path="res://mocraAdventure/level_selector/adventures_textures/adventure_1/complete.png" type="Texture" id=2]
 [ext_resource path="res://mocraAdventure/level_selector/adventure_separator.png" type="Texture" id=3]
-[ext_resource path="res://fonts/ubuntu15.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/ubuntu17.tres" type="DynamicFont" id=4]
 
 [node name="Node2D" type="Control"]
 margin_right = 1920.0

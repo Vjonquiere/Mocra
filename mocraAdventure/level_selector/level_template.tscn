@@ -3,7 +3,7 @@
 [ext_resource path="res://mocraAdventure/level_selector/level_template.gd" type="Script" id=1]
 [ext_resource path="res://mocraAdventure/level_selector/levels_textures/background.png" type="Texture" id=2]
 [ext_resource path="res://mocraAdventure/level_selector/levels_textures/default_empty.png" type="Texture" id=3]
-[ext_resource path="res://fonts/ubuntu15.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/ubuntu17.tres" type="DynamicFont" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0

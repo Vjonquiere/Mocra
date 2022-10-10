@@ -9,11 +9,9 @@ var level_id
 
 func _ready():
 	print('level_init')
-	#change_level_infos("le premier", 'normal', "aucunesqfgyfazueyqgsvc_yaeqf<ov_yilzafugvqiyhk idee mdr")
-	#center_object("LevelLabel")
+
 
 func get_level_stats():
-	print("level_id = ", self.get_id())
 	var data = "get_level_stats/" + str(self.get_id())
 	Networking.con.put_data(data.to_utf8())
 	var res = Networking.waiting_for_server()
@@ -24,7 +22,6 @@ func get_level_stats():
 
 func update_level_stats():
 	var stats = get_level_stats()
-	print("level stats: ", stats)
 	if stats == null:
 		return
 	$star1Texture.set_texture(load(textures[stats[3]]))

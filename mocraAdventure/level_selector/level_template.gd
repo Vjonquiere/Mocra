@@ -2,13 +2,35 @@ extends Control
 
 var colors = {"easy":Color("#499236"), "normal":Color("#dba307"), "hard":Color("#c63724")}
 
+var textures = {"0": "res://mocraAdventure/level_selector/levels_textures/default_empty.png", "1": "res://mocraAdventure/level_selector/levels_textures/default.png"}
+
 var selected = false
 var level_id
 
 func _ready():
 	print('level_init')
 	#change_level_infos("le premier", 'normal', "aucunesqfgyfazueyqgsvc_yaeqf<ov_yilzafugvqiyhk idee mdr")
-	center_object("LevelLabel")
+	#center_object("LevelLabel")
+
+func get_level_stats():
+	print("level_id = ", self.get_id())
+	var data = "get_level_stats/" + str(self.get_id())
+	Networking.con.put_data(data.to_utf8())
+	var res = Networking.waiting_for_server()
+	if res[0] == "nothing":
+		return null
+	else:
+		return res
+
+func update_level_stats():
+	var stats = get_level_stats()
+	print("level stats: ", stats)
+	if stats == null:
+		return
+	$star1Texture.set_texture(load(textures[stats[3]]))
+	$star2Texture.set_texture(load(textures[stats[2]]))
+	$star3Texture.set_texture(load(textures[stats[4]]))
+	
 
 func change_level_infos(Name:String, Difficulty:String, Description:String, ID:String):
 	level_id = ID
@@ -16,6 +38,7 @@ func change_level_infos(Name:String, Difficulty:String, Description:String, ID:S
 	$DescriptionLabel.set_text(Description)
 	$DifficultyLabel.set_text(Difficulty)
 	$DifficultyLabel.set("custom_colors/font_color",colors[Difficulty])
+	update_level_stats()
 
 func get_id():
 	return level_id

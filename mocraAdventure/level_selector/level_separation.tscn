@@ -10,8 +10,9 @@ margin_bottom = -1030.0
 rect_min_size = Vector2( 60, 50 )
 
 [node name="ArrowTexture" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 60, 50 )
 rect_scale = Vector2( 0.3, 0.5 )
 texture = ExtResource( 1 )

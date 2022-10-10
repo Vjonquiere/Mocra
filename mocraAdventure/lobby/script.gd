@@ -1,5 +1,6 @@
 extends Control
 
+
 var locked = false
 var selection = false
 onready var player_list = get_node("PlayerList")
@@ -66,7 +67,7 @@ func _on_LevelSelector_gui_input(event):
 		print("Level selection clicked")
 		selection = true
 		var level_selector = load("res://mocraAdventure/level_selector/level_selector.tscn").instance()
-		level_selector.set_scale(Vector2(0.5,0.5))
+		level_selector.set_scale(Vector2(1,1))
 		get_node(".").add_child(level_selector)
 
 

@@ -81,7 +81,7 @@ remote func register_player(info):
 remote func make_mocraID_var(rpc_id):
 	var req = "register_mocra_adventure/" + str(rpc_id)
 	Networking.con.put_data(req.to_utf8())
-	var res = Networking.waiting_for_server()
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "done":
 		rpc_id(1, "mocra_id_verification_done", rpc_id)
 	else:

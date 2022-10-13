@@ -20,7 +20,7 @@ func _on_Button_pressed():
 	$ErrorLabel.visible = false
 	
 	Networking.con.put_data("open_box/01".to_utf8())
-	var results = Networking.waiting_for_cards()
+	var results = yield(Networking.waiting_for_server("|"), "completed")
 	make_opening(results)
 
 
@@ -30,7 +30,7 @@ func _on_ShinyButton_pressed():
 	$ErrorLabel.visible = false
 	
 	Networking.con.put_data("open_box/02".to_utf8())
-	var results = Networking.waiting_for_cards()
+	var results = yield(Networking.waiting_for_server("|"), "completed")
 	make_opening(results)
 
 func make_opening(results):
@@ -47,7 +47,8 @@ func make_opening(results):
 			var card = sorted_id_pile.unstack()
 			var request = "get_card_infos/" + str(card[0]) 
 			Networking.con.put_data(request.to_utf8())
-			my_card_array.append(Networking.waiting_for_card() + "/" + str(card[1]))
+			var rcv = yield(Networking.waiting_for_server(""), "completed")
+			my_card_array.append(rcv[0] + "/" + str(card[1]))
 			
 		#for i in range(1,len(card_id_array)):
 			
@@ -77,7 +78,7 @@ func count_duplicates(card_array:Array) -> Pile:
 
 func update_client_infos():
 	Networking.con.put_data("update_client_infos".to_utf8())
-	var received_data = Networking.waiting_for_server()
+	var received_data = yield(Networking.waiting_for_server("/"), "completed")
 	print(received_data)
 	$credits_label.set_text(received_data[1])
 	$shinycredits_label.set_text(received_data[2])
@@ -87,7 +88,7 @@ func update_client_infos():
 
 func _on_CollectionButton_pressed():
 	Networking.con.put_data("check_if_own_cards".to_utf8())
-	var receive = Networking.waiting_for_server()
+	var receive = yield(Networking.waiting_for_server("/"), "completed")
 	print(receive)
 	if receive[0] == "0":
 		$ErrorLabel.set_text("you don't have any cards")

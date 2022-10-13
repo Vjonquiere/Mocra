@@ -1,27 +1,32 @@
 extends Node
 
 
-var con = StreamPeerTCP.new()
+var tcp = StreamPeerTCP.new()
+var con = StreamPeerSSL.new()
 var client_version = "1.0"
 var anim = AnimatedSprite.new()
 
 func _ready():
-	con.connect_to_host("poschocnetwork.eu", 2305)
-	print((con.get_status()))
-	print(con.is_connected_to_host())
+	tcp.connect_to_host("poschocnetwork.eu", 2305)
+	var cert = load("res://ssl/cert.pem")
+	con.connect_to_stream(tcp, true, "poschocnetwork.eu", cert)
 	animation_init()
 
-	
-func waiting_for_server():
-	if con.is_connected_to_host():
+
+func waiting_for_server(separator:String):
+	if con.get_status() == 2:
+		con.poll()
 		while con.get_available_bytes() == 0:
-			pass
-		return con.get_string(con.get_available_bytes()).split("/")
+			yield(get_tree().create_timer(0.1), "timeout")
+			con.poll()
+		return con.get_string(con.get_available_bytes()).split(separator)
+
 	else:
 		print("You are disconected")
 		get_tree().change_scene("res://scenes/Offline.tscn")
 		return ["null"]
-		
+
+
 func waiting_for_news():
 	emit_signal("test")
 	if con.is_connected_to_host():
@@ -104,4 +109,3 @@ func play_anim():
 func stop_anim():
 	anim.stop()
 	anim.visible = false
-

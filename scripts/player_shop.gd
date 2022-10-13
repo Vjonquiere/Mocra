@@ -46,7 +46,7 @@ func _on_SelectCardButton_pressed():
 
 func display_cards():
 	Networking.con.put_data("display_shop".to_utf8())
-	var shop_infos = Networking.waiting_for_cards()
+	var shop_infos = yield(Networking.waiting_for_server("|"), "completed")
 	print("RES: ", shop_infos)
 	if shop_infos[0] == "EMPTY_SHOP":
 		$EmptyLabel.visible = true
@@ -78,7 +78,7 @@ func refresh(): ## BORDEL => A REFAIRE
 func _on_Control_buy(transactionID, quantity):
 	var req = "buy_card/" + str(transactionID) + "/" + str(quantity) 
 	Networking.con.put_data(req.to_utf8())
-	var res = Networking.waiting_for_server()
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "TRANSACTION_DONE":
 		self.queue_free()
 
@@ -92,7 +92,8 @@ func _on_SellButton_pressed():
 		var req = "sell_card/" + str(selected_card["id"]) + "/" + str(int($Sell/AmoutSpinBox.get_value())) + "/" + str(int($Sell/UnitPriceLineEdit.get_text()))
 		print(req)
 		Networking.con.put_data(req.to_utf8())
-		print(Networking.waiting_for_server())
+		var res = yield(Networking.waiting_for_server("/"), "completed")
+		print(res)
 	else:
 		print("ERROR")
 	refresh()
@@ -107,7 +108,7 @@ func _on_Control_selection_done(card_usage, card_id, card_name, amount):
 #### CURRENT CARDS TO SELL
 func search_current_cards_to_sell():
 	Networking.con.put_data("get_sell_waiting_cards".to_utf8())
-	var res = Networking.waiting_for_cards()
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	print(res)
 	if res[0] == "NOTHING_HERE":
 		pass
@@ -134,7 +135,7 @@ func _on_Control_retrieve(transactionID):
 	print("retrieve_card")
 	var req = "retrieve_card/" + transactionID
 	Networking.con.put_data(req.to_utf8())
-	var res = Networking.waiting_for_server()
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	print(res)
 	if res[0] == "DONE":
 		refresh()

@@ -24,7 +24,7 @@ func _on_Button_pressed():
 		var send_str = "create_account/" + login + "/" + email +"/" + password_hash 
 		Networking.con.put_data(send_str.to_utf8())
 		
-		var recieved_data = Networking.waiting_for_server()
+		var recieved_data = yield(Networking.waiting_for_server("/"), "completed")
 		print(recieved_data)
 		
 		if recieved_data[0] == "working":

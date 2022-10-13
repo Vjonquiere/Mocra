@@ -18,7 +18,7 @@ func _on_Button_pressed():
 	player_name = $AddFriendNode/LineEdit.get_text()
 	var final_str = "get_profile/" + player_name
 	Networking.con.put_data(final_str.to_utf8())
-	var rcv = Networking.waiting_for_server()
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	if rcv[0] != "nobody_found":
 		change_profile_infos(rcv[0], rcv[1])
 		$AddFriendNode/player_profile.visible = true

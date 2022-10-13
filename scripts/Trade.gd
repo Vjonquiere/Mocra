@@ -21,7 +21,8 @@ func _on_CreateRoomButton_pressed():
 	Networking.con.put_data("create_trade".to_utf8())
 	$TradeMenu/CreateRoomButton.disabled = true
 	$TradeMenu/CreateRoomButton/CancelButton.visible = true
-	joined_room_code = Networking.waiting_for_server()[0]
+	var inter = yield(Networking.waiting_for_server("/"), "completed")
+	joined_room_code = inter[0]
 	$TradeMenu/CreateRoomButton/CancelButton/RoomCodeLabel/RoomCodeVarLabel.set_text(joined_room_code) 
 	trade_connexion_init()
 
@@ -32,8 +33,9 @@ func _on_JoinRoomButton_pressed():
 		room_code = room_code.to_upper()
 		print(room_code)
 		var send_str = "join_trade_room/" + room_code
-		Networking.con.put_data(send_str.to_utf8()) 
-		var return_data = Networking.waiting_for_server()[0]
+		Networking.con.put_data(send_str.to_utf8())
+		var res = yield(Networking.waiting_for_server("/"), "completed")
+		var return_data = res[0]
 		if return_data == "noroom":
 			print("No room found")
 		else:
@@ -46,7 +48,7 @@ func _on_Button_pressed():
 
 func TradeBegin():
 	Networking.con.put_data("get_collection".to_utf8())
-	var received_data = Networking.waiting_for_cards()
+	var received_data = yield(Networking.waiting_for_server("|"), "completed")
 	
 	received_data.remove(0)
 	Global.collection_card = preload("res://scenes/Collection_card.tscn")
@@ -129,7 +131,7 @@ func update_my_offer():
 	for i in range(len(my_offer_card_array)):
 		var card_request = "get_card_infos/" + str(my_offer_card_array[i])
 		Networking.con.put_data(card_request.to_utf8())
-		var card_infos = Networking.waiting_for_server()
+		var card_infos = yield(Networking.waiting_for_server("/"), "completed")
 		if i == 0:
 			$TradeRoom/MyOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
 			$TradeRoom/MyOffer/Card1Texture/card1.visible = true
@@ -215,7 +217,7 @@ func update_opponent_offer(opponent_card_array):
 		for i in range(len(opponent_card_array)):
 			var card_request = "get_card_infos/" + str(opponent_card_array[i])
 			Networking.con.put_data(card_request.to_utf8())
-			var card_infos = Networking.waiting_for_server()
+			var card_infos = yield(Networking.waiting_for_server("/"), "completed")
 			if i == 0:
 				$TradeRoom/OpponentOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
 				$TradeRoom/OpponentOffer/Card1Texture/card1.visible = true
@@ -287,7 +289,7 @@ func send_new_offer(offer):
 	print(offer)
 	print(complete_offer)
 	Networking.con.put_data(complete_offer.to_utf8())
-	var returned_data = Networking.waiting_for_server()
+	var returned_data = yield(Networking.waiting_for_server("/"), "completed")
 	print(returned_data)
 
 

@@ -28,7 +28,7 @@ func init_selection(card_type:String, usage:String):
 func display_collection():
 	Networking.con.put_data("get_collection_only_ids".to_utf8())
 	print("waiting for ids")
-	var ids = Networking.waiting_for_server()
+	var ids = yield(Networking.waiting_for_server("/"), "completed")
 	ids.remove(len(ids)-1) ## DO NOT REMOVE
 	construct_cards(ids)
 
@@ -41,8 +41,9 @@ func search_cards() -> Array:
 
 func get_card_infos_mocra_classic(id:String) -> Array:
 	var request = "get_card_infos/" + id 
-	Networking.con.put_data(request.to_utf8()) 
-	return Networking.waiting_for_server()
+	Networking.con.put_data(request.to_utf8())
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	return rcv
 
 func get_card_infos(id:String) -> Array:
 	var request = "get_MA_card_infos/" + id + "/" + card_type_selected
@@ -79,7 +80,7 @@ func construct_cards(card_array:Array) -> void:
 func get_number_of_owned_cards(card_id):
 	var request = "get_amount_of_owned_card/" + str(card_id)
 	Networking.con.put_data(request.to_utf8())
-	var rcv = Networking.waiting_for_server()
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	return rcv[0]
 
 func create_and_link_button(card_id:int, card_name:String, card_node):

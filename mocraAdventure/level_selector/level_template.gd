@@ -14,7 +14,7 @@ func _ready():
 func get_level_stats():
 	var data = "get_level_stats/" + str(self.get_id())
 	Networking.con.put_data(data.to_utf8())
-	var res = Networking.waiting_for_server()
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "nothing":
 		return null
 	else:

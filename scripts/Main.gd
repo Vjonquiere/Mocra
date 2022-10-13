@@ -20,10 +20,7 @@ func _on_Button_pressed():
 		$ErrorLabel.visible = false
 	
 	Networking.con.put_data(final.to_utf8())
-	
-	var rcv = Networking.waiting_for_server()
-	
-	print(rcv)
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 
 	if rcv[0] == "display_user_infos":
 		Global.credits= rcv[2]
@@ -58,7 +55,7 @@ func _on_Button3_pressed():
 
 func _on_ServerLabel_ready():
 	Networking.con.put_data("get_server_infos".to_utf8())
-	var rcv = Networking.waiting_for_server()
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	if rcv[0] == "null":
 		pass
 	else:

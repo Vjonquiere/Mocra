@@ -21,7 +21,7 @@ func set_card_name(card_name:String):
 func get_number_of_owned_cards(card_id):
 	var request = "get_amount_of_owned_card/" + str(card_id)
 	Networking.con.put_data(request.to_utf8())
-	var rcv = Networking.waiting_for_server()
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	return int(rcv[0])
 
 func get_card_number() -> int:

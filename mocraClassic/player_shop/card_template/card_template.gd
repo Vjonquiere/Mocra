@@ -25,7 +25,7 @@ func set_infos(number, seller_name, quantity, price, cardId):
 func card_infos_req(cardId):
 	var req = "get_card_infos/" + str(cardId)
 	Networking.con.put_data(req.to_utf8())
-	var res = Networking.waiting_for_card().split("/")
+	var res = yield(Networking.waiting_for_server("/"), "completed")
 	print(res)
 	return {"name":res[3], "scarcity":res[4]}
 

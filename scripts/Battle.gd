@@ -66,12 +66,12 @@ func join_a_room(room):
 	
 	var data = "join_room/" + room
 	Networking.con.put_data(data.to_utf8())
-	var result = Networking.waiting_for_server()
+	var result = yield(Networking.waiting_for_server("/"), "completed")
 	print(result)
 	
 	if result[0] == "room_finded":
-		var opening = Networking.waiting_for_server()
-		var results = Networking.waiting_for_battle_results()
+		var opening = yield(Networking.waiting_for_server("/"), "completed")
+		var results = yield(Networking.waiting_for_server("!"), "completed")
 		if len(results) < 3:
 			print("Infos are not complete")
 			
@@ -80,7 +80,8 @@ func join_a_room(room):
 		for i in range(len(opponent_card_id)-1):
 			var request = "get_card_infos/" + str(opponent_card_id[i])
 			Networking.con.put_data(request.to_utf8())
-			opponent_card_array.append(Networking.waiting_for_card())
+			var res = yield(Networking.waiting_for_server(""), "completed")
+			opponent_card_array.append(res)
 	
 		Global.opponent_card_str = opponent_card_array
 	
@@ -90,7 +91,8 @@ func join_a_room(room):
 		for i in range(len(my_card_id)-1):
 			var request = "get_card_infos/" + str(my_card_id[i])
 			Networking.con.put_data(request.to_utf8())
-			my_card_array.append(Networking.waiting_for_card())
+			var res = yield(Networking.waiting_for_server(""), "completed")
+			my_card_array.append(res)
 		
 
 		Global.card_str = my_card_array
@@ -131,7 +133,7 @@ func _waiting_for_client2(truc):
 
 func _on_JoinButton_pressed():
 	Networking.con.put_data("check_available_battle_rooms".to_utf8())
-	var rcv = Networking.waiting_for_cards()
+	var rcv = yield(Networking.waiting_for_server("|"), "completed")
 	if rcv[0] == "error":
 		print("no rooms")
 	else:
@@ -142,7 +144,7 @@ func _on_CreateButton_pressed():
 	var number_of_cards = str($CreateRoomNode/NumberOfCardLabel/SpinBox.get_value())
 	var data = "create_battle/" + number_of_cards
 	Networking.con.put_data(data.to_utf8())
-	var rcv = Networking.waiting_for_server()
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	room_code = rcv[1]
 	$CodeLabel/CodeVar.set_text(room_code)
 	$CreateRoomNode/CancelButton.visible = true
@@ -157,7 +159,7 @@ func _on_SpinBox_value_changed(value):
 
 
 func _on_Control_join():
-	var results = Networking.waiting_for_battle_results()
+	var results = yield(Networking.waiting_for_server("!"), "completed")
 	print(results)
 	if len(results) < 3:
 		print("WARNING -> Infos are not complete")
@@ -168,7 +170,8 @@ func _on_Control_join():
 	for i in range(len(opponent_card_id)-1):
 		var request = "get_card_infos/" + str(opponent_card_id[i])
 		Networking.con.put_data(request.to_utf8())
-		opponent_card_array.append(Networking.waiting_for_card())
+		var res = yield(Networking.waiting_for_server(""), "completed")
+		opponent_card_array.append(res)
 	
 	Global.opponent_card_str = opponent_card_array
 	
@@ -178,7 +181,8 @@ func _on_Control_join():
 	for i in range(len(my_card_id)-1):
 		var request = "get_card_infos/" + str(my_card_id[i])
 		Networking.con.put_data(request.to_utf8())
-		my_card_array.append(Networking.waiting_for_card())
+		var res = yield(Networking.waiting_for_server(""), "completed")
+		my_card_array.append(res)
 
 	Global.card_str = my_card_array
 	
@@ -199,7 +203,7 @@ func _on_CancelButton_pressed():
 	var data = "quit_battle/" + room_code
 	Networking.con.put_data(data.to_utf8())
 
-	var results = Networking.waiting_for_battle_results()
+	var results = yield(Networking.waiting_for_server("!"), "completed")
 
 	timer.stop()
 	

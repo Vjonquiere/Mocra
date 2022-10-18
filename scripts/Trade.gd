@@ -18,7 +18,7 @@ func _ready():
 
 
 func _on_CreateRoomButton_pressed():
-	Networking.con.put_data("create_trade".to_utf8())
+	Networking.send_data("create_trade")
 	$TradeMenu/CreateRoomButton.disabled = true
 	$TradeMenu/CreateRoomButton/CancelButton.visible = true
 	var inter = yield(Networking.waiting_for_server("/"), "completed")
@@ -33,7 +33,7 @@ func _on_JoinRoomButton_pressed():
 		room_code = room_code.to_upper()
 		print(room_code)
 		var send_str = "join_trade_room/" + room_code
-		Networking.con.put_data(send_str.to_utf8())
+		Networking.send_data(send_str)
 		var res = yield(Networking.waiting_for_server("/"), "completed")
 		var return_data = res[0]
 		if return_data == "noroom":
@@ -47,7 +47,7 @@ func _on_Button_pressed():
 	get_tree().change_scene("res://scenes/Menu.tscn")
 
 func TradeBegin():
-	Networking.con.put_data("get_collection".to_utf8())
+	Networking.send_data("get_collection")
 	var received_data = yield(Networking.waiting_for_server("|"), "completed")
 	
 	received_data.remove(0)
@@ -130,7 +130,7 @@ func update_my_offer():
 	$TradeRoom/MyOffer/Card3Texture/card3.visible = false
 	for i in range(len(my_offer_card_array)):
 		var card_request = "get_card_infos/" + str(my_offer_card_array[i])
-		Networking.con.put_data(card_request.to_utf8())
+		Networking.send_data(card_request)
 		var card_infos = yield(Networking.waiting_for_server("/"), "completed")
 		if i == 0:
 			$TradeRoom/MyOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
@@ -216,7 +216,7 @@ func update_opponent_offer(opponent_card_array):
 	else:
 		for i in range(len(opponent_card_array)):
 			var card_request = "get_card_infos/" + str(opponent_card_array[i])
-			Networking.con.put_data(card_request.to_utf8())
+			Networking.send_data(card_request)
 			var card_infos = yield(Networking.waiting_for_server("/"), "completed")
 			if i == 0:
 				$TradeRoom/OpponentOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
@@ -288,7 +288,7 @@ func send_new_offer(offer):
 	print("my offer")
 	print(offer)
 	print(complete_offer)
-	Networking.con.put_data(complete_offer.to_utf8())
+	Networking.send_data(complete_offer)
 	var returned_data = yield(Networking.waiting_for_server("/"), "completed")
 	print(returned_data)
 
@@ -302,15 +302,15 @@ func _on_LockButton_toggled(button_pressed):
 	else:
 		complete_str = "unlock_trade/" + joined_room_code
 		print("unlock")
-	Networking.con.put_data(complete_str.to_utf8())
+	Networking.send_data(complete_str)
 
 
 func _on_LeaveButton_pressed():
 	var data = "leave_trade/" + joined_room_code
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 	get_tree().change_scene("res://scenes/Menu.tscn")
 
 
 func _on_ConfirmButton_pressed():
 	var data = "confirm_trade/" + joined_room_code
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)

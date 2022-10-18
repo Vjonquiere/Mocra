@@ -9,7 +9,6 @@ func _ready():
 		Options.load_options("user://options.json")
 	print('game launched')
 
-
 func _on_Button_pressed():
 	
 	var login = $LoginEntry.get_text()
@@ -19,7 +18,7 @@ func _on_Button_pressed():
 	if $ErrorLabel.visible:
 		$ErrorLabel.visible = false
 	
-	Networking.con.put_data(final.to_utf8())
+	Networking.send_data(final)
 	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 
 	if rcv[0] == "display_user_infos":
@@ -31,7 +30,7 @@ func _on_Button_pressed():
 		Global.mocra_ID = rcv[1]
 		print("Mocra ID: ", Global.mocra_ID)
 		get_tree().change_scene("res://scenes/Menu.tscn")
-		
+
 	if rcv[0] == "error" && rcv[1] == "invalid_login":
 		$ErrorLabel.set_text("ERROR: Invalid login or password")
 		$ErrorLabel.visible = true
@@ -53,8 +52,8 @@ func _on_Button3_pressed():
 	OS.shell_open("https://google.com")
 
 
-func _on_ServerLabel_ready():
-	Networking.con.put_data("get_server_infos".to_utf8())
+func get_server_info():
+	Networking.send_data("get_server_infos")
 	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	if rcv[0] == "null":
 		pass
@@ -78,3 +77,10 @@ func generate_user_files():
 	copy_file.store_string(content)
 	copy_file.close()
 	file.close()
+
+
+func _on_Control_ready():
+	if Networking.connection_established():
+		get_server_info()
+	else:
+		get_tree().change_scene("res://scenes/Offline.tscn")

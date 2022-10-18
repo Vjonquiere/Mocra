@@ -45,14 +45,12 @@ func _on_SelectCardButton_pressed():
 #####################
 
 func display_cards():
-	Networking.con.put_data("display_shop".to_utf8())
+	Networking.send_data("display_shop")
 	var shop_infos = yield(Networking.waiting_for_server("|"), "completed")
-	print("RES: ", shop_infos)
 	if shop_infos[0] == "EMPTY_SHOP":
 		$EmptyLabel.visible = true
 	var hbox = HBoxContainer.new()
 	$ScrollContainer/Buy.add_child(hbox)
-	print("shop infos = ", shop_infos)
 	for i in range(len(shop_infos)-1):
 		var card = load("res://mocraClassic/player_shop/card_template/card_template.tscn").instance()
 		if hbox.get_child_count() >= 4:
@@ -77,7 +75,7 @@ func refresh(): ## BORDEL => A REFAIRE
 
 func _on_Control_buy(transactionID, quantity):
 	var req = "buy_card/" + str(transactionID) + "/" + str(quantity) 
-	Networking.con.put_data(req.to_utf8())
+	Networking.send_data(req)
 	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "TRANSACTION_DONE":
 		self.queue_free()
@@ -91,7 +89,7 @@ func _on_SellButton_pressed():
 	if selected_card["id"] != null && int($Sell/UnitPriceLineEdit.get_text()) != 0:
 		var req = "sell_card/" + str(selected_card["id"]) + "/" + str(int($Sell/AmoutSpinBox.get_value())) + "/" + str(int($Sell/UnitPriceLineEdit.get_text()))
 		print(req)
-		Networking.con.put_data(req.to_utf8())
+		Networking.send_data(req)
 		var res = yield(Networking.waiting_for_server("/"), "completed")
 		print(res)
 	else:
@@ -107,9 +105,8 @@ func _on_Control_selection_done(card_usage, card_id, card_name, amount):
 
 #### CURRENT CARDS TO SELL
 func search_current_cards_to_sell():
-	Networking.con.put_data("get_sell_waiting_cards".to_utf8())
-	var res = yield(Networking.waiting_for_server("/"), "completed")
-	print(res)
+	Networking.send_data("get_sell_waiting_cards")
+	var res = yield(Networking.waiting_for_server("|"), "completed")
 	if res[0] == "NOTHING_HERE":
 		pass
 	else:
@@ -120,7 +117,6 @@ func search_current_cards_to_sell():
 
 func init_card_to_sell(card_infos:String):
 	var parsed_infos = card_infos.split("/")
-	print("PARSED INFOS: ", parsed_infos)
 	var card_template = sell_card_template.instance()
 	card_template.set_type_to_current_sell()
 	card_template.set_infos(parsed_infos[0], "you", parsed_infos[4], parsed_infos[2], parsed_infos[3])
@@ -134,8 +130,7 @@ func init_card_to_sell(card_infos:String):
 func _on_Control_retrieve(transactionID):
 	print("retrieve_card")
 	var req = "retrieve_card/" + transactionID
-	Networking.con.put_data(req.to_utf8())
+	Networking.send_data(req)
 	var res = yield(Networking.waiting_for_server("/"), "completed")
-	print(res)
 	if res[0] == "DONE":
 		refresh()

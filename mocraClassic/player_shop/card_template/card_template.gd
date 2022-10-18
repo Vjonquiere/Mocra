@@ -18,15 +18,15 @@ func set_infos(number, seller_name, quantity, price, cardId):
 	transactionID = number
 	cardID = cardId
 	$BuyLabel/SpinBox.max_value = int(quantity)
-	var card_infos = card_infos_req(cardId)
+	var card_infos = yield(card_infos_req(cardId), "completed")
 	card_init(card_infos["name"], price, card_infos["scarcity"], quantity, seller_name)
 	update_price(1) 
 
 func card_infos_req(cardId):
 	var req = "get_card_infos/" + str(cardId)
-	Networking.con.put_data(req.to_utf8())
-	var res = yield(Networking.waiting_for_server("/"), "completed")
-	print(res)
+	Networking.send_data(req)
+	var res = yield(Networking.waiting_for_server_without_separator(), "completed") ### RCV TROP LONG 
+	res = res.split("/")
 	return {"name":res[3], "scarcity":res[4]}
 
 func card_init(name, price, scarcity, quantity, seller_name):

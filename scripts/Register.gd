@@ -22,7 +22,7 @@ func _on_Button_pressed():
 	if _password_verif(password, password_confirm) == true:
 		var password_hash = password.sha256_text()
 		var send_str = "create_account/" + login + "/" + email +"/" + password_hash 
-		Networking.con.put_data(send_str.to_utf8())
+		Networking.send_data(send_str)
 		
 		var recieved_data = yield(Networking.waiting_for_server("/"), "completed")
 		print(recieved_data)
@@ -52,7 +52,7 @@ func _on_Step1NextButton_pressed():
 	var username = $Step1/LoginLabel/LoginLineEdit.get_text()
 #if ";" in username or "=" in username:
 	var data = "check_username/" + username
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 	#Networking.waiting_for_server()[0]
 	if "next_step" == "next_step":
 		new_player_data["username"] = username

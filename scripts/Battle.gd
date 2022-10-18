@@ -65,7 +65,7 @@ func display_joinable_battles(battle_array):
 func join_a_room(room):
 	
 	var data = "join_room/" + room
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 	var result = yield(Networking.waiting_for_server("/"), "completed")
 	print(result)
 	
@@ -79,7 +79,7 @@ func join_a_room(room):
 		var opponent_card_id = results[0].split("|")
 		for i in range(len(opponent_card_id)-1):
 			var request = "get_card_infos/" + str(opponent_card_id[i])
-			Networking.con.put_data(request.to_utf8())
+			Networking.send_data(request)
 			var res = yield(Networking.waiting_for_server(""), "completed")
 			opponent_card_array.append(res)
 	
@@ -90,7 +90,7 @@ func join_a_room(room):
 		
 		for i in range(len(my_card_id)-1):
 			var request = "get_card_infos/" + str(my_card_id[i])
-			Networking.con.put_data(request.to_utf8())
+			Networking.send_data(request)
 			var res = yield(Networking.waiting_for_server(""), "completed")
 			my_card_array.append(res)
 		
@@ -132,7 +132,7 @@ func _waiting_for_client2(truc):
 
 
 func _on_JoinButton_pressed():
-	Networking.con.put_data("check_available_battle_rooms".to_utf8())
+	Networking.send_data("check_available_battle_rooms")
 	var rcv = yield(Networking.waiting_for_server("|"), "completed")
 	if rcv[0] == "error":
 		print("no rooms")
@@ -143,7 +143,7 @@ func _on_JoinButton_pressed():
 func _on_CreateButton_pressed():
 	var number_of_cards = str($CreateRoomNode/NumberOfCardLabel/SpinBox.get_value())
 	var data = "create_battle/" + number_of_cards
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	room_code = rcv[1]
 	$CodeLabel/CodeVar.set_text(room_code)
@@ -169,7 +169,7 @@ func _on_Control_join():
 
 	for i in range(len(opponent_card_id)-1):
 		var request = "get_card_infos/" + str(opponent_card_id[i])
-		Networking.con.put_data(request.to_utf8())
+		Networking.send_data(request)
 		var res = yield(Networking.waiting_for_server(""), "completed")
 		opponent_card_array.append(res)
 	
@@ -180,7 +180,7 @@ func _on_Control_join():
 	
 	for i in range(len(my_card_id)-1):
 		var request = "get_card_infos/" + str(my_card_id[i])
-		Networking.con.put_data(request.to_utf8())
+		Networking.send_data(request)
 		var res = yield(Networking.waiting_for_server(""), "completed")
 		my_card_array.append(res)
 
@@ -201,7 +201,7 @@ func _on_BackButton_pressed():
 
 func _on_CancelButton_pressed():
 	var data = "quit_battle/" + room_code
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 
 	var results = yield(Networking.waiting_for_server("!"), "completed")
 

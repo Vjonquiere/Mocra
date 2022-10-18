@@ -28,11 +28,9 @@ func _ready():
 	$BetweenCardsAnim.position.x = width_center
 
 	Global.card = preload("res://scenes/Common.tscn")
-	print(card_str)
 	if card_str[0] == "display_cards":
 		card_str.remove(0)
 		for i in range(len(card_str)):
-			print(card_str[i])
 			pack_content[i] = _create_card_instance(card_str[i])
 		$pack_open_anim.play("default")
 

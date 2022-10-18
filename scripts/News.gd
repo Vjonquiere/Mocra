@@ -5,7 +5,7 @@ var classic_theme = load("res://Theme/Theme.tres")
 
 func _ready():
 	"""
-	Networking.con.put_data("get_news".to_utf8())
+	Networking.send_data("get_news")
 	var rcv = Networking.waiting_for_news()
 	print(rcv)
 	if rcv[0] == "nothing_new":
@@ -43,13 +43,13 @@ func display_friend_request(request, news_number):
 
 func decline_friend_request(friend_name, request_id):
 	var final_request = "decline_friend_request/" + friend_name + "/" + request_id
-	Networking.con.put_data(final_request.to_utf8())
+	Networking.send_data(final_request)
 	delete_old_nodes()
 	_ready()
 
 func accept_friend_request(friend_name, request_id):
 	var final_request = "accept_friend_request/" + friend_name + "/" + request_id
-	Networking.con.put_data(final_request.to_utf8())
+	Networking.send_data(final_request)
 	delete_old_nodes()
 	_ready()
 

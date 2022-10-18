@@ -5,8 +5,8 @@ var player_name = ""
 var profile_scene = load("res://scenes/Profile.tscn")
 
 func _ready():
-	Networking.con.put_data("get_friends".to_utf8())
-	var rcv = Networking.waiting_for_news()
+	Networking.send_data("get_friends")
+	var rcv = yield(Networking.waiting_for_server("|"), "completed")
 	display_friends(rcv)
 	
 
@@ -17,7 +17,7 @@ func _on_Button_pressed():
 	$AddFriendNode/FriendRequestSendedLabel.visible = false
 	player_name = $AddFriendNode/LineEdit.get_text()
 	var final_str = "get_profile/" + player_name
-	Networking.con.put_data(final_str.to_utf8())
+	Networking.send_data(final_str)
 	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	if rcv[0] != "nobody_found":
 		change_profile_infos(rcv[0], rcv[1])
@@ -33,7 +33,7 @@ func change_profile_infos(name, global_points):
 
 func _on_AddFriendButton_pressed():
 	var packet = "create_friend_request/" + player_name
-	Networking.con.put_data(packet.to_utf8())
+	Networking.send_data(packet)
 	$AddFriendNode/player_profile/AddFriendButton.visible = false
 	$AddFriendNode/FriendRequestSendedLabel.visible = true
 

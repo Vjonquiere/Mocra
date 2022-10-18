@@ -1504,6 +1504,6 @@ margin_right = 60.0
 margin_bottom = 64.0
 text = "Online players:"
 
+[connection signal="ready" from="." to="." method="_on_Control_ready"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
-[connection signal="ready" from="ServerLabel" to="." method="_on_ServerLabel_ready"]

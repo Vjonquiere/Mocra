@@ -26,7 +26,7 @@ func init_selection(card_type:String, usage:String):
 	card_type_selected = card_type
 
 func display_collection():
-	Networking.con.put_data("get_collection_only_ids".to_utf8())
+	Networking.send_data("get_collection_only_ids")
 	print("waiting for ids")
 	var ids = yield(Networking.waiting_for_server("/"), "completed")
 	ids.remove(len(ids)-1) ## DO NOT REMOVE
@@ -34,21 +34,21 @@ func display_collection():
 
 func search_cards() -> Array:
 	var request = "get_cards_with_type/" + card_type_selected
-	Networking.con.put_data(request.to_utf8())
-	var rcv = Networking.waiting_for_card()
-	card_array = rcv.split("/")
-	return card_array
+	Networking.send_data(request)
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	return rcv
 
 func get_card_infos_mocra_classic(id:String) -> Array:
 	var request = "get_card_infos/" + id 
-	Networking.con.put_data(request.to_utf8())
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	Networking.send_data(request)
+	var rcv = yield(Networking.waiting_for_server_without_separator(), "completed")
 	return rcv
 
 func get_card_infos(id:String) -> Array:
 	var request = "get_MA_card_infos/" + id + "/" + card_type_selected
-	Networking.con.put_data(request.to_utf8())
-	return Networking.waiting_for_card().split("/")
+	Networking.send_data(request)
+	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	return rcv
 
 
 func construct_cards(card_array:Array) -> void:
@@ -59,19 +59,20 @@ func construct_cards(card_array:Array) -> void:
 		
 		var card_infos
 		if advanced_selection:
-			card_infos = get_card_infos(card_array[i])
+			card_infos = yield(get_card_infos(card_array[i]), "completed")
 			card_instance.change_avatar(card_infos[0])
-			card_infos = get_card_infos(card_array[i])
+			card_infos = yield(get_card_infos(card_array[i]), "completed")
 			create_and_link_button(int(card_array[i]), card_infos[0], card_instance)
 		else:
-			card_infos = get_card_infos_mocra_classic(card_array[i])
+			card_infos = yield(get_card_infos_mocra_classic(card_array[i]), "completed")
+			card_infos = card_infos.split("/")
 			create_and_link_button(int(card_array[i]), card_infos[3], card_instance)
 
 		match card_type_selected:
 			"object":
 				card_instance.change_informations(card_infos[2], card_infos[3])
 			"character":
-				card_instance.change_informations(card_infos[2], card_infos[3], card_infos[4], card_infos[5], card_infos[6], get_number_of_owned_cards(card_array[i]))
+				card_instance.change_informations(card_infos[2], card_infos[3], card_infos[4], card_infos[5], card_infos[6], yield(get_number_of_owned_cards(card_array[i]), "completed"))
 			"ground":
 				card_instance.change_informations(card_infos[0], card_infos[2])
 			"all":
@@ -79,7 +80,7 @@ func construct_cards(card_array:Array) -> void:
 	
 func get_number_of_owned_cards(card_id):
 	var request = "get_amount_of_owned_card/" + str(card_id)
-	Networking.con.put_data(request.to_utf8())
+	Networking.send_data(request)
 	var rcv = yield(Networking.waiting_for_server("/"), "completed")
 	return rcv[0]
 

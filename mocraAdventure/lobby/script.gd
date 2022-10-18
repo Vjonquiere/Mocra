@@ -76,7 +76,7 @@ func card_selection_gui(type:String, card_usage:String):
 		get_node(".").add_child(card_selector)
 		card_selector.set_position(Vector2(210,0))
 		card_selector.init_selection(type, card_usage)
-		var card_array = card_selector.search_cards()
+		var card_array = yield(card_selector.search_cards(), "completed")
 		card_selector.construct_cards(card_array)
 
 func set_level(level_id:String):

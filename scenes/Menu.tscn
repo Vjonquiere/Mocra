@@ -188,7 +188,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 17
+frame = 20
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -219,7 +219,7 @@ custom_styles/normal = ExtResource( 51 )
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
-frame = 5
+frame = 15
 playing = true
 
 [node name="credits_label" type="Label" parent="."]

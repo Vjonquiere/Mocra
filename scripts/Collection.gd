@@ -6,7 +6,7 @@ var height = (int(ProjectSettings.get_setting("display/window/size/height"))/15)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Networking.con.put_data("get_collection".to_utf8())
+	Networking.send_data("get_collection")
 	var received_data = yield(Networking.waiting_for_server("|"), "completed")
 	print("collection data : ", received_data)
 	received_data.remove(0)

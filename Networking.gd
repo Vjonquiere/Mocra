@@ -12,20 +12,65 @@ func _ready():
 	con.connect_to_stream(tcp, true, "poschocnetwork.eu", cert)
 	animation_init()
 
+func send_data(data:String):
+	con.put_data(data.to_utf8())
+
+func check_sum(data:String, separator):
+	var tmp_data = data.split(separator)
+	var data_len = int(tmp_data[0])
+	print("CheckSum : ", data_len, " | data = ", data)
+	if data_len == data.count(separator):
+		return true
+	else:
+		return false
+
+func remove_check_sum(data:String, separator):
+	var tmp_data = data.split(separator)
+	var check_sum_len = len(tmp_data[0])+1
+	var tmp = data
+	tmp.erase(0, check_sum_len)
+	return tmp
+
+func connection_established() -> bool:
+	if con.get_status() == 2:
+		return true
+	else:
+		return false
 
 func waiting_for_server(separator:String):
 	if con.get_status() == 2:
 		con.poll()
 		while con.get_available_bytes() == 0:
+			yield(get_tree().create_timer(0.001), "timeout")
+			if con.get_status() !=2:
+				return null
+			con.poll()
+		var ttl = 20
+		var data = con.get_string(con.get_available_bytes())
+		while ttl > 0 and check_sum(data, separator) == false:
+			con.poll()
+			if con.get_available_bytes() != 0:
+				data += con.get_string(con.get_available_bytes())
+			yield(get_tree().create_timer(0.05), "timeout")
+			ttl -= 1
+		if ttl <= 0:
+			print("PAQUET BROKEN")
+			get_tree().change_scene("res://scenes/Menu.tscn")
+		var final = remove_check_sum(data, separator)
+		return final.split(separator)
+
+func waiting_for_server_without_separator():
+	if con.get_status() == 2:
+		con.poll()
+		while con.get_available_bytes() == 0:
 			yield(get_tree().create_timer(0.1), "timeout")
 			con.poll()
-		return con.get_string(con.get_available_bytes()).split(separator)
-
+		return con.get_string(con.get_available_bytes())
 	else:
 		print("You are disconected")
 		get_tree().change_scene("res://scenes/Offline.tscn")
-		return ["null"]
-
+		print("null")
+		return "null".split("/")
 
 func waiting_for_news():
 	emit_signal("test")

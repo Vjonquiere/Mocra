@@ -110,8 +110,8 @@ margin_top = 37.284
 margin_right = 136.955
 margin_bottom = 138.284
 grow_horizontal = 0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.803922, 0.847059, 0.0784314, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "99"
 align = 1
 
@@ -120,4 +120,3 @@ margin_left = -96.47
 margin_top = -215.55
 margin_right = 103.53
 margin_bottom = -15.5502
-

@@ -13,7 +13,7 @@ func _ready():
 
 func get_level_stats():
 	var data = "get_level_stats/" + str(self.get_id())
-	Networking.con.put_data(data.to_utf8())
+	Networking.send_data(data)
 	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "nothing":
 		return null
@@ -21,7 +21,7 @@ func get_level_stats():
 		return res
 
 func update_level_stats():
-	var stats = get_level_stats()
+	var stats = yield(get_level_stats(), "completed")
 	if stats == null:
 		return
 	$star1Texture.set_texture(load(textures[stats[3]]))

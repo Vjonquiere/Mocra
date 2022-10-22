@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scripts/AdventureLobby.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://Theme/Theme.tres" type="Theme" id=3]
 [ext_resource path="res://animations/loading/full_animation.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=5]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -18,43 +18,44 @@ texture = ExtResource( 2 )
 visible = false
 
 [node name="CreateRoomButton" type="Button" parent="Menu"]
-margin_left = 271.968
-margin_top = 479.182
-margin_right = 473.968
-margin_bottom = 535.182
-theme = ExtResource( 3 )
+margin_left = 76.0
+margin_top = 466.0
+margin_right = 661.0
+margin_bottom = 594.0
+theme = ExtResource( 5 )
 text = "Create A Room"
 
-[node name="JoinRoomEntry" type="TextEdit" parent="Menu"]
-margin_left = 833.0
-margin_top = 490.0
-margin_right = 1024.0
-margin_bottom = 530.0
-theme = ExtResource( 3 )
+[node name="JoinRoomEntry" type="LineEdit" parent="Menu"]
+margin_left = 970.0
+margin_top = 705.0
+margin_right = 1421.0
+margin_bottom = 821.0
+theme = ExtResource( 5 )
 
 [node name="JoinRoomButton" type="Button" parent="Menu"]
-margin_left = 1033.91
-margin_top = 483.499
-margin_right = 1187.91
-margin_bottom = 542.499
-theme = ExtResource( 3 )
+margin_left = 1434.0
+margin_top = 704.0
+margin_right = 1843.0
+margin_bottom = 822.0
+theme = ExtResource( 5 )
 text = "Join Room"
 
 [node name="ErrorLabel" type="Label" parent="Menu"]
 visible = false
-margin_left = 885.839
-margin_top = 578.256
-margin_right = 1143.84
-margin_bottom = 604.256
-theme = ExtResource( 3 )
+margin_left = 1298.0
+margin_top = 847.0
+margin_right = 2234.0
+margin_bottom = 932.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 5 )
 text = "error : can't find this room"
 
 [node name="MapEditorButton" type="Button" parent="Menu"]
-margin_left = 283.0
-margin_top = 257.0
-margin_right = 363.0
-margin_bottom = 277.0
-rect_scale = Vector2( 2.2, 2.2 )
+margin_left = 157.0
+margin_top = 30.0
+margin_right = 604.0
+margin_bottom = 145.0
+theme = ExtResource( 5 )
 text = "Map Editor"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

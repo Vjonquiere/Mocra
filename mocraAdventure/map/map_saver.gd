@@ -1,6 +1,6 @@
 extends Node
 
-const types = {"life":"kill", "reach":"reach"}
+const types = {"life":"kill", "reach":"reach", "use":"use"}
 
 func tile_map_to_array(size:Array, map:TileMap) -> Array:
 	var map_array = []

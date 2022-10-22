@@ -1,6 +1,6 @@
 extends Control
 
-var types = {"life":"kill", "reach":"reach"}
+var types = {"life":"kill", "reach":"reach", "use":"use"}
 
 var entity_id
 var node

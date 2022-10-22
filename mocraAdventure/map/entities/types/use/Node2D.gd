@@ -9,6 +9,9 @@ func _ready():
 func set_id(new_id):
 	id = new_id
 
+func get_id():
+	return id
+
 func set_master(node):
 	master_node = node
 
@@ -18,8 +21,12 @@ func use():
 func _on_Node2D_body_entered(body):
 	if body.has_method("is_player"):
 		master_node.entity_can_be_used(id) ### CAN BE USED
+		$Sprite.show()
+		$AnimationPlayer.play("can_be_used")
 
 
 func _on_Node2D_body_exited(body):
 	if body.has_method("is_player"):
 		master_node.entity_cant_be_used(id) ### CAN'T BE USED
+		$Sprite.hide()
+		$AnimationPlayer.stop()

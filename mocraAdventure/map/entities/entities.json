@@ -1,5 +1,5 @@
 {
-    "entities_number": 2,
+    "entities_number": 3,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -11,7 +11,14 @@
         "path":"res://mocraAdventure/map/entities/interest_point/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/interest_point/texture.png",
         "name": "interest_point",
-        "type":"life"
+        "type":"reach"
+
+    },
+    "2": {
+        "path":"res://mocraAdventure/map/entities/server/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/server/texture.png",
+        "name": "server",
+        "type":"use"
 
     }
 }

@@ -88,8 +88,9 @@ func create_and_link_button(card_id:int, card_name:String, card_node):
 	var add_button = Button.new()
 	card_node.add_child(add_button)
 	add_button.set_text("Select")
-	add_button.set_position(Vector2(120,400))
-	add_button.set_size(Vector2(70,20))
+	add_button.set_position(Vector2(80,400))
+	add_button.set_size(Vector2(300,125))
+	add_button.set_scale(Vector2(0.5,0.5))
 	add_button.connect("pressed", self, "select_card", [card_id, card_name, 1])
 
 	if advanced_selection:

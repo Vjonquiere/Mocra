@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://images/lights/type1.png" type="Texture" id=1]
+[ext_resource path="res://mocraAdventure/map/entities/server/light.gd" type="Script" id=2]
+
+[node name="Light2D" type="Light2D"]
+scale = Vector2( 0.2, 0.2 )
+enabled = false
+texture = ExtResource( 1 )
+color = Color( 0.270588, 0.207843, 0.0823529, 1 )
+energy = 16.0
+mode = 2
+script = ExtResource( 2 )

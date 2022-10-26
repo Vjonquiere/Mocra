@@ -19,3 +19,11 @@ func get_entity_id():
 
 func _on_Button_pressed():
 	node.emit_signal("remove_script_state", entity_id)
+
+
+func _on_subtitleLineEdit_text_changed(new_text):
+	node.change_script_subtitle(entity_id, new_text)
+
+
+func _on_titleLineEdit_text_changed(new_text):
+	node.change_script_title(entity_id, new_text)

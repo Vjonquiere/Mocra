@@ -178,6 +178,7 @@ remote func load_self_player(player_card):
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
 remote func load_map(map_path):
+	print("loading map -> ", map_path)
 	map_load = Map.new(self)
 	map_load.load_map(map_path)
 	var map = MapConstrucor.new()

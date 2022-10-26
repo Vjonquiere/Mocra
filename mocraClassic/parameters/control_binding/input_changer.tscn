@@ -58,6 +58,17 @@ focus_neighbour_right = NodePath("../keyboardchangeButton")
 custom_fonts/font = ExtResource( 1 )
 text = "NA"
 
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.5
+margin_top = -14.0
+margin_right = 51.5
+text = "waiting for input"
+
 [connection signal="pressed" from="keyboardchangeButton" to="." method="_on_changeButton_pressed"]
 [connection signal="pressed" from="joystickchangeButton" to="." method="_on_joystickchangeButton_pressed"]
 [connection signal="pressed" from="mousechangeButton" to="." method="_on_mousechangeButton_pressed"]

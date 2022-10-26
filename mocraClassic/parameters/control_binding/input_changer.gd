@@ -29,7 +29,7 @@ func get_input():
 
 func set_input(input:String, event):
 	if event is InputEventKey:
-		$keyboardchangeButton.set_text(input)
+		$keyboardchangeButton.set_text(remove_physical(input))
 		bind_input[0] = event
 	if event is InputEventMouseButton:
 		$mousechangeButton.set_text(mouse_match[event.get_button_index() - 1])
@@ -39,31 +39,39 @@ func set_input(input:String, event):
 		bind_input[2] = event
 #	$GridContainer/keyboardchangeButton.set_size(Vector2(100 + 100*len($GridContainer/keyboardchangeButton.get_text()), 100))
 
+func remove_physical(string:String) -> String:
+	return string.split(" ")[0]
+
 func _input(event):
 	if set_event and "Escape" == event.as_text():
 		set_event = false
+		$Label.hide()
 	elif set_event and event is InputEventKey and event_type == "keyboard":
 		set_input(event.as_text(), event)
 		set_event = false
+		$Label.hide()
 	elif set_event and event is InputEventMouseButton and event_type == "mouse":
 		set_input(event.as_text(), event)
 		set_event = false
+		$Label.hide()
 	elif set_event and event is InputEventJoypadButton and event_type == "joypadbutton":
 		set_input(event.as_text(), event)
 		set_event = false
-	else:
-		set_event = false
+		$Label.hide()
 
 func _on_changeButton_pressed():
 	set_event = true
 	event_type = "keyboard"
+	$Label.show()
 
 
 func _on_mousechangeButton_pressed():
 	set_event = true
 	event_type = "mouse"
+	$Label.show()
 
 
 func _on_joystickchangeButton_pressed():
 	set_event = true
 	event_type = "joypadbutton"
+	$Label.show()

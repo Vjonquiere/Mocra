@@ -43,3 +43,7 @@ func _on_SelectButton_pressed():
 	if selected_level != null:
 		get_node("../../").emit_signal("level_changed", selected_level)
 		self.queue_free()
+
+
+func _on_LineEdit_text_changed(new_text):
+	emit_signal("selection_changed", new_text)

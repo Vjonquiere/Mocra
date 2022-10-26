@@ -19,10 +19,11 @@ var selected_entity = null
 var selected_type = null
 var camera_speed = 1
 var mouse_in = false
+var auto_v_align = false
 
 ## SCRIPT EDITOR
 var script_states = []
-var script_state_template = load("res://mocraAdventure/map_editor/script/script_state_template.tscn")
+var script_state_template = load("res://mocraAdventure/map_editor/script/Control.tscn")
 var script_state_objects = []
 
 signal tile_selected(tile_number)
@@ -69,13 +70,13 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	print("EDITOR INITIED : map_size = ", map_size, " tile_size = ", tile_size, " name = ", name, " tile_set_path: ", tile_set_path)
 
 func get_input():
-	if Input.is_action_just_released("editor_zoom_-"):
+	if Input.is_action_just_released("editor_zoom_-") and mouse_in == true:
 		return "zoom_-"
-	if Input.is_action_just_released("editor_zoom_+"):
+	if Input.is_action_just_released("editor_zoom_+") and mouse_in == true:
 		return "zoom_+"
-	if Input.is_action_pressed("editor_zoom_-"):
+	if Input.is_action_pressed("editor_zoom_-") and mouse_in == true:
 		return "zoom_-"
-	if Input.is_action_pressed("editor_zoom_+"):
+	if Input.is_action_pressed("editor_zoom_+") and mouse_in == true:
 		return "zoom_+"
 	if Input.is_action_pressed("editor_translate_up"):
 		return "translate_up"
@@ -124,7 +125,10 @@ func _process(delta):
 		if selected_type == "tile":
 			place_tile(selected_tile)
 		elif selected_type == "entity":
-			place_entity(selected_entity)
+			if auto_v_align:
+				place_entity(selected_entity, true)
+			else:
+				place_entity(selected_entity)
 		elif selected_type == "deleting_entities":
 			remove_entity()
 	
@@ -142,7 +146,7 @@ func add_script_state():
 			template.init_identity(placed_entities[closest]["path"], "avatar_path:String", placed_entities[closest]["coords"], placed_entities[closest]["type"], closest, $".")
 			$script_editor/VBoxContainer.add_child(template)
 			script_state_objects.append(template)
-			script_states.append({"entity_id": closest, "action": placed_entities[closest]["type"]})
+			script_states.append({"entity_id": closest, "action": placed_entities[closest]["type"], "title": "", "subtitle":""})
 		selected_type = "tile"
 		display_overlay()
 		edition = true
@@ -165,14 +169,18 @@ func place_tile(tile_number):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_tile != null:
 		tile_map.set_cell(tile[0], tile[1], tile_number)
 
-func place_entity(entity_number):
+func place_entity(entity_number, v_align=false):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_entity != null and entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == true:
 		var entities = JsonParser.get_data_from_json("res://mocraAdventure/map/entities/entities.json")
 		var entity = load(entities[str(entity_number)]["path"]).instance()
 		tile_map.add_child(entity)
-		entity.position = Vector2(raw_tile[0], raw_tile[1])
+		var pos
+		pos = Vector2(raw_tile[0], raw_tile[1])
 		entity.scale = Vector2(0.25,0.25)
-		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(raw_tile[0]), int(raw_tile[1])], "args": []})
+		if v_align:
+			pos = Vector2(raw_tile[0], get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[1])
+		entity.position = pos
+		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(raw_tile[0]), int(pos[1])], "args": []})
 
 
 func entity_place_checker(entity_coords) -> bool:
@@ -182,6 +190,19 @@ func entity_place_checker(entity_coords) -> bool:
 		if pow(pow(placed_entities[i]["coords"][0]-entity_coords[0],2)+pow(placed_entities[i]["coords"][1]-entity_coords[1],2), 0.5) < 50:
 			return false
 	return true
+
+func get_closest_entity_coords(coords):
+	var closest = 0
+	var closest_coords = placed_entities[0]["coords"]
+	var closest_dist = pow(pow(placed_entities[0]["coords"][0]-coords[0],2)+pow(placed_entities[0]["coords"][1]-coords[1],2), 0.5)
+	var entity_coords
+	for i in range(len(placed_entities)):
+		entity_coords = placed_entities[i]["coords"]
+		if pow(pow(entity_coords[0]-coords[0],2)+pow(entity_coords[1]-coords[1],2), 0.5) < closest_dist:
+			closest = i
+			closest_coords = entity_coords
+			closest_dist = pow(pow(entity_coords[0]-coords[0],2)+pow(entity_coords[1]-coords[1],2), 0.5)
+	return entity_coords
 
 func get_closest_entity(coords):
 	var closest = 0
@@ -262,8 +283,35 @@ func _on_Node2D_remove_script_state(entity_id):
 			script_state_objects.remove(i)
 			break
 
+func _on_backButton_pressed():
+	$script_editor.visible = false
+	tile_map.visible = true
+	$Camera2D.current = true
+	tile_selector.visible = true
+	entity_selector.visible = true
+	selected_type = "tile"
+	display_overlay()
+	edition = true
+
+
+func change_script_title(entity_id, text):
+	for i in range(len(script_state_objects)):
+		if script_state_objects[i].get_entity_id() == entity_id:
+			script_states[i]["title"] = text
+
+func change_script_subtitle(entity_id, text):
+	for i in range(len(script_state_objects)):
+		if script_state_objects[i].get_entity_id() == entity_id:
+			script_states[i]["subtitle"] = text
+
 func _on_mouse_entered():
 	mouse_in = true
 
 func _on_mouse_exited():
 	mouse_in = false
+
+
+
+
+func _on_CheckBox_toggled(button_pressed):
+	auto_v_align = button_pressed

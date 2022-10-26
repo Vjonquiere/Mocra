@@ -35,9 +35,9 @@ func save_entities(entity_array:Array, name:String):
 func save_script(script_array:Array, name:String):
 	var content = '{ "state_number": ' + str(len(script_array)) + ', \n'
 	for i in range(len(script_array)-1):
-		content += '"' + str(i) + '": ["' + str(script_array[i]["entity_id"]) + '", "' + types[script_array[i]["action"]] + '", "test", "test"], \n'
+		content += '"' + str(i) + '": ["' + str(script_array[i]["entity_id"]) + '", "' + types[script_array[i]["action"]] + '", "' + str(script_array[i]["title"]) + '", "' + str(script_array[i]["subtitle"]) + '"], \n'
 	var index = len(script_array)-1
-	content += '"' + str(index) + '": ["' + str(script_array[index]["entity_id"]) + '", "' + types[script_array[index]["action"]] + '", "test", "test"] }'
+	content += '"' + str(index) + '": ["' + str(script_array[index]["entity_id"]) + '", "' + types[script_array[index]["action"]] + '", "' + str(script_array[index]["title"]) + '", "' + str(script_array[index]["subtitle"]) + '"] }'
 	var file = File.new()
 	file.open("user://" + name + "/script.json", File.WRITE)
 	file.store_string(content)

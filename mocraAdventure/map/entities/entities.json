@@ -1,5 +1,5 @@
 {
-    "entities_number": 3,
+    "entities_number": 5,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -19,6 +19,20 @@
         "texture_path":"res://mocraAdventure/map/entities/server/texture.png",
         "name": "server",
         "type":"use"
+
+    },
+    "3": {
+        "path":"res://mocraAdventure/map/entities/front_wall/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/front_wall/texture.png",
+        "name": "front_wall",
+        "type":"none"
+
+    },
+    "4": {
+        "path":"res://mocraAdventure/map/entities/side_wall/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/side_wall/texture.png",
+        "name": "front_wall",
+        "type":"none"
 
     }
 }

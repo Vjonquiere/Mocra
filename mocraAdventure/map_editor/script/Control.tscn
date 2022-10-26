@@ -3,53 +3,86 @@
 [ext_resource path="res://fonts/UbuntuBold150.tres" type="DynamicFont" id=1]
 [ext_resource path="res://images/default2.png" type="Texture" id=2]
 [ext_resource path="res://mocraAdventure/map_editor/script/Control.gd" type="Script" id=3]
-[ext_resource path="res://Theme/Theme.tres" type="Theme" id=4]
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=4]
 
 [node name="MainNode" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -620.0
 margin_bottom = -980.0
-rect_min_size = Vector2( 1300, 100 )
+rect_min_size = Vector2( 1300, 200 )
+theme = ExtResource( 4 )
 script = ExtResource( 3 )
 
 [node name="entityLabel" type="Label" parent="."]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 227.0
-margin_bottom = 90.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -40.0
+margin_right = 202.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "entity"
 
 [node name="posLabel" type="Label" parent="."]
-margin_left = 501.0
-margin_top = 10.0
-margin_right = 943.0
-margin_bottom = 90.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 464.0
+margin_top = -40.0
+margin_right = 906.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "pos (500;500)"
 
 [node name="typeLabel" type="Label" parent="."]
-margin_left = 998.0
-margin_top = 10.0
-margin_right = 1150.0
-margin_bottom = 90.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 972.0
+margin_top = -40.0
+margin_right = 1124.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "type"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1209.0
-margin_top = 24.0
-margin_right = 1261.0
-margin_bottom = 76.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1022.0
+margin_top = -51.0
+margin_right = 1107.0
+margin_bottom = 34.0
 theme = ExtResource( 4 )
 text = "X"
 
 [node name="avatarTextureRect" type="TextureRect" parent="."]
-margin_left = 348.0
-margin_right = 448.0
-margin_bottom = 100.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 294.0
+margin_top = -50.0
+margin_right = 394.0
+margin_bottom = 50.0
 texture = ExtResource( 2 )
 expand = true
 
+[node name="titleLineEdit" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 587.0
+margin_top = 10.0
+margin_right = 989.0
+margin_bottom = 95.0
+placeholder_text = "Title"
+
+[node name="subtitleLineEdit" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 587.0
+margin_top = 100.0
+margin_right = 989.0
+margin_bottom = 185.0
+placeholder_text = "Subtitle"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="text_changed" from="titleLineEdit" to="." method="_on_titleLineEdit_text_changed"]
+[connection signal="text_changed" from="subtitleLineEdit" to="." method="_on_subtitleLineEdit_text_changed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://mocraAdventure/level_selector/level_selector.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=4]
 
 [node name="Selector" type="Control"]
 anchor_right = 1.0
@@ -34,5 +35,21 @@ margin_bottom = -54.5298
 theme = ExtResource( 3 )
 text = "SELECT"
 
+[node name="Label" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 981.0
+margin_right = 585.0
+margin_bottom = 1066.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 4 )
+text = "Custom level ->"
+
+[node name="LineEdit" type="LineEdit" parent="Label"]
+margin_left = 612.0
+margin_top = 3.0
+margin_right = 1095.0
+margin_bottom = 88.0
+
 [connection signal="selection_changed" from="." to="." method="_on_Control_selection_changed"]
 [connection signal="pressed" from="SelectButton" to="." method="_on_SelectButton_pressed"]
+[connection signal="text_changed" from="Label/LineEdit" to="." method="_on_LineEdit_text_changed"]

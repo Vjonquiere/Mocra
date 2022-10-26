@@ -31,6 +31,7 @@ margin_bottom = -4.0
 text = "pos ()"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 0.7, 0.7 )
 
 [connection signal="anim_playing_finished" from="." to="." method="_on_CharacterController_anim_playing_finished"]
 [connection signal="body_entered" from="offensive1Area" to="." method="_on_offensive1Area_body_entered"]

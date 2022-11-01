@@ -177,6 +177,15 @@ remote func load_self_player(player_card):
 	self_player.set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"}))
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
+
+remote func has_map(map_path):
+	var tmp_map = Map.new(self)
+	if !tmp_map.has_map(map_path):
+		rpc_id(1, "download_map", map_path)
+
+remote func download_file(path):
+	print("path => ", path, "\nfile => ")
+
 remote func load_map(map_path):
 	print("loading map -> ", map_path)
 	map_load = Map.new(self)

@@ -16,6 +16,13 @@ var entities = {}
 func _init(node):
 	master_node = node
 
+func has_map(map_path:String) -> bool:
+	var has_dir = Directory.new()
+	if !has_dir.dir_exists(map_path) || !has_dir.file_exists(map_path + "/map.json") || !has_dir.file_exists(map_path + "/entities.json"):
+		return false
+	return true
+
+
 func load_map(map_path:String):
 	var path = map_path + "/map.json"
 	var level_data = JsonParser.get_data_from_json(path)

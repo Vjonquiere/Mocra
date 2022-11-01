@@ -1,7 +1,10 @@
 extends Node2D
 
+const max_entities = 200
+
 var tile_map = TileMap.new()
 var control_tile_map = Control.new()
+var error_timer = Timer.new()
 var tile_set
 var tile_set_p
 var tileset_tile_size
@@ -21,6 +24,7 @@ var camera_speed = 1
 var mouse_in = false
 var auto_v_align = false
 
+
 ## SCRIPT EDITOR
 var script_states = []
 var script_state_template = load("res://mocraAdventure/map_editor/script/Control.tscn")
@@ -34,6 +38,7 @@ signal remove_script_state(entity_id)
 func _ready():
 	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
 	$".".add_child(menu)
+	error_timer_init()
 	entity_selector.set_node($".")
 	control_tile_map.connect("mouse_entered", self, "_on_mouse_entered")
 	control_tile_map.connect("mouse_exited", self, "_on_mouse_exited")
@@ -124,19 +129,20 @@ func _process(delta):
 		entity_selector.visible = true
 		if selected_type == "tile":
 			place_tile(selected_tile)
-		elif selected_type == "entity":
+		elif selected_type == "entity" and len(placed_entities) < max_entities:
 			if auto_v_align:
 				place_entity(selected_entity, true)
 			else:
 				place_entity(selected_entity)
+			update_entities_number_label()
 		elif selected_type == "deleting_entities":
 			remove_entity()
+			update_entities_number_label()
 	
 	elif input == "get_pos" and !edition:
 		raw_tile = [int(tile_map.get_local_mouse_position()[0]), int(tile_map.get_local_mouse_position()[1])]
 		if selected_type == "script":
 			add_script_state()
-
 
 func add_script_state():
 	if entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == false:
@@ -182,6 +188,8 @@ func place_entity(entity_number, v_align=false):
 		entity.position = pos
 		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(raw_tile[0]), int(pos[1])], "args": []})
 
+func update_entities_number_label() -> void:
+	$Camera2D/CanvasLayer/GUI/EntityLabel.set_text(str(len(placed_entities)) + "/" + str(max_entities) + " entities")
 
 func entity_place_checker(entity_coords) -> bool:
 	if len(placed_entities) == 0:
@@ -224,11 +232,35 @@ func _on_Node2D_tile_selected(tile_number):
 	selected_type = "tile"
 	$Camera2D/CanvasLayer/GUI/deleteEntityButton.pressed = false
 
+func error_timer_init():
+	$".".add_child(error_timer)
+	error_timer.connect("timeout", self, "_on_error_timer_timeout")
+	error_timer.set_one_shot(true)
+	error_timer.set_wait_time(5.0)
+
+func _on_error_timer_timeout():
+	$Camera2D/CanvasLayer/GUI/errorLabel.hide()
+
+func display_error(error:String):
+	$Camera2D/CanvasLayer/GUI/errorLabel.set_text(error)
+	$Camera2D/CanvasLayer/GUI/errorLabel.show()
+	error_timer.start()
+
 func _on_saveButton_pressed():
-	MapSaver.create_save_folder(map_name)
-	MapSaver.save_map(size, tileset_tile_size, map_name, tile_set_p, MapSaver.tile_map_to_array(size, tile_map))
-	MapSaver.save_entities(placed_entities, map_name)
-	MapSaver.save_script(script_states, map_name)
+	if is_map_savable():
+		MapSaver.create_save_folder(map_name)
+		MapSaver.save_map(size, tileset_tile_size, map_name, tile_set_p, MapSaver.tile_map_to_array(size, tile_map))
+		MapSaver.save_entities(placed_entities, map_name)
+		MapSaver.save_script(script_states, map_name)
+
+func is_map_savable() -> bool:
+	if len(script_states) == 0:
+		display_error("Can't save map without at least one script state")
+		return false
+	if len(placed_entities) > max_entities:
+		display_error("Maps can only contain " + str(max_entities) + " entities")
+		return false
+	return true
 
 func _on_Node2D_entity_selected(entity_number):
 	selected_entity = entity_number

@@ -149,14 +149,12 @@ func update_my_offer():
 
 func create_collection_card(card_str, card_page_index):
 	var instance  = Global.collection_card.instance()
-	instance.scale = Vector2(0.6,0.6)
+	instance.set_scale(Vector2(0.6,0.6))
 	$TradeRoom/MyCards.add_child(instance)
 	if card_page_index == 0:
-		instance.position.x = 160
-		instance.position.y = 200
+		instance.set_position(Vector2(160, 200))
 	elif card_page_index > 0 :
-		instance.position.x = 160 * (card_page_index + 1)
-		instance.position.y = 200
+		instance.set_position(Vector2(160 * (card_page_index + 1), 200))
 
 	var card_infos = card_str.split("/")
 	instance._change_informations(card_infos[2],card_infos[3],card_infos[4],card_infos[8])

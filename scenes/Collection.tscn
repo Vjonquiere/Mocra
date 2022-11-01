@@ -1,30 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Collection.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://images/buttons/next_card_button_hover.png" type="Texture" id=3]
-[ext_resource path="res://images/buttons/next_card_button.png" type="Texture" id=4]
-[ext_resource path="res://images/buttons/previous_card_button_hover.png" type="Texture" id=5]
-[ext_resource path="res://images/buttons/previous_card_button.png" type="Texture" id=6]
 [ext_resource path="res://images/buttons/back_button_hover.png" type="Texture" id=7]
 [ext_resource path="res://images/buttons/back_button .png" type="Texture" id=8]
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=9]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 150, 300 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 150, 300 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 150, 300 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 150, 300 )
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 7 )
@@ -43,30 +23,6 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
-
-[node name="NextButton" type="Button" parent="."]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -80.0
-margin_top = -60.0
-margin_right = -20.0
-margin_bottom = 60.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-
-[node name="PreviousButton" type="Button" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 20.0
-margin_top = -60.0
-margin_right = 80.0
-margin_bottom = 60.0
-rect_scale = Vector2( 0.7, 0.7 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 40.0
@@ -87,6 +43,23 @@ margin_bottom = 68.9068
 theme = ExtResource( 9 )
 text = "COLLECTION"
 
-[connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -900.0
+margin_top = -400.0
+margin_right = 900.0
+margin_bottom = 400.0
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 1750.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 1750, 700 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 50
+columns = 6
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

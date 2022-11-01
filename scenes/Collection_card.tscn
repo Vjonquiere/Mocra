@@ -4,10 +4,16 @@
 [ext_resource path="res://cards/collection_backgrounds/Common.png" type="Texture" id=2]
 [ext_resource path="res://fonts/Classic_font_24.tres" type="DynamicFont" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Control"]
+margin_left = -125.0
+margin_top = -150.0
+margin_right = 125.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 250, 300 )
 script = ExtResource( 1 )
 
 [node name="CardBackground" type="Sprite" parent="."]
+position = Vector2( 125, 150 )
 texture = ExtResource( 2 )
 
 [node name="Avatar" type="Sprite" parent="CardBackground"]
@@ -60,9 +66,8 @@ margin_right = 42.0
 margin_bottom = 182.0
 grow_horizontal = 0
 focus_neighbour_right = NodePath("OwnedLabel")
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.286275, 0.701961, 0.294118, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "350
 "
 align = 2
-

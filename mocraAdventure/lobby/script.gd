@@ -96,6 +96,7 @@ func _on_Control_selection_done(card, card_id, card_name, number_of_cards):
 	var card_avatar = load("res://cards/avatar/{path}.png".format({"path":card_name}))
 	match card:
 		"character":
+			yield($CardsSelector2/CardsSelector/CardSelection/Stats.get_card_stats(card_id, "character"), "completed")
 			modification_node = $CardsSelector2/CardsSelector/CardSelection
 			amount_label = $CardsSelector2/CardsSelector/CardSelection/AmountSelectedLabel
 			name_label = $CardsSelector2/CardsSelector/CardSelection/CardNameLabel

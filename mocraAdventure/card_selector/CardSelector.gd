@@ -110,7 +110,6 @@ func advanced_card_selection(card_node, card_name:String, card_id:int):
 	tools.set_position(Vector2(0,300))
 
 func select_card(card_id:int, card_name:String, amount:int):
-	print(card_name)
 	get_parent().emit_signal("selection_done", card_usage, card_id, card_name, amount)
 	queue_free()
 

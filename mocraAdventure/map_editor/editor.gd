@@ -23,6 +23,7 @@ var selected_type = null
 var camera_speed = 1
 var mouse_in = false
 var auto_v_align = false
+var auto_h_align = false
 
 
 ## SCRIPT EDITOR
@@ -130,8 +131,12 @@ func _process(delta):
 		if selected_type == "tile":
 			place_tile(selected_tile)
 		elif selected_type == "entity" and len(placed_entities) < max_entities:
-			if auto_v_align:
-				place_entity(selected_entity, true)
+			if auto_v_align and auto_h_align:
+				place_entity(selected_entity, true, true)
+			elif auto_h_align:
+				place_entity(selected_entity, false, true)
+			elif auto_v_align:
+				place_entity(selected_entity, true, false)
 			else:
 				place_entity(selected_entity)
 			update_entities_number_label()
@@ -175,7 +180,7 @@ func place_tile(tile_number):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_tile != null:
 		tile_map.set_cell(tile[0], tile[1], tile_number)
 
-func place_entity(entity_number, v_align=false):
+func place_entity(entity_number, v_align=false, h_align=false):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_entity != null and entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == true:
 		var entities = JsonParser.get_data_from_json("res://mocraAdventure/map/entities/entities.json")
 		var entity = load(entities[str(entity_number)]["path"]).instance()
@@ -184,9 +189,11 @@ func place_entity(entity_number, v_align=false):
 		pos = Vector2(raw_tile[0], raw_tile[1])
 		entity.scale = Vector2(0.25,0.25)
 		if v_align:
-			pos = Vector2(raw_tile[0], get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[1])
+			pos[1] =get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[1]
+		if h_align:
+			pos[0] = entity_selector.get_entity_size(str(entity_number))[0]*0.25 + get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[0]
 		entity.position = pos
-		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(raw_tile[0]), int(pos[1])], "args": []})
+		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(pos[0]), int(pos[1])], "args": []})
 
 func update_entities_number_label() -> void:
 	$Camera2D/CanvasLayer/GUI/EntityLabel.set_text(str(len(placed_entities)) + "/" + str(max_entities) + " entities")
@@ -347,3 +354,7 @@ func _on_mouse_exited():
 
 func _on_CheckBox_toggled(button_pressed):
 	auto_v_align = button_pressed
+
+
+func _on_CheckBox2_toggled(button_pressed):
+	auto_h_align = button_pressed

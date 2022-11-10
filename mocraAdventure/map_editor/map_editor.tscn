@@ -85,10 +85,17 @@ text = "My game script"
 
 [node name="CheckBox" type="CheckBox" parent="Camera2D/CanvasLayer/GUI"]
 margin_left = 672.0
-margin_top = 48.0
+margin_top = 29.0
 margin_right = 813.0
-margin_bottom = 72.0
+margin_bottom = 53.0
 text = "auto vertical align"
+
+[node name="CheckBox2" type="CheckBox" parent="Camera2D/CanvasLayer/GUI"]
+margin_left = 672.0
+margin_top = 53.0
+margin_right = 813.0
+margin_bottom = 77.0
+text = "auto horizontal align"
 
 [node name="EntityLabel" type="Label" parent="Camera2D/CanvasLayer/GUI"]
 margin_left = 880.0
@@ -155,5 +162,6 @@ text = "Back"
 [connection signal="toggled" from="Camera2D/CanvasLayer/GUI/deleteEntityButton" to="." method="_on_deleteEntityButton_toggled"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/GUI/gameScriptButton" to="." method="_on_gameScriptButton_pressed"]
 [connection signal="toggled" from="Camera2D/CanvasLayer/GUI/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/GUI/CheckBox2" to="." method="_on_CheckBox2_toggled"]
 [connection signal="pressed" from="script_editor/addSciptButton" to="." method="_on_addSciptButton_pressed"]
 [connection signal="pressed" from="script_editor/backButton" to="." method="_on_backButton_pressed"]

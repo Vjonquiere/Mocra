@@ -178,15 +178,25 @@ remote func load_self_player(player_card):
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 
 
-remote func has_map(map_path):
+func has_map(map_path):
 	var tmp_map = Map.new(self)
 	if !tmp_map.has_map(map_path):
 		rpc_id(1, "download_map", map_path)
 
-remote func download_file(path):
-	print("path => ", path, "\nfile => ")
+remote func download_file(path, content):
+	print("path => ", path, "\nfile => ", content)
+	var parsed_path = path.split("/")
+	var dir = Directory.new()
+	var file = File.new()
+	if !dir.dir_exists("user://maps/" + parsed_path[-2]):
+		dir.make_dir("user://maps/" + parsed_path[-2])
+	file.open(path, File.WRITE)
+	file.store_string(content)
+	file.close()
+
 
 remote func load_map(map_path):
+	has_map(map_path)
 	print("loading map -> ", map_path)
 	map_load = Map.new(self)
 	map_load.load_map(map_path)

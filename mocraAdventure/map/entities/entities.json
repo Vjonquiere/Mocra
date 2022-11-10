@@ -4,35 +4,45 @@
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
         "name": "scarecrow",
-        "type":"life"
+        "type":"life",
+        "x_size": 75,
+        "y_size": 220
 
     },
     "1": {
         "path":"res://mocraAdventure/map/entities/interest_point/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/interest_point/texture.png",
         "name": "interest_point",
-        "type":"reach"
+        "type":"reach",
+        "x_size": 400,
+        "y_size": 400
 
     },
     "2": {
         "path":"res://mocraAdventure/map/entities/server/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/server/texture.png",
         "name": "server",
-        "type":"use"
+        "type":"use",
+        "x_size": 400,
+        "y_size": 400
 
     },
     "3": {
         "path":"res://mocraAdventure/map/entities/front_wall/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/front_wall/texture.png",
         "name": "front_wall",
-        "type":"none"
+        "type":"none",
+        "x_size": 370,
+        "y_size": 770
 
     },
     "4": {
         "path":"res://mocraAdventure/map/entities/side_wall/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/side_wall/texture.png",
         "name": "front_wall",
-        "type":"none"
+        "type":"none",
+        "x_size": 16,
+        "y_size": 800
 
     }
 }

@@ -3,6 +3,7 @@ extends Control
 var tile_number
 var selected = false
 var type = "tile"
+var size
 var node 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +40,13 @@ func set_tile_number(new_tile_number):
 func get_tile_number():
 	return tile_number
 
+func get_entity_size():
+	if type == "entity":
+		return size
+
+func set_entity_size(new_size:Array):
+	if type == "entity":
+		size =  new_size
 
 func _on_Control_gui_input(event):
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:

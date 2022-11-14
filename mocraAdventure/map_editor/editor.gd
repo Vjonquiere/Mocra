@@ -188,9 +188,9 @@ func place_entity(entity_number, v_align=false, h_align=false):
 		var pos
 		pos = Vector2(raw_tile[0], raw_tile[1])
 		entity.scale = Vector2(0.25,0.25)
-		if v_align:
+		if v_align && len(placed_entities) > 0:
 			pos[1] =get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[1]
-		if h_align:
+		if h_align && len(placed_entities) > 0:
 			pos[0] = entity_selector.get_entity_size(str(entity_number))[0]*0.25 + get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[0]
 		entity.position = pos
 		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(pos[0]), int(pos[1])], "args": []})

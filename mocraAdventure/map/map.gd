@@ -12,6 +12,7 @@ var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D
 var master_node
 
 var entities = {}
+var entity_number
 
 func _init(node):
 	master_node = node
@@ -37,7 +38,8 @@ func load_map(map_path:String):
 func load_entities(map_path:String, entity_node):
 	var path = map_path + "/entities.json"
 	var entities_data = JsonParser.get_data_from_json(path)
-	for i in range(entities_data['entity_number']):
+	entity_number = entities_data['entity_number']
+	for i in range(entity_number):
 		var entity = entities_data[str(i)]
 		print(entity)
 		var type = load(entity_types[entity['type']]).instance()
@@ -54,6 +56,11 @@ func load_entities(map_path:String, entity_node):
 		if type.has_method("set_master"):
 			type.set_id(str(i))
 			type.set_master(master_node)
+
+
+func delete_entities():
+	for i in range(entity_number):
+		entities[str(i)].queue_free()
 
 func get_number_of_tiles():
 	return size[0]*size[1]

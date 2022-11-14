@@ -181,13 +181,20 @@ remote func load_self_player(player_card):
 func has_map(map_path):
 	var tmp_map = Map.new(self)
 	if !tmp_map.has_map(map_path):
-		rpc_id(1, "download_map", map_path)
+		return false
+	else:
+		return true
+
+func download_map(map_path):
+	rpc_id(1, "download_map", map_path)
 
 remote func download_file(path, content):
 	print("path => ", path, "\nfile => ", content)
 	var parsed_path = path.split("/")
 	var dir = Directory.new()
 	var file = File.new()
+	if !dir.dir_exists("user://maps"): ## Check if maps folder exists
+		dir.make_dir("user://maps")
 	if !dir.dir_exists("user://maps/" + parsed_path[-2]):
 		dir.make_dir("user://maps/" + parsed_path[-2])
 	file.open(path, File.WRITE)
@@ -196,17 +203,22 @@ remote func download_file(path, content):
 
 
 remote func load_map(map_path):
-	has_map(map_path)
-	print("loading map -> ", map_path)
-	map_load = Map.new(self)
-	map_load.load_map(map_path)
-	var map = MapConstrucor.new()
-	map.set_map(map_load)
-	map.set_map_path(map_path)
-	map.load_tileSet()
-	tile_map = map
-	loading["map"] = true
-	loading_complete_check()
+	if has_map(map_path):
+		print("loading map -> ", map_path)
+		map_load = Map.new(self)
+		map_load.load_map(map_path)
+		var map = MapConstrucor.new()
+		map.set_map(map_load)
+		map.set_map_path(map_path)
+		map.load_tileSet()
+		tile_map = map
+		loading["map"] = true
+		loading_complete_check()
+	else:
+		download_map(map_path)
+
+remote func load_after_download(map_path):
+	load_map(map_path)
 
 func loading_complete_check() -> void:
 	if loading["map"] == true and loading["players"] == true:
@@ -240,6 +252,14 @@ func offensive_1():
 
 remote func player_moved(player_id, new_pos):
 	players[player_id].move(new_pos)
+
+remote func init_position(player_id, pos):
+	if players.has(player_id):
+		players[player_id].move(pos)
+	else:
+		self_player.set_position(Vector2(pos[0], pos[1]))
+	print("player moved to ", pos)
+
 
 remote func remote_offensive_1(player_id):
 	players[player_id].offensive_1()
@@ -279,6 +299,7 @@ remote func game_ends(room_stats):
 	end_screen.init("test", room_stats)
 	$".".remove_child(overlay)
 	$".".remove_child(emul)
+	map_load.delete_entities()
 
 func _on_MapEditorButton_pressed():
 	get_tree().change_scene("res://mocraAdventure/map_editor/map_editor.tscn")

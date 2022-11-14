@@ -1,5 +1,5 @@
 {
-    "entities_number": 5,
+    "entities_number": 6,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -43,6 +43,15 @@
         "type":"none",
         "x_size": 16,
         "y_size": 800
+
+    },
+    "5": {
+        "path":"res://mocraAdventure/map/entities/spawn_point/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/spawn_point/texture.png",
+        "name": "spawn_point",
+        "type":"none",
+        "x_size": 300,
+        "y_size": 200
 
     }
 }

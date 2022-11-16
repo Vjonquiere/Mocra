@@ -1,5 +1,5 @@
 {
-    "tile_number": 47,
+    "tile_number": 48,
     "0": {
         "texture_path":"res://mocraAdventure/map/tilesets/1/textures/1.png",
         "tags" : [],
@@ -278,6 +278,12 @@
     },
     "46": {
         "texture_path":"res://mocraAdventure/map/tilesets/1/textures/47.png",
+        "tags" : [],
+        "name": "name",
+        "tool_tip": "tool_tip"
+    },
+    "47": {
+        "texture_path":"res://mocraAdventure/map/tilesets/1/textures/48.png",
         "tags" : [],
         "name": "name",
         "tool_tip": "tool_tip"

@@ -26,7 +26,7 @@ func set_master(node):
 	master_node = node
 
 func use():
-	print("entity_used")
+	pass
 
 func _on_Node2D_body_entered(body):
 	if body.has_method("is_player"):

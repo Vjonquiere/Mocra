@@ -118,6 +118,13 @@ grow_horizontal = 0
 custom_colors/font_color = Color( 0.843137, 0.0941176, 0.0941176, 1 )
 text = "can't save your map without"
 
+[node name="tileAlignCheckBox" type="CheckBox" parent="Camera2D/CanvasLayer/GUI"]
+margin_left = 1019.0
+margin_top = 23.0
+margin_right = 1152.0
+margin_bottom = 47.0
+text = "auto tile align /!\\"
+
 [node name="script_editor" type="Control" parent="."]
 visible = false
 margin_right = 1920.0
@@ -163,5 +170,6 @@ text = "Back"
 [connection signal="pressed" from="Camera2D/CanvasLayer/GUI/gameScriptButton" to="." method="_on_gameScriptButton_pressed"]
 [connection signal="toggled" from="Camera2D/CanvasLayer/GUI/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="toggled" from="Camera2D/CanvasLayer/GUI/CheckBox2" to="." method="_on_CheckBox2_toggled"]
+[connection signal="toggled" from="Camera2D/CanvasLayer/GUI/tileAlignCheckBox" to="." method="_on_tileAlignCheckBox_toggled"]
 [connection signal="pressed" from="script_editor/addSciptButton" to="." method="_on_addSciptButton_pressed"]
 [connection signal="pressed" from="script_editor/backButton" to="." method="_on_backButton_pressed"]

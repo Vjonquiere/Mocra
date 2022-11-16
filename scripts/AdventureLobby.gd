@@ -250,6 +250,9 @@ func move(new_pos):
 func offensive_1():
 	rpc_id(1, "offensive_1")
 
+func use_object(object_id):
+	overlay.use_object(object_id)
+
 remote func player_moved(player_id, new_pos):
 	players[player_id].move(new_pos)
 
@@ -279,7 +282,6 @@ func entity_cant_be_used(id):
 
 func entity_use(id):
 	rpc_id(1, "entity_use", id)
-	print("Try to use entity ", id)
 
 remote func remote_entity_use(id):
 	map_load.entities[str(id)].use()

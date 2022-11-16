@@ -46,6 +46,7 @@ func load_entities(map_path:String, entity_node):
 		var model = load(entity['path']).instance()
 		if entity["type"] == "life":
 			model.set_id(str(i))
+			type.link_model(model)
 		entity_node.add_child(type)
 		type.add_child(model)
 		type.set_scale(Vector2(entity["scale"], entity["scale"]))

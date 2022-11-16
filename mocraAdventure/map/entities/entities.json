@@ -1,5 +1,5 @@
 {
-    "entities_number": 6,
+    "entities_number": 7,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -32,16 +32,16 @@
         "texture_path":"res://mocraAdventure/map/entities/front_wall/texture.png",
         "name": "front_wall",
         "type":"none",
-        "x_size": 370,
-        "y_size": 770
+        "x_size": 400,
+        "y_size": 800
 
     },
     "4": {
         "path":"res://mocraAdventure/map/entities/side_wall/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/side_wall/texture.png",
-        "name": "front_wall",
+        "name": "side_wall",
         "type":"none",
-        "x_size": 16,
+        "x_size": 200,
         "y_size": 800
 
     },
@@ -53,5 +53,14 @@
         "x_size": 300,
         "y_size": 200
 
-    }
+    },
+    "6": {
+        "path":"res://mocraAdventure/map/entities/back_wall/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/back_wall/texture.png",
+        "name": "back_wall",
+        "type":"none",
+        "x_size": 400,
+        "y_size": 800
+
+    },
 }

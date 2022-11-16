@@ -24,6 +24,7 @@ var camera_speed = 1
 var mouse_in = false
 var auto_v_align = false
 var auto_h_align = false
+var auto_tile_align = false
 
 
 ## SCRIPT EDITOR
@@ -132,11 +133,13 @@ func _process(delta):
 			place_tile(selected_tile)
 		elif selected_type == "entity" and len(placed_entities) < max_entities:
 			if auto_v_align and auto_h_align:
-				place_entity(selected_entity, true, true)
+				place_entity(selected_entity, true, true, false)
 			elif auto_h_align:
-				place_entity(selected_entity, false, true)
+				place_entity(selected_entity, false, true, false)
 			elif auto_v_align:
-				place_entity(selected_entity, true, false)
+				place_entity(selected_entity, true, false, false)
+			elif auto_tile_align:
+				place_entity(selected_entity, false, false, true)
 			else:
 				place_entity(selected_entity)
 			update_entities_number_label()
@@ -180,7 +183,9 @@ func place_tile(tile_number):
 	if tile[0] < size[0] and tile[1] < size[1] and selected_tile != null:
 		tile_map.set_cell(tile[0], tile[1], tile_number)
 
-func place_entity(entity_number, v_align=false, h_align=false):
+func place_entity(entity_number, v_align=false, h_align=false, tile_align=false):
+	if tile_align and entity_place_checker([int(raw_tile[0]/100)*100,int(raw_tile[1]/100)*100]) == false:
+		return
 	if tile[0] < size[0] and tile[1] < size[1] and selected_entity != null and entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == true:
 		var entities = JsonParser.get_data_from_json("res://mocraAdventure/map/entities/entities.json")
 		var entity = load(entities[str(entity_number)]["path"]).instance()
@@ -192,6 +197,10 @@ func place_entity(entity_number, v_align=false, h_align=false):
 			pos[1] =get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[1]
 		if h_align && len(placed_entities) > 0:
 			pos[0] = entity_selector.get_entity_size(str(entity_number))[0]*0.25 + get_closest_entity_coords([int(raw_tile[0]),int(raw_tile[1])])[0]
+		if tile_align and entity_place_checker([int(pos[0]/100)*100,int(pos[1]/100)*100]) == true: ### Remove second test
+			var tile = [int(pos[0]/100), int(pos[1]/100)]
+			pos[0] = tile[0]*100 + (entity_selector.get_entity_size(str(entity_number))[0]*0.25)/2
+			pos[1] = tile[1]*100
 		entity.position = pos
 		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(pos[0]), int(pos[1])], "args": []})
 
@@ -267,7 +276,16 @@ func is_map_savable() -> bool:
 	if len(placed_entities) > max_entities:
 		display_error("Maps can only contain " + str(max_entities) + " entities")
 		return false
+	if !map_has_spawn():
+		display_error("Map need a spawn point entity to be saved")
+		return false
 	return true
+
+func map_has_spawn() -> bool:
+	for i in range(len(placed_entities)):
+		if placed_entities[i]["path"] ==  "res://mocraAdventure/map/entities/spawn_point/entity.tscn":
+			return true
+	return false
 
 func _on_Node2D_entity_selected(entity_number):
 	selected_entity = entity_number
@@ -350,11 +368,11 @@ func _on_mouse_exited():
 	mouse_in = false
 
 
-
-
 func _on_CheckBox_toggled(button_pressed):
 	auto_v_align = button_pressed
 
-
 func _on_CheckBox2_toggled(button_pressed):
 	auto_h_align = button_pressed
+
+func _on_tileAlignCheckBox_toggled(button_pressed):
+	auto_tile_align = button_pressed

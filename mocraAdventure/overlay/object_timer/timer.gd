@@ -9,7 +9,7 @@ func _ready():
 	$".".add_child(timer)
 	timer.connect("timeout", self, "on_timeout")
 	set_color("green")
-	set_duration(10)
+	set_duration(1)
 	construct_timer()
 	launch()
 

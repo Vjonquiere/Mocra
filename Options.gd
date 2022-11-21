@@ -16,7 +16,7 @@ func load_inputs(option_path:String):
 				"InputEventMouseButton":
 					event = InputEventMouseButton.new()
 					event.set_button_index(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
-				"InputEventJoystickButton":
+				"InputEventJoypadButton":
 					event = InputEventJoypadButton.new()
 					event.set_button_index(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
 			InputMap.action_add_event(options["input_names"][i], event)

@@ -71,18 +71,21 @@ margin_bottom = 560.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Control" parent="Control2" instance=ExtResource( 6 )]
+visible = false
 margin_left = 15.0
 margin_top = 916.0
 margin_right = 15.0
 margin_bottom = 916.0
 
 [node name="Control2" parent="Control2" instance=ExtResource( 6 )]
+visible = false
 margin_left = 546.0
 margin_top = 914.0
 margin_right = 546.0
 margin_bottom = 914.0
 
 [node name="Control3" parent="Control2" instance=ExtResource( 6 )]
+visible = false
 margin_left = 1094.0
 margin_top = 918.0
 margin_right = 1094.0

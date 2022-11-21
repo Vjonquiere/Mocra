@@ -16,6 +16,7 @@ var map_load
 
 var overlay = load("res://mocraAdventure/overlay/overlay.tscn").instance()
 var emul = load("res://mocraAdventure/touch_control/CanvasLayer.tscn").instance()
+var player_tags = {}
 
 signal selection_updated(data)
 signal level_changed(selected_level)
@@ -161,9 +162,12 @@ remote func player_load_finished(player_id):
 	card_selection_node[player_id].stop_loading_anim()
 
 remote func load_players(player_array, player_cards):
+	var tags = overlay.get_player_tags()
 	var player_template = load("res://mocraAdventure/character/remote_template/template.tscn")
 	for i in range(len(player_array)):
 		var rpc_id = player_array[i]
+		player_tags[rpc_id] = tags[i]
+		tags[i].show()
 		players_ids.append(rpc_id)
 		players[rpc_id] = player_template.instance()
 		players[rpc_id].set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"})) ## A verfier player_cards[rpc_id]["character"][0]
@@ -172,11 +176,12 @@ remote func load_players(player_array, player_cards):
 	loading_complete_check()
 
 remote func load_self_player(player_card):
+	print("CARDS = ", player_card)
 	var player_template = load("res://mocraAdventure/character/template/template.tscn")
 	self_player = player_template.instance()
 	self_player.set_sprite_sheet("res://mocraAdventure/character/{name}/SpriteFrame.tres".format({"name": "debug"}))
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
-
+	overlay.set_objects_icons(["res://cards/avatar/{name}.png".format({"name":player_card["object1"][0]}), "res://cards/avatar/{name}.png".format({"name":player_card["object2"][0]}), "res://cards/avatar/{name}.png".format({"name":player_card["object3"][0]})])
 
 func has_map(map_path):
 	var tmp_map = Map.new(self)

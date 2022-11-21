@@ -13,6 +13,12 @@ func _ready():
 	construct_timer()
 	launch()
 
+func set_input_text(input:String):
+	$Label.set_text(input)
+
+func set_icon(icon_path):
+	$avatarTexture.set_texture(load(icon_path))
+
 func set_color(color:String):
 	$loadingProgress.set_progress_texture(load(colors[color]))
 

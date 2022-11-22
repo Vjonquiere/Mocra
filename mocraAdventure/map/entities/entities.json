@@ -1,5 +1,5 @@
 {
-    "entities_number": 7,
+    "entities_number": 8,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -63,4 +63,13 @@
         "y_size": 800
 
     },
+    "7": {
+        "path":"res://mocraAdventure/map/entities/house1/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/house1/texture.png",
+        "name": "house1",
+        "type":"none",
+        "x_size": 630,
+        "y_size": 800
+
+    }
 }

@@ -5,12 +5,15 @@ const max_entities = 200
 var tile_map = TileMap.new()
 var control_tile_map = Control.new()
 var error_timer = Timer.new()
+var entity_placer_timer = Timer.new()
+var entity_placing = true
 var tile_set
 var tile_set_p
 var tileset_tile_size
 var edition = false
 var tile_selector = load("res://mocraAdventure/map_editor/selector/Selector.tscn").instance()
 var entity_selector = load("res://mocraAdventure/map_editor/selector/entitySelector.tscn").instance()
+var dialog = load("res://mocraAdventure/map_editor/dialog/dialog.tscn").instance()
 var placed_entities = []
 var placed_entities_coords = []
 var tile = []
@@ -36,14 +39,23 @@ signal tile_selected(tile_number)
 signal entity_selected(entity_number)
 signal init_editor(map_size, tile_size, name, tile_set_path)
 signal remove_script_state(entity_id)
+signal dialog_entered(status)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
 	$".".add_child(menu)
+	$".".add_child(dialog)
+	dialog.set_scale(Vector2(0.5,0.5))
+	dialog.hide()
 	error_timer_init()
 	entity_selector.set_node($".")
 	control_tile_map.connect("mouse_entered", self, "_on_mouse_entered")
 	control_tile_map.connect("mouse_exited", self, "_on_mouse_exited")
+#	dialog.connect("mouse_entered", self, "_on_dialog_mouse_entered")
+#	dialog.connect("mouse_exited", self, "_on_dialog_mouse_exited")
+	$".".add_child(entity_placer_timer)
+	entity_placer_timer.connect("timeout", self, "_on_entity_placer_timeout")
+	entity_placer_timer.set_wait_time(0.5)
 
 func load_tileset(path:String):
 	tile_set = load(path)
@@ -131,7 +143,9 @@ func _process(delta):
 		entity_selector.visible = true
 		if selected_type == "tile":
 			place_tile(selected_tile)
-		elif selected_type == "entity" and len(placed_entities) < max_entities:
+		elif selected_type == "entity" and len(placed_entities) < max_entities and entity_placing:
+			entity_placing = false
+			entity_placer_timer.start()
 			if auto_v_align and auto_h_align:
 				place_entity(selected_entity, true, true, false)
 			elif auto_h_align:
@@ -184,6 +198,7 @@ func place_tile(tile_number):
 		tile_map.set_cell(tile[0], tile[1], tile_number)
 
 func place_entity(entity_number, v_align=false, h_align=false, tile_align=false):
+	dialog.hide()
 	if tile_align and entity_place_checker([int(raw_tile[0]/100)*100,int(raw_tile[1]/100)*100]) == false:
 		return
 	if tile[0] < size[0] and tile[1] < size[1] and selected_entity != null and entity_place_checker([int(raw_tile[0]),int(raw_tile[1])]) == true:
@@ -203,7 +218,14 @@ func place_entity(entity_number, v_align=false, h_align=false, tile_align=false)
 			pos[1] = tile[1]*100
 		entity.position = pos
 		placed_entities.append({"type": entities[str(entity_number)]["type"], "model":entity, "path":entities[str(entity_number)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[int(pos[0]), int(pos[1])], "args": []})
-
+	else: ## Show entity parameters
+		var entity = placed_entities[get_closest_entity([int(raw_tile[0]),int(raw_tile[1])])]
+		if entity["path"] == "res://mocraAdventure/map/entities/house1/entity.tscn":
+			dialog.set_position(Vector2(int(raw_tile[0])-90,int(raw_tile[1])-200))
+			dialog.set_entity_label(entity["type"])
+			dialog.set_mode("warp")
+			dialog.show()
+		
 func update_entities_number_label() -> void:
 	$Camera2D/CanvasLayer/GUI/EntityLabel.set_text(str(len(placed_entities)) + "/" + str(max_entities) + " entities")
 
@@ -362,11 +384,11 @@ func change_script_subtitle(entity_id, text):
 			script_states[i]["subtitle"] = text
 
 func _on_mouse_entered():
+	print("entered")
 	mouse_in = true
 
 func _on_mouse_exited():
 	mouse_in = false
-
 
 func _on_CheckBox_toggled(button_pressed):
 	auto_v_align = button_pressed
@@ -376,3 +398,13 @@ func _on_CheckBox2_toggled(button_pressed):
 
 func _on_tileAlignCheckBox_toggled(button_pressed):
 	auto_tile_align = button_pressed
+
+func _on_entity_placer_timeout():
+	entity_placing = true
+
+func _on_Node2D_dialog_entered(state:bool):
+	if state:
+		_on_mouse_entered()
+	else:
+		_on_mouse_exited()
+	

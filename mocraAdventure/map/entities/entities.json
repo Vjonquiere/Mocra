@@ -1,5 +1,5 @@
 {
-    "entities_number": 8,
+    "entities_number": 9,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -70,6 +70,15 @@
         "type":"none",
         "x_size": 630,
         "y_size": 800
+
+    },
+    "8": {
+        "path":"res://mocraAdventure/map/entities/warp/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/warp/texture.png",
+        "name": "warp",
+        "type":"none",
+        "x_size": 100,
+        "y_size": 100
 
     }
 }

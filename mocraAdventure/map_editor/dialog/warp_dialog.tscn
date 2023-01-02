@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=1]
+[ext_resource path="res://images/boxes/type1/2_1.png" type="Texture" id=2]
+[ext_resource path="res://mocraAdventure/map_editor/dialog/warp_dialog.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = 100.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="backgroundSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 200, 100 )
+
+[node name="titleLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -95.0
+margin_top = 7.0
+margin_right = 335.0
+margin_bottom = 92.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Warp Editor"
+
+[node name="sizeLabel" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 182.0
+margin_bottom = 149.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Size:"
+
+[node name="xLineEdit" type="LineEdit" parent="sizeLabel"]
+margin_left = 202.0
+margin_right = 418.0
+margin_bottom = 85.0
+align = 1
+max_length = 2
+placeholder_text = "10"
+
+[node name="yLineEdit2" type="LineEdit" parent="sizeLabel"]
+margin_left = 506.0
+margin_right = 722.0
+margin_bottom = 85.0
+align = 1
+max_length = 10
+placeholder_text = "10"
+
+[node name="Label" type="Label" parent="sizeLabel"]
+margin_left = 430.0
+margin_right = 481.0
+margin_bottom = 85.0
+text = "X"
+
+[node name="createWarpButton" type="Button" parent="."]
+margin_left = 92.0
+margin_top = 123.0
+margin_right = 563.0
+margin_bottom = 237.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 1 )
+theme_type_variation = "button_green"
+text = "Create warp"
+
+[node name="exitButton" type="Button" parent="."]
+margin_left = 341.0
+margin_top = 7.0
+margin_right = 435.0
+margin_bottom = 92.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 1 )
+theme_type_variation = "button_red"
+text = "X"
+
+[connection signal="text_changed" from="sizeLabel/xLineEdit" to="." method="_on_xLineEdit_text_changed"]
+[connection signal="text_changed" from="sizeLabel/yLineEdit2" to="." method="_on_yLineEdit2_text_changed"]
+[connection signal="pressed" from="createWarpButton" to="." method="_on_createWarpButton_pressed"]
+[connection signal="pressed" from="exitButton" to="." method="_on_exitButton_pressed"]

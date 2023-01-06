@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -49,6 +49,7 @@
 [ext_resource path="res://animations/Menu/ClassicPack/frame0031.png" type="Texture" id=47]
 [ext_resource path="res://animations/Menu/ClassicPack/frame0032.png" type="Texture" id=48]
 [ext_resource path="res://animations/Menu/ClassicPack/frame0033.png" type="Texture" id=49]
+[ext_resource path="res://mocraClassic/client_infos/control.tscn" type="PackedScene" id=50]
 [ext_resource path="res://images/pack_images/packn2.png" type="Texture" id=52]
 [ext_resource path="res://animations/Menu/ShinyPack/frame0000.png" type="Texture" id=53]
 [ext_resource path="res://animations/Menu/ShinyPack/frame0001.png" type="Texture" id=54]
@@ -186,7 +187,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 30
+frame = 23
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -219,10 +220,11 @@ text = "Open"
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
-frame = 14
+frame = 11
 playing = true
 
 [node name="credits_label" type="Label" parent="."]
+visible = false
 margin_left = 1808.87
 margin_top = 22.8036
 margin_right = 1848.87
@@ -243,6 +245,7 @@ rect_scale = Vector2( 0.489589, 0.489589 )
 texture = ExtResource( 80 )
 
 [node name="shinycredits_label" type="Label" parent="."]
+visible = false
 margin_left = 1816.24
 margin_top = 82.2876
 margin_right = 1856.24
@@ -262,6 +265,7 @@ rect_scale = Vector2( 0.497383, 0.497383 )
 texture = ExtResource( 81 )
 
 [node name="boost_label" type="Label" parent="."]
+visible = false
 margin_left = 1815.76
 margin_top = 139.439
 margin_right = 1855.76
@@ -470,6 +474,13 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
 expand = true
+
+[node name="clientInfos" parent="." instance=ExtResource( 50 )]
+margin_left = 1670.0
+margin_top = 4.0
+margin_right = 2070.0
+margin_bottom = 354.0
+rect_scale = Vector2( 0.6, 0.6 )
 
 [connection signal="remove_blur" from="." to="." method="_on_Control_remove_blur"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -81,6 +81,7 @@ func generate_user_files():
 
 func _on_Control_ready():
 	if Networking.connection_established():
+		print("getting server informations")
 		get_server_info()
 	else:
 		get_tree().change_scene("res://scenes/Offline.tscn")

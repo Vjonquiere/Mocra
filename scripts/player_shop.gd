@@ -78,10 +78,12 @@ func _on_Control_buy(transactionID, quantity):
 	Networking.send_data(req)
 	var res = yield(Networking.waiting_for_server("/"), "completed")
 	if res[0] == "TRANSACTION_DONE":
+		get_parent().emit_signal("remove_blur")
 		self.queue_free()
 
 
 func _on_QuitButton_pressed():
+	get_parent().emit_signal("remove_blur")
 	self.queue_free()
 
 

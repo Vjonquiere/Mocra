@@ -74,9 +74,9 @@ func update_client_infos():
 	Networking.send_data("update_client_infos")
 	var received_data = yield(Networking.waiting_for_server("/"), "completed")
 	print(received_data)
-	$credits_label.set_text(received_data[1])
-	$shinycredits_label.set_text(received_data[2])
-	$boost_label.set_text(str(stepify(float(received_data[3]),0.01)))
+	$clientInfos.set_credits(received_data[1])
+	$clientInfos.set_shiny_cedits(received_data[2])
+	$clientInfos.set_boost(str(stepify(float(received_data[3]),0.01)))
 
 
 
@@ -108,6 +108,7 @@ func _on_MocraAdventureButton_pressed():
 
 func _on_PlayerShopButton_pressed():
 	get_node(".").add_child(load("res://scenes/player_shop.tscn").instance())
+	$blur.visible = true
 
 
 func _on_OptionsButton_pressed():
@@ -116,4 +117,5 @@ func _on_OptionsButton_pressed():
 
 
 func _on_Control_remove_blur():
+	update_client_infos()
 	$blur.visible = false

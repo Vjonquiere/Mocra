@@ -21,10 +21,12 @@ func _on_Button_pressed():
 	
 	if _password_verif(password, password_confirm) == true:
 		var password_hash = password.sha256_text()
-		var send_str = "create_account/" + login + "/" + email +"/" + password_hash 
-		Networking.send_data(send_str)
-		
-		var recieved_data = yield(Networking.waiting_for_server("/"), "completed")
+		var request = "create_account/" + login + "/" + email +"/" + password_hash 
+		var uid = Networking.send_data_through_queue(request, "/")
+		var packet = [null, null]
+		while packet[1] != uid:
+			packet = yield(Networking, "packet_found")
+		var recieved_data = packet[0]
 		print(recieved_data)
 		
 		if recieved_data[0] == "working":

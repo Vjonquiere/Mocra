@@ -18,10 +18,13 @@ func _ready():
 
 
 func _on_CreateRoomButton_pressed():
-	Networking.send_data("create_trade")
+	var uid = Networking.send_data_through_queue("create_trade", "/")
 	$TradeMenu/CreateRoomButton.disabled = true
 	$TradeMenu/CreateRoomButton/CancelButton.visible = true
-	var inter = yield(Networking.waiting_for_server("/"), "completed")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var inter = packet[0]
 	joined_room_code = inter[0]
 	$TradeMenu/CreateRoomButton/CancelButton/RoomCodeLabel/RoomCodeVarLabel.set_text(joined_room_code) 
 	trade_connexion_init()
@@ -31,10 +34,12 @@ func _on_JoinRoomButton_pressed():
 	if len($TradeMenu/RoomJoinLineEdit.get_text()) == 5:
 		var room_code = $TradeMenu/RoomJoinLineEdit.get_text()
 		room_code = room_code.to_upper()
-		print(room_code)
-		var send_str = "join_trade_room/" + room_code
-		Networking.send_data(send_str)
-		var res = yield(Networking.waiting_for_server("/"), "completed")
+		var request = "join_trade_room/" + room_code
+		var uid = Networking.send_data_through_queue(request, "/")
+		var packet = [null, null]
+		while packet[1] != uid:
+			packet = yield(Networking, "packet_found")
+		var res = packet[0]
 		var return_data = res[0]
 		if return_data == "noroom":
 			print("No room found")
@@ -47,9 +52,11 @@ func _on_Button_pressed():
 	get_tree().change_scene("res://scenes/Menu.tscn")
 
 func TradeBegin():
-	Networking.send_data("get_collection")
-	var received_data = yield(Networking.waiting_for_server("|"), "completed")
-	
+	var uid = Networking.send_data_through_queue("get_collection", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var received_data = packet[0]
 	received_data.remove(0)
 	Global.collection_card = preload("res://scenes/Collection_card.tscn")
 	Global.current_page = 0
@@ -129,9 +136,12 @@ func update_my_offer():
 	$TradeRoom/MyOffer/Card2Texture/card2.visible = false
 	$TradeRoom/MyOffer/Card3Texture/card3.visible = false
 	for i in range(len(my_offer_card_array)):
-		var card_request = "get_card_infos/" + str(my_offer_card_array[i])
-		Networking.send_data(card_request)
-		var card_infos = yield(Networking.waiting_for_server("/"), "completed")
+		var request = "get_card_infos/" + str(my_offer_card_array[i])
+		var uid = Networking.send_data_through_queue(request, "/")
+		var packet = [null, null]
+		while packet[1] != uid:
+			packet = yield(Networking, "packet_found")
+		var card_infos = packet[0]
 		if i == 0:
 			$TradeRoom/MyOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
 			$TradeRoom/MyOffer/Card1Texture/card1.visible = true
@@ -213,9 +223,12 @@ func update_opponent_offer(opponent_card_array):
 		print("no cards")
 	else:
 		for i in range(len(opponent_card_array)):
-			var card_request = "get_card_infos/" + str(opponent_card_array[i])
-			Networking.send_data(card_request)
-			var card_infos = yield(Networking.waiting_for_server("/"), "completed")
+			var request = "get_card_infos/" + str(opponent_card_array[i])
+			var uid = Networking.send_data_through_queue(request, "/")
+			var packet = [null, null]
+			while packet[1] != uid:
+				packet = yield(Networking, "packet_found")
+			var card_infos = packet[0]
 			if i == 0:
 				$TradeRoom/OpponentOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
 				$TradeRoom/OpponentOffer/Card1Texture/card1.visible = true
@@ -286,8 +299,11 @@ func send_new_offer(offer):
 	print("my offer")
 	print(offer)
 	print(complete_offer)
-	Networking.send_data(complete_offer)
-	var returned_data = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(complete_offer, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var returned_data = packet[0]
 	print(returned_data)
 
 

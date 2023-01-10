@@ -8,8 +8,11 @@ func _ready():
 
 func get_card_stats(id, card_type):
 	var req = "get_MA_card_infos/" + str(id) + "/" + card_type
-	Networking.send_data(req)
-	var res = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(req, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	change_stats(int(res[2]), int(res[3]), int(res[4]), int(res[5]))
 	change_card_type(res[6])
 

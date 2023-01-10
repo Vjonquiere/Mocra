@@ -2,9 +2,12 @@ extends CanvasLayer
 
 signal remove_blur()
 
+onready var MA_parameters = load("res://mocraAdventure/MA_parameters/Control.tscn").instance()
+
 func _ready():
 	$lifeBars/l1.set_type("life")
 	set_input_texts()
+	MA_parameters.set_lobby_node(get_parent())
 
 func first_objective(title, subhead):
 	$Control.first_objective(title,subhead)
@@ -50,8 +53,10 @@ func set_input_texts():
 
 func _on_optionsButton_pressed():
 	get_node(".").add_child(load("res://mocraClassic/parameters/Control.tscn").instance())
+	get_node(".").add_child(MA_parameters)
 	$blur.visible = true
 
 
 func _on_CanvasLayer_remove_blur():
+	get_node(".").remove_child(MA_parameters)
 	$blur.visible = false

@@ -14,7 +14,6 @@ func unstack():
 	return array.pop_back()
 
 func isEmpty() -> bool:
-	print(array)
 	if len(array) == 0:
 		return true
 	else:

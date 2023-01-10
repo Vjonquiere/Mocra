@@ -65,8 +65,13 @@ func display_joinable_battles(battle_array):
 func join_a_room(room):
 	
 	var data = "join_room/" + room
-	Networking.send_data(data)
-	var result = yield(Networking.waiting_for_server("/"), "completed")
+#	Networking.send_data(data)
+#	var result = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(data, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var result = packet[0]
 	print(result)
 	
 	if result[0] == "room_finded":

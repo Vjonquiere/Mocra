@@ -12,9 +12,12 @@ func _ready():
 
 
 func get_level_stats():
-	var data = "get_level_stats/" + str(self.get_id())
-	Networking.send_data(data)
-	var res = yield(Networking.waiting_for_server("/"), "completed")
+	var request = "get_level_stats/" + str(self.get_id())
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	if res[0] == "nothing":
 		return null
 	else:

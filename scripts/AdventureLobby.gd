@@ -75,14 +75,24 @@ func _server_disconnected():
 func _connected_fail():
 	print("echec de la connection")
 
+func MA_disconnect():
+	peer.close_connection()
+	get_tree().change_scene("res://scenes/Menu.tscn")
+	print("Disconnected")
+	print_tree()
+	queue_free()
+
 remote func register_player(info):
 	var id = get_tree().get_rpc_sender_id()
 	player_info[id] = info
 
 remote func make_mocraID_var(rpc_id):
 	var req = "register_mocra_adventure/" + str(rpc_id)
-	Networking.send_data(req)
-	var res = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(req, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	if res[0] == "done":
 		rpc_id(1, "mocra_id_verification_done", rpc_id)
 	else:

@@ -45,8 +45,11 @@ func _on_SelectCardButton_pressed():
 #####################
 
 func display_cards():
-	Networking.send_data("display_shop")
-	var shop_infos = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("display_shop", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var shop_infos = packet[0]
 	if shop_infos[0] == "EMPTY_SHOP":
 		$EmptyLabel.visible = true
 	var hbox = HBoxContainer.new()
@@ -75,8 +78,11 @@ func refresh(): ## BORDEL => A REFAIRE
 
 func _on_Control_buy(transactionID, quantity):
 	var req = "buy_card/" + str(transactionID) + "/" + str(quantity) 
-	Networking.send_data(req)
-	var res = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(req, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	if res[0] == "TRANSACTION_DONE":
 		get_parent().emit_signal("remove_blur")
 		self.queue_free()
@@ -90,9 +96,11 @@ func _on_QuitButton_pressed():
 func _on_SellButton_pressed():
 	if selected_card["id"] != null && int($Sell/UnitPriceLineEdit.get_text()) != 0:
 		var req = "sell_card/" + str(selected_card["id"]) + "/" + str(int($Sell/AmoutSpinBox.get_value())) + "/" + str(int($Sell/UnitPriceLineEdit.get_text()))
-		print(req)
-		Networking.send_data(req)
-		var res = yield(Networking.waiting_for_server("/"), "completed")
+		var uid = Networking.send_data_through_queue(req, "/")
+		var packet = [null, null]
+		while packet[1] != uid:
+			packet = yield(Networking, "packet_found")
+		var res = packet[0]
 		print(res)
 	else:
 		print("ERROR")
@@ -107,8 +115,11 @@ func _on_Control_selection_done(card_usage, card_id, card_name, amount):
 
 #### CURRENT CARDS TO SELL
 func search_current_cards_to_sell():
-	Networking.send_data("get_sell_waiting_cards")
-	var res = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("get_sell_waiting_cards", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	if res[0] == "NOTHING_HERE":
 		pass
 	else:
@@ -132,7 +143,10 @@ func init_card_to_sell(card_infos:String):
 func _on_Control_retrieve(transactionID):
 	print("retrieve_card")
 	var req = "retrieve_card/" + transactionID
-	Networking.send_data(req)
-	var res = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(req, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	if res[0] == "DONE":
 		refresh()

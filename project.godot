@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "PlayerConstructor",
 "language": "GDScript",
 "path": "res://mocraAdventure/player/player_constructor.gd"
+}, {
+"base": "Reference",
+"class": "Queue",
+"language": "GDScript",
+"path": "res://scripts/strucured_types/queue.gd"
 } ]
 _global_script_class_icons={
 "Map": "",
 "MapConstrucor": "",
 "Pile": "",
 "Player": "",
-"PlayerConstructor": ""
+"PlayerConstructor": "",
+"Queue": ""
 }
 
 [application]
@@ -58,6 +64,7 @@ TAD="*res://scripts/TAD.gd"
 JsonParser="*res://JsonParser.gd"
 MapSaver="*res://mocraAdventure/map/map_saver.gd"
 Options="*res://Options.gd"
+Queue_datatype="*res://scripts/strucured_types/queue.gd"
 
 [display]
 

@@ -6,8 +6,11 @@ var height = (int(ProjectSettings.get_setting("display/window/size/height"))/15)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Networking.send_data("get_collection")
-	var received_data = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("get_collection", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var received_data = packet[0]
 	received_data.remove(0)
 	Global.collection_card = preload("res://scenes/Collection_card.tscn")
 

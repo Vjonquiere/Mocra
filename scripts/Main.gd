@@ -17,9 +17,12 @@ func _on_Button_pressed():
 	
 	if $ErrorLabel.visible:
 		$ErrorLabel.visible = false
-	
-	Networking.send_data(final)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+
+	var uid = Networking.send_data_through_queue(final, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 
 	if rcv[0] == "display_user_infos":
 		Global.credits= rcv[2]
@@ -53,8 +56,12 @@ func _on_Button3_pressed():
 
 
 func get_server_info():
-	Networking.send_data("get_server_infos")
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue("get_server_infos", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
+	
 	if rcv[0] == "null":
 		pass
 	else:

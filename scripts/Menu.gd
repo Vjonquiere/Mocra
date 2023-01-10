@@ -19,8 +19,11 @@ func _on_Button_pressed():
 	
 	$ErrorLabel.visible = false
 	
-	Networking.send_data("open_box/01")
-	var results = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("open_box/01", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var results = packet[0]
 	make_opening(results)
 
 
@@ -29,8 +32,11 @@ func _on_ShinyButton_pressed():
 	
 	$ErrorLabel.visible = false
 	
-	Networking.send_data("open_box/02")
-	var results = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("open_box/02", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var results = packet[0]
 	make_opening(results)
 
 func make_opening(results):
@@ -71,8 +77,11 @@ func count_duplicates(card_array:Array) -> Pile:
 
 
 func update_client_infos():
-	Networking.send_data("update_client_infos")
-	var received_data = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue("update_client_infos", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var received_data = packet[0]
 	print(received_data)
 	$clientInfos.set_credits(received_data[1])
 	$clientInfos.set_shiny_cedits(received_data[2])
@@ -81,8 +90,11 @@ func update_client_infos():
 
 
 func _on_CollectionButton_pressed():
-	Networking.send_data("check_if_own_cards")
-	var receive = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue("check_if_own_cards", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var receive = packet[0]
 	if receive[0] == "0":
 		$ErrorLabel.set_text("you don't have any cards")
 		$ErrorLabel.visible = true

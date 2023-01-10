@@ -1,22 +1,51 @@
 extends Node
 
-
 var tcp = StreamPeerTCP.new()
 var con = StreamPeerSSL.new()
 var client_version = "1.0"
 var anim = AnimatedSprite.new()
 
+signal packet_found(data, timestamp)
+
+var check_timer = Timer.new()
+var waiting_queue = Queue.new()
+var current
+
+var notification_timer = Timer.new()
+
 func _ready():
+	connect("packet_found", self, "_on_packet_found")
 	tcp.connect_to_host("poschocnetwork.eu", 2305)
 	var cert = load("res://ssl/cert.pem")
 	con.connect_to_stream(tcp, true, "poschocnetwork.eu", cert)
+	check_timer.connect("timeout", self, "check_queue")
+	check_timer.set_wait_time(0.05)
+	check_timer.set_one_shot(false)
+	get_node(".").add_child(check_timer)
+	check_timer.start()
+	get_node(".").add_child(notification_timer)
+	notification_timer.set_wait_time(0.2)
 	animation_init()
 
 func send_data(data:String):
 	con.put_data(data.to_utf8())
 
+func send_data_through_queue(data:String, separator:String=""):
+	var uid = OS.get_ticks_msec()
+	waiting_queue.enqueue([data, uid])
+	return uid
+
+func check_queue():
+	print("QueueState: ", waiting_queue)
+	print("treating: ", current)
+	if !waiting_queue.is_empty() and current == null:
+		con.put_data(waiting_queue.get_head()[0].to_utf8())
+		current = waiting_queue.get_head()
+		waiting_for_server("/", waiting_queue.get_head()[1])
+
 func check_sum(data:String, separator):
 	var tmp_data = data.split(separator)
+	print(tmp_data)
 	var data_len = int(tmp_data[0])
 	print("CheckSum : ", data_len, " | data = ", data)
 	if data_len == data.count(separator):
@@ -37,7 +66,8 @@ func connection_established() -> bool:
 	else:
 		return false
 
-func waiting_for_server(separator:String):
+func waiting_for_server(separator:String, uid):
+	play_anim()
 	if con.get_status() == 2:
 		con.poll()
 		while con.get_available_bytes() == 0:
@@ -57,7 +87,14 @@ func waiting_for_server(separator:String):
 			print("PAQUET BROKEN")
 			get_tree().change_scene("res://scenes/Menu.tscn")
 		var final = remove_check_sum(data, separator)
+		stop_anim()
+		emit_signal("packet_found", final.split(separator), uid)
 		return final.split(separator)
+	print("echec connexion")
+
+func _on_packet_found(data, timestamp):
+	current = null
+	waiting_queue.dequeue()
 
 func waiting_for_server_without_separator():
 	if con.get_status() == 2:
@@ -140,9 +177,8 @@ func notification_check():
 func animation_init():
 	get_node(".").add_child(anim)
 	anim.set_sprite_frames(load("res://animations/loading/full_animation.tres"))
-	anim.set_position(Vector2(300,300))
 	anim.set_scale(Vector2(0.2,0.2))
-	anim.set_position(Vector2(1200,650))
+	anim.set_position(Vector2(1850,1000))
 	anim.z_index = 100
 	anim.visible = false
 

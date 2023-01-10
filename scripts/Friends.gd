@@ -5,8 +5,11 @@ var player_name = ""
 var profile_scene = load("res://scenes/Profile.tscn")
 
 func _ready():
-	Networking.send_data("get_friends")
-	var rcv = yield(Networking.waiting_for_server("|"), "completed")
+	var uid = Networking.send_data_through_queue("get_friends", "|")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	display_friends(rcv)
 	
 
@@ -16,9 +19,12 @@ func _on_Button_pressed():
 	$AddFriendNode/UnknownPlayerLabel.visible = false
 	$AddFriendNode/FriendRequestSendedLabel.visible = false
 	player_name = $AddFriendNode/LineEdit.get_text()
-	var final_str = "get_profile/" + player_name
-	Networking.send_data(final_str)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var request = "get_profile/" + player_name
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	if rcv[0] != "nobody_found":
 		change_profile_infos(rcv[0], rcv[1])
 		$AddFriendNode/player_profile.visible = true

@@ -26,16 +26,21 @@ func init_selection(card_type:String, usage:String):
 	card_type_selected = card_type
 
 func display_collection():
-	Networking.send_data("get_collection_only_ids")
-	print("waiting for ids")
-	var ids = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue("get_collection_only_ids", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var ids = packet[0]
 	ids.remove(len(ids)-1) ## DO NOT REMOVE
 	construct_cards(ids)
 
 func search_cards() -> Array:
 	var request = "get_cards_with_type/" + card_type_selected
-	Networking.send_data(request)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	return rcv
 
 func get_card_infos_mocra_classic(id:String) -> Array:
@@ -46,8 +51,11 @@ func get_card_infos_mocra_classic(id:String) -> Array:
 
 func get_card_infos(id:String) -> Array:
 	var request = "get_MA_card_infos/" + id + "/" + card_type_selected
-	Networking.send_data(request)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	return rcv
 
 
@@ -80,8 +88,11 @@ func construct_cards(card_array:Array) -> void:
 	
 func get_number_of_owned_cards(card_id):
 	var request = "get_amount_of_owned_card/" + str(card_id)
-	Networking.send_data(request)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	return rcv[0]
 
 func create_and_link_button(card_id:int, card_name:String, card_node):

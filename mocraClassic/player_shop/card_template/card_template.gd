@@ -24,9 +24,12 @@ func set_infos(number, seller_name, quantity, price, cardId):
 
 func card_infos_req(cardId):
 	var req = "get_card_infos/" + str(cardId)
-	Networking.send_data(req)
-	var res = yield(Networking.waiting_for_server_without_separator(), "completed") ### RCV TROP LONG 
-	res = res.split("/")
+### RCV TROP LONG 
+	var uid = Networking.send_data_through_queue(req, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var res = packet[0]
 	return {"name":res[3], "scarcity":res[4]}
 
 func card_init(name, price, scarcity, quantity, seller_name):

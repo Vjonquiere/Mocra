@@ -120,6 +120,7 @@ func search_current_cards_to_sell():
 	while packet[1] != uid:
 		packet = yield(Networking, "packet_found")
 	var res = packet[0]
+	print("SHOP: ", res)
 	if res[0] == "NOTHING_HERE":
 		pass
 	else:
@@ -129,6 +130,7 @@ func search_current_cards_to_sell():
 	
 
 func init_card_to_sell(card_infos:String):
+	print("Card infos: ", card_infos)
 	var parsed_infos = card_infos.split("/")
 	var card_template = sell_card_template.instance()
 	card_template.set_type_to_current_sell()

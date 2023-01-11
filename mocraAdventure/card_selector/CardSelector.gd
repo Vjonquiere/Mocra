@@ -45,8 +45,11 @@ func search_cards() -> Array:
 
 func get_card_infos_mocra_classic(id:String) -> Array:
 	var request = "get_card_infos/" + id 
-	Networking.send_data(request)
-	var rcv = yield(Networking.waiting_for_server_without_separator(), "completed")
+	var uid = Networking.send_data_through_queue(request, "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var rcv = packet[0]
 	return rcv
 
 func get_card_infos(id:String) -> Array:
@@ -73,7 +76,6 @@ func construct_cards(card_array:Array) -> void:
 			create_and_link_button(int(card_array[i]), card_infos[0], card_instance)
 		else:
 			card_infos = yield(get_card_infos_mocra_classic(card_array[i]), "completed")
-			card_infos = card_infos.split("/")
 			create_and_link_button(int(card_array[i]), card_infos[3], card_instance)
 
 		match card_type_selected:

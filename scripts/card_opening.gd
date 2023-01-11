@@ -73,8 +73,8 @@ func _create_card_instance(card_str):
 		multiple_card.set_position(Vector2(130,-230))
 		multiple_card.set_card_number(card_infos[8])
 		instance.add_child(multiple_card)
-
-	instance._change_informations(card_infos[1], card_infos[2], card_infos[3], card_infos[4], card_infos[5])
+	print("card_infos = ", card_infos)
+	instance._change_informations(card_infos[1+1], card_infos[2+1], card_infos[3+1], card_infos[4+1], card_infos[5+1])
 	
 	if opening_type == "battle":
 		instance.display_battle_points(card_infos[4])

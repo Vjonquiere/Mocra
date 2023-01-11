@@ -30,18 +30,26 @@ func _ready():
 func send_data(data:String):
 	con.put_data(data.to_utf8())
 
+func generate_uid(length):
+	var uid = ""
+	var possible_choice = ["a", "b", "c", "d", "e", "f", "0", "1", "2", "3"]
+	for i in range(length):
+		uid += possible_choice[randi()%len(possible_choice)]
+	return uid
+
 func send_data_through_queue(data:String, separator:String=""):
-	var uid = OS.get_ticks_msec()
-	waiting_queue.enqueue([data, uid])
+	var uid = generate_uid(10)
+	waiting_queue.enqueue([data, uid, separator])
+	print("QueueState: ", waiting_queue)
 	return uid
 
 func check_queue():
-	print("QueueState: ", waiting_queue)
-	print("treating: ", current)
 	if !waiting_queue.is_empty() and current == null:
-		con.put_data(waiting_queue.get_head()[0].to_utf8())
-		current = waiting_queue.get_head()
-		waiting_for_server("/", waiting_queue.get_head()[1])
+		var head = waiting_queue.get_head()
+		con.put_data(head[0].to_utf8())
+		current = head
+		print("treating: ", current)
+		waiting_for_server(head[2], head[1])
 
 func check_sum(data:String, separator):
 	var tmp_data = data.split(separator)

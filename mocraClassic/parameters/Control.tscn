@@ -19,6 +19,7 @@ margin_bottom = 840.0
 rect_min_size = Vector2( 1500, 600 )
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -171,15 +172,17 @@ margin_right = 100.0
 margin_bottom = 42.5
 rect_min_size = Vector2( 200, 70 )
 theme = ExtResource( 4 )
+theme_type_variation = "button_green"
 text = "Save"
 
 [node name="quitButton" type="Button" parent="."]
-margin_left = 1564.0
-margin_top = 265.0
-margin_right = 1653.0
-margin_bottom = 350.0
+margin_left = 1421.0
+margin_top = 272.0
+margin_right = 1510.0
+margin_bottom = 357.0
 rect_min_size = Vector2( 50, 50 )
 theme = ExtResource( 4 )
+theme_type_variation = "button_red"
 text = "X"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]

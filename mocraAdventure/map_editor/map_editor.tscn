@@ -118,7 +118,7 @@ margin_top = 29.0
 margin_right = 1747.0
 margin_bottom = 43.0
 grow_horizontal = 0
-custom_colors/font_color = Color( 0.843137, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color = Color( 0.176471, 0.498039, 0.87451, 1 )
 text = "can't save your map without"
 
 [node name="tileAlignCheckBox" type="CheckBox" parent="Camera2D/CanvasLayer/GUI"]

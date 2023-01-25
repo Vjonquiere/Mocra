@@ -76,10 +76,11 @@ func _connected_fail():
 	print("echec de la connection")
 
 func MA_disconnect():
+	rpc_id(1, "manual_client_disconnect")
 	peer.close_connection()
 	get_tree().change_scene("res://scenes/Menu.tscn")
 	print("Disconnected")
-	print_tree()
+	#print_tree()
 	queue_free()
 
 remote func register_player(info):
@@ -278,6 +279,11 @@ remote func init_position(player_id, pos):
 		self_player.set_position(Vector2(pos[0], pos[1]))
 	print("player moved to ", pos)
 
+remote func player_has_disconnected(player_id):
+	if players.has(player_id):
+		players[player_id].queue_free()
+	else:
+		print("Unknown player")
 
 remote func remote_offensive_1(player_id):
 	players[player_id].offensive_1()

@@ -1,84 +1,159 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=1]
 [ext_resource path="res://mocraAdventure/map_editor/Menu/Menu.gd" type="Script" id=2]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1620.0
-margin_bottom = -780.0
+margin_right = -920.0
+margin_bottom = -580.0
+rect_min_size = Vector2( 1920, 1080 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="NameLabel" type="Label" parent="."]
-margin_top = 22.0
-margin_right = 58.0
-margin_bottom = 48.0
+[node name="loadMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 129.0
+margin_top = -150.0
+margin_right = 929.0
+margin_bottom = 150.0
+
+[node name="loadButton" type="Button" parent="loadMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -87.0
+margin_top = -85.0
+margin_right = 150.0
+margin_bottom = 31.0
+text = "Load"
+
+[node name="titleLabel" type="Label" parent="loadMenu"]
+margin_right = 40.0
+margin_bottom = 85.0
+text = "Load an existing map"
+
+[node name="pathLabel" type="Label" parent="loadMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -302.0
+margin_top = -38.0
+margin_right = -82.0
+margin_bottom = 47.0
+text = "Path : "
+
+[node name="pathLineEdit" type="LineEdit" parent="loadMenu/pathLabel"]
+margin_left = 237.0
+margin_top = 2.0
+margin_right = 578.0
+margin_bottom = 87.0
+
+[node name="createMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -892.0
+margin_top = -350.0
+margin_right = -92.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 800, 700 )
+
+[node name="NameLabel" type="Label" parent="createMenu"]
+margin_top = 105.0
+margin_right = 261.0
+margin_bottom = 190.0
 text = "Name : "
 
-[node name="NameLineEdit" type="LineEdit" parent="NameLabel"]
-margin_left = 83.0
-margin_right = 257.0
-margin_bottom = 34.0
+[node name="NameLineEdit" type="LineEdit" parent="createMenu/NameLabel"]
+margin_left = 301.0
+margin_right = 601.0
+margin_bottom = 85.0
 
-[node name="sizeLabel" type="Label" parent="."]
-margin_left = 1.0
-margin_top = 58.0
-margin_right = 71.0
-margin_bottom = 72.0
+[node name="sizeLabel" type="Label" parent="createMenu"]
+margin_left = 2.0
+margin_top = 197.0
+margin_right = 367.0
+margin_bottom = 282.0
 text = "Map size : "
 
-[node name="xSizeLineEdit" type="LineEdit" parent="sizeLabel"]
-margin_left = 113.0
-margin_right = 171.0
-margin_bottom = 34.0
+[node name="xSizeLineEdit" type="LineEdit" parent="createMenu/sizeLabel"]
+margin_left = 387.0
+margin_top = 7.0
+margin_right = 603.0
+margin_bottom = 92.0
+text = "10"
+placeholder_text = "10"
 
-[node name="ySizeLineEdit" type="LineEdit" parent="sizeLabel"]
-margin_left = 198.0
-margin_right = 256.0
-margin_bottom = 34.0
+[node name="ySizeLineEdit" type="LineEdit" parent="createMenu/sizeLabel"]
+margin_left = 710.0
+margin_top = 7.0
+margin_right = 926.0
+margin_bottom = 92.0
+text = "10"
+placeholder_text = "10"
 
-[node name="XLabel" type="Label" parent="sizeLabel"]
-margin_left = 171.0
-margin_right = 211.0
-margin_bottom = 26.0
+[node name="XLabel" type="Label" parent="createMenu/sizeLabel"]
+margin_left = 622.0
+margin_top = 7.0
+margin_right = 673.0
+margin_bottom = 92.0
 text = "X"
 
-[node name="tileSizeLabel" type="Label" parent="."]
-margin_top = 98.0
-margin_right = 63.0
-margin_bottom = 112.0
+[node name="tileSizeLabel" type="Label" parent="createMenu"]
+margin_left = 2.0
+margin_top = 303.0
+margin_right = 350.0
+margin_bottom = 388.0
 text = "Tile size : "
 
-[node name="tileSizeLineEdit" type="LineEdit" parent="tileSizeLabel"]
-margin_left = 102.0
-margin_right = 160.0
-margin_bottom = 34.0
+[node name="tileSizeLineEdit" type="LineEdit" parent="createMenu/tileSizeLabel"]
+margin_left = 363.0
+margin_right = 579.0
+margin_bottom = 85.0
 text = "100"
+placeholder_text = "100"
 
-[node name="pxLabel" type="Label" parent="tileSizeLabel"]
-margin_left = 165.0
-margin_right = 205.0
-margin_bottom = 26.0
+[node name="pxLabel" type="Label" parent="createMenu/tileSizeLabel"]
+margin_left = 593.0
+margin_right = 680.0
+margin_bottom = 85.0
 text = "px"
 
-[node name="ConfirmButton" type="Button" parent="."]
-margin_left = 83.0
-margin_top = 240.0
-margin_right = 192.0
-margin_bottom = 266.0
-text = "Confirm"
+[node name="ConfirmButton" type="Button" parent="createMenu"]
+margin_left = 268.0
+margin_top = 572.0
+margin_right = 643.0
+margin_bottom = 682.0
+text = "Create"
 
-[node name="tileSetLabel" type="Label" parent="."]
-margin_top = 143.0
-margin_right = 40.0
-margin_bottom = 169.0
+[node name="tileSetLabel" type="Label" parent="createMenu"]
+margin_left = 4.0
+margin_top = 411.0
+margin_right = 307.0
+margin_bottom = 496.0
 text = "Tile set: "
 
-[node name="tileSetItemList" type="ItemList" parent="tileSetLabel"]
-margin_left = 82.0
-margin_right = 252.0
-margin_bottom = 84.0
+[node name="tileSetItemList" type="ItemList" parent="createMenu/tileSetLabel"]
+margin_left = 303.0
+margin_top = 4.0
+margin_right = 753.0
+margin_bottom = 154.0
 
-[connection signal="pressed" from="ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
+[node name="Label" type="Label" parent="createMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -318.0
+margin_right = 318.0
+margin_bottom = 85.0
+text = "Create a new map"
+
+[connection signal="pressed" from="loadMenu/loadButton" to="." method="_on_loadButton_pressed"]
+[connection signal="pressed" from="createMenu/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]

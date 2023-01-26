@@ -61,7 +61,7 @@ func _ready():
 func load_tileset(path:String):
 	tile_set = load(path)
 
-func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set_path:String):
+func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set_path:String, default_tiles=[], default_entities=[], default_script=[]):
 	map_name = name
 	tile_set_p = tile_set_path
 	tileset_tile_size = tile_size
@@ -100,6 +100,12 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	edition = true
 	$Camera2D/CanvasLayer/GUI.visible = true
 	print("EDITOR INITIED : map_size = ", map_size, " tile_size = ", tile_size, " name = ", name, " tile_set_path: ", tile_set_path)
+	for command in default_tiles:
+		place_tile(command[2], command[1], true)
+	for command in default_entities:
+		place_entity(command[1], command[2])
+	for command in default_script:
+		add_script_state(command[0])
 
 func get_input():
 	if Input.is_action_just_released("editor_zoom_-") and mouse_in == true:
@@ -123,9 +129,9 @@ func get_input():
 	
 func _process(delta):
 	var input = get_input()
-	var mouse_pos = get_global_mouse_position()
-	tmp_label.set_position(Vector2(mouse_pos[0]-50, mouse_pos[1]-50))
-	tmp_label.set_text(str(int(mTiles.get_tile_map().get_local_mouse_position()[0]/100)) + "," + str(int(mTiles.get_tile_map().get_local_mouse_position()[1]/100)))
+	#var mouse_pos = get_global_mouse_position()
+	#tmp_label.set_position(Vector2(mouse_pos[0]-50, mouse_pos[1]-50))
+	#tmp_label.set_text(str(int(mTiles.get_tile_map().get_local_mouse_position()[0]/100)) + "," + str(int(mTiles.get_tile_map().get_local_mouse_position()[1]/100)))
 
 	if input == "zoom_-":
 		$Camera2D.set_zoom(Vector2($Camera2D.get_zoom()[0] +0.01 , $Camera2D.get_zoom()[1] +0.01))
@@ -157,7 +163,7 @@ func _process(delta):
 		tile_selector.visible = true
 		entity_selector.visible = true
 		if selected_type == "tile":
-			place_tile(selected_tile)
+			place_tile(selected_tile, tile)
 		elif selected_type == "entity" and mEntities.get_entity_count() < max_entities and entity_placing:
 			entity_placing = false
 			entity_placer_timer.start()
@@ -174,7 +180,8 @@ func _process(delta):
 			add_script_state(tile)
 
 func add_script_state(tile):
-	mScriptState.add_script_state(tile, $".")
+	if mScriptState.add_script_state(tile, $".") == -1:
+		display_error("Can't create an script state for this tile")
 	selected_type = "tile"
 	display_overlay()
 	edition = true
@@ -182,8 +189,8 @@ func add_script_state(tile):
 func script_editor_add_child(child):
 	$script_editor/VBoxContainer.add_child(child)
 
-func place_tile(tile_index):
-	if selected_tile != null:
+func place_tile(tile_index, tile, forced=false):
+	if selected_tile != null || forced:
 		mTiles.place_tile(tile_index, tile)
 
 func place_entity(entity_id, tile):
@@ -192,7 +199,7 @@ func place_entity(entity_id, tile):
 		var entity = load(_entity[1]).instance()
 		mTiles.get_tile_map().add_child(entity)
 		entity.scale = Vector2(0.25,0.25) # Constant size reducing
-		entity.set_position(Vector2(tile[0]*100, tile[1]*100))
+		entity.set_position(Vector2(tile[0]*100+_entity[2][0]*50, tile[1]*100+_entity[2][1]*50))
 		entities_models[_entity[0]] = entity
 	else:
 		display_error("An error as occured when trying to place entity") # An entity is already present at given tile
@@ -358,11 +365,9 @@ func change_script_subtitle(entity_id, text): ## Need to improve with new module
 			script_states[i]["subtitle"] = text
 
 func _on_mouse_entered():
-	print("entered")
 	mouse_in = true
 
 func _on_mouse_exited():
-	print("exited")
 	mouse_in = false
 
 func _on_CheckBox_toggled(button_pressed):

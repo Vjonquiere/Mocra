@@ -52,8 +52,9 @@ func place_entity(origin, entity_id):
 	var uid = null
 	while uid == null or parent.has_uid(uid):
 		uid = generate_uid(10) 
-	placed_entities.append({"uid": uid, "type": entities[str(entity_id)]["type"], "occupied_tiles": occupied_tiles , "path":entities[str(entity_id)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[origin[0]*100, origin[1]*100], "args": []})
-	return [uid, entities[str(entity_id)]["path"]]
+	placed_entities.append({"uid": uid, "type": entities[str(entity_id)]["type"], "occupied_tiles": occupied_tiles , "path":entities[str(entity_id)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[origin[0]*100+size[0]*50, origin[1]*100+size[1]*50], "args": []})
+	print(placed_entities)
+	return [uid, entities[str(entity_id)]["path"], size]
 
 func remove_entity(tile):
 	print(placed_entities)

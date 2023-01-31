@@ -43,7 +43,6 @@ func generate_uid(length):
 
 func place_entity(origin, entity_id):
 	var size = [int(ceil((entities[str(entity_id)]["x_size"]*0.25)/100)), int(ceil((entities[str(entity_id)]["y_size"]*0.25)/100))] ## Incorrect for little entities (size < 100)
-	print("Entity size: ", size)
 	var occupied_tiles = get_occupied_tiles(origin, size)
 	for tiles in occupied_tiles:
 		if get_entity(tiles) != null:
@@ -53,7 +52,7 @@ func place_entity(origin, entity_id):
 	while uid == null or parent.has_uid(uid):
 		uid = generate_uid(10) 
 	placed_entities.append({"uid": uid, "type": entities[str(entity_id)]["type"], "occupied_tiles": occupied_tiles , "path":entities[str(entity_id)]["path"], "flip_h":false, "flip_v":false, "scale":0.25, "coords":[origin[0]*100+size[0]*50, origin[1]*100+size[1]*50], "args": []})
-	print(placed_entities)
+	print(placed_entities[len(placed_entities)-1])
 	return [uid, entities[str(entity_id)]["path"], size]
 
 func remove_entity(tile):
@@ -73,7 +72,8 @@ func get_occupied_tiles(origin, size):
 
 func get_entity(coords):
 	for entities in placed_entities:
-		if coords in entities["occupied_tiles"]:
-			return entities
+		for coords_ in entities["occupied_tiles"]:
+			if coords[0]==coords_[0] && coords[1]==coords_[1]: # Test coords by coords because not working with 'coords in entities["occupied_tiles"]'
+				return entities
 	return null
 

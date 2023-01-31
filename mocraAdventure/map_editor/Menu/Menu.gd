@@ -46,5 +46,5 @@ func _on_loadButton_pressed():
 		var loaded_map = loader.load_from_path(path)
 		var default_args = loader.get_default_args(path)
 		if loaded_map["status"] != -1 && default_args["status"] != -1:
-			get_parent().emit_signal("init_editor", default_args["size"], default_args["tile_size"], default_args["name"], default_args["tile_set_path"], loaded_map["tiles"], loaded_map["entities"])
+			get_parent().emit_signal("init_editor", default_args["size"], default_args["tile_size"], default_args["name"], default_args["tile_set_path"], loaded_map["tiles"], loaded_map["entities"], loaded_map["script"])
 			self.queue_free()

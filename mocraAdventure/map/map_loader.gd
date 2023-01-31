@@ -45,7 +45,7 @@ func get_real_tile_with_entity_path(path:String, coords:Array):
 	for i in range(entities["entities_number"]):
 		if entities[str(i)]["path"] == path:
 			var size = [int(ceil((entities[str(i)]["x_size"]*0.25)/100)), int(ceil((entities[str(i)]["y_size"]*0.25)/100))]
-			return [(coords[0]-50*size[0])/100, (coords[1]-50*size[1])/100]
+			return [int((coords[0]-50*size[0])/100), int((coords[1]-50*size[1])/100)]
 
 func get_coords_with_uid(uid:String, path:String):
 	var entities = JsonParser.get_data_from_json(path+"/entities.json")
@@ -57,7 +57,7 @@ func load_script(path:String):
 	var script = JsonParser.get_data_from_json(path+"/script.json")
 	var coords = []
 	for i in range(script["state_number"]):
-		coords.append(get_coords_with_uid(script[str(i)][0], path))
+		coords.append([get_coords_with_uid(script[str(i)][0], path), script[str(i)][0], script[str(i)][2], script[str(i)][3]])
 	return coords
 
 func load_from_path(path:String) -> Dictionary:

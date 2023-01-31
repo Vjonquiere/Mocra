@@ -99,6 +99,7 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	$Camera2D._set_current(true)
 	edition = true
 	$Camera2D/CanvasLayer/GUI.visible = true
+	print("DEFAULT SCRIPT = ", default_script)
 	print("EDITOR INITIED : map_size = ", map_size, " tile_size = ", tile_size, " name = ", name, " tile_set_path: ", tile_set_path)
 	for command in default_tiles:
 		place_tile(command[2], command[1], true)
@@ -106,6 +107,8 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 		place_entity(command[1], command[2])
 	for command in default_script:
 		add_script_state(command[0])
+		change_script_title(command[1], command[2])
+		change_script_subtitle(command[1], command[3])
 
 func get_input():
 	if Input.is_action_just_released("editor_zoom_-") and mouse_in == true:

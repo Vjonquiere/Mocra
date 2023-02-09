@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=1]
+[ext_resource path="res://mocraClassic/notifications/background.png" type="Texture" id=2]
+[ext_resource path="res://mocraClassic/notifications/credits/add.png" type="Texture" id=3]
+[ext_resource path="res://mocraClassic/notifications/credits/preset.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="backgroundTexture" type="TextureRect" parent="."]
+texture = ExtResource( 2 )
+
+[node name="iconTexture" type="TextureRect" parent="backgroundTexture"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -75.0
+margin_right = 150.0
+margin_bottom = 75.0
+texture = ExtResource( 3 )
+
+[node name="creditLabel" type="Label" parent="backgroundTexture"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -42.0
+margin_right = 171.0
+margin_bottom = 43.0
+text = "-50000"

@@ -131,3 +131,22 @@ func _on_OptionsButton_pressed():
 func _on_Control_remove_blur():
 	update_client_infos()
 	$blur.visible = false
+
+
+func _on_notifButton_pressed():
+	var uid = Networking.send_data_through_queue("get_notifications", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var receive = packet[0]
+	print("RCV = ", receive)
+	print("receive len = ", len(receive))
+	for notifications in receive:
+		var string = "get_notification_with_id/" + str(notifications)
+		print('REQUEST ====== ', string)
+		var uid1 = Networking.send_data_through_queue(string, "/")
+		var packet1 = [null, null]
+		while packet1[1] != uid:
+			packet1 = yield(Networking, "packet_found")
+		var receive1 = packet1[0]
+		print("NoTIF = ", receive1)

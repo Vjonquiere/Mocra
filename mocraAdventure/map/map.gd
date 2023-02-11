@@ -12,7 +12,7 @@ var entity_types = {"life": "res://mocraAdventure/map/entities/types/life/Node2D
 var master_node
 
 var entities = {}
-var entity_number
+var entities_uid = []
 
 func _init(node):
 	master_node = node
@@ -36,32 +36,34 @@ func load_map(map_path:String):
 	tiles = level_data['tiles']
 
 func load_entities(map_path:String, entity_node):
+	print("MAP PATH = ", map_path)
 	var path = map_path + "/entities.json"
 	var entities_data = JsonParser.get_data_from_json(path)
-	entity_number = entities_data['entity_number']
+	var entity_number = entities_data['entity_number']
 	for i in range(entity_number):
 		var entity = entities_data[str(i)]
-		print(entity)
+		var uid = entity["uid"]
+		entities_uid.append(uid)
 		var type = load(entity_types[entity['type']]).instance()
 		var model = load(entity['path']).instance()
 		if entity["type"] == "life":
-			model.set_id(str(i))
+			model.set_id(uid)
 			type.link_model(model)
 		entity_node.add_child(type)
 		type.add_child(model)
 		type.set_scale(Vector2(entity["scale"], entity["scale"]))
 		type.set_position(Vector2(entity['coords'][0],entity['coords'][1]))
-		entities[str(i)] = type
+		entities[uid] = type
 		if entity['flip_h']:
 			model.flip_h()
 		if type.has_method("set_master"):
-			type.set_id(str(i))
+			type.set_id(uid)
 			type.set_master(master_node)
 
 
 func delete_entities():
-	for i in range(entity_number):
-		entities[str(i)].queue_free()
+	for id in entities_uid:
+		entities[id].queue_free()
 
 func get_number_of_tiles():
 	return size[0]*size[1]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://background.png" type="Texture" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://animations/Menu/ClassicPack/frame0032.png" type="Texture" id=48]
 [ext_resource path="res://animations/Menu/ClassicPack/frame0033.png" type="Texture" id=49]
 [ext_resource path="res://mocraClassic/client_infos/control.tscn" type="PackedScene" id=50]
+[ext_resource path="res://mocraClassic/parameters/icon.png" type="Texture" id=51]
 [ext_resource path="res://images/pack_images/packn2.png" type="Texture" id=52]
 [ext_resource path="res://animations/Menu/ShinyPack/frame0000.png" type="Texture" id=53]
 [ext_resource path="res://animations/Menu/ShinyPack/frame0001.png" type="Texture" id=54]
@@ -186,7 +187,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 11
+frame = 12
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -219,7 +220,7 @@ text = "Open"
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
-frame = 24
+frame = 10
 playing = true
 
 [node name="credits_label" type="Label" parent="."]
@@ -451,13 +452,16 @@ theme = ExtResource( 94 )
 text = "Player Shop"
 
 [node name="OptionsButton" type="Button" parent="."]
-margin_left = 1618.0
-margin_top = 973.0
-margin_right = 2008.0
-margin_bottom = 1160.0
+anchor_right = 0.404
+margin_left = 1812.0
+margin_top = 993.0
+margin_right = 1166.32
+margin_bottom = 1123.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
-text = "OPTIONS"
+theme_type_variation = "button_blue"
+icon = ExtResource( 51 )
+icon_align = 1
 
 [node name="blur" type="TextureRect" parent="."]
 visible = false
@@ -474,6 +478,15 @@ margin_right = 2070.0
 margin_bottom = 354.0
 rect_scale = Vector2( 0.6, 0.6 )
 
+[node name="notifButton" type="Button" parent="."]
+margin_left = 65.0
+margin_top = 768.0
+margin_right = 871.0
+margin_bottom = 945.0
+theme = ExtResource( 94 )
+theme_type_variation = "button_red"
+text = "GET NOTIFICATIONS"
+
 [connection signal="remove_blur" from="." to="." method="_on_Control_remove_blur"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
@@ -485,3 +498,4 @@ rect_scale = Vector2( 0.6, 0.6 )
 [connection signal="pressed" from="MocraAdventureButton" to="." method="_on_MocraAdventureButton_pressed"]
 [connection signal="pressed" from="PlayerShopButton" to="." method="_on_PlayerShopButton_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="notifButton" to="." method="_on_notifButton_pressed"]

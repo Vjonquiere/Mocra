@@ -141,12 +141,7 @@ func _on_notifButton_pressed():
 	var receive = packet[0]
 	print("RCV = ", receive)
 	print("receive len = ", len(receive))
-	for notifications in receive:
-		var string = "get_notification_with_id/" + str(notifications)
-		print('REQUEST ====== ', string)
-		var uid1 = Networking.send_data_through_queue(string, "/")
-		var packet1 = [null, null]
-		while packet1[1] != uid:
-			packet1 = yield(Networking, "packet_found")
-		var receive1 = packet1[0]
-		print("NoTIF = ", receive1)
+	var notif = load("res://mocraClassic/notifications/NotificationCenter.tscn")
+	var instance = notif.instance()
+	$'.'.add_child(instance)
+	instance.init_with_ids(receive)

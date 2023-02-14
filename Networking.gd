@@ -11,7 +11,7 @@ var check_timer = Timer.new()
 var waiting_queue = Queue.new()
 var current
 
-var notification_timer = Timer.new()
+var auto_packet_checker = Timer.new()
 
 func _ready():
 	connect("packet_found", self, "_on_packet_found")
@@ -23,8 +23,10 @@ func _ready():
 	check_timer.set_one_shot(false)
 	get_node(".").add_child(check_timer)
 	check_timer.start()
-	get_node(".").add_child(notification_timer)
-	notification_timer.set_wait_time(0.2)
+	auto_packet_checker.connect("timeout", self, "_auto_packet_checker")
+	get_node(".").add_child(auto_packet_checker)
+	auto_packet_checker.set_wait_time(10)
+	auto_packet_checker.start()
 	animation_init()
 
 func send_data(data:String):
@@ -180,6 +182,22 @@ func notification_check():
 		return null
 	else:
 		return con.get_string(con.get_available_bytes()).split("/")
+
+func _auto_packet_checker():
+	var uid = Networking.send_data_through_queue("get_notifications", "/")
+	var packet = [null, null]
+	while packet[1] != uid:
+		packet = yield(Networking, "packet_found")
+	var receive = packet[0]
+	print(receive)
+	if len(receive) == 1 && receive[0] == "FORBIDEN_REQUEST_ON_NO_LOGED_USER":
+		return
+	print("RCV = ", receive)
+	print("receive len = ", len(receive))
+	var notif = load("res://mocraClassic/notifications/NotificationCenter.tscn")
+	var instance = notif.instance()
+	$'.'.add_child(instance)
+	instance.init_with_ids(receive)
 
 
 func animation_init():

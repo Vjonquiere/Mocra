@@ -1,6 +1,6 @@
-extends Control
+extends CanvasLayer
 
-const paths = {"friend_request": "res://mocraClassic/notifications/friend/preset.tscn", "buy_card": "res://mocraClassic/notifications/cards/preset.tscn"}
+const paths = {"friend_request": "res://mocraClassic/notifications/friend/preset.tscn", "buy_card": "res://mocraClassic/notifications/cards/preset.tscn", "friend_request_refused": "res://mocraClassic/notifications/friend/preset.tscn"}
 
 var notifications = []
 var notifications_GUI = []
@@ -24,25 +24,31 @@ func get_notifications(notifications_ids):
 		while packet[1] != uid:
 			packet = yield(Networking, "packet_found")
 		notifications.append(packet[0])
+	$AnimationPlayer.play("display")
 	display_notifications()
 
 func display_notifications():
 	cycle_timer.start()
 	for notification in notifications:
 		if paths.has(notification[0]):
-			var notification_preset = load(paths[notification[0]])
-			var instance
-			match len(notification):
-				2: instance = notification_preset.instance().setup(str(notification[1]))
-				3: instance = notification_preset.instance().setup(str(notification[1]), str(notification[2]))
-				4: instance = notification_preset.instance().setup(str(notification[1]), str(notification[2]), str(notification[3]))
-			$VBoxContainer.add_child(instance)
-			instance.play_animation("display")
-			notifications_GUI.append(instance)
+			var notification_preset = paths[notification[0]]
+			var inst = load("res://mocraClassic/notifications/notification_preset.tscn").instance().setup(notification_preset, notification)
+			$VBoxContainer.add_child(inst)
+			inst.play_animation("display")
+			notifications_GUI.append(inst)
 
+func is_empty():
+	return notifications_GUI.empty()
 
 func _on_cycle():
 	if notifications_GUI.empty():
+		$AnimationPlayer.play("hide")
+		notifications = []
+		notifications_GUI = []
 		return
 	var notif = notifications_GUI.pop_front()
 	notif.delete()
+
+func _on_moreButton_pressed():
+	var notification_summary = yield(load("res://mocraClassic/notifications/notification_summary.tscn").instance().setup(), "completed")
+	$".".add_child(notification_summary)

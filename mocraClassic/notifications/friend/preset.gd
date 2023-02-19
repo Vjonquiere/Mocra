@@ -1,29 +1,22 @@
 extends Control
 
 ## WORKING WITH MAX 7 CHARACTERS
+const PATH = "res://mocraClassic/notifications/friend/"
 
 var player_name
+var type
 
-onready var player_label = $backgroundTexture/playerNameLabel
-onready var animation_player = $AnimationPlayer
+onready var player_label = $playerNameLabel
 
 func _ready():
+	if type != "default":
+		$iconTexture.set_texture(load(PATH+str(type)+".png"))
+		$titleLabel.set_text("Friend refused")
 	player_label.set_text(player_name)
 
-func setup(player_name:String):
-	self.player_name = player_name
+func setup(p_player_name:String, p_type:String="default"):
+	player_name = p_player_name
+	type = p_type
+
 	return self
 
-func has_animation(animation_name:String):
-	return animation_player.has_animation(animation_name)
-
-func play_animation(animation_name:String):
-	if has_animation(animation_name):
-		animation_player.play(animation_name)
-
-func delete():
-	animation_player.play("delete")
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "delete":
-		self.queue_free()

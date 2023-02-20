@@ -262,6 +262,7 @@ func _on_saveButton_pressed():
 		MapSaver.save_map(mTiles.get_map_size(), tileset_tile_size, map_name, tile_set_p, MapSaver.tile_map_to_array(mTiles.get_map_size(), mTiles.get_tile_map()))
 		MapSaver.save_entities(mEntities.get_entities(), map_name)
 		MapSaver.save_script(mScriptState.get_script_states(), map_name)
+		MapSaver.create_time_stamp_file(map_name)
 		display_info("Your map has been saved !")
 
 func is_map_savable() -> bool:

@@ -187,7 +187,7 @@ texture = ExtResource( 15 )
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
-frame = 10
+frame = 26
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
@@ -220,6 +220,7 @@ text = "Open"
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="credits_label" type="Label" parent="."]
@@ -477,15 +478,6 @@ margin_right = 2070.0
 margin_bottom = 354.0
 rect_scale = Vector2( 0.6, 0.6 )
 
-[node name="notifButton" type="Button" parent="."]
-margin_left = 65.0
-margin_top = 768.0
-margin_right = 871.0
-margin_bottom = 945.0
-theme = ExtResource( 94 )
-theme_type_variation = "button_red"
-text = "GET NOTIFICATIONS"
-
 [connection signal="remove_blur" from="." to="." method="_on_Control_remove_blur"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
@@ -497,4 +489,3 @@ text = "GET NOTIFICATIONS"
 [connection signal="pressed" from="MocraAdventureButton" to="." method="_on_MocraAdventureButton_pressed"]
 [connection signal="pressed" from="PlayerShopButton" to="." method="_on_PlayerShopButton_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="notifButton" to="." method="_on_notifButton_pressed"]

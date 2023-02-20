@@ -1,5 +1,5 @@
 {
-    "entities_number": 9,
+    "entities_number": 6,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -28,24 +28,6 @@
 
     },
     "3": {
-        "path":"res://mocraAdventure/map/entities/front_wall/entity.tscn",
-        "texture_path":"res://mocraAdventure/map/entities/front_wall/texture.png",
-        "name": "front_wall",
-        "type":"none",
-        "x_size": 400,
-        "y_size": 800
-
-    },
-    "4": {
-        "path":"res://mocraAdventure/map/entities/side_wall/entity.tscn",
-        "texture_path":"res://mocraAdventure/map/entities/side_wall/texture.png",
-        "name": "side_wall",
-        "type":"none",
-        "x_size": 200,
-        "y_size": 800
-
-    },
-    "5": {
         "path":"res://mocraAdventure/map/entities/spawn_point/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/spawn_point/texture.png",
         "name": "spawn_point",
@@ -54,16 +36,7 @@
         "y_size": 200
 
     },
-    "6": {
-        "path":"res://mocraAdventure/map/entities/back_wall/entity.tscn",
-        "texture_path":"res://mocraAdventure/map/entities/back_wall/texture.png",
-        "name": "back_wall",
-        "type":"none",
-        "x_size": 400,
-        "y_size": 800
-
-    },
-    "7": {
+    "4": {
         "path":"res://mocraAdventure/map/entities/house1/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/house1/texture.png",
         "name": "house1",
@@ -72,7 +45,7 @@
         "y_size": 800
 
     },
-    "8": {
+    "5": {
         "path":"res://mocraAdventure/map/entities/warp/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/warp/texture.png",
         "name": "warp",

@@ -194,9 +194,9 @@ remote func load_self_player(player_card):
 	self_player.set_collision("res://mocraAdventure/character/{name}/CollisionShape.tres".format({"name": "debug"}))
 	overlay.set_objects_icons(["res://cards/avatar/{name}.png".format({"name":player_card["object1"][0]}), "res://cards/avatar/{name}.png".format({"name":player_card["object2"][0]}), "res://cards/avatar/{name}.png".format({"name":player_card["object3"][0]})])
 
-func has_map(map_path):
+func has_map(map_path, timestamp):
 	var tmp_map = Map.new(self)
-	if !tmp_map.has_map(map_path):
+	if !tmp_map.has_map(map_path, timestamp):
 		return false
 	else:
 		return true
@@ -205,7 +205,7 @@ func download_map(map_path):
 	rpc_id(1, "download_map", map_path)
 
 remote func download_file(path, content):
-	print("path => ", path, "\nfile => ", content)
+	#print("path => ", path, "\nfile => ", content)
 	var parsed_path = path.split("/")
 	var dir = Directory.new()
 	var file = File.new()
@@ -218,8 +218,8 @@ remote func download_file(path, content):
 	file.close()
 
 
-remote func load_map(map_path):
-	if has_map(map_path):
+remote func load_map(map_path, map_timestamp):
+	if has_map(map_path, map_timestamp):
 		print("loading map -> ", map_path)
 		map_load = Map.new(self)
 		map_load.load_map(map_path)
@@ -233,8 +233,8 @@ remote func load_map(map_path):
 	else:
 		download_map(map_path)
 
-remote func load_after_download(map_path):
-	load_map(map_path)
+remote func load_after_download(map_path, timestamp):
+	load_map(map_path, timestamp)
 
 func loading_complete_check() -> void:
 	if loading["map"] == true and loading["players"] == true:
@@ -248,7 +248,6 @@ remote func start():
 	for i in range(len(children)):
 		children[i].queue_free()
 	$".".add_child(tile_map.displayMap())
-	$".".add_child(self_player)
 	$".".add_child(overlay)
 	if Global.options["visual_control"]:
 		$".".add_child(emul)
@@ -257,8 +256,6 @@ remote func start():
 	var my_random_number = rng.randf_range(0, 600)
 	self_player.set_position(Vector2(my_random_number,100))
 	self_player.set_current_camera(true)
-	for i in range(len(players_ids)):
-		$".".add_child(players[players_ids[i]])
 
 func move(new_pos):
 	rpc_id(1, "player_moved", new_pos)
@@ -275,8 +272,10 @@ remote func player_moved(player_id, new_pos):
 remote func init_position(player_id, pos):
 	if players.has(player_id):
 		players[player_id].move(pos)
+		$".".add_child(players[players_ids[player_id]])
 	else:
 		self_player.set_position(Vector2(pos[0], pos[1]))
+		$".".add_child(self_player)
 	print("player moved to ", pos)
 
 remote func player_has_disconnected(player_id):

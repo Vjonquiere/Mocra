@@ -47,3 +47,9 @@ func create_save_folder(name:String):
 	var dir = Directory.new()
 	dir.open("user://")
 	dir.make_dir(name)
+
+func create_time_stamp_file(name:String):
+	var file = File.new()
+	file.open("user://" + name + "/TimeStamp", File.WRITE)
+	file.store_string(str(OS.get_unix_time()))
+	file.close()

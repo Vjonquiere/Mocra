@@ -13,6 +13,10 @@ func _ready():
 	
 	$AnimatedSprite.position.y = height_center - 30
 	$AnimatedSprite.position.x = width_center
+	
+	var summary = yield(load("res://mocraClassic/notifications/notification_summary.tscn").instance().game_init_setup(), "completed")
+	if summary != null:
+		$".".add_child(summary)
 
 
 func _on_Button_pressed():
@@ -59,6 +63,7 @@ func make_opening(results):
 		Global.card_str = my_card_array
 		print(my_card_array)
 		get_tree().change_scene("res://scenes/card_opening.tscn")
+
 
 func count_duplicates(card_array:Array) -> Pile:
 	var pile = Pile.new()
@@ -131,17 +136,3 @@ func _on_OptionsButton_pressed():
 func _on_Control_remove_blur():
 	update_client_infos()
 	$blur.visible = false
-
-
-func _on_notifButton_pressed():
-	var uid = Networking.send_data_through_queue("get_notifications", "/")
-	var packet = [null, null]
-	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
-	var receive = packet[0]
-	print("RCV = ", receive)
-	print("receive len = ", len(receive))
-	var notif = load("res://mocraClassic/notifications/NotificationCenter.tscn")
-	var instance = notif.instance()
-	$'.'.add_child(instance)
-	instance.init_with_ids(receive)

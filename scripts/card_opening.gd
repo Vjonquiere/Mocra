@@ -68,10 +68,10 @@ func _create_card_instance(card_str):
 	var card_infos = card_str.split("/")
 	var multiple_card = multiple_cards.instance()
 
-	if opening_type != "battle" and card_infos[8] != "1":
+	if opening_type != "battle" and card_infos[9] != "1":
 		multiple_card.set_scale(Vector2(0.3,0.3))
 		multiple_card.set_position(Vector2(130,-230))
-		multiple_card.set_card_number(card_infos[8])
+		multiple_card.set_card_number(card_infos[9])
 		instance.add_child(multiple_card)
 	print("card_infos = ", card_infos)
 	instance._change_informations(card_infos[1+1], card_infos[2+1], card_infos[3+1], card_infos[4+1], card_infos[5+1])

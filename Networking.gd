@@ -1,5 +1,9 @@
 extends Node
 
+
+## DEBUGGING => To view exchange between Mocra server and client (queue state, received data),
+##			 You just need to uncomment the lines 52, 60 and 67
+
 var tcp = StreamPeerTCP.new()
 var con = StreamPeerSSL.new()
 var client_version = "1.0"
@@ -12,6 +16,8 @@ var waiting_queue = Queue.new()
 var current
 
 var auto_packet_checker = Timer.new()
+var notif = load("res://mocraClassic/notifications/NotificationCenter.tscn")
+var notifCenter = notif.instance()
 
 func _ready():
 	connect("packet_found", self, "_on_packet_found")
@@ -42,7 +48,7 @@ func generate_uid(length):
 func send_data_through_queue(data:String, separator:String=""):
 	var uid = generate_uid(10)
 	waiting_queue.enqueue([data, uid, separator])
-	print("QueueState: ", waiting_queue)
+#	print("QueueState: ", waiting_queue)
 	return uid
 
 func check_queue():
@@ -50,14 +56,14 @@ func check_queue():
 		var head = waiting_queue.get_head()
 		con.put_data(head[0].to_utf8())
 		current = head
-		print("treating: ", current)
+#		print("treating: ", current)
 		waiting_for_server(head[2], head[1])
 
 func check_sum(data:String, separator):
 	var tmp_data = data.split(separator)
 	print(tmp_data)
 	var data_len = int(tmp_data[0])
-	print("CheckSum : ", data_len, " | data = ", data)
+#	print("CheckSum : ", data_len, " | data = ", data)
 	if data_len == data.count(separator):
 		return true
 	else:
@@ -106,6 +112,12 @@ func _on_packet_found(data, timestamp):
 	current = null
 	waiting_queue.dequeue()
 
+func notification_check():
+	if con.get_available_bytes() == 0:
+		return null
+	else:
+		return con.get_string(con.get_available_bytes()).split("/")
+
 func waiting_for_server_without_separator():
 	if con.get_status() == 2:
 		con.poll()
@@ -119,85 +131,20 @@ func waiting_for_server_without_separator():
 		print("null")
 		return "null".split("/")
 
-func waiting_for_news():
-	emit_signal("test")
-	if con.is_connected_to_host():
-		while con.get_available_bytes() == 0:
-			pass
-		return con.get_string(con.get_available_bytes()).split("|")
-	else:
-		print("You are disconected")
-		get_tree().change_scene("res://scenes/Offline.tscn")
-
-func waiting_for_cards():
-	if con.is_connected_to_host():
-		while con.get_available_bytes() == 0:
-			pass
-		return con.get_string(con.get_available_bytes()).split("|")
-	else:
-		print("You are disconected")
-		get_tree().change_scene("res://scenes/Offline.tscn")
-
-
-func waiting_for_battle_results():
-	if con.is_connected_to_host():
-		while con.get_available_bytes() == 0:
-			pass
-		return con.get_string(con.get_available_bytes()).split("!")
-	else:
-		print("You are disconected")
-		get_tree().change_scene("res://scenes/Offline.tscn")
-
-func new_client_check():
-	if con.get_available_bytes() == 0:
-		return null
-	else:
-		return con.get_string(con.get_available_bytes()).split("/")
-
-
-func trade_room_con():
-	if con.get_available_bytes() == 0:
-		return null
-	else:
-		print("ON A DE LA DATA")
-		var data = con.get_string(con.get_available_bytes()).split("/")
-		print(data)
-		if data[0] != "TRADEROOM":
-			return null
-		else:
-			return data
-
-func waiting_for_card():
-	if con.is_connected_to_host():
-		while con.get_available_bytes() == 0:
-			pass
-		return con.get_string(con.get_available_bytes())
-	else:
-		print("You are disconected")
-		get_tree().change_scene("res://scenes/Offline.tscn")
-		return ["null"]
-		
-func notification_check():
-	if con.get_available_bytes() == 0:
-		return null
-	else:
-		return con.get_string(con.get_available_bytes()).split("/")
-
 func _auto_packet_checker():
-	var uid = Networking.send_data_through_queue("get_notifications", "/")
+	if !notifCenter.is_empty():
+		return
+	var uid = Networking.send_data_through_queue("get_new_notifications", "/")
 	var packet = [null, null]
 	while packet[1] != uid:
 		packet = yield(Networking, "packet_found")
 	var receive = packet[0]
-	print(receive)
-	if len(receive) == 1 && receive[0] == "FORBIDEN_REQUEST_ON_NO_LOGED_USER":
+	if (len(receive) == 1 && receive[0] == "FORBIDEN_REQUEST_ON_NO_LOGED_USER") || receive[0] == "NO_NOTIFICATION":
+		notifCenter.hide()
 		return
-	print("RCV = ", receive)
-	print("receive len = ", len(receive))
-	var notif = load("res://mocraClassic/notifications/NotificationCenter.tscn")
-	var instance = notif.instance()
-	$'.'.add_child(instance)
-	instance.init_with_ids(receive)
+	notifCenter.show()
+	get_tree().get_current_scene().add_child(notifCenter)
+	notifCenter.init_with_ids(receive)
 
 
 func animation_init():

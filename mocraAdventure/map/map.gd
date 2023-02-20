@@ -17,9 +17,15 @@ var entities_uid = []
 func _init(node):
 	master_node = node
 
-func has_map(map_path:String) -> bool:
+func has_map(map_path:String, timestamp:String) -> bool:
 	var has_dir = Directory.new()
-	if !has_dir.dir_exists(map_path) || !has_dir.file_exists(map_path + "/map.json") || !has_dir.file_exists(map_path + "/entities.json"):
+	if !has_dir.dir_exists(map_path) || !has_dir.file_exists(map_path + "/map.json") || !has_dir.file_exists(map_path + "/entities.json") || !has_dir.file_exists(map_path + "/TimeStamp"):
+		return false
+	var file = File.new()
+	file.open(map_path + "/TimeStamp", File.READ)
+	var local_timestamp = file.get_as_text()
+	file.close()
+	if local_timestamp != timestamp:
 		return false
 	return true
 

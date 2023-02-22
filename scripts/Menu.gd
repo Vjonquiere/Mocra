@@ -13,7 +13,9 @@ func _ready():
 	
 	$AnimatedSprite.position.y = height_center - 30
 	$AnimatedSprite.position.x = width_center
-	
+	show_notifications()
+
+func show_notifications():
 	var summary = yield(load("res://mocraClassic/notifications/notification_summary.tscn").instance().game_init_setup(), "completed")
 	if summary != null:
 		$".".add_child(summary)
@@ -91,6 +93,8 @@ func update_client_infos():
 	$clientInfos.set_credits(received_data[1])
 	$clientInfos.set_shiny_cedits(received_data[2])
 	$clientInfos.set_boost(str(stepify(float(received_data[3]),0.01)))
+	$badge.setup(received_data[4])
+	$badge.show()
 
 
 

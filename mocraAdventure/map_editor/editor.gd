@@ -47,13 +47,10 @@ signal dialog_entered(status)
 func _ready():
 	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
 	$".".add_child(menu)
-	$".".add_child(dialog)
 	dialog.set_scale(Vector2(0.5,0.5))
 	dialog.hide()
 	error_timer_init()
 	entity_selector.set_node($".")
-#	dialog.connect("mouse_entered", self, "_on_dialog_mouse_entered")
-#	dialog.connect("mouse_exited", self, "_on_dialog_mouse_exited")
 	$".".add_child(entity_placer_timer)
 	entity_placer_timer.connect("timeout", self, "_on_entity_placer_timeout")
 	entity_placer_timer.set_wait_time(0.5)
@@ -80,6 +77,7 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	mTiles.get_tile_map().set_z_index(-1)
 	$Camera2D/CanvasLayer.add_child(tile_selector)
 	$Camera2D/CanvasLayer.add_child(entity_selector)
+	$Camera2D/CanvasLayer.add_child(dialog)
 	
 	$".".add_child(collisionNode)
 	collisionNode.set_size(Vector2(tile_size*map_size[0],tile_size*map_size[1]))
@@ -128,8 +126,11 @@ func get_input():
 	if Input.is_action_pressed("editor_translate_right"):
 		return "translate_right"
 	if Input.is_action_pressed("editor_mouse_l") and mouse_in == true:
+		dialog.reset()
 		return "get_pos"
-	
+	if Input.is_action_pressed("editor_mouse_r") and mouse_in == true:
+		return "get_entity_options"
+
 func _process(delta):
 	var input = get_input()
 	#var mouse_pos = get_global_mouse_position()
@@ -181,6 +182,10 @@ func _process(delta):
 		tile = [int(raw_click[0]/tileset_tile_size), int(raw_click[1]/tileset_tile_size)]
 		if selected_type == "script":
 			add_script_state(tile)
+	
+	elif input == "get_entity_options":
+		raw_click = [int(mTiles.get_tile_map().get_local_mouse_position()[0]), int(mTiles.get_tile_map().get_local_mouse_position()[1])]
+		show_entity_options(raw_click)
 
 func add_script_state(tile):
 	if mScriptState.add_script_state(tile, $".") == -1:
@@ -188,6 +193,16 @@ func add_script_state(tile):
 	selected_type = "tile"
 	display_overlay()
 	edition = true
+
+func show_entity_options(raw_tile):
+	tile = [int(raw_tile[0]/tileset_tile_size), int(raw_tile[1]/tileset_tile_size)]
+	var entity = mEntities.get_entity(tile)
+	if entity != null:
+		dialog.reset()
+		dialog.set_entity_label(entity["uid"])
+		dialog.set_mode(entity["type"])
+		dialog.set_position(Vector2(int(raw_tile[0])-90,int(raw_tile[1])-200))
+		dialog.show()
 
 func script_editor_add_child(child):
 	$script_editor/VBoxContainer.add_child(child)

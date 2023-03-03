@@ -1,6 +1,6 @@
 extends Control
 
-const default_size = Vector2(10,10)
+const default_size = [10,10]
 var size = default_size
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _on_exitButton_pressed():
 
 
 func _on_createWarpButton_pressed():
-	get_parent().emit_signal("close_dialog", [size])
+	get_parent().emit_signal("close_dialog", size)
 
 
 func _on_xLineEdit_text_changed(new_text):

@@ -77,3 +77,7 @@ func get_entity(coords):
 				return entities
 	return null
 
+func set_entity_args(uid:String, args:Array):
+	for entities in placed_entities:
+		if entities["uid"] == uid:
+			entities["args"] = args

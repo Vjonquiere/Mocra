@@ -12,7 +12,6 @@ var edition = false
 
 var tile_selector = load("res://mocraAdventure/map_editor/selector/Selector.tscn").instance()
 var entity_selector = load("res://mocraAdventure/map_editor/selector/entitySelector.tscn").instance()
-var dialog = load("res://mocraAdventure/map_editor/dialog/dialog.tscn").instance()
 
 var collisionNode = Control.new() ## Used to detect if cursor is on tileMap
 
@@ -21,6 +20,8 @@ var tmp_label = Label.new()
 var mEntities = Entities.new()
 var mScriptState = ScriptStates.new()
 var mTiles = Tiles.new()
+
+var dialog = load("res://mocraAdventure/map_editor/dialog/dialog.tscn").instance().setup(mEntities)
 
 var entities_models = {}
 
@@ -199,6 +200,7 @@ func show_entity_options(raw_tile):
 	var entity = mEntities.get_entity(tile)
 	if entity != null:
 		dialog.reset()
+		dialog.set_entity_uid(entity["uid"])
 		dialog.set_entity_label(entity["uid"])
 		dialog.set_mode(entity["type"])
 		dialog.set_position(Vector2(int(raw_tile[0])-90,int(raw_tile[1])-200))

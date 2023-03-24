@@ -1,5 +1,5 @@
 {
-    "entities_number": 6,
+    "entities_number": 13,
     "0": {
         "path":"res://mocraAdventure/map/entities/scarecrow/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/scarecrow/texture.png",
@@ -49,9 +49,72 @@
         "path":"res://mocraAdventure/map/entities/warp/entity.tscn",
         "texture_path":"res://mocraAdventure/map/entities/warp/texture.png",
         "name": "warp",
-        "type":"none",
+        "type":"warp",
         "x_size": 100,
         "y_size": 100
+
+    },
+    "6": {
+        "path":"res://mocraAdventure/map/entities/street_lamp/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/street_lamp/texture.png",
+        "name": "street_lamp",
+        "type":"none",
+        "x_size": 400,
+        "y_size": 800
+
+    },
+    "7": {
+        "path":"res://mocraAdventure/map/entities/brick_wall/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/brick_wall/texture.png",
+        "name": "brick_wall",
+        "type":"none",
+        "x_size": 400,
+        "y_size": 400
+
+    },
+    "8": {
+        "path":"res://mocraAdventure/map/entities/fence/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/fence/texture.png",
+        "name": "fence",
+        "type":"none",
+        "x_size": 400,
+        "y_size": 400
+
+    },
+    "9": {
+        "path":"res://mocraAdventure/map/entities/battlements/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/battlements/texture.png",
+        "name": "battlements",
+        "type":"none",
+        "x_size": 1600,
+        "y_size": 800
+
+    },
+    "10": {
+        "path":"res://mocraAdventure/map/entities/battlements_corner/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/battlements_corner/texture.png",
+        "name": "battlements_corner",
+        "type":"none",
+        "x_size": 800,
+        "y_size": 800
+
+    },
+    "11": {
+        "path":"res://mocraAdventure/map/entities/battlements_double_corner/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/battlements_double_corner/texture.png",
+        "name": "battlements_corner",
+        "type":"none",
+        "x_size": 800,
+        "y_size": 800
+
+    },
+    "12": {
+        "path":"res://mocraAdventure/map/entities/battlements_vertical/entity.tscn",
+        "texture_path":"res://mocraAdventure/map/entities/battlements_vertical/texture.png",
+        "name": "battlements_vertical",
+        "type":"none",
+        "x_size": 800,
+        "y_size": 1600
 
     }
 }

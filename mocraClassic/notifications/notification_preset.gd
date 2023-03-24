@@ -1,7 +1,7 @@
 extends Control
 
 var child
-onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,11 +10,11 @@ func _ready():
 func setup(preset_path, notification):
 	if preset_path == "res://mocraClassic/notifications/friend/preset.tscn":
 		if notification[0] == "friend_request":
-			child = load(preset_path).instance().setup(str(notification[1]))
+			child = load(preset_path).instantiate().setup(str(notification[1]))
 		else:
-			child = load(preset_path).instance().setup(str(notification[1]), "refused")
+			child = load(preset_path).instantiate().setup(str(notification[1]), "refused")
 	elif preset_path == "res://mocraClassic/notifications/cards/preset.tscn":
-		child = load(preset_path).instance().setup(str(notification[1]), str(notification[2]), str(notification[3]))
+		child = load(preset_path).instantiate().setup(str(notification[1]), str(notification[2]), str(notification[3]))
 	$backgroundTexture.add_child(child)
 	return self
 

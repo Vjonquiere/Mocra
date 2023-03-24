@@ -8,7 +8,7 @@ var number_of_cards
 var credits_amount
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	yield(get_card(), "completed")
+	await get_card().completed
 	$numberLabel.set_text("x"+str(number_of_cards))
 	$amountLabel.set_text(str(int(credits_amount)*int(number_of_cards)))
 	$cardIcon.set_texture(load(PATH+str(card_infos[3])+".png"))
@@ -24,5 +24,5 @@ func get_card():
 	var uid = Networking.send_data_through_queue(string, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	card_infos = packet[0]

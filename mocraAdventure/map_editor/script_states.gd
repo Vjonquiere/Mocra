@@ -39,7 +39,7 @@ func add_script_state(coords, init_node) -> int:
 	var entity = entities.get_entity(coords)
 	if entity == null || !check_if_unic_state(entity["uid"]) || entity["type"] == "none":
 		return -1
-	var template = script_state_template.instance()
+	var template = script_state_template.instantiate()
 	template.init_identity(entity["path"], "avatar_path:String", entity["coords"], entity["type"], entity["uid"], init_node)
 	parent.script_editor_add_child(template)
 	script_state_objects.append(template)
@@ -51,7 +51,7 @@ func add_script_state(coords, init_node) -> int:
 		return
 	var closest = entities.get_closest_entity([int(raw_tile[0]),int(raw_tile[1])])
 	if closest != null and check_if_unic_state(closest):
-		var template = script_state_template.instance()
+		var template = script_state_template.instantiate()
 		var entity = entities.placed_entities[closest]
 		template.init_identity(entity["path"], "avatar_path:String", entity["coords"], entity["type"], closest, init_node)
 		parent.script_editor_add_child(template)

@@ -38,8 +38,8 @@ func display_friend_request(request, news_number):
 	accept_button.set_size(Vector2(accept_button.get_size()[0]+100, accept_button.get_size()[1]))
 	accept_button.set_position(Vector2(friend_name.get_minimum_size()[0]/2-accept_button.get_minimum_size()[0],20+friend_name.get_end()[1]))
 	decline_button.set_position(Vector2(friend_name.get_minimum_size()[0]/2+accept_button.get_minimum_size()[0],20+friend_name.get_end()[1]))
-	decline_button.connect("pressed", self, "decline_friend_request", [request[1], request[2]])
-	accept_button.connect("pressed", self, "accept_friend_request", [request[1], request[2]])
+	decline_button.connect("pressed",Callable(self,"decline_friend_request").bind(request[1], request[2))
+	accept_button.connect("pressed",Callable(self,"accept_friend_request").bind(request[1], request[2))
 
 func decline_friend_request(friend_name, request_id):
 	var final_request = "decline_friend_request/" + friend_name + "/" + request_id

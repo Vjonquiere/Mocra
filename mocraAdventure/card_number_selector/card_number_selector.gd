@@ -23,7 +23,7 @@ func get_number_of_owned_cards(card_id):
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	return int(rcv[0])
 

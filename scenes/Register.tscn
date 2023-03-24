@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Register.gd" type="Script" id=1]
-[ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture" id=3]
-[ext_resource path="res://images/buttons/register_button.png" type="Texture" id=4]
-[ext_resource path="res://images/buttons/back_button_hover.png" type="Texture" id=5]
-[ext_resource path="res://images/buttons/back_button .png" type="Texture" id=6]
+[ext_resource path="res://background.png" type="Texture2D" id=2]
+[ext_resource path="res://images/buttons/register_button_hover.png" type="Texture2D" id=3]
+[ext_resource path="res://images/buttons/register_button.png" type="Texture2D" id=4]
+[ext_resource path="res://images/buttons/back_button_hover.png" type="Texture2D" id=5]
+[ext_resource path="res://images/buttons/back_button .png" type="Texture2D" id=6]
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=7]
-[ext_resource path="res://debugTextures/background_debug.png" type="Texture" id=8]
+[ext_resource path="res://debugTextures/background_debug.png" type="Texture2D" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -36,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ],
@@ -47,25 +47,25 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="PasswordLabel" type="Label" parent="."]
 visible = false
-margin_left = 303.8
-margin_top = 245.643
-margin_right = 400.8
-margin_bottom = 277.643
+offset_left = 303.8
+offset_top = 245.643
+offset_right = 400.8
+offset_bottom = 277.643
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Password:"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="PasswordLabel"]
 visible = false
-margin_left = 104.0
-margin_top = -1.66341
-margin_right = 313.0
-margin_bottom = 40.3366
+offset_left = 104.0
+offset_top = -1.66341
+offset_right = 313.0
+offset_bottom = 40.3366
 custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
 custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
@@ -74,19 +74,19 @@ secret = true
 
 [node name="PasswordConfirmLabel" type="Label" parent="."]
 visible = false
-margin_left = 220.813
-margin_top = 291.901
-margin_right = 400.813
-margin_bottom = 323.901
+offset_left = 220.813
+offset_top = 291.901
+offset_right = 400.813
+offset_bottom = 323.901
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Confirm password:"
 
 [node name="ConfirmPasswordLineEdit" type="LineEdit" parent="PasswordConfirmLabel"]
 visible = false
-margin_left = 187.0
-margin_top = -1.0
-margin_right = 396.0
-margin_bottom = 41.0
+offset_left = 187.0
+offset_top = -1.0
+offset_right = 396.0
+offset_bottom = 41.0
 custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
 custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
@@ -95,19 +95,19 @@ secret = true
 
 [node name="EmailLabel" type="Label" parent="."]
 visible = false
-margin_left = 341.823
-margin_top = 343.202
-margin_right = 400.823
-margin_bottom = 375.202
+offset_left = 341.823
+offset_top = 343.202
+offset_right = 400.823
+offset_bottom = 375.202
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Email:"
 
 [node name="EmailEntry" type="LineEdit" parent="EmailLabel"]
 visible = false
-margin_left = 66.0
-margin_top = -4.0
-margin_right = 275.0
-margin_bottom = 38.0
+offset_left = 66.0
+offset_top = -4.0
+offset_right = 275.0
+offset_bottom = 38.0
 custom_colors/selection_color = Color( 0.258824, 0.258824, 0.258824, 1 )
 custom_colors/cursor_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 custom_colors/font_color_selected = Color( 0.317647, 0.317647, 0.317647, 1 )
@@ -115,19 +115,19 @@ custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 
 [node name="Button" type="Button" parent="."]
 visible = false
-margin_left = 523.272
-margin_top = 392.762
-margin_right = 603.272
-margin_bottom = 432.762
+offset_left = 523.272
+offset_top = 392.762
+offset_right = 603.272
+offset_bottom = 432.762
 custom_styles/hover = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 
 [node name="Button2" type="Button" parent="."]
 visible = false
-margin_left = 420.513
-margin_top = 392.97
-margin_right = 500.513
-margin_bottom = 432.97
+offset_left = 420.513
+offset_top = 392.97
+offset_right = 500.513
+offset_bottom = 432.97
 custom_styles/hover = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 
@@ -137,16 +137,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -250.0
-margin_right = 350.0
-margin_bottom = 250.0
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
 theme = ExtResource( 7 )
 
 [node name="debugTexture" type="TextureRect" parent="Step1"]
 visible = false
-margin_right = 700.0
-margin_bottom = 500.0
+offset_right = 700.0
+offset_bottom = 500.0
 texture = ExtResource( 8 )
 expand = true
 
@@ -155,25 +155,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -147.961
-margin_top = -105.785
-margin_right = -86.9606
-margin_bottom = -73.7847
+offset_left = -147.961
+offset_top = -105.785
+offset_right = -86.9606
+offset_bottom = -73.7847
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Login:"
 
 [node name="LoginLineEdit" type="LineEdit" parent="Step1/LoginLabel"]
-margin_left = 90.847
-margin_top = -3.36035
-margin_right = 299.847
-margin_bottom = 38.6396
+offset_left = 90.847
+offset_top = -3.36035
+offset_right = 299.847
+offset_bottom = 38.6396
 
 [node name="Step1Label" type="RichTextLabel" parent="Step1"]
-margin_left = 97.0
-margin_top = 34.0
-margin_right = 568.0
-margin_bottom = 66.0
+offset_left = 97.0
+offset_top = 34.0
+offset_right = 568.0
+offset_bottom = 66.0
 text = "Step 1/4: choose your login"
 
 [node name="Step1NextButton" type="Button" parent="Step1"]
@@ -181,10 +181,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -20.0
-margin_right = 40.0
-margin_bottom = 20.0
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
 text = "Next"
 
 [node name="Step2" type="Control" parent="."]
@@ -194,16 +194,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -250.0
-margin_right = 350.0
-margin_bottom = 250.0
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
 theme = ExtResource( 7 )
 
 [node name="debugTexture" type="TextureRect" parent="Step2"]
 visible = false
-margin_right = 700.0
-margin_bottom = 500.0
+offset_right = 700.0
+offset_bottom = 500.0
 texture = ExtResource( 8 )
 expand = true
 
@@ -212,19 +212,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -162.925
-margin_top = -105.785
-margin_right = -67.9247
-margin_bottom = -73.7847
+offset_left = -162.925
+offset_top = -105.785
+offset_right = -67.9247
+offset_bottom = -73.7847
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Password"
 
 [node name="PasswordLineEdit" type="LineEdit" parent="Step2/PasswordLabel"]
-margin_left = 112.613
-margin_top = -3.36035
-margin_right = 321.613
-margin_bottom = 38.6396
+offset_left = 112.613
+offset_top = -3.36035
+offset_right = 321.613
+offset_bottom = 38.6396
 secret = true
 
 [node name="ConfirmPasswordLabel" type="Label" parent="Step2"]
@@ -232,26 +232,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -162.925
-margin_top = -48.6493
-margin_right = -67.9247
-margin_bottom = -16.649
+offset_left = -162.925
+offset_top = -48.6493
+offset_right = -67.9247
+offset_bottom = -16.649
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Confirm"
 
 [node name="ConfirmPasswordLineEdit" type="LineEdit" parent="Step2/ConfirmPasswordLabel"]
-margin_left = 112.613
-margin_top = -3.36035
-margin_right = 321.613
-margin_bottom = 38.6396
+offset_left = 112.613
+offset_top = -3.36035
+offset_right = 321.613
+offset_bottom = 38.6396
 secret = true
 
 [node name="Step2Label" type="RichTextLabel" parent="Step2"]
-margin_left = 97.0
-margin_top = 34.0
-margin_right = 568.0
-margin_bottom = 66.0
+offset_left = 97.0
+offset_top = 34.0
+offset_right = 568.0
+offset_bottom = 66.0
 text = "Step 2/4: Create your password"
 
 [node name="Step2NextButton" type="Button" parent="Step2"]
@@ -259,10 +259,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 30.7394
-margin_top = 20.0
-margin_right = 110.739
-margin_bottom = 60.0
+offset_left = 30.7394
+offset_top = 20.0
+offset_right = 110.739
+offset_bottom = 60.0
 text = "Next"
 
 [node name="Step2PreviousButton" type="Button" parent="Step2"]
@@ -270,10 +270,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -90.3696
-margin_top = 20.0
-margin_right = 19.6304
-margin_bottom = 60.0
+offset_left = -90.3696
+offset_top = 20.0
+offset_right = 19.6304
+offset_bottom = 60.0
 text = "Previous"
 
 [node name="Step3" type="Control" parent="."]
@@ -283,16 +283,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -250.0
-margin_right = 350.0
-margin_bottom = 250.0
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
 theme = ExtResource( 7 )
 
 [node name="debugTexture" type="TextureRect" parent="Step3"]
 visible = false
-margin_right = 700.0
-margin_bottom = 500.0
+offset_right = 700.0
+offset_bottom = 500.0
 texture = ExtResource( 8 )
 expand = true
 
@@ -301,25 +301,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -147.961
-margin_top = -105.785
-margin_right = -86.9606
-margin_bottom = -73.7847
+offset_left = -147.961
+offset_top = -105.785
+offset_right = -86.9606
+offset_bottom = -73.7847
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )
 text = "Email:"
 
 [node name="EmailLineEdit" type="LineEdit" parent="Step3/EmailLabel"]
-margin_left = 90.847
-margin_top = -3.36035
-margin_right = 299.847
-margin_bottom = 38.6396
+offset_left = 90.847
+offset_top = -3.36035
+offset_right = 299.847
+offset_bottom = 38.6396
 
 [node name="Step3Label" type="RichTextLabel" parent="Step3"]
-margin_left = 97.0
-margin_top = 34.0
-margin_right = 568.0
-margin_bottom = 66.0
+offset_left = 97.0
+offset_top = 34.0
+offset_right = 568.0
+offset_bottom = 66.0
 text = "Step 3/4: Email address"
 
 [node name="Step3NextButton" type="Button" parent="Step3"]
@@ -327,10 +327,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 18.4961
-margin_top = -20.0
-margin_right = 98.4961
-margin_bottom = 20.0
+offset_left = 18.4961
+offset_top = -20.0
+offset_right = 98.4961
+offset_bottom = 20.0
 text = "Next"
 
 [node name="Step3PreviousButton" type="Button" parent="Step3"]
@@ -338,19 +338,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -110.775
-margin_top = -20.0
-margin_right = -0.77533
-margin_bottom = 20.0
+offset_left = -110.775
+offset_top = -20.0
+offset_right = -0.77533
+offset_bottom = 20.0
 text = "Previous"
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -250.0
-margin_top = 362.1
-margin_right = 250.0
-margin_bottom = 376.1
+offset_left = -250.0
+offset_top = 362.1
+offset_right = 250.0
+offset_bottom = 376.1
 custom_styles/fg = SubResource( 5 )
 custom_styles/bg = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -362,10 +362,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -18.0
-margin_top = 125.479
-margin_right = 18.0
-margin_bottom = 157.479
+offset_left = -18.0
+offset_top = 125.479
+offset_right = 18.0
+offset_bottom = 157.479
 grow_horizontal = 2
 grow_vertical = 2
 custom_colors/font_color = Color( 0.317647, 0.317647, 0.317647, 1 )

@@ -21,18 +21,18 @@ func _on_Button_pressed():
 	var uid = Networking.send_data_through_queue(final, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 
 	if rcv[0] == "display_user_infos":
 		Global.credits= rcv[2]
 		Global.shiny_credits = rcv[3]
-		Global.boost = str(stepify(float(rcv[4]),0.01))
+		Global.boost = str(snapped(float(rcv[4]),0.01))
 		Global.username = rcv[5]
 		Global.global_points = rcv[6]
 		Global.mocra_ID = rcv[1]
 		print("Mocra ID: ", Global.mocra_ID)
-		get_tree().change_scene("res://scenes/Menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 	if rcv[0] == "error" && rcv[1] == "invalid_login":
 		$ErrorLabel.set_text("ERROR: Invalid login or password")
@@ -48,7 +48,7 @@ func _on_Button_pressed():
 
 
 func _on_Button2_pressed():
-	get_tree().change_scene("res://scenes/Register.tscn")
+	get_tree().change_scene_to_file("res://scenes/Register.tscn")
 
 
 func _on_Button3_pressed():
@@ -59,7 +59,7 @@ func get_server_info():
 	var uid = Networking.send_data_through_queue("get_server_infos", "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	
 	if rcv[0] == "null":
@@ -69,26 +69,22 @@ func get_server_info():
 		$OnlinePlayerLabel.set_text("Online players: " + rcv[1])
 
 func is_first_launch() -> bool:
-	var file = File.new()
-	if file.file_exists("user://options.json"):
-		return false
-	else:
-		return true
+	return FileAccess.file_exists("user://options.json")
+
 
 func generate_user_files():
-	var file = File.new()
-	file.open("res://mocraClassic/parameters/options.json", File.READ)
+	var file = FileAccess.open("res://mocraClassic/parameters/options.json", FileAccess.READ)
 	var content = file.get_as_text()
-	var copy_file = File.new()
-	copy_file.open("user://options.json", File.WRITE)
+	var copy_file = FileAccess.open("user://options.json", FileAccess.WRITE)
 	copy_file.store_string(content)
 	copy_file.close()
 	file.close()
 
 
 func _on_Control_ready():
+	return
 	if Networking.connection_established():
 		print("getting server informations")
 		get_server_info()
 	else:
-		get_tree().change_scene("res://scenes/Offline.tscn")
+		get_tree().change_scene_to_file("res://scenes/Offline.tscn")

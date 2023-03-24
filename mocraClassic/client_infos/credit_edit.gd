@@ -3,8 +3,8 @@ extends Control
 
 var value = 0
 var animDuration = 30 ## (cycle) 1 cycle = 1 ms => FAUX
-onready var backgroundTexture = $"."
-onready var label
+@onready var backgroundTexture = $"."
+@onready var label
 var state_set_value
 var max_value 
 var operation

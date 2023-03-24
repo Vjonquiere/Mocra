@@ -17,13 +17,15 @@ func get_from_json(filepath:String) -> Dictionary:
 	var file = File.new()
 	file.open(filepath, File.READ)
 	var text = file.get_as_text()
-	var data = parse_json(text)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(text)
+	var data = test_json_conv.get_data()
 	file.close()
 	return data
 
 func generate_adventures(parsed_json):
 	for i in range(len(parsed_json["Adventures_list"])):
-		adventures[i] = adventure.instance()
+		adventures[i] = adventure.instantiate()
 		adventures[i].set_name(parsed_json["Adventures_list"][i]["name"])
 		generate_levels(parsed_json["Adventures_list"][i]["levels"], adventures[i])
 		get_node("AdventuresContainer").add_child(adventures[i])

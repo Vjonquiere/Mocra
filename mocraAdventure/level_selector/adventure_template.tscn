@@ -1,41 +1,41 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://mocraAdventure/level_selector/adventure_template.gd" type="Script" id=1]
-[ext_resource path="res://mocraAdventure/level_selector/adventures_textures/adventure_1/complete.png" type="Texture" id=2]
-[ext_resource path="res://mocraAdventure/level_selector/adventure_separator.png" type="Texture" id=3]
-[ext_resource path="res://fonts/ubuntu17.tres" type="DynamicFont" id=4]
+[ext_resource path="res://mocraAdventure/level_selector/adventures_textures/adventure_1/complete.png" type="Texture2D" id=2]
+[ext_resource path="res://mocraAdventure/level_selector/adventure_separator.png" type="Texture2D" id=3]
+[ext_resource path="res://fonts/ubuntu17.tres" type="FontFile" id=4]
 
 [node name="Node2D" type="Control"]
-margin_right = 1920.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 1920, 250 )
+offset_right = 1920.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 1920, 250 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ 15.0, 50.0 ]
 }
 
-[node name="Complete" type="Sprite" parent="."]
+[node name="Complete" type="Sprite2D" parent="."]
 position = Vector2( 100, 128 )
 texture = ExtResource( 2 )
 
 [node name="AdventureSeparator" type="TextureRect" parent="."]
-margin_left = 181.235
-margin_top = 104.578
-margin_right = 231.235
-margin_bottom = 154.578
+offset_left = 181.235
+offset_top = 104.578
+offset_right = 231.235
+offset_bottom = 154.578
 texture = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 250.0
-margin_right = 650.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 0, 250 )
+offset_left = 250.0
+offset_right = 650.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 0, 250 )
 
 [node name="NameLabel" type="Label" parent="."]
-margin_left = 83.1489
-margin_top = 47.3372
-margin_right = 123.149
-margin_bottom = 67.3372
+offset_left = 83.1489
+offset_top = 47.3372
+offset_right = 123.149
+offset_bottom = 67.3372
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 4 )

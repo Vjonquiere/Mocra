@@ -34,7 +34,7 @@ func _on_AmoutSpinBox_value_changed(value):
 
 
 func _on_SelectCardButton_pressed():
-	var card_selector = load("res://mocraAdventure/card_selector/CardSelector.tscn").instance()
+	var card_selector = load("res://mocraAdventure/card_selector/CardSelector.tscn").instantiate()
 	get_node(".").add_child(card_selector)
 	card_selector.init_selection("all", "tets")
 	card_selector.display_collection()
@@ -48,14 +48,14 @@ func display_cards():
 	var uid = Networking.send_data_through_queue("display_shop", "|")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var shop_infos = packet[0]
 	if shop_infos[0] == "EMPTY_SHOP":
 		$EmptyLabel.visible = true
 	var hbox = HBoxContainer.new()
 	$ScrollContainer/Buy.add_child(hbox)
 	for i in range(len(shop_infos)-1):
-		var card = load("res://mocraClassic/player_shop/card_template/card_template.tscn").instance()
+		var card = load("res://mocraClassic/player_shop/card_template/card_template.tscn").instantiate()
 		if hbox.get_child_count() >= 4:
 			hbox = HBoxContainer.new()
 			$ScrollContainer/Buy.add_child(hbox)
@@ -81,7 +81,7 @@ func _on_Control_buy(transactionID, quantity):
 	var uid = Networking.send_data_through_queue(req, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var res = packet[0]
 	if res[0] == "TRANSACTION_DONE":
 		get_parent().emit_signal("remove_blur")
@@ -99,7 +99,7 @@ func _on_SellButton_pressed():
 		var uid = Networking.send_data_through_queue(req, "/")
 		var packet = [null, null]
 		while packet[1] != uid:
-			packet = yield(Networking, "packet_found")
+			packet = await Networking.packet_found
 		var res = packet[0]
 		print(res)
 	else:
@@ -118,7 +118,7 @@ func search_current_cards_to_sell():
 	var uid = Networking.send_data_through_queue("get_sell_waiting_cards", "|")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var res = packet[0]
 	print("SHOP: ", res)
 	if res[0] == "NOTHING_HERE":
@@ -132,7 +132,7 @@ func search_current_cards_to_sell():
 func init_card_to_sell(card_infos:String):
 	print("Card infos: ", card_infos)
 	var parsed_infos = card_infos.split("/")
-	var card_template = sell_card_template.instance()
+	var card_template = sell_card_template.instantiate()
 	card_template.set_type_to_current_sell()
 	card_template.set_infos(parsed_infos[0], "you", parsed_infos[4], parsed_infos[2], parsed_infos[3])
 	return card_template
@@ -148,7 +148,7 @@ func _on_Control_retrieve(transactionID):
 	var uid = Networking.send_data_through_queue(req, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var res = packet[0]
 	if res[0] == "DONE":
 		refresh()

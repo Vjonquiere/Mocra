@@ -23,7 +23,7 @@ func get_tileset_infos_path(tileset_path:String) -> String:
 func init_selector(tileset_path:String):
 	var tileset_infos = JsonParser.get_data_from_json(get_tileset_infos_path(tileset_path))
 	for i in range(tileset_infos["tile_number"]):
-		var tile = tileTemplate.instance()
+		var tile = tileTemplate.instantiate()
 		tile.set_tile_texture(tileset_infos[str(i)]["texture_path"])
 		tile.set_tile_name(tileset_infos[str(i)]["name"])
 		tile.set_tile_number(i+1)

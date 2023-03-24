@@ -1,4 +1,4 @@
-extends Light2D
+extends PointLight2D
 
 var types = {"red":"4b1414", "orange":"453515", "green":"1d4515"}
 var light_type
@@ -17,9 +17,9 @@ func set_light_type(type:String):
 func start_light():
 	$".".enabled = true
 	if light_type == "green":
-		timer.connect("timeout", self, "_on_random_timer_timeout")
+		timer.connect("timeout",Callable(self,"_on_random_timer_timeout"))
 	elif light_type == "orange":
-		timer.connect("timeout", self, "_on_fixed_timer_timeout")
+		timer.connect("timeout",Callable(self,"_on_fixed_timer_timeout"))
 		timer.set_one_shot(false)
 	else:
 		return

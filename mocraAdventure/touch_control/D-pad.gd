@@ -30,7 +30,7 @@ func _on_UnderTexture_gui_input(event):
 			$movableTexture.set_position(Vector2(pos[0]-115/2, pos[1]-115/2))
 			move()
 	elif event is InputEventScreenTouch:
-		if event.pressed == true:
+		if event.button_pressed == true:
 			move()
 		else:
 			pos = center

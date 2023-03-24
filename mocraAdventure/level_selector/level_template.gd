@@ -16,7 +16,7 @@ func get_level_stats():
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var res = packet[0]
 	if res[0] == "nothing":
 		return null
@@ -24,7 +24,7 @@ func get_level_stats():
 		return res
 
 func update_level_stats():
-	var stats = yield(get_level_stats(), "completed")
+	var stats = await get_level_stats().completed
 	if stats == null:
 		return
 	$star1Texture.set_texture(load(textures[stats[3]]))
@@ -48,7 +48,7 @@ func set_unselected():
 	selected = false
 
 func _on_Control_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if not selected:
 			$Background.set_texture(load("res://mocraAdventure/level_selector/levels_textures/selected_background.png"))
 			selected = true

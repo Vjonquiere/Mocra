@@ -8,7 +8,7 @@ func _ready():
 	var uid = Networking.send_data_through_queue("get_friends", "|")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	display_friends(rcv)
 	
@@ -23,7 +23,7 @@ func _on_Button_pressed():
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	if rcv[0] != "nobody_found":
 		change_profile_infos(rcv[0], rcv[1])
@@ -53,7 +53,7 @@ func display_friends(friend_packet):
 	for i in range(1, len(friend_packet)-1):
 		var friend = friend_packet[i].split("/")
 		var online = true
-		var profile_scene_instance = profile_scene.instance()
+		var profile_scene_instance = profile_scene.instantiate()
 		$MyFriendNode/FriendContainer/VBoxContainer.add_child(profile_scene_instance)
 		if friend[0] == "0":
 			online = false
@@ -63,4 +63,4 @@ func display_friends(friend_packet):
 
 
 func _on_BackButton_pressed():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

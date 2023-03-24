@@ -12,7 +12,7 @@ func load_inputs(option_path:String):
 			match options["inputs"][options["input_names"][i]][j]["keytype"]:
 				"InputEventKey":
 					event = InputEventKey.new()
-					event.set_physical_scancode(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
+					event.set_physical_keycode(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
 				"InputEventMouseButton":
 					event = InputEventMouseButton.new()
 					event.set_button_index(int(options["inputs"][options["input_names"][i]][j]["event_scan_code"]))
@@ -46,7 +46,7 @@ func save_inputs(input_array:Array, option_path:String):
 
 func get_event_to_string(event):
 	if event is InputEventKey:
-		return ["InputEventKey", str(event.get_physical_scancode())]
+		return ["InputEventKey", str(event.get_physical_keycode())]
 	elif event is InputEventMouseButton:
 		return ["InputEventMouseButton", str(event.get_button_index())]
 	elif event is InputEventJoypadButton:
@@ -78,7 +78,6 @@ func options_to_string(options:Dictionary):
 	return content
 
 func save_options(path:String, content:String):
-	var file = File.new()
-	file.open(path, file.WRITE)
+	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(content)
 	file.close()

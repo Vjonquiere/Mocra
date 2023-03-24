@@ -10,14 +10,14 @@ var type = {"mouse":"InputEventMouseButton ", "joystick":"InputEventJoypadButton
 signal alter_input(input_name, event)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("alter_input", self, "_on_alter_input")
+	connect("alter_input",Callable(self,"_on_alter_input"))
 	var inputs = InputMap
 	var actions = inputs.get_actions()
 	for i in range(len(actions)):
 		if actions[i] in Global.alterable_inputs:
 			var events_text
-			var events = InputMap.get_action_list(actions[i])
-			var instance = template.instance()
+			var events = InputMap.action_get_events(actions[i])
+			var instance = template.instantiate()
 			instance.set_name(str(actions[i]))
 			instance.set_event_name(actions[i])
 			instance.set_node($".")

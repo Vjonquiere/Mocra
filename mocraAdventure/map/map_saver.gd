@@ -16,8 +16,7 @@ func save_map(size:Array, tile_size:int, name:String, tileset_path:String, tiles
 		content += str(tiles[i]) + ","
 	var final_char = str(tiles[len(tiles)-1]) + ']}'
 	content += final_char
-	var file = File.new()
-	file.open("user://" + name + "/map.json", File.WRITE)
+	var file = FileAccess.open("user://" + name + "/map.json", FileAccess.WRITE)
 	file.store_string(content)
 	file.close()
 
@@ -27,8 +26,7 @@ func save_entities(entity_array:Array, name:String):
 		content += '"' + str(i) + '": {"path":"' + entity_array[i]["path"] + '", "flip_h":' + str(entity_array[i]["flip_h"]).to_lower() + ', "flip_v":' + str(entity_array[i]["flip_v"]).to_lower() + ', "scale":' + str(entity_array[i]["scale"]) + ', "coords":' + str(entity_array[i]["coords"]) + ', "args":' + str(entity_array[i]["args"]) + ', "type":"' + entity_array[i]["type"] +'", "uid": "' + str(entity_array[i]["uid"]) + '"},\n'
 	var last_index = len(entity_array)-1
 	content += '"' + str(last_index) + '": {"path": "' + str(entity_array[last_index]["path"]) + '", "flip_h":' + str(entity_array[last_index]["flip_h"]).to_lower() + ', "flip_v":' + str(entity_array[last_index]["flip_v"]).to_lower() + ', "scale":' + str(entity_array[last_index]["scale"]) + ', "coords":' + str(entity_array[last_index]["coords"]) + ', "args":' + str(entity_array[last_index]["args"]) + ', "type":"' + entity_array[last_index]["type"] + '", "uid": "' + str(entity_array[last_index]["uid"]) +'"} }'
-	var file = File.new()
-	file.open("user://" + name + "/entities.json", File.WRITE)
+	var file = FileAccess.open("user://" + name + "/entities.json", FileAccess.WRITE)
 	file.store_string(content)
 	file.close()
 
@@ -38,18 +36,15 @@ func save_script(script_array:Array, name:String):
 		content += '"' + str(i) + '": ["' + str(script_array[i]["entity_id"]) + '", "' + types[script_array[i]["action"]] + '", "' + str(script_array[i]["title"]) + '", "' + str(script_array[i]["subtitle"]) + '"], \n'
 	var index = len(script_array)-1
 	content += '"' + str(index) + '": ["' + str(script_array[index]["entity_id"]) + '", "' + types[script_array[index]["action"]] + '", "' + str(script_array[index]["title"]) + '", "' + str(script_array[index]["subtitle"]) + '"] }'
-	var file = File.new()
-	file.open("user://" + name + "/script.json", File.WRITE)
+	var file = FileAccess.open("user://" + name + "/script.json", FileAccess.WRITE)
 	file.store_string(content)
 	file.close()
 
 func create_save_folder(name:String):
-	var dir = Directory.new()
-	dir.open("user://")
+	var dir = DirAccess.open("user://")
 	dir.make_dir(name)
 
 func create_time_stamp_file(name:String):
-	var file = File.new()
-	file.open("user://" + name + "/TimeStamp", File.WRITE)
-	file.store_string(str(OS.get_unix_time()))
+	var file = FileAccess.open("user://" + name + "/TimeStamp", FileAccess.WRITE)
+	file.store_string(str(Time.get_unix_time_from_system()))
 	file.close()

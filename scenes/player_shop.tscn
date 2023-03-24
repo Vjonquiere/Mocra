@@ -2,46 +2,46 @@
 
 [ext_resource path="res://Theme/default/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/player_shop.gd" type="Script" id=2]
-[ext_resource path="res://images/shop/player_shop/background.png" type="Texture" id=3]
-[ext_resource path="res://images/Menu_interface/credits.png" type="Texture" id=4]
-[ext_resource path="res://cards/collection_backgrounds/card_back.png" type="Texture" id=5]
-[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=6]
+[ext_resource path="res://images/shop/player_shop/background.png" type="Texture2D" id=3]
+[ext_resource path="res://images/Menu_interface/credits.png" type="Texture2D" id=4]
+[ext_resource path="res://cards/collection_backgrounds/card_back.png" type="Texture2D" id=5]
+[ext_resource path="res://ubuntu150.tres" type="FontFile" id=6]
 
 [node name="Control" type="Control"]
-margin_left = 0.598755
-margin_right = 0.598755
-rect_scale = Vector2( 0.7, 0.7 )
+offset_left = 0.598755
+offset_right = 0.598755
+scale = Vector2( 0.7, 0.7 )
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="backgoundTexture" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 3 )
 
 [node name="Sell" type="Control" parent="."]
-margin_left = 1520.0
-margin_right = 1920.0
-margin_bottom = 370.0
+offset_left = 1520.0
+offset_right = 1920.0
+offset_bottom = 370.0
 
 [node name="AmoutSpinBox" type="SpinBox" parent="Sell"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0018
-margin_top = -0.714264
-margin_right = 284.002
-margin_bottom = 84.2857
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 52.0018
+offset_top = -0.714264
+offset_right = 284.002
+offset_bottom = 84.2857
+scale = Vector2( 0.5, 0.5 )
 min_value = 1.0
 value = 1.0
 
 [node name="AmountLabel" type="Label" parent="Sell/AmoutSpinBox"]
-margin_left = -362.857
-margin_top = 9.53674e-05
-margin_right = -40.8571
-margin_bottom = 85.0001
+offset_left = -362.857
+offset_top = 9.53674e-05
+offset_right = -40.8571
+offset_bottom = 85.0001
 text = "Amount :"
 
 [node name="UnitPriceLineEdit" type="LineEdit" parent="Sell"]
@@ -49,20 +49,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 52.0017
-margin_top = 44.9999
-margin_right = 268.002
-margin_bottom = 130.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 52.0017
+offset_top = 44.9999
+offset_right = 268.002
+offset_bottom = 130.0
+scale = Vector2( 0.5, 0.5 )
 placeholder_text = "100"
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="UnitPriceLabel" type="Label" parent="Sell/UnitPriceLineEdit"]
-margin_left = -448.571
-margin_top = -2.85717
-margin_right = -25.5713
-margin_bottom = 82.1428
+offset_left = -448.571
+offset_top = -2.85717
+offset_right = -25.5713
+offset_bottom = 82.1428
 text = "Price/Unit : "
 
 [node name="SellButton" type="Button" parent="Sell"]
@@ -70,85 +70,85 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = 132.0
-margin_right = 172.0
-margin_bottom = 217.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = -40.0
+offset_top = 132.0
+offset_right = 172.0
+offset_bottom = 217.0
+scale = Vector2( 0.5, 0.5 )
 text = "SELL"
 
 [node name="TotalLabel" type="Label" parent="Sell"]
-margin_left = 52.0017
-margin_top = 282.857
-margin_right = 952.002
-margin_bottom = 367.857
-rect_scale = Vector2( 0.3, 0.3 )
+offset_left = 52.0017
+offset_top = 282.857
+offset_right = 952.002
+offset_bottom = 367.857
+scale = Vector2( 0.3, 0.3 )
 text = "Total amount will be 100 "
 
 [node name="CreditTexture" type="TextureRect" parent="Sell/TotalLabel"]
-margin_left = 900.0
-margin_top = 19.0475
-margin_right = 1000.0
-margin_bottom = 119.048
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 900.0
+offset_top = 19.0475
+offset_right = 1000.0
+offset_bottom = 119.048
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="SelectCardButton" type="Button" parent="Sell"]
-margin_left = 36.0
-margin_top = 69.0
-margin_right = 177.0
-margin_bottom = 275.0
-rect_scale = Vector2( 0.6, 0.6 )
+offset_left = 36.0
+offset_top = 69.0
+offset_right = 177.0
+offset_bottom = 275.0
+scale = Vector2( 0.6, 0.6 )
 icon = ExtResource( 5 )
-icon_align = 1
+icon_alignment = 1
 
 [node name="SelectedCardNameLabel" type="Label" parent="Sell"]
 visible = false
-margin_left = 185.868
-margin_top = 108.801
-margin_right = 225.868
-margin_bottom = 134.801
+offset_left = 185.868
+offset_top = 108.801
+offset_right = 225.868
+offset_bottom = 134.801
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 15.0
-margin_top = 380.0
-margin_right = 1915.0
-margin_bottom = 1060.0
+offset_left = 15.0
+offset_top = 380.0
+offset_right = 1915.0
+offset_bottom = 1060.0
 
 [node name="Buy" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1880.0
-margin_bottom = 680.0
-rect_min_size = Vector2( 1880, 680 )
+offset_right = 1880.0
+offset_bottom = 680.0
+custom_minimum_size = Vector2( 1880, 680 )
 custom_constants/separation = 20
 
 [node name="QuitButton" type="Button" parent="."]
-margin_left = 1850.57
-margin_top = 15.7143
-margin_right = 1953.57
-margin_bottom = 100.714
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 1850.57
+offset_top = 15.7143
+offset_right = 1953.57
+offset_bottom = 100.714
+scale = Vector2( 0.5, 0.5 )
 text = "X"
 
 [node name="CurrentCardToSell" type="ScrollContainer" parent="."]
-margin_left = 15.0
-margin_top = 150.0
-margin_right = 27.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 1500, 230 )
+offset_left = 15.0
+offset_top = 150.0
+offset_right = 27.0
+offset_bottom = 162.0
+custom_minimum_size = Vector2( 1500, 230 )
 
 [node name="Container" type="HBoxContainer" parent="CurrentCardToSell"]
-margin_right = 1450.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 1450, 215 )
+offset_right = 1450.0
+offset_bottom = 215.0
+custom_minimum_size = Vector2( 1450, 215 )
 
 [node name="EmptyLabel" type="Label" parent="."]
 visible = false
 anchor_right = 1.0
-margin_left = 451.069
-margin_top = 571.203
-margin_right = 2697.07
-margin_bottom = 740.203
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 451.069
+offset_top = 571.203
+offset_right = 2697.07
+offset_bottom = 740.203
+scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 6 )
 text = "THE SHOP IS CURRENTLY EMPTY"
 

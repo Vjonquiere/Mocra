@@ -1,7 +1,7 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal anim_playing_finished()
-export (int) var speed = 200
+@export (int) var speed = 200
 
 var velocity = Vector2()
 var anim_playing = false
@@ -21,19 +21,19 @@ var object3_cooldown_active = false
 var usable_entity = null
 
 func _ready():
-	set_collision("res://mocraAdventure/character/debug/CollisionShape.tres")
+	set_collision("res://mocraAdventure/character/debug/CollisionShape3D.tres")
 	set_sprite_sheet("res://mocraAdventure/character/debug/SpriteFrame.tres")
 	$".".add_child(offensive_timer)
-	offensive_timer.connect("timeout", self, "_on_offensive_timeout")
+	offensive_timer.connect("timeout",Callable(self,"_on_offensive_timeout"))
 	offensive_timer.set_wait_time(1.0) ## AUTOMATISATION 
 	$".".add_child(object1_timer)
-	object1_timer.connect("timeout", self, "_on_object1_timeout")
+	object1_timer.connect("timeout",Callable(self,"_on_object1_timeout"))
 	object1_timer.set_wait_time(1.0) ## AUTOMATISATION 
 	$".".add_child(object2_timer)
-	object2_timer.connect("timeout", self, "_on_object2_timeout")
+	object2_timer.connect("timeout",Callable(self,"_on_object2_timeout"))
 	object2_timer.set_wait_time(1.0) ## AUTOMATISATION 
 	$".".add_child(object3_timer)
-	object3_timer.connect("timeout", self, "_on_object3_timeout")
+	object3_timer.connect("timeout",Callable(self,"_on_object3_timeout"))
 	object3_timer.set_wait_time(1.0) ## AUTOMATISATION 
 
 func is_player():
@@ -43,8 +43,8 @@ func set_collision(collision_shape_path:String) -> void:
 	$CollisionShape2D.set_shape(load(collision_shape_path))
 
 func set_sprite_sheet(sprite_shape_path:String) -> void:
-	$AnimatedSprite.set_sprite_frames(load(sprite_shape_path))
-	$AnimatedSprite.play("idle")
+	$AnimatedSprite2D.set_sprite_frames(load(sprite_shape_path))
+	$AnimatedSprite2D.play("idle")
 
 
 func get_input():
@@ -55,7 +55,7 @@ func get_input():
 		offensive_timer.start()
 		offensive_1()
 		$offensive1Area/offensive1CollisionShape.disabled = false
-		$AnimatedSprite.play("offensive_1")
+		$AnimatedSprite2D.play("offensive_1")
 		anim_playing = true
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_down"):
 		velocity.x += 1
@@ -108,13 +108,15 @@ func get_input():
 		object3_timer.start()
 
 	if !anim_playing:
-		$AnimatedSprite.play(anim_to_play)
+		$AnimatedSprite2D.play(anim_to_play)
 	velocity = velocity.normalized() * speed
 
 
 func _physics_process(delta):
 	get_input()
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	var pos = self.get_position()
 	$Label.set_text("pos (" + str(round(pos[0])) + "," + str(round(pos[1])) + ")")
 	get_parent().move(self.get_position())
@@ -129,7 +131,7 @@ func _on_CharacterController_anim_playing_finished():
 	anim_playing = false
 
 func _on_offensive1Area_body_entered(body):
-	if !(body is KinematicBody2D) && body.has_method("get_id"):
+	if !(body is CharacterBody2D) && body.has_method("get_id"):
 		get_parent().entity_hurt(body.get_id())
 
 func _on_offensive_timeout():

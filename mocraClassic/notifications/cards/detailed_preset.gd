@@ -9,7 +9,7 @@ var credits_amount
 var notification_id
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	yield(get_card(), "completed")
+	await get_card().completed
 	$Control/numberLabel.set_text("x"+str(number_of_cards))
 	$Control/amountLabel.set_text(str(int(credits_amount)*int(number_of_cards)))
 	$Control/cardIcon.set_texture(load(PATH+str(card_infos[3])+".png"))
@@ -26,13 +26,13 @@ func get_card():
 	var uid = Networking.send_data_through_queue(string, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	card_infos = packet[0]
 
 func _on_deleteButton_pressed():
 	var uid = Networking.send_data_through_queue("delete_notification/"+str(notification_id), "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	if packet[0][0] == "DONE":
 		self.queue_free()

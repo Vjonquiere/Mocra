@@ -1,109 +1,109 @@
 [gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://background.png" type="Texture" id=2]
-[ext_resource path="res://animations/between_cards/anim_12.png" type="Texture" id=3]
-[ext_resource path="res://animations/between_cards/anim_11.png" type="Texture" id=4]
-[ext_resource path="res://animations/between_cards/anim_10.png" type="Texture" id=5]
-[ext_resource path="res://animations/between_cards/anim_9.png" type="Texture" id=6]
-[ext_resource path="res://animations/between_cards/anim_8.png" type="Texture" id=7]
-[ext_resource path="res://animations/between_cards/anim_7.png" type="Texture" id=8]
-[ext_resource path="res://animations/between_cards/anim_6.png" type="Texture" id=9]
-[ext_resource path="res://animations/between_cards/anim_5.png" type="Texture" id=10]
-[ext_resource path="res://animations/between_cards/anim_4.png" type="Texture" id=11]
-[ext_resource path="res://animations/between_cards/anim_3.png" type="Texture" id=12]
-[ext_resource path="res://animations/between_cards/anim_2.png" type="Texture" id=13]
-[ext_resource path="res://animations/between_cards/anim_1.png" type="Texture" id=14]
-[ext_resource path="res://images/pack_images/packn1.png" type="Texture" id=15]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0000.png" type="Texture" id=16]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0001.png" type="Texture" id=17]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0002.png" type="Texture" id=18]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0003.png" type="Texture" id=19]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0004.png" type="Texture" id=20]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0005.png" type="Texture" id=21]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0006.png" type="Texture" id=22]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0007.png" type="Texture" id=23]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0008.png" type="Texture" id=24]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0009.png" type="Texture" id=25]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0010.png" type="Texture" id=26]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0011.png" type="Texture" id=27]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0012.png" type="Texture" id=28]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0013.png" type="Texture" id=29]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0014.png" type="Texture" id=30]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0015.png" type="Texture" id=31]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0016.png" type="Texture" id=32]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0017.png" type="Texture" id=33]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0018.png" type="Texture" id=34]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0019.png" type="Texture" id=35]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0020.png" type="Texture" id=36]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0021.png" type="Texture" id=37]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0022.png" type="Texture" id=38]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0023.png" type="Texture" id=39]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0024.png" type="Texture" id=40]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0025.png" type="Texture" id=41]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0026.png" type="Texture" id=42]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0027.png" type="Texture" id=43]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0028.png" type="Texture" id=44]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0029.png" type="Texture" id=45]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0030.png" type="Texture" id=46]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0031.png" type="Texture" id=47]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0032.png" type="Texture" id=48]
-[ext_resource path="res://animations/Menu/ClassicPack/frame0033.png" type="Texture" id=49]
+[ext_resource path="res://background.png" type="Texture2D" id=2]
+[ext_resource path="res://animations/between_cards/anim_12.png" type="Texture2D" id=3]
+[ext_resource path="res://animations/between_cards/anim_11.png" type="Texture2D" id=4]
+[ext_resource path="res://animations/between_cards/anim_10.png" type="Texture2D" id=5]
+[ext_resource path="res://animations/between_cards/anim_9.png" type="Texture2D" id=6]
+[ext_resource path="res://animations/between_cards/anim_8.png" type="Texture2D" id=7]
+[ext_resource path="res://animations/between_cards/anim_7.png" type="Texture2D" id=8]
+[ext_resource path="res://animations/between_cards/anim_6.png" type="Texture2D" id=9]
+[ext_resource path="res://animations/between_cards/anim_5.png" type="Texture2D" id=10]
+[ext_resource path="res://animations/between_cards/anim_4.png" type="Texture2D" id=11]
+[ext_resource path="res://animations/between_cards/anim_3.png" type="Texture2D" id=12]
+[ext_resource path="res://animations/between_cards/anim_2.png" type="Texture2D" id=13]
+[ext_resource path="res://animations/between_cards/anim_1.png" type="Texture2D" id=14]
+[ext_resource path="res://images/pack_images/packn1.png" type="Texture2D" id=15]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0000.png" type="Texture2D" id=16]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0001.png" type="Texture2D" id=17]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0002.png" type="Texture2D" id=18]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0003.png" type="Texture2D" id=19]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0004.png" type="Texture2D" id=20]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0005.png" type="Texture2D" id=21]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0006.png" type="Texture2D" id=22]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0007.png" type="Texture2D" id=23]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0008.png" type="Texture2D" id=24]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0009.png" type="Texture2D" id=25]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0010.png" type="Texture2D" id=26]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0011.png" type="Texture2D" id=27]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0012.png" type="Texture2D" id=28]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0013.png" type="Texture2D" id=29]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0014.png" type="Texture2D" id=30]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0015.png" type="Texture2D" id=31]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0016.png" type="Texture2D" id=32]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0017.png" type="Texture2D" id=33]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0018.png" type="Texture2D" id=34]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0019.png" type="Texture2D" id=35]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0020.png" type="Texture2D" id=36]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0021.png" type="Texture2D" id=37]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0022.png" type="Texture2D" id=38]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0023.png" type="Texture2D" id=39]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0024.png" type="Texture2D" id=40]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0025.png" type="Texture2D" id=41]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0026.png" type="Texture2D" id=42]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0027.png" type="Texture2D" id=43]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0028.png" type="Texture2D" id=44]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0029.png" type="Texture2D" id=45]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0030.png" type="Texture2D" id=46]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0031.png" type="Texture2D" id=47]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0032.png" type="Texture2D" id=48]
+[ext_resource path="res://animations/Menu/ClassicPack/frame0033.png" type="Texture2D" id=49]
 [ext_resource path="res://mocraClassic/client_infos/control.tscn" type="PackedScene" id=50]
-[ext_resource path="res://mocraClassic/parameters/icon.png" type="Texture" id=51]
-[ext_resource path="res://images/pack_images/packn2.png" type="Texture" id=52]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0000.png" type="Texture" id=53]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0001.png" type="Texture" id=54]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0002.png" type="Texture" id=55]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0003.png" type="Texture" id=56]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0004.png" type="Texture" id=57]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0005.png" type="Texture" id=58]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0006.png" type="Texture" id=59]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0007.png" type="Texture" id=60]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0008.png" type="Texture" id=61]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0009.png" type="Texture" id=62]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0010.png" type="Texture" id=63]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0011.png" type="Texture" id=64]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0012.png" type="Texture" id=65]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0013.png" type="Texture" id=66]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0014.png" type="Texture" id=67]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0015.png" type="Texture" id=68]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0016.png" type="Texture" id=69]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0017.png" type="Texture" id=70]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0018.png" type="Texture" id=71]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0019.png" type="Texture" id=72]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0020.png" type="Texture" id=73]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0021.png" type="Texture" id=74]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0022.png" type="Texture" id=75]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0023.png" type="Texture" id=76]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0024.png" type="Texture" id=77]
-[ext_resource path="res://animations/Menu/ShinyPack/frame0025.png" type="Texture" id=78]
-[ext_resource path="res://fonts/Classic_font_24.tres" type="DynamicFont" id=79]
-[ext_resource path="res://images/Menu_interface/credits.png" type="Texture" id=80]
-[ext_resource path="res://images/Menu_interface/shiny_credits.png" type="Texture" id=81]
-[ext_resource path="res://images/Menu_interface/boost.png" type="Texture" id=82]
+[ext_resource path="res://mocraClassic/parameters/icon.png" type="Texture2D" id=51]
+[ext_resource path="res://images/pack_images/packn2.png" type="Texture2D" id=52]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0000.png" type="Texture2D" id=53]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0001.png" type="Texture2D" id=54]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0002.png" type="Texture2D" id=55]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0003.png" type="Texture2D" id=56]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0004.png" type="Texture2D" id=57]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0005.png" type="Texture2D" id=58]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0006.png" type="Texture2D" id=59]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0007.png" type="Texture2D" id=60]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0008.png" type="Texture2D" id=61]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0009.png" type="Texture2D" id=62]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0010.png" type="Texture2D" id=63]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0011.png" type="Texture2D" id=64]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0012.png" type="Texture2D" id=65]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0013.png" type="Texture2D" id=66]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0014.png" type="Texture2D" id=67]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0015.png" type="Texture2D" id=68]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0016.png" type="Texture2D" id=69]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0017.png" type="Texture2D" id=70]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0018.png" type="Texture2D" id=71]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0019.png" type="Texture2D" id=72]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0020.png" type="Texture2D" id=73]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0021.png" type="Texture2D" id=74]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0022.png" type="Texture2D" id=75]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0023.png" type="Texture2D" id=76]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0024.png" type="Texture2D" id=77]
+[ext_resource path="res://animations/Menu/ShinyPack/frame0025.png" type="Texture2D" id=78]
+[ext_resource path="res://fonts/Classic_font_24.tres" type="FontFile" id=79]
+[ext_resource path="res://images/Menu_interface/credits.png" type="Texture2D" id=80]
+[ext_resource path="res://images/Menu_interface/shiny_credits.png" type="Texture2D" id=81]
+[ext_resource path="res://images/Menu_interface/boost.png" type="Texture2D" id=82]
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=83]
-[ext_resource path="res://images/Menu_interface/collection_icon.png" type="Texture" id=84]
-[ext_resource path="res://images/Menu_interface/battle_mode_icon.png" type="Texture" id=85]
-[ext_resource path="res://images/Menu_interface/trade_mode_icon.png" type="Texture" id=86]
-[ext_resource path="res://images/boxes/type1/2_1.png" type="Texture" id=87]
-[ext_resource path="res://images/default_icon.png" type="Texture" id=88]
-[ext_resource path="res://images/Menu_interface/global_points.png" type="Texture" id=89]
-[ext_resource path="res://images/Menu_interface/friend.png" type="Texture" id=90]
+[ext_resource path="res://images/Menu_interface/collection_icon.png" type="Texture2D" id=84]
+[ext_resource path="res://images/Menu_interface/battle_mode_icon.png" type="Texture2D" id=85]
+[ext_resource path="res://images/Menu_interface/trade_mode_icon.png" type="Texture2D" id=86]
+[ext_resource path="res://images/boxes/type1/2_1.png" type="Texture2D" id=87]
+[ext_resource path="res://images/default_icon.png" type="Texture2D" id=88]
+[ext_resource path="res://images/Menu_interface/global_points.png" type="Texture2D" id=89]
+[ext_resource path="res://images/Menu_interface/friend.png" type="Texture2D" id=90]
 [ext_resource path="res://scripts/News.gd" type="Script" id=91]
 [ext_resource path="res://mocraClassic/notifications/Badge.tscn" type="PackedScene" id=92]
-[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=93]
+[ext_resource path="res://ubuntu150.tres" type="FontFile" id=93]
 [ext_resource path="res://Theme/default/theme.tres" type="Theme" id=94]
 [ext_resource path="res://mocraClassic/shaders/blur.tres" type="Material" id=95]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 1.38729e-43, 1 )
-colors = PoolColorArray( 0.909804, 0.423529, 0.0509804, 1, 0.878431, 0.0862745, 0.0862745, 1 )
+offsets = PackedFloat32Array( 1.38729e-43, 1 )
+colors = PackedColorArray( 0.909804, 0.423529, 0.0509804, 1, 0.878431, 0.0862745, 0.0862745, 1 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -151,11 +151,11 @@ __meta__ = {
 }
 
 [node name="background" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
 position = Vector2( 288.111, 349.973 )
 scale = Vector2( 5, 5 )
@@ -163,7 +163,7 @@ amount = 4
 fixed_fps = 60
 process_material = SubResource( 3 )
 
-[node name="Particles2D2" type="Particles2D" parent="."]
+[node name="Particles2D2" type="GPUParticles2D" parent="."]
 visible = false
 position = Vector2( 882.276, 375.079 )
 scale = Vector2( 5, 5 )
@@ -171,20 +171,20 @@ amount = 4
 fixed_fps = 60
 process_material = SubResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 frames = SubResource( 4 )
 animation = "opening"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 1000.0
-margin_top = 450.0
-margin_right = 1500.0
-margin_bottom = 1150.0
-rect_scale = Vector2( 0.7, 0.7 )
+offset_left = 1000.0
+offset_top = 450.0
+offset_right = 1500.0
+offset_bottom = 1150.0
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 15 )
 
-[node name="ClassicPackAnim" type="AnimatedSprite" parent="TextureRect"]
+[node name="ClassicPackAnim" type="AnimatedSprite2D" parent="TextureRect"]
 position = Vector2( 274.925, 317.864 )
 scale = Vector2( 0.393489, 0.393489 )
 frames = SubResource( 5 )
@@ -192,32 +192,32 @@ frame = 30
 playing = true
 
 [node name="Button" type="Button" parent="TextureRect"]
-margin_left = 181.428
-margin_top = 372.857
-margin_right = 417.428
-margin_bottom = 485.857
-rect_scale = Vector2( 0.6, 0.6 )
+offset_left = 181.428
+offset_top = 372.857
+offset_right = 417.428
+offset_bottom = 485.857
+scale = Vector2( 0.6, 0.6 )
 theme = ExtResource( 94 )
 text = "Open"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 1500.0
-margin_top = 450.0
-margin_right = 2000.0
-margin_bottom = 1150.0
-rect_scale = Vector2( 0.7, 0.7 )
+offset_left = 1500.0
+offset_top = 450.0
+offset_right = 2000.0
+offset_bottom = 1150.0
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 52 )
 
 [node name="ShinyButton" type="Button" parent="TextureRect2"]
-margin_left = 185.714
-margin_top = 367.143
-margin_right = 414.714
-margin_bottom = 486.143
-rect_scale = Vector2( 0.6, 0.6 )
+offset_left = 185.714
+offset_top = 367.143
+offset_right = 414.714
+offset_bottom = 486.143
+scale = Vector2( 0.6, 0.6 )
 theme = ExtResource( 94 )
 text = "Open"
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect2"]
 position = Vector2( 245.452, 308.429 )
 scale = Vector2( 0.393, 0.393 )
 frames = SubResource( 6 )
@@ -226,10 +226,10 @@ playing = true
 
 [node name="credits_label" type="Label" parent="."]
 visible = false
-margin_left = 1808.87
-margin_top = 22.8036
-margin_right = 1848.87
-margin_bottom = 54.8036
+offset_left = 1808.87
+offset_top = 22.8036
+offset_right = 1848.87
+offset_bottom = 54.8036
 grow_horizontal = 0
 custom_fonts/font = ExtResource( 79 )
 text = "NA"
@@ -238,19 +238,19 @@ align = 2
 [node name="credits_texture" type="TextureRect" parent="credits_label"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 4.97156
-margin_top = -9.33083
-margin_right = 104.972
-margin_bottom = 90.6692
-rect_scale = Vector2( 0.489589, 0.489589 )
+offset_left = 4.97156
+offset_top = -9.33083
+offset_right = 104.972
+offset_bottom = 90.6692
+scale = Vector2( 0.489589, 0.489589 )
 texture = ExtResource( 80 )
 
 [node name="shinycredits_label" type="Label" parent="."]
 visible = false
-margin_left = 1816.24
-margin_top = 82.2876
-margin_right = 1856.24
-margin_bottom = 114.288
+offset_left = 1816.24
+offset_top = 82.2876
+offset_right = 1856.24
+offset_bottom = 114.288
 grow_horizontal = 0
 custom_fonts/font = ExtResource( 79 )
 text = "NA"
@@ -258,29 +258,29 @@ text = "NA"
 [node name="shinycredits_texture" type="TextureRect" parent="shinycredits_label"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -0.343994
-margin_top = -8.58258
-margin_right = 99.656
-margin_bottom = 91.4174
-rect_scale = Vector2( 0.497383, 0.497383 )
+offset_left = -0.343994
+offset_top = -8.58258
+offset_right = 99.656
+offset_bottom = 91.4174
+scale = Vector2( 0.497383, 0.497383 )
 texture = ExtResource( 81 )
 
 [node name="boost_label" type="Label" parent="."]
 visible = false
-margin_left = 1815.76
-margin_top = 139.439
-margin_right = 1855.76
-margin_bottom = 171.439
+offset_left = 1815.76
+offset_top = 139.439
+offset_right = 1855.76
+offset_bottom = 171.439
 grow_horizontal = 0
 custom_fonts/font = ExtResource( 79 )
 text = "NA"
 
 [node name="boost_texture" type="TextureRect" parent="boost_label"]
-margin_left = 40.8223
-margin_top = -6.99811
-margin_right = 140.822
-margin_bottom = 93.0019
-rect_scale = Vector2( 0.488047, 0.488047 )
+offset_left = 40.8223
+offset_top = -6.99811
+offset_right = 140.822
+offset_bottom = 93.0019
+scale = Vector2( 0.488047, 0.488047 )
 texture = ExtResource( 82 )
 
 [node name="ErrorLabel" type="Label" parent="."]
@@ -289,88 +289,88 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -75.801
-margin_right = 20.0
-margin_bottom = -61.801
+offset_left = -20.0
+offset_top = -75.801
+offset_right = 20.0
+offset_bottom = -61.801
 grow_horizontal = 2
 
 [node name="CollectionButton" type="Button" parent="."]
-margin_left = 130.0
-margin_top = 264.0
-margin_right = 671.0
-margin_bottom = 406.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 130.0
+offset_top = 264.0
+offset_right = 671.0
+offset_bottom = 406.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "My Collection"
 
 [node name="CollectionIcon" type="TextureRect" parent="CollectionButton"]
-margin_left = 154.0
-margin_top = -127.0
-margin_right = 554.0
-margin_bottom = 123.001
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 154.0
+offset_top = -127.0
+offset_right = 554.0
+offset_bottom = 123.001
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 84 )
 
 [node name="BattleButton" type="Button" parent="."]
-margin_left = 479.0
-margin_top = 264.0
-margin_right = 971.0
-margin_bottom = 406.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 479.0
+offset_top = 264.0
+offset_right = 971.0
+offset_bottom = 406.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "Battle Mode"
 
 [node name="BattleIcon" type="TextureRect" parent="BattleButton"]
-margin_left = 149.0
-margin_top = -110.0
-margin_right = 549.0
-margin_bottom = 90.0008
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 149.0
+offset_top = -110.0
+offset_right = 549.0
+offset_bottom = 90.0008
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 85 )
 
 [node name="TradeButton" type="Button" parent="."]
-margin_left = 783.0
-margin_top = 264.0
-margin_right = 1097.0
-margin_bottom = 406.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 783.0
+offset_top = 264.0
+offset_right = 1097.0
+offset_bottom = 406.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "Trade"
 
 [node name="TradeIcon" type="TextureRect" parent="TradeButton"]
-margin_left = 43.0
-margin_top = -106.0
-margin_right = 443.0
-margin_bottom = 94.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 43.0
+offset_top = -106.0
+offset_right = 443.0
+offset_bottom = 94.0
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 86 )
 
 [node name="Profile" type="Control" parent="."]
-margin_top = 30.0
-margin_right = 358.0
-margin_bottom = 145.0
+offset_top = 30.0
+offset_right = 358.0
+offset_bottom = 145.0
 
 [node name="Background_texture" type="TextureRect" parent="Profile"]
-margin_left = 18.093
-margin_top = 7.75415
-margin_right = 418.093
-margin_bottom = 207.754
-rect_scale = Vector2( 0.75, 0.5 )
+offset_left = 18.093
+offset_top = 7.75415
+offset_right = 418.093
+offset_bottom = 207.754
+scale = Vector2( 0.75, 0.5 )
 texture = ExtResource( 87 )
 
 [node name="ProfilePic_texture" type="TextureRect" parent="Profile"]
-margin_left = 30.0
-margin_top = 17.0
-margin_right = 100.0
-margin_bottom = 97.0
+offset_left = 30.0
+offset_top = 17.0
+offset_right = 100.0
+offset_bottom = 97.0
 texture = ExtResource( 88 )
 
 [node name="NameLabel" type="Label" parent="Profile"]
-margin_left = 191.0
-margin_top = 17.0
-margin_right = 206.0
-margin_bottom = 51.0
+offset_left = 191.0
+offset_top = 17.0
+offset_right = 206.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 83 )
@@ -378,116 +378,116 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "A"
 
 [node name="GlobalPointsLabel" type="Label" parent="Profile"]
-margin_left = 227.204
-margin_top = 60.7692
-margin_right = 242.204
-margin_bottom = 94.7692
+offset_left = 227.204
+offset_top = 60.7692
+offset_right = 242.204
+offset_bottom = 94.7692
 grow_horizontal = 0
 theme = ExtResource( 83 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "A"
 
 [node name="GlobalPointsTexture" type="TextureRect" parent="Profile"]
-margin_left = 245.324
-margin_top = 54.5765
-margin_right = 345.324
-margin_bottom = 154.576
-rect_scale = Vector2( 0.4, 0.4 )
+offset_left = 245.324
+offset_top = 54.5765
+offset_right = 345.324
+offset_bottom = 154.576
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 89 )
 
 [node name="FriendButton" type="Button" parent="."]
-margin_left = 358.0
-margin_top = 85.0
-margin_right = 652.0
-margin_bottom = 183.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 358.0
+offset_top = 85.0
+offset_right = 652.0
+offset_bottom = 183.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "friends"
 
 [node name="TextureRect" type="TextureRect" parent="FriendButton"]
-margin_left = 54.0
-margin_top = -126.0
-margin_right = 454.0
-margin_bottom = 124.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 54.0
+offset_top = -126.0
+offset_right = 454.0
+offset_bottom = 124.0
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 90 )
 
 [node name="News" type="Container" parent="."]
-margin_left = 500.0
-margin_right = 1154.0
-margin_bottom = 200.0
+offset_left = 500.0
+offset_right = 1154.0
+offset_bottom = 200.0
 script = ExtResource( 91 )
 
 [node name="Label" type="Label" parent="News"]
-margin_right = 40.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 94.31, 0 )
+offset_right = 40.0
+offset_bottom = 14.0
+custom_minimum_size = Vector2( 94.31, 0 )
 theme = ExtResource( 83 )
 text = "Postbox:"
 
 [node name="QuickOpenLabel" type="Label" parent="."]
-margin_left = 1080.42
-margin_top = 335.08
-margin_right = 2415.42
-margin_bottom = 504.08
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 1080.42
+offset_top = 335.08
+offset_right = 2415.42
+offset_bottom = 504.08
+scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 93 )
 text = "Pack of the mounth"
 
 [node name="MocraAdventureButton" type="Button" parent="."]
-margin_left = 432.0
-margin_top = 411.0
-margin_right = 1282.0
-margin_bottom = 561.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 432.0
+offset_top = 411.0
+offset_right = 1282.0
+offset_bottom = 561.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "Mocra Adventure"
 
 [node name="PlayerShopButton" type="Button" parent="."]
-margin_left = 120.0
-margin_top = 413.0
-margin_right = 723.0
-margin_bottom = 563.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 120.0
+offset_top = 413.0
+offset_right = 723.0
+offset_bottom = 563.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 text = "Player Shop"
 
 [node name="OptionsButton" type="Button" parent="."]
 anchor_right = 0.404
-margin_left = 1812.0
-margin_top = 993.0
-margin_right = 1166.32
-margin_bottom = 1123.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 1812.0
+offset_top = 993.0
+offset_right = 1166.32
+offset_bottom = 1123.0
+scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 94 )
 theme_type_variation = "button_blue"
 icon = ExtResource( 51 )
-icon_align = 1
+icon_alignment = 1
 
 [node name="blur" type="TextureRect" parent="."]
 visible = false
 material = ExtResource( 95 )
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="clientInfos" parent="." instance=ExtResource( 50 )]
-margin_left = 1670.0
-margin_top = 4.0
-margin_right = 2070.0
-margin_bottom = 354.0
-rect_scale = Vector2( 0.6, 0.6 )
+offset_left = 1670.0
+offset_top = 4.0
+offset_right = 2070.0
+offset_bottom = 354.0
+scale = Vector2( 0.6, 0.6 )
 
 [node name="badge" parent="." instance=ExtResource( 92 )]
-margin_left = 274.0
-margin_top = 28.0
-margin_right = -1446.0
-margin_bottom = -852.0
-rect_scale = Vector2( 0.3, 0.3 )
+offset_left = 274.0
+offset_top = 28.0
+offset_right = -1446.0
+offset_bottom = -852.0
+scale = Vector2( 0.3, 0.3 )
 
 [connection signal="remove_blur" from="." to="." method="_on_Control_remove_blur"]
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="TextureRect2/ShinyButton" to="." method="_on_ShinyButton_pressed"]
 [connection signal="pressed" from="CollectionButton" to="." method="_on_CollectionButton_pressed"]

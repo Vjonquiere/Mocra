@@ -13,7 +13,7 @@ func init_selector(entities_path:String):
 	var entities_infos = JsonParser.get_data_from_json(entities_path)
 	print(entities_infos)
 	for i in range(entities_infos["entities_number"]):
-		var tile = tile_template.instance()
+		var tile = tile_template.instantiate()
 		tile.set_tile_texture_scale(entities_infos[str(i)]["texture_path"], 0.2)
 		tile.set_tile_name(entities_infos[str(i)]["name"])
 		tile.set_tile_number(i)

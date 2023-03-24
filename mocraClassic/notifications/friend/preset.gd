@@ -6,7 +6,7 @@ const PATH = "res://mocraClassic/notifications/friend/"
 var player_name
 var type
 
-onready var player_label = $playerNameLabel
+@onready var player_label = $playerNameLabel
 
 func _ready():
 	if type != "default":

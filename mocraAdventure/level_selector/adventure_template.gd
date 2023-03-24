@@ -20,7 +20,7 @@ func add_level(Name:String, Difficulty:String, Description:String, ID:String):
 	if level_nbr != 0:
 		add_arrow()
 
-	var level_gui = level_template.instance()
+	var level_gui = level_template.instantiate()
 	level_array.append(level_gui)
 	level_dic[ID] = level_gui
 	$HBoxContainer.add_child(level_gui)
@@ -40,7 +40,7 @@ func set_name(name:String):
 	$NameLabel.set_text(name)
 
 func add_arrow():
-	var arrow = arrow_template.instance()
+	var arrow = arrow_template.instantiate()
 	arrow_array.append(arrow)
 	$HBoxContainer.add_child(arrow)
 
@@ -62,7 +62,7 @@ func toggle_level_visibility():
 
 
 func _on_AdventureSeparator_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		toggle_level_visibility()
 
 

@@ -1,4 +1,4 @@
-extends TextureProgress
+extends TextureProgressBar
 
 var maximum
 var minimum

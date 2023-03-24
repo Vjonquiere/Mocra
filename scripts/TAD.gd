@@ -4,7 +4,7 @@ class_name Pile
 
 var array = []
 
-func _init() -> void:
+func _init():
 	print("Pile initied")
 
 func stack(object) -> void:

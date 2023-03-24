@@ -60,23 +60,23 @@ func display_joinable_battles(battle_array):
 		button.set_position(Vector2(670,(battles+2)*40))
 		button.set_text("JOIN")
 		button.set_theme(classic_theme)
-		button.connect("pressed", self, "join_a_room", [room_code])
+		button.connect("pressed",Callable(self,"join_a_room").bind(room_code))
 
 func join_a_room(room):
 	
 	var data = "join_room/" + room
 #	Networking.send_data(data)
-#	var result = yield(Networking.waiting_for_server("/"), "completed")
+#	var result = await Networking.waiting_for_server("/").completed
 	var uid = Networking.send_data_through_queue(data, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var result = packet[0]
 	print(result)
 	
 	if result[0] == "room_finded":
-		var opening = yield(Networking.waiting_for_server("/"), "completed")
-		var results = yield(Networking.waiting_for_server("!"), "completed")
+		var opening = await Networking.waiting_for_server("/").completed
+		var results = await Networking.waiting_for_server("!").completed
 		if len(results) < 3:
 			print("Infos are not complete")
 			
@@ -85,7 +85,7 @@ func join_a_room(room):
 		for i in range(len(opponent_card_id)-1):
 			var request = "get_card_infos/" + str(opponent_card_id[i])
 			Networking.send_data(request)
-			var res = yield(Networking.waiting_for_server(""), "completed")
+			var res = await Networking.waiting_for_server("").completed
 			opponent_card_array.append(res)
 	
 		Global.opponent_card_str = opponent_card_array
@@ -96,7 +96,7 @@ func join_a_room(room):
 		for i in range(len(my_card_id)-1):
 			var request = "get_card_infos/" + str(my_card_id[i])
 			Networking.send_data(request)
-			var res = yield(Networking.waiting_for_server(""), "completed")
+			var res = await Networking.waiting_for_server("").completed
 			my_card_array.append(res)
 		
 
@@ -104,7 +104,7 @@ func join_a_room(room):
 
 		Global.battle_result = results[2].split("/")
 	
-		get_tree().change_scene("res://scenes/card_opening.tscn")
+		get_tree().change_scene_to_file("res://scenes/card_opening.tscn")
 	
 		$CreateRoomNode/CreateButton.disabled = false
 		$BackButton.disabled = false
@@ -114,7 +114,7 @@ func join_a_room(room):
 
 func timer_init():
 	print('Timer INIT')
-	timer.connect("timeout",self,"waiting") 
+	timer.connect("timeout",Callable(self,"waiting")) 
 	timer.set_wait_time(1)
 	add_child(timer) 
 
@@ -138,7 +138,7 @@ func _waiting_for_client2(truc):
 
 func _on_JoinButton_pressed():
 	Networking.send_data("check_available_battle_rooms")
-	var rcv = yield(Networking.waiting_for_server("|"), "completed")
+	var rcv = await Networking.waiting_for_server("|").completed
 	if rcv[0] == "error":
 		print("no rooms")
 	else:
@@ -149,12 +149,12 @@ func _on_CreateButton_pressed():
 	var number_of_cards = str($CreateRoomNode/NumberOfCardLabel/SpinBox.get_value())
 	var data = "create_battle/" + number_of_cards
 	Networking.send_data(data)
-	var rcv = yield(Networking.waiting_for_server("/"), "completed")
+	var rcv = await Networking.waiting_for_server("/").completed
 	room_code = rcv[1]
 	$CodeLabel/CodeVar.set_text(room_code)
 	$CreateRoomNode/CancelButton.visible = true
 	thread = Thread.new()
-	thread.start(self, "_waiting_for_client2", "Wafflecopter")
+	thread.start(Callable(self,"_waiting_for_client2").bind("Wafflecopter"))
 
 
 func _on_SpinBox_value_changed(value):
@@ -164,7 +164,7 @@ func _on_SpinBox_value_changed(value):
 
 
 func _on_Control_join():
-	var results = yield(Networking.waiting_for_server("!"), "completed")
+	var results = await Networking.waiting_for_server("!").completed
 	print(results)
 	if len(results) < 3:
 		print("WARNING -> Infos are not complete")
@@ -175,7 +175,7 @@ func _on_Control_join():
 	for i in range(len(opponent_card_id)-1):
 		var request = "get_card_infos/" + str(opponent_card_id[i])
 		Networking.send_data(request)
-		var res = yield(Networking.waiting_for_server(""), "completed")
+		var res = await Networking.waiting_for_server("").completed
 		opponent_card_array.append(res)
 	
 	Global.opponent_card_str = opponent_card_array
@@ -186,7 +186,7 @@ func _on_Control_join():
 	for i in range(len(my_card_id)-1):
 		var request = "get_card_infos/" + str(my_card_id[i])
 		Networking.send_data(request)
-		var res = yield(Networking.waiting_for_server(""), "completed")
+		var res = await Networking.waiting_for_server("").completed
 		my_card_array.append(res)
 
 	Global.card_str = my_card_array
@@ -194,21 +194,21 @@ func _on_Control_join():
 	Global.battle_result = results[2].split("/")
 	
 	
-	get_tree().change_scene("res://scenes/card_opening.tscn")
+	get_tree().change_scene_to_file("res://scenes/card_opening.tscn")
 
 	$CreateRoomNode/CreateButton.disabled = false
 	$BackButton.disabled = false
 	$JoinButton.disabled = false
 
 func _on_BackButton_pressed():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 
 func _on_CancelButton_pressed():
 	var data = "quit_battle/" + room_code
 	Networking.send_data(data)
 
-	var results = yield(Networking.waiting_for_server("!"), "completed")
+	var results = await Networking.waiting_for_server("!").completed
 
 	timer.stop()
 	

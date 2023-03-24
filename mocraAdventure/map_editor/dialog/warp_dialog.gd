@@ -17,9 +17,9 @@ func _on_createWarpButton_pressed():
 
 
 func _on_xLineEdit_text_changed(new_text):
-	if new_text.is_valid_integer():
+	if new_text.is_valid_int():
 		size[0] = int(new_text)
 
 func _on_yLineEdit2_text_changed(new_text):
-	if new_text.is_valid_integer():
+	if new_text.is_valid_int():
 		size[0] = int(new_text)

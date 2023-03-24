@@ -12,7 +12,7 @@ var current_position = [0,0]
 ## SELF ???
 
 
-func init(player_name:String, var MocraID, var rcpID):
+func init(player_name:String, MocraID, rcpID):
 	self.player_name = player_name
 	self.MocraID = MocraID
 	self.rcpID = rcpID

@@ -23,7 +23,7 @@ func _on_CreateRoomButton_pressed():
 	$TradeMenu/CreateRoomButton/CancelButton.visible = true
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var inter = packet[0]
 	joined_room_code = inter[0]
 	$TradeMenu/CreateRoomButton/CancelButton/RoomCodeLabel/RoomCodeVarLabel.set_text(joined_room_code) 
@@ -38,7 +38,7 @@ func _on_JoinRoomButton_pressed():
 		var uid = Networking.send_data_through_queue(request, "/")
 		var packet = [null, null]
 		while packet[1] != uid:
-			packet = yield(Networking, "packet_found")
+			packet = await Networking.packet_found
 		var res = packet[0]
 		var return_data = res[0]
 		if return_data == "noroom":
@@ -49,13 +49,13 @@ func _on_JoinRoomButton_pressed():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 func TradeBegin():
 	var uid = Networking.send_data_through_queue("get_collection", "|")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var received_data = packet[0]
 	received_data.remove(0)
 	Global.collection_card = preload("res://scenes/Collection_card.tscn")
@@ -90,7 +90,7 @@ func TradeBegin():
 func create_card_trade_options(card_instance, card_id, card_page_index):
 	var add_button = Button.new()
 	add_button.set_text("Add")
-	add_button.connect("pressed", self, "add_to_my_offer", [card_instance, card_id])
+	add_button.connect("pressed",Callable(self,"add_to_my_offer").bind(card_instance, card_id))
 	card_instance.add_child(add_button)
 	add_button.set_size(Vector2(150,30))
 	add_button.set_position(Vector2(-add_button.get_size()[0]/2,175)) 
@@ -100,7 +100,7 @@ func create_remove_card_trade_option(card_instance, card_id):
 	
 	var remove_button = Button.new()
 	remove_button.set_text("Remove")
-	remove_button.connect("pressed", self, "remove_to_my_offer", [remove_button,card_id])
+	remove_button.connect("pressed",Callable(self,"remove_to_my_offer").bind(remove_button,card_id))
 	card_instance.add_child(remove_button)
 	remove_button.set_size(Vector2(150,30))
 	remove_button.set_position(Vector2(-remove_button.get_size()[0]/2,220)) 
@@ -140,7 +140,7 @@ func update_my_offer():
 		var uid = Networking.send_data_through_queue(request, "/")
 		var packet = [null, null]
 		while packet[1] != uid:
-			packet = yield(Networking, "packet_found")
+			packet = await Networking.packet_found
 		var card_infos = packet[0]
 		if i == 0:
 			$TradeRoom/MyOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
@@ -158,7 +158,7 @@ func update_my_offer():
 #################################################################################################
 
 func create_collection_card(card_str, card_page_index):
-	var instance  = Global.collection_card.instance()
+	var instance  = Global.collection_card.instantiate()
 	instance.set_scale(Vector2(0.6,0.6))
 	$TradeRoom/MyCards.add_child(instance)
 	if card_page_index == 0:
@@ -227,7 +227,7 @@ func update_opponent_offer(opponent_card_array):
 			var uid = Networking.send_data_through_queue(request, "/")
 			var packet = [null, null]
 			while packet[1] != uid:
-				packet = yield(Networking, "packet_found")
+				packet = await Networking.packet_found
 			var card_infos = packet[0]
 			if i == 0:
 				$TradeRoom/OpponentOffer/Card1Texture/card1._change_informations(card_infos[2],card_infos[3],card_infos[4],"1")
@@ -252,7 +252,7 @@ func trade_connexion_init():
 
 func timer_init():
 	print('Timer INIT')
-	timer.connect("timeout",self,"waiting") 
+	timer.connect("timeout",Callable(self,"waiting")) 
 	timer.set_wait_time(1)
 	add_child(timer) 
 
@@ -280,9 +280,9 @@ func waiting():
 			update_opponent_lock(false)
 		if trade_rcv[1] == "trade_effectue":
 			print("trade effectue")
-			get_tree().change_scene("res://scenes/Menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 		if trade_rcv[1] == "opponent_quit":
-			get_tree().change_scene("res://scenes/Menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 		
 		timer.start()
 
@@ -302,7 +302,7 @@ func send_new_offer(offer):
 	var uid = Networking.send_data_through_queue(complete_offer, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var returned_data = packet[0]
 	print(returned_data)
 
@@ -322,7 +322,7 @@ func _on_LockButton_toggled(button_pressed):
 func _on_LeaveButton_pressed():
 	var data = "leave_trade/" + joined_room_code
 	Networking.send_data(data)
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 
 func _on_ConfirmButton_pressed():

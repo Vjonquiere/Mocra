@@ -7,7 +7,7 @@ var colors = {"blue": "res://mocraAdventure/overlay/object_timer/textures/blue_l
 
 func _ready():
 	$".".add_child(timer)
-	timer.connect("timeout", self, "on_timeout")
+	timer.connect("timeout",Callable(self,"on_timeout"))
 	set_color("green")
 	set_duration(1)
 	construct_timer()

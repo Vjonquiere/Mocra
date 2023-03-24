@@ -1,115 +1,115 @@
-[gd_resource type="Theme" load_steps=35 format=2]
+[gd_resource type="Theme" load_steps=35 format=3 uid="uid://cqpdgnjtywolp"]
 
-[ext_resource path="res://Theme/default/textures/buttons/default/pressed.png" type="Texture" id=1]
-[ext_resource path="res://Theme/default/textures/buttons/default/normal.png" type="Texture" id=2]
-[ext_resource path="res://Theme/default/textures/buttons/disable.png" type="Texture" id=3]
-[ext_resource path="res://Theme/default/textures/buttons/default/hover.png" type="Texture" id=4]
-[ext_resource path="res://Theme/default/fonts/75.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Theme/default/textures/line_edit/normal.png" type="Texture" id=6]
-[ext_resource path="res://Theme/default/textures/line_edit/focus.png" type="Texture" id=7]
-[ext_resource path="res://Theme/default/textures/buttons/blue/hover.png" type="Texture" id=8]
-[ext_resource path="res://Theme/default/textures/buttons/blue/normal.png" type="Texture" id=9]
-[ext_resource path="res://Theme/default/textures/buttons/blue/pressed.png" type="Texture" id=10]
-[ext_resource path="res://Theme/default/textures/buttons/green/normal.png" type="Texture" id=11]
-[ext_resource path="res://Theme/default/textures/buttons/green/hover.png" type="Texture" id=12]
-[ext_resource path="res://Theme/default/textures/buttons/green/pressed.png" type="Texture" id=13]
-[ext_resource path="res://Theme/default/textures/buttons/red/hover.png" type="Texture" id=14]
-[ext_resource path="res://Theme/default/textures/buttons/red/pressed.png" type="Texture" id=15]
-[ext_resource path="res://Theme/default/textures/buttons/red/normal.png" type="Texture" id=16]
+[ext_resource type="Texture2D" uid="uid://citj32l3lg5ay" path="res://Theme/default/textures/buttons/default/pressed.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5es15kynmru" path="res://Theme/default/textures/buttons/default/normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://beecaj10ugw0y" path="res://Theme/default/textures/buttons/disable.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bf5dyox1yvinu" path="res://Theme/default/textures/buttons/default/hover.png" id="4"]
+[ext_resource type="FontFile" path="res://Theme/default/fonts/75.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://cacmxo3v5p6ed" path="res://Theme/default/textures/line_edit/normal.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://8hilvavt56gh" path="res://Theme/default/textures/line_edit/focus.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c1ujgke42h11a" path="res://Theme/default/textures/buttons/blue/hover.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bghj283tdtxn0" path="res://Theme/default/textures/buttons/blue/normal.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://g31x8v6817q7" path="res://Theme/default/textures/buttons/blue/pressed.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bxef6fa82dcnk" path="res://Theme/default/textures/buttons/green/normal.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cuef7dn1mvk28" path="res://Theme/default/textures/buttons/green/hover.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://coldsd14dl16d" path="res://Theme/default/textures/buttons/green/pressed.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dcf25xf0agkfx" path="res://Theme/default/textures/buttons/red/hover.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cb0q5aycgxhj4" path="res://Theme/default/textures/buttons/red/pressed.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://bcdnxa5h2enne" path="res://Theme/default/textures/buttons/red/normal.png" id="16"]
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="7"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="8"]
+texture = ExtResource("4")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="9"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="10"]
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 300, 100 )
+[sub_resource type="StyleBoxTexture" id="5"]
+texture = ExtResource("7")
 expand_margin_left = 20.0
+region_rect = Rect2(0, 0, 300, 100)
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 300, 100 )
+[sub_resource type="StyleBoxTexture" id="6"]
+texture = ExtResource("6")
 expand_margin_left = 20.0
+region_rect = Rect2(0, 0, 300, 100)
 
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="11"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 8 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="12"]
+texture = ExtResource("8")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="13"]
+texture = ExtResource("9")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="14"]
+texture = ExtResource("10")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=15]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="15"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 12 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="16"]
+texture = ExtResource("12")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=17]
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="17"]
+texture = ExtResource("11")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=18]
-texture = ExtResource( 13 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="18"]
+texture = ExtResource("13")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=19]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="19"]
+texture = ExtResource("3")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=20]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="20"]
+texture = ExtResource("14")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=21]
-texture = ExtResource( 16 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="21"]
+texture = ExtResource("16")
+region_rect = Rect2(0, 0, 400, 100)
 
-[sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 400, 100 )
+[sub_resource type="StyleBoxTexture" id="22"]
+texture = ExtResource("15")
+region_rect = Rect2(0, 0, 400, 100)
 
 [resource]
-default_font = ExtResource( 5 )
-Button/styles/disabled = SubResource( 7 )
+default_font = ExtResource("5")
+Button/styles/disabled = SubResource("7")
 Button/styles/focus = null
-Button/styles/hover = SubResource( 8 )
-Button/styles/normal = SubResource( 9 )
-Button/styles/pressed = SubResource( 10 )
-LineEdit/styles/focus = SubResource( 5 )
-LineEdit/styles/normal = SubResource( 6 )
-button_blue/base_type = "Button"
-button_blue/styles/disabled = SubResource( 11 )
-button_blue/styles/hover = SubResource( 12 )
-button_blue/styles/normal = SubResource( 13 )
-button_blue/styles/pressed = SubResource( 14 )
-button_green/styles/disabled = SubResource( 15 )
-button_green/styles/hover = SubResource( 16 )
-button_green/styles/normal = SubResource( 17 )
-button_green/styles/pressed = SubResource( 18 )
-button_red/styles/disabled = SubResource( 19 )
-button_red/styles/hover = SubResource( 20 )
-button_red/styles/normal = SubResource( 21 )
-button_red/styles/pressed = SubResource( 22 )
+Button/styles/hover = SubResource("8")
+Button/styles/normal = SubResource("9")
+Button/styles/pressed = SubResource("10")
+LineEdit/styles/focus = SubResource("5")
+LineEdit/styles/normal = SubResource("6")
+button_blue/base_type = &"Button"
+button_blue/styles/disabled = SubResource("11")
+button_blue/styles/hover = SubResource("12")
+button_blue/styles/normal = SubResource("13")
+button_blue/styles/pressed = SubResource("14")
+button_green/styles/disabled = SubResource("15")
+button_green/styles/hover = SubResource("16")
+button_green/styles/normal = SubResource("17")
+button_green/styles/pressed = SubResource("18")
+button_red/styles/disabled = SubResource("19")
+button_red/styles/hover = SubResource("20")
+button_red/styles/normal = SubResource("21")
+button_red/styles/pressed = SubResource("22")

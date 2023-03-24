@@ -1,7 +1,7 @@
 extends Control
 
-var width = (int(ProjectSettings.get_setting("display/window/size/width"))/7)
-var height = (int(ProjectSettings.get_setting("display/window/size/height"))/15)
+var width = (int(ProjectSettings.get_setting("display/window/size/viewport_width"))/7)
+var height = (int(ProjectSettings.get_setting("display/window/size/viewport_height"))/15)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,7 +9,7 @@ func _ready():
 	var uid = Networking.send_data_through_queue("get_collection", "|")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var received_data = packet[0]
 	received_data.remove(0)
 	Global.collection_card = preload("res://scenes/Collection_card.tscn")
@@ -21,7 +21,7 @@ func _ready():
 
 
 func create_collection_card(card_str):
-	var instance  = Global.collection_card.instance()
+	var instance  = Global.collection_card.instantiate()
 	$"ScrollContainer/GridContainer".add_child(instance) 
 	instance.set_scale(Vector2(0.8, 0.8))
 	var card_infos = card_str.split("/")
@@ -29,4 +29,4 @@ func create_collection_card(card_str):
 	instance._display_card()
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

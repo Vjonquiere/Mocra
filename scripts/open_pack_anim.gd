@@ -9,10 +9,10 @@ func _ready():
 	pass # Replace with function body.
 
 func play_anim():
-	$AnimatedSprite.play("open_pack")
+	$AnimatedSprite2D.play("open_pack")
 
 
 
 
 func _on_AnimatedSprite_animation_finished():
-	$AnimatedSprite.hide()
+	$AnimatedSprite2D.hide()

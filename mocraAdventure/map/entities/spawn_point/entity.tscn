@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://mocraAdventure/map/entities/spawn_point/texture.png" type="Texture" id=2]
+[ext_resource path="res://mocraAdventure/map/entities/spawn_point/texture.png" type="Texture2D" id=2]
 
-[node name="Node2D" type="Sprite"]
+[node name="Node2D" type="Sprite2D"]
 texture = ExtResource( 2 )

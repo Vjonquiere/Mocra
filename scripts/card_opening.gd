@@ -1,7 +1,7 @@
 extends Control
 
-var width_center = ( int(ProjectSettings.get_setting("display/window/size/width")) / 2)
-var height_center = ( int(ProjectSettings.get_setting("display/window/size/height")) / 2)
+var width_center = ( int(ProjectSettings.get_setting("display/window/size/viewport_width")) / 2)
+var height_center = ( int(ProjectSettings.get_setting("display/window/size/viewport_height")) / 2)
 var classic_theme = load("res://Theme/Theme.tres") 
 var multiple_cards = load("res://Objects/multiple_cards/multiple_cards.tscn")
 const battle_points = {"Common": 20, "Not Much Common": 30, "Unusual": 45, "Rare": 60, "Extremely Rare": 70, "Unbelievable":80, "Mythical": 90, "RAINBOW": 100}
@@ -46,7 +46,7 @@ func _ready():
 	
 	
 func _create_opponent_card_instance(card_str):
-	var instance  = Global.card.instance()
+	var instance  = Global.card.instantiate()
 	$".".add_child(instance)
 	instance.position.y = height_center - 30
 	instance.position.x = width_center - 300
@@ -60,13 +60,13 @@ func _create_opponent_card_instance(card_str):
 	return instance
 	
 func _create_card_instance(card_str):
-	var instance  = Global.card.instance()
+	var instance  = Global.card.instantiate()
 	$".".add_child(instance)
 	instance.position.y = height_center - 30
 	instance.position.x = width_center
 	
 	var card_infos = card_str.split("/")
-	var multiple_card = multiple_cards.instance()
+	var multiple_card = multiple_cards.instantiate()
 
 	if opening_type != "battle" and card_infos[9] != "1":
 		multiple_card.set_scale(Vector2(0.3,0.3))
@@ -121,7 +121,7 @@ func _input(event):
 				else:
 					$ResultOverlay/ResultImage.texture = load("res://images/battle_mode/battle_draw.png")
 			else:
-				get_tree().change_scene("res://scenes/Menu.tscn")
+				get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 
 
@@ -170,4 +170,4 @@ func _on_pack_open_anim_animation_finished():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://scenes/Battle.tscn")
+	get_tree().change_scene_to_file("res://scenes/Battle.tscn")

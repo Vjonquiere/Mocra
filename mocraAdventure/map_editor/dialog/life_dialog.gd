@@ -1,7 +1,7 @@
 extends Control
 
 
-onready var life_value = [$DefLifeLabel/DefLifeSpinBox.get_value(), $maxLifeLabel/maxLifeSpinBox.get_value()]
+@onready var life_value = [$DefLifeLabel/DefLifeSpinBox.get_value(), $maxLifeLabel/maxLifeSpinBox.get_value()]
 
 
 func _ready():

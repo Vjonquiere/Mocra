@@ -39,6 +39,6 @@ func _on_deleteButton_pressed():
 	var uid = Networking.send_data_through_queue("delete_notification/"+str(notification_id), "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	if packet[0][0] == "DONE":
 		self.queue_free()

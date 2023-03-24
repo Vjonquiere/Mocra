@@ -1,215 +1,241 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://bfkd2ld5s6bqs"]
 
-[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://animations/Main_screen/background.png" type="Texture" id=2]
-[ext_resource path="res://animations/Main_screen/plateforme.png" type="Texture" id=3]
-[ext_resource path="res://animations/Main_screen/point1.png" type="Texture" id=4]
-[ext_resource path="res://animations/Main_screen/point2.png" type="Texture" id=5]
-[ext_resource path="res://animations/Main_screen/point3.png" type="Texture" id=6]
-[ext_resource path="res://animations/Main_screen/point4.png" type="Texture" id=7]
-[ext_resource path="res://animations/Main_screen/point5.png" type="Texture" id=8]
-[ext_resource path="res://animations/Main_screen/nuage3.png" type="Texture" id=9]
-[ext_resource path="res://animations/Main_screen/nuage2.png" type="Texture" id=10]
-[ext_resource path="res://animations/Main_screen/planete.png" type="Texture" id=11]
-[ext_resource path="res://fonts/Acme-Regular.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://images/logos/complete_logo_transparent.png" type="Texture" id=14]
-[ext_resource path="res://Theme/default/theme.tres" type="Theme" id=15]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c6plnh1ujgqu" path="res://animations/Main_screen/background.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bj884jlcf1psc" path="res://animations/Main_screen/plateforme.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cxupr2fbqy75i" path="res://animations/Main_screen/point1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://d15sul7k1a8d8" path="res://animations/Main_screen/point2.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dk7eobxoxpl5k" path="res://animations/Main_screen/point3.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://blo1agcd5c6w8" path="res://animations/Main_screen/point4.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://crcnoe0rgkewd" path="res://animations/Main_screen/point5.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://daibr3l8tqklg" path="res://animations/Main_screen/nuage3.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bcnce255daod0" path="res://animations/Main_screen/nuage2.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://thddkdeeiwhu" path="res://animations/Main_screen/planete.png" id="11"]
+[ext_resource type="FontFile" uid="uid://d1iwekv8nvffu" path="res://fonts/Acme-Regular.ttf" id="12"]
+[ext_resource type="Texture2D" uid="uid://cl678sdoo2i1s" path="res://images/logos/complete_logo_transparent.png" id="14"]
+[ext_resource type="Theme" uid="uid://cqpdgnjtywolp" path="res://Theme/default/theme.tres" id="15"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 length = 60.0
-loop = true
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Plateforme:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 790.803, -0.25, 0, 0.25, 0, 765.527, -0.25, 0, 0.25, 0, 826.913, -0.25, 0, 0.25, 0, 790.803, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 10, 20, 30 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Plateforme:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 566.923, -0.25, 0, 0.25, 0, 559.701, -0.25, 0, 0.25, 0, 566.923, -0.25, 0, 0.25, 0, 566.923, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 10, 20, 30 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Cloud1:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1592.44, -0.25, 0, 0.25, 0, 967.741, -0.25, 0, 0.25, 0, 339.432, -0.25, 0, 0.25, 0, -176.938, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15.1, 30, 45 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Cloud1:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 566.923, -0.25, 0, 0.25, 0, 566.923, -0.25, 0, 0.25, 0, 566.923, -0.25, 0, 0.25, 0, 566.923, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15.1, 30, 43.3 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("Cloud2:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( 328.599, -0.25, 0, 0.25, 0, 328.599, -0.25, 0, 0.25, 0, 328.599, -0.25, 0, 0.25, 0, 328.599, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15, 15.6, 55 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("Cloud2:position:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"points": PoolRealArray( 978.574, -0.25, 0, 0.25, 0, 263.601, -0.25, 0, 0.25, 0, 2546.75, -0.25, 0, 0.25, 0, 978.574, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15, 15.6, 55 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("Cloud2:scale:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"points": PoolRealArray( 0.836831, -0.25, 0, 0.25, 0, 0.836831, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 0.836831, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15, 15.1, 15.5, 15.6 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("Cloud2:scale:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 0.836831, -0.25, 0, 0.25, 0, 0.836831, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 0.836831, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15, 15.1, 15.5, 15.6 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("Point1:modulate:a")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( -0.1, 0, 20, 40, 50, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("Point2:modulate:a")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 15, 40, 48, 56 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Point3:modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 30, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("Point4:modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 10, 30, 40, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/path = NodePath("Point5:modulate:a")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 18.6, 33, 49.7, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/path = NodePath("Planet:position:x")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
 tracks/13/keys = {
-"points": PoolRealArray( 967.852, -0.25, 0, 0.25, 0, 949.367, -0.25, 0, 0.25, 0, 920.612, -0.25, 0, 0.25, 0, 922.666, -0.25, 0, 0.25, 0, 967.852, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 14, 30, 45, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/path = NodePath("Planet:position:y")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
 tracks/14/keys = {
-"points": PoolRealArray( 345.058, -0.25, 0, 0.25, 0, 359.436, -0.25, 0, 0.25, 0, 355.328, -0.25, 0, 0.25, 0, 328.627, -0.25, 0, 0.25, 0, 345.058, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 14, 30, 45, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
 tracks/15/path = NodePath("Planet:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
 tracks/15/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 30, 60 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 24
-outline_color = Color( 1, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 12 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0accn"]
+_data = {
+"MainScreen idle": SubResource("1")
+}
 
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("12")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="3"]
+default_font = SubResource("2")
 BoxContainer/constants/separation = 4
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 2 )
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_color_disabled = Color(0, 0, 0, 1)
+Button/colors/font_color_hover = Color(0, 0, 0, 1)
+Button/colors/font_color_pressed = Color(0, 0, 0, 1)
+Button/colors/icon_color_hover = Color(0, 0, 0, 1)
+Button/colors/icon_color_pressed = Color(0, 0, 0, 1)
+Button/constants/h_separation = 3
+Button/fonts/font = SubResource("2")
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
-CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
-CheckBox/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-CheckBox/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-CheckBox/constants/check_vadjust = 0
-CheckBox/constants/hseparation = 4
-CheckBox/fonts/font = SubResource( 2 )
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_color_disabled = Color(0, 0, 0, 1)
+CheckBox/colors/font_color_hover = Color(0, 0, 0, 1)
+CheckBox/colors/font_color_hover_pressed = Color(0, 0, 0, 1)
+CheckBox/colors/font_color_pressed = Color(0, 0, 0, 1)
+CheckBox/colors/icon_color_hover = Color(0, 0, 0, 1)
+CheckBox/constants/check_v_offset = 0
+CheckBox/constants/h_separation = 4
+CheckBox/fonts/font = SubResource("2")
 CheckBox/icons/checked = null
 CheckBox/icons/radio_checked = null
 CheckBox/icons/radio_unchecked = null
@@ -220,15 +246,15 @@ CheckBox/styles/hover = null
 CheckBox/styles/hover_pressed = null
 CheckBox/styles/normal = null
 CheckBox/styles/pressed = null
-CheckButton/colors/font_color = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
-CheckButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-CheckButton/colors/icon_color_hover = Color( 0, 0, 0, 1 )
-CheckButton/constants/check_vadjust = 0
-CheckButton/constants/hseparation = 4
-CheckButton/fonts/font = SubResource( 2 )
+CheckButton/colors/font_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_color_disabled = Color(0, 0, 0, 1)
+CheckButton/colors/font_color_hover = Color(0, 0, 0, 1)
+CheckButton/colors/font_color_hover_pressed = Color(0, 0, 0, 1)
+CheckButton/colors/font_color_pressed = Color(0, 0, 0, 1)
+CheckButton/colors/icon_color_hover = Color(0, 0, 0, 1)
+CheckButton/constants/check_v_offset = 0
+CheckButton/constants/h_separation = 4
+CheckButton/fonts/font = SubResource("2")
 CheckButton/icons/off = null
 CheckButton/icons/on = null
 CheckButton/styles/disabled = null
@@ -247,12 +273,12 @@ ColorPicker/icons/color_hue = null
 ColorPicker/icons/color_sample = null
 ColorPicker/icons/preset_bg = null
 ColorPicker/icons/screen_picker = null
-ColorPickerButton/colors/font_color = Color( 0, 0, 0, 1 )
-ColorPickerButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-ColorPickerButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-ColorPickerButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-ColorPickerButton/constants/hseparation = 2
-ColorPickerButton/fonts/font = SubResource( 2 )
+ColorPickerButton/colors/font_color = Color(0, 0, 0, 1)
+ColorPickerButton/colors/font_color_disabled = Color(0, 0, 0, 1)
+ColorPickerButton/colors/font_color_hover = Color(0, 0, 0, 1)
+ColorPickerButton/colors/font_color_pressed = Color(0, 0, 0, 1)
+ColorPickerButton/constants/h_separation = 2
+ColorPickerButton/fonts/font = SubResource("2")
 ColorPickerButton/icons/bg = null
 ColorPickerButton/styles/disabled = null
 ColorPickerButton/styles/focus = null
@@ -261,48 +287,44 @@ ColorPickerButton/styles/normal = null
 ColorPickerButton/styles/pressed = null
 Dialogs/constants/button_margin = 32
 Dialogs/constants/margin = 8
-Editor/colors/accent_color = Color( 0, 0, 0, 1 )
-Editor/colors/base_color = Color( 0, 0, 0, 1 )
-Editor/colors/contrast_color_1 = Color( 0, 0, 0, 1 )
-Editor/colors/contrast_color_2 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_1 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_2 = Color( 0, 0, 0, 1 )
-Editor/colors/dark_color_3 = Color( 0, 0, 0, 1 )
-Editor/colors/disabled_font_color = Color( 0, 0, 0, 1 )
-Editor/colors/error_color = Color( 0, 0, 0, 1 )
-Editor/colors/font_color = Color( 0, 0, 0, 1 )
-Editor/colors/highlight_color = Color( 0, 0, 0, 1 )
-Editor/colors/highlighted_font_color = Color( 0, 0, 0, 1 )
-Editor/colors/mono_color = Color( 0, 0, 0, 1 )
-Editor/colors/prop_category = Color( 0, 0, 0, 1 )
-Editor/colors/prop_section = Color( 0, 0, 0, 1 )
-Editor/colors/prop_subsection = Color( 0, 0, 0, 1 )
-Editor/colors/property_color = Color( 0, 0, 0, 1 )
-Editor/colors/success_color = Color( 0, 0, 0, 1 )
-Editor/colors/warning_color = Color( 0, 0, 0, 1 )
+Editor/colors/accent_color = Color(0, 0, 0, 1)
+Editor/colors/base_color = Color(0, 0, 0, 1)
+Editor/colors/contrast_color_1 = Color(0, 0, 0, 1)
+Editor/colors/contrast_color_2 = Color(0, 0, 0, 1)
+Editor/colors/dark_color_1 = Color(0, 0, 0, 1)
+Editor/colors/dark_color_2 = Color(0, 0, 0, 1)
+Editor/colors/dark_color_3 = Color(0, 0, 0, 1)
+Editor/colors/disabled_font_color = Color(0, 0, 0, 1)
+Editor/colors/error_color = Color(0, 0, 0, 1)
+Editor/colors/font_color = Color(0, 0, 0, 1)
+Editor/colors/highlight_color = Color(0, 0, 0, 1)
+Editor/colors/highlighted_font_color = Color(0, 0, 0, 1)
+Editor/colors/mono_color = Color(0, 0, 0, 1)
+Editor/colors/prop_category = Color(0, 0, 0, 1)
+Editor/colors/prop_section = Color(0, 0, 0, 1)
+Editor/colors/prop_subsection = Color(0, 0, 0, 1)
+Editor/colors/property_color = Color(0, 0, 0, 1)
+Editor/colors/success_color = Color(0, 0, 0, 1)
+Editor/colors/warning_color = Color(0, 0, 0, 1)
 Editor/constants/dark_theme = 1
 Editor/constants/inspector_margin = 8
 Editor/constants/scale = 1
 Editor/constants/thumb_size = 64
 Editor/styles/sub_inspector_bg = null
 EditorAbout/styles/panel = null
-EditorFonts/fonts/bold = SubResource( 2 )
-EditorFonts/fonts/doc = SubResource( 2 )
-EditorFonts/fonts/doc_source = SubResource( 2 )
-EditorFonts/fonts/doc_title = SubResource( 2 )
-EditorFonts/fonts/output_source = SubResource( 2 )
-EditorFonts/fonts/rulers = SubResource( 2 )
-EditorFonts/fonts/source = SubResource( 2 )
-EditorFonts/fonts/status_source = SubResource( 2 )
-EditorFonts/fonts/title = SubResource( 2 )
-EditorHelp/colors/headline_color = Color( 0, 0, 0, 1 )
+EditorFonts/fonts/bold = SubResource("2")
+EditorFonts/fonts/doc = SubResource("2")
+EditorFonts/fonts/doc_source = SubResource("2")
+EditorFonts/fonts/doc_title = SubResource("2")
+EditorFonts/fonts/output_source = SubResource("2")
+EditorFonts/fonts/rulers = SubResource("2")
+EditorFonts/fonts/source = SubResource("2")
+EditorFonts/fonts/status_source = SubResource("2")
+EditorFonts/fonts/title = SubResource("2")
+EditorHelp/colors/headline_color = Color(0, 0, 0, 1)
 EditorIcons/icons/2D = null
 EditorIcons/icons/3D = null
 EditorIcons/icons/AABB = null
-EditorIcons/icons/ARVRAnchor = null
-EditorIcons/icons/ARVRCamera = null
-EditorIcons/icons/ARVRController = null
-EditorIcons/icons/ARVROrigin = null
 EditorIcons/icons/AcceptDialog = null
 EditorIcons/icons/ActionCopy = null
 EditorIcons/icons/ActionCut = null
@@ -313,7 +335,7 @@ EditorIcons/icons/AddAutotile = null
 EditorIcons/icons/AddSingleTile = null
 EditorIcons/icons/AddSplit = null
 EditorIcons/icons/Anchor = null
-EditorIcons/icons/AnimatedSprite = null
+EditorIcons/icons/AnimatedSprite2D = null
 EditorIcons/icons/AnimatedSprite3D = null
 EditorIcons/icons/AnimatedTexture = null
 EditorIcons/icons/Animation = null
@@ -323,8 +345,8 @@ EditorIcons/icons/AnimationTrackGroup = null
 EditorIcons/icons/AnimationTrackList = null
 EditorIcons/icons/AnimationTree = null
 EditorIcons/icons/AnimationTreePlayer = null
-EditorIcons/icons/Area = null
 EditorIcons/icons/Area2D = null
+EditorIcons/icons/Area3D = null
 EditorIcons/icons/Array = null
 EditorIcons/icons/ArrayMesh = null
 EditorIcons/icons/ArrowLeft = null
@@ -336,48 +358,47 @@ EditorIcons/icons/AudioBusBypass = null
 EditorIcons/icons/AudioBusLayout = null
 EditorIcons/icons/AudioBusMute = null
 EditorIcons/icons/AudioBusSolo = null
+EditorIcons/icons/AudioListener3D = null
 EditorIcons/icons/AudioStreamPlayer = null
 EditorIcons/icons/AudioStreamPlayer2D = null
 EditorIcons/icons/AudioStreamPlayer3D = null
-EditorIcons/icons/AudioStreamSample = null
+EditorIcons/icons/AudioStreamWAV = null
 EditorIcons/icons/AutoEnd = null
 EditorIcons/icons/AutoPlay = null
 EditorIcons/icons/AutoTriangle = null
 EditorIcons/icons/Back = null
 EditorIcons/icons/BackBufferCopy = null
 EditorIcons/icons/Bake = null
-EditorIcons/icons/BakedLightmap = null
-EditorIcons/icons/BakedLightmapData = null
 EditorIcons/icons/Basis = null
 EditorIcons/icons/BezierHandlesBalanced = null
 EditorIcons/icons/BezierHandlesFree = null
 EditorIcons/icons/BezierHandlesMirror = null
 EditorIcons/icons/BitMap = null
-EditorIcons/icons/BitmapFont = null
 EditorIcons/icons/Blend = null
 EditorIcons/icons/Bone = null
 EditorIcons/icons/Bone2D = null
-EditorIcons/icons/BoneAttachment = null
+EditorIcons/icons/BoneAttachment3D = null
 EditorIcons/icons/BoneTrack = null
-EditorIcons/icons/BoxShape = null
+EditorIcons/icons/BoxMesh = null
+EditorIcons/icons/BoxShape3D = null
 EditorIcons/icons/BusVuDb = null
 EditorIcons/icons/BusVuEmpty = null
 EditorIcons/icons/BusVuFrozen = null
 EditorIcons/icons/BusVuFull = null
 EditorIcons/icons/Button = null
 EditorIcons/icons/ButtonGroup = null
-EditorIcons/icons/CPUParticles = null
 EditorIcons/icons/CPUParticles2D = null
-EditorIcons/icons/CSGBox = null
+EditorIcons/icons/CPUParticles3D = null
+EditorIcons/icons/CSGBox3D = null
 EditorIcons/icons/CSGCapsule = null
-EditorIcons/icons/CSGCombiner = null
-EditorIcons/icons/CSGCylinder = null
-EditorIcons/icons/CSGMesh = null
-EditorIcons/icons/CSGPolygon = null
-EditorIcons/icons/CSGSphere = null
-EditorIcons/icons/CSGTorus = null
-EditorIcons/icons/Camera = null
+EditorIcons/icons/CSGCombiner3D = null
+EditorIcons/icons/CSGCylinder3D = null
+EditorIcons/icons/CSGMesh3D = null
+EditorIcons/icons/CSGPolygon3D = null
+EditorIcons/icons/CSGSphere3D = null
+EditorIcons/icons/CSGTorus3D = null
 EditorIcons/icons/Camera2D = null
+EditorIcons/icons/Camera3D = null
 EditorIcons/icons/CanvasItem = null
 EditorIcons/icons/CanvasItemMaterial = null
 EditorIcons/icons/CanvasItemShader = null
@@ -385,9 +406,11 @@ EditorIcons/icons/CanvasItemShaderGraph = null
 EditorIcons/icons/CanvasLayer = null
 EditorIcons/icons/CanvasModulate = null
 EditorIcons/icons/CapsuleMesh = null
-EditorIcons/icons/CapsuleShape = null
 EditorIcons/icons/CapsuleShape2D = null
+EditorIcons/icons/CapsuleShape3D = null
 EditorIcons/icons/CenterContainer = null
+EditorIcons/icons/CharacterBody2D = null
+EditorIcons/icons/CharacterBody3D = null
 EditorIcons/icons/CheckBox = null
 EditorIcons/icons/CheckButton = null
 EditorIcons/icons/Checkerboard = null
@@ -396,10 +419,10 @@ EditorIcons/icons/ClassList = null
 EditorIcons/icons/Clear = null
 EditorIcons/icons/Close = null
 EditorIcons/icons/Collapse = null
-EditorIcons/icons/CollisionPolygon = null
 EditorIcons/icons/CollisionPolygon2D = null
-EditorIcons/icons/CollisionShape = null
+EditorIcons/icons/CollisionPolygon3D = null
 EditorIcons/icons/CollisionShape2D = null
+EditorIcons/icons/CollisionShape3D = null
 EditorIcons/icons/Color = null
 EditorIcons/icons/ColorPick = null
 EditorIcons/icons/ColorPicker = null
@@ -407,9 +430,10 @@ EditorIcons/icons/ColorPickerButton = null
 EditorIcons/icons/ColorRamp = null
 EditorIcons/icons/ColorRect = null
 EditorIcons/icons/ColorTrackVu = null
-EditorIcons/icons/ConcavePolygonShape = null
+EditorIcons/icons/CompressedTexture2D = null
 EditorIcons/icons/ConcavePolygonShape2D = null
-EditorIcons/icons/ConeTwistJoint = null
+EditorIcons/icons/ConcavePolygonShape3D = null
+EditorIcons/icons/ConeTwistJoint3D = null
 EditorIcons/icons/ConfirmationDialog = null
 EditorIcons/icons/Container = null
 EditorIcons/icons/Control = null
@@ -432,12 +456,11 @@ EditorIcons/icons/ControlAlignWide = null
 EditorIcons/icons/ControlHcenterWide = null
 EditorIcons/icons/ControlLayout = null
 EditorIcons/icons/ControlVcenterWide = null
-EditorIcons/icons/ConvexPolygonShape = null
 EditorIcons/icons/ConvexPolygonShape2D = null
+EditorIcons/icons/ConvexPolygonShape3D = null
 EditorIcons/icons/CopyNodePath = null
 EditorIcons/icons/CreateNewSceneFrom = null
-EditorIcons/icons/CubeMap = null
-EditorIcons/icons/CubeMesh = null
+EditorIcons/icons/Cubemap = null
 EditorIcons/icons/Curve = null
 EditorIcons/icons/Curve2D = null
 EditorIcons/icons/Curve3D = null
@@ -454,7 +477,7 @@ EditorIcons/icons/CurveOut = null
 EditorIcons/icons/CurveOutIn = null
 EditorIcons/icons/CurveTexture = null
 EditorIcons/icons/CylinderMesh = null
-EditorIcons/icons/CylinderShape = null
+EditorIcons/icons/CylinderShape3D = null
 EditorIcons/icons/DampedSpringJoint2D = null
 EditorIcons/icons/Debug = null
 EditorIcons/icons/DebugContinue = null
@@ -463,11 +486,9 @@ EditorIcons/icons/DebugStep = null
 EditorIcons/icons/DefaultProjectIcon = null
 EditorIcons/icons/DeleteSplit = null
 EditorIcons/icons/Dictionary = null
-EditorIcons/icons/DirectionalLight = null
+EditorIcons/icons/DirectionalLight3D = null
 EditorIcons/icons/DistractionFree = null
 EditorIcons/icons/Duplicate = null
-EditorIcons/icons/DynamicFont = null
-EditorIcons/icons/DynamicFontData = null
 EditorIcons/icons/Edit = null
 EditorIcons/icons/EditBezier = null
 EditorIcons/icons/EditInternal = null
@@ -508,12 +529,12 @@ EditorIcons/icons/Folder = null
 EditorIcons/icons/FolderBigThumb = null
 EditorIcons/icons/FolderMediumThumb = null
 EditorIcons/icons/Font = null
+EditorIcons/icons/FontFile = null
 EditorIcons/icons/Forward = null
 EditorIcons/icons/GDNativeLibrary = null
 EditorIcons/icons/GDScript = null
-EditorIcons/icons/GIProbe = null
-EditorIcons/icons/GIProbeData = null
-EditorIcons/icons/Generic6DOFJoint = null
+EditorIcons/icons/GPUParticles2D = null
+EditorIcons/icons/Generic6DOFJoint3D = null
 EditorIcons/icons/GizmoBakedLightmap = null
 EditorIcons/icons/GizmoCamera = null
 EditorIcons/icons/GizmoDirectionalLight = null
@@ -528,7 +549,7 @@ EditorIcons/icons/GizmoSpotLight = null
 EditorIcons/icons/Godot = null
 EditorIcons/icons/GodotDocs = null
 EditorIcons/icons/Gradient = null
-EditorIcons/icons/GradientTexture = null
+EditorIcons/icons/GradientTexture2D = null
 EditorIcons/icons/GraphEdit = null
 EditorIcons/icons/GraphNode = null
 EditorIcons/icons/Grid = null
@@ -591,12 +612,12 @@ EditorIcons/icons/HTTPRequest = null
 EditorIcons/icons/Headphones = null
 EditorIcons/icons/Help = null
 EditorIcons/icons/HelpSearch = null
-EditorIcons/icons/HingeJoint = null
+EditorIcons/icons/HingeJoint3D = null
 EditorIcons/icons/History = null
 EditorIcons/icons/Hsize = null
 EditorIcons/icons/Image = null
 EditorIcons/icons/ImageTexture = null
-EditorIcons/icons/ImmediateGeometry = null
+EditorIcons/icons/ImmediateMesh = null
 EditorIcons/icons/ImportCheck = null
 EditorIcons/icons/ImportFail = null
 EditorIcons/icons/InformationSign = null
@@ -609,7 +630,6 @@ EditorIcons/icons/InterpLinear = null
 EditorIcons/icons/InterpRaw = null
 EditorIcons/icons/InterpWrapClamp = null
 EditorIcons/icons/InterpWrapLoop = null
-EditorIcons/icons/InterpolatedCamera = null
 EditorIcons/icons/InverseKinematics = null
 EditorIcons/icons/ItemList = null
 EditorIcons/icons/JoyAxis = null
@@ -634,18 +654,14 @@ EditorIcons/icons/KeyValid = null
 EditorIcons/icons/KeyValue = null
 EditorIcons/icons/KeyXform = null
 EditorIcons/icons/Keyboard = null
-EditorIcons/icons/KinematicBody = null
-EditorIcons/icons/KinematicBody2D = null
 EditorIcons/icons/Label = null
-EditorIcons/icons/LargeTexture = null
-EditorIcons/icons/Light2D = null
 EditorIcons/icons/LightOccluder2D = null
+EditorIcons/icons/LightmapGI = null
+EditorIcons/icons/LightmapGIData = null
 EditorIcons/icons/Line2D = null
 EditorIcons/icons/LineEdit = null
-EditorIcons/icons/LineShape2D = null
 EditorIcons/icons/LinkButton = null
 EditorIcons/icons/ListSelect = null
-EditorIcons/icons/Listener = null
 EditorIcons/icons/Load = null
 EditorIcons/icons/Lock = null
 EditorIcons/icons/LockViewport = null
@@ -654,6 +670,8 @@ EditorIcons/icons/Loop = null
 EditorIcons/icons/LoopInterpolation = null
 EditorIcons/icons/MainPlay = null
 EditorIcons/icons/MarginContainer = null
+EditorIcons/icons/Marker2D = null
+EditorIcons/icons/Marker3D = null
 EditorIcons/icons/MatchCase = null
 EditorIcons/icons/MaterialPreviewCube = null
 EditorIcons/icons/MaterialPreviewCubeOff = null
@@ -670,8 +688,8 @@ EditorIcons/icons/MemberSignal = null
 EditorIcons/icons/MemberTheme = null
 EditorIcons/icons/MenuButton = null
 EditorIcons/icons/Mesh = null
-EditorIcons/icons/MeshInstance = null
 EditorIcons/icons/MeshInstance2D = null
+EditorIcons/icons/MeshInstance3D = null
 EditorIcons/icons/MeshLibrary = null
 EditorIcons/icons/MiniObject = null
 EditorIcons/icons/MirrorX = null
@@ -685,32 +703,40 @@ EditorIcons/icons/MoveUp = null
 EditorIcons/icons/MultiEdit = null
 EditorIcons/icons/MultiLine = null
 EditorIcons/icons/MultiMesh = null
-EditorIcons/icons/MultiMeshInstance = null
+EditorIcons/icons/MultiMeshInstance3D = null
 EditorIcons/icons/NativeScript = null
 EditorIcons/icons/Navigation = null
 EditorIcons/icons/Navigation2D = null
 EditorIcons/icons/NavigationMesh = null
-EditorIcons/icons/NavigationMeshInstance = null
 EditorIcons/icons/NavigationPolygon = null
-EditorIcons/icons/NavigationPolygonInstance = null
+EditorIcons/icons/NavigationRegion2D = null
+EditorIcons/icons/NavigationRegion3D = null
 EditorIcons/icons/New = null
 EditorIcons/icons/NewRoot = null
 EditorIcons/icons/Nil = null
 EditorIcons/icons/NinePatchRect = null
 EditorIcons/icons/Node = null
 EditorIcons/icons/Node2D = null
+EditorIcons/icons/Node3D = null
 EditorIcons/icons/NodePath = null
 EditorIcons/icons/NodeWarning = null
 EditorIcons/icons/NoiseTexture = null
 EditorIcons/icons/NonFavorite = null
 EditorIcons/icons/Object = null
 EditorIcons/icons/OccluderPolygon2D = null
-EditorIcons/icons/OmniLight = null
+EditorIcons/icons/OmniLight3D = null
 EditorIcons/icons/Onion = null
 EditorIcons/icons/OptionButton = null
 EditorIcons/icons/Override = null
+EditorIcons/icons/PackedByteArray = null
+EditorIcons/icons/PackedColorArray = null
 EditorIcons/icons/PackedDataContainer = null
+EditorIcons/icons/PackedFloat32Array = null
+EditorIcons/icons/PackedInt32Array = null
 EditorIcons/icons/PackedScene = null
+EditorIcons/icons/PackedStringArray = null
+EditorIcons/icons/PackedVector2Array = null
+EditorIcons/icons/PackedVector3Array = null
 EditorIcons/icons/PaintVertex = null
 EditorIcons/icons/Panel = null
 EditorIcons/icons/PanelContainer = null
@@ -720,26 +746,23 @@ EditorIcons/icons/Panels2Alt = null
 EditorIcons/icons/Panels3 = null
 EditorIcons/icons/Panels3Alt = null
 EditorIcons/icons/Panels4 = null
-EditorIcons/icons/PanoramaSky = null
 EditorIcons/icons/ParallaxBackground = null
 EditorIcons/icons/ParallaxLayer = null
 EditorIcons/icons/ParticleAttractor2D = null
+EditorIcons/icons/ParticleProcessMaterial = null
 EditorIcons/icons/Particles = null
-EditorIcons/icons/Particles2D = null
-EditorIcons/icons/ParticlesMaterial = null
-EditorIcons/icons/Path = null
 EditorIcons/icons/Path2D = null
-EditorIcons/icons/PathFollow = null
+EditorIcons/icons/Path3D = null
 EditorIcons/icons/PathFollow2D = null
+EditorIcons/icons/PathFollow3D = null
 EditorIcons/icons/Pause = null
-EditorIcons/icons/PhysicalBone = null
+EditorIcons/icons/PhysicalBone3D = null
 EditorIcons/icons/Pin = null
-EditorIcons/icons/PinJoint = null
 EditorIcons/icons/PinJoint2D = null
+EditorIcons/icons/PinJoint3D = null
 EditorIcons/icons/PinPressed = null
 EditorIcons/icons/Plane = null
 EditorIcons/icons/PlaneMesh = null
-EditorIcons/icons/PlaneShape = null
 EditorIcons/icons/Play = null
 EditorIcons/icons/PlayBackwards = null
 EditorIcons/icons/PlayCustom = null
@@ -749,24 +772,14 @@ EditorIcons/icons/PlayStart = null
 EditorIcons/icons/PlayStartBackwards = null
 EditorIcons/icons/PlayTravel = null
 EditorIcons/icons/PluginScript = null
+EditorIcons/icons/PointLight2D = null
 EditorIcons/icons/Polygon2D = null
 EditorIcons/icons/PolygonPathFinder = null
-EditorIcons/icons/PoolByteArray = null
-EditorIcons/icons/PoolColorArray = null
-EditorIcons/icons/PoolIntArray = null
-EditorIcons/icons/PoolRealArray = null
-EditorIcons/icons/PoolStringArray = null
-EditorIcons/icons/PoolVector2Array = null
-EditorIcons/icons/PoolVector3Array = null
 EditorIcons/icons/Popup = null
-EditorIcons/icons/PopupDialog = null
 EditorIcons/icons/PopupMenu = null
 EditorIcons/icons/PopupPanel = null
 EditorIcons/icons/Portal = null
-EditorIcons/icons/Position2D = null
-EditorIcons/icons/Position3D = null
 EditorIcons/icons/PrismMesh = null
-EditorIcons/icons/ProceduralSky = null
 EditorIcons/icons/Progress1 = null
 EditorIcons/icons/Progress2 = null
 EditorIcons/icons/Progress3 = null
@@ -780,12 +793,10 @@ EditorIcons/icons/ProximityGroup = null
 EditorIcons/icons/ProxyTexture = null
 EditorIcons/icons/Quad = null
 EditorIcons/icons/QuadMesh = null
-EditorIcons/icons/Quat = null
+EditorIcons/icons/Quaternion = null
 EditorIcons/icons/RID = null
-EditorIcons/icons/RayCast = null
 EditorIcons/icons/RayCast2D = null
-EditorIcons/icons/RayShape = null
-EditorIcons/icons/RayShape2D = null
+EditorIcons/icons/RayCast3D = null
 EditorIcons/icons/Rayito = null
 EditorIcons/icons/Rect2 = null
 EditorIcons/icons/RectangleShape2D = null
@@ -794,16 +805,16 @@ EditorIcons/icons/ReflectionProbe = null
 EditorIcons/icons/RegionEdit = null
 EditorIcons/icons/Reload = null
 EditorIcons/icons/ReloadSmall = null
-EditorIcons/icons/RemoteTransform = null
 EditorIcons/icons/RemoteTransform2D = null
+EditorIcons/icons/RemoteTransform3D = null
 EditorIcons/icons/Remove = null
 EditorIcons/icons/RemoveInternal = null
 EditorIcons/icons/Rename = null
 EditorIcons/icons/Reparent = null
 EditorIcons/icons/ResourcePreloader = null
 EditorIcons/icons/RichTextLabel = null
-EditorIcons/icons/RigidBody = null
 EditorIcons/icons/RigidBody2D = null
+EditorIcons/icons/RigidBody3D = null
 EditorIcons/icons/Room = null
 EditorIcons/icons/RoomBounds = null
 EditorIcons/icons/Rotate0 = null
@@ -820,50 +831,52 @@ EditorIcons/icons/ScriptRemove = null
 EditorIcons/icons/ScrollContainer = null
 EditorIcons/icons/Search = null
 EditorIcons/icons/SegmentShape2D = null
+EditorIcons/icons/SeparationRayShape2D = null
+EditorIcons/icons/SeparationRayShape3D = null
 EditorIcons/icons/Shader = null
 EditorIcons/icons/ShaderMaterial = null
-EditorIcons/icons/ShortCut = null
+EditorIcons/icons/Shortcut = null
 EditorIcons/icons/ShrinkBottomDock = null
 EditorIcons/icons/Signal = null
 EditorIcons/icons/Signals = null
 EditorIcons/icons/SignalsAndGroups = null
-EditorIcons/icons/Skeleton = null
 EditorIcons/icons/Skeleton2D = null
-EditorIcons/icons/SliderJoint = null
+EditorIcons/icons/Skeleton3D = null
+EditorIcons/icons/Sky = null
+EditorIcons/icons/SliderJoint3D = null
 EditorIcons/icons/Slot = null
 EditorIcons/icons/Snap = null
 EditorIcons/icons/SnapGrid = null
-EditorIcons/icons/SoftBody = null
+EditorIcons/icons/SoftBody3D = null
 EditorIcons/icons/Sort = null
-EditorIcons/icons/Spatial = null
-EditorIcons/icons/SpatialMaterial = null
 EditorIcons/icons/SphereMesh = null
-EditorIcons/icons/SphereShape = null
+EditorIcons/icons/SphereShape3D = null
 EditorIcons/icons/SpinBox = null
-EditorIcons/icons/SpotLight = null
-EditorIcons/icons/Sprite = null
+EditorIcons/icons/SpotLight3D = null
+EditorIcons/icons/Sprite2D = null
 EditorIcons/icons/Sprite3D = null
 EditorIcons/icons/SpriteFrames = null
-EditorIcons/icons/StaticBody = null
+EditorIcons/icons/StandardMaterial3D = null
 EditorIcons/icons/StaticBody2D = null
+EditorIcons/icons/StaticBody3D = null
 EditorIcons/icons/StatusError = null
 EditorIcons/icons/StatusSuccess = null
 EditorIcons/icons/StatusWarning = null
 EditorIcons/icons/Stop = null
-EditorIcons/icons/StreamTexture = null
 EditorIcons/icons/String = null
 EditorIcons/icons/StyleBoxEmpty = null
 EditorIcons/icons/StyleBoxFlat = null
 EditorIcons/icons/StyleBoxTexture = null
+EditorIcons/icons/SubViewport = null
+EditorIcons/icons/SubViewportContainer = null
+EditorIcons/icons/TabBar = null
 EditorIcons/icons/TabContainer = null
-EditorIcons/icons/Tabs = null
 EditorIcons/icons/TestCube = null
 EditorIcons/icons/TextEdit = null
-EditorIcons/icons/TextFile = null
+EditorIcons/icons/Texture2DArray = null
 EditorIcons/icons/Texture3D = null
-EditorIcons/icons/TextureArray = null
 EditorIcons/icons/TextureButton = null
-EditorIcons/icons/TextureProgress = null
+EditorIcons/icons/TextureProgressBar = null
 EditorIcons/icons/TextureRect = null
 EditorIcons/icons/Theme = null
 EditorIcons/icons/ThumbnailWait = null
@@ -872,7 +885,6 @@ EditorIcons/icons/TileSet = null
 EditorIcons/icons/Time = null
 EditorIcons/icons/Timer = null
 EditorIcons/icons/ToolAddNode = null
-EditorIcons/icons/ToolButton = null
 EditorIcons/icons/ToolConnect = null
 EditorIcons/icons/ToolMove = null
 EditorIcons/icons/ToolPan = null
@@ -888,8 +900,8 @@ EditorIcons/icons/TrackCapture = null
 EditorIcons/icons/TrackContinuous = null
 EditorIcons/icons/TrackDiscrete = null
 EditorIcons/icons/TrackTrigger = null
-EditorIcons/icons/Transform = null
 EditorIcons/icons/Transform2D = null
+EditorIcons/icons/Transform3D = null
 EditorIcons/icons/TransitionEnd = null
 EditorIcons/icons/TransitionEndAuto = null
 EditorIcons/icons/TransitionEndAutoBig = null
@@ -919,28 +931,33 @@ EditorIcons/icons/VSplitContainer = null
 EditorIcons/icons/Variant = null
 EditorIcons/icons/Vector2 = null
 EditorIcons/icons/Vector3 = null
-EditorIcons/icons/VehicleBody = null
-EditorIcons/icons/VehicleWheel = null
-EditorIcons/icons/VideoPlayer = null
-EditorIcons/icons/Viewport = null
-EditorIcons/icons/ViewportContainer = null
+EditorIcons/icons/VehicleBody3D = null
+EditorIcons/icons/VehicleWheel3D = null
+EditorIcons/icons/VideoStreamPlayer = null
 EditorIcons/icons/ViewportSpeed = null
 EditorIcons/icons/ViewportTexture = null
 EditorIcons/icons/ViewportZoom = null
-EditorIcons/icons/VisibilityEnabler = null
-EditorIcons/icons/VisibilityEnabler2D = null
-EditorIcons/icons/VisibilityNotifier = null
-EditorIcons/icons/VisibilityNotifier2D = null
+EditorIcons/icons/VisibleOnScreenEnabler2D = null
+EditorIcons/icons/VisibleOnScreenEnabler3D = null
+EditorIcons/icons/VisibleOnScreenNotifier2D = null
+EditorIcons/icons/VisibleOnScreenNotifier3D = null
 EditorIcons/icons/VisualScript = null
 EditorIcons/icons/VisualShader = null
 EditorIcons/icons/VisualShaderPort = null
+EditorIcons/icons/VoxelGI = null
+EditorIcons/icons/VoxelGIData = null
 EditorIcons/icons/Vulkan = null
 EditorIcons/icons/Warning = null
-EditorIcons/icons/WindowDialog = null
+EditorIcons/icons/Window = null
 EditorIcons/icons/World = null
 EditorIcons/icons/World2D = null
+EditorIcons/icons/WorldBoundaryShape2D = null
+EditorIcons/icons/WorldBoundaryShape3D = null
 EditorIcons/icons/WorldEnvironment = null
-EditorIcons/icons/YSort = null
+EditorIcons/icons/XRAnchor3D = null
+EditorIcons/icons/XRCamera3D = null
+EditorIcons/icons/XRController3D = null
+EditorIcons/icons/XROrigin3D = null
 EditorIcons/icons/Zoom = null
 EditorIcons/icons/ZoomLess = null
 EditorIcons/icons/ZoomMore = null
@@ -964,15 +981,15 @@ EditorStyles/styles/SceneTabBG = null
 EditorStyles/styles/SceneTabFG = null
 EditorStyles/styles/ScriptEditor = null
 EditorStyles/styles/ScriptEditorPanel = null
-FileDialog/colors/files_disabled = Color( 0, 0, 0, 1 )
+FileDialog/colors/file_disabled_color = Color(0, 0, 0, 1)
 FileDialog/icons/folder = null
 FileDialog/icons/parent_folder = null
 FileDialog/icons/reload = null
-Fonts/fonts/large = SubResource( 2 )
-Fonts/fonts/normal = SubResource( 2 )
-GraphEdit/colors/activity = Color( 0, 0, 0, 1 )
-GraphEdit/colors/grid_major = Color( 0, 0, 0, 1 )
-GraphEdit/colors/grid_minor = Color( 0, 0, 0, 1 )
+Fonts/fonts/large = SubResource("2")
+Fonts/fonts/normal = SubResource("2")
+GraphEdit/colors/activity = Color(0, 0, 0, 1)
+GraphEdit/colors/grid_major = Color(0, 0, 0, 1)
+GraphEdit/colors/grid_minor = Color(0, 0, 0, 1)
 GraphEdit/constants/bezier_len_neg = 160
 GraphEdit/constants/bezier_len_pos = 80
 GraphEdit/constants/port_grab_distance_horizontal = 48
@@ -982,30 +999,30 @@ GraphEdit/icons/more = null
 GraphEdit/icons/reset = null
 GraphEdit/icons/snap = null
 GraphEdit/styles/bg = null
-GraphNode/colors/close_color = Color( 0, 0, 0, 1 )
-GraphNode/colors/title_color = Color( 0, 0, 0, 1 )
+GraphNode/colors/close_color = Color(0, 0, 0, 1)
+GraphNode/colors/title_color = Color(0, 0, 0, 1)
 GraphNode/constants/close_h_offset = 20
 GraphNode/constants/close_offset = 18
 GraphNode/constants/port_offset = 3
 GraphNode/constants/separation = 1
 GraphNode/constants/title_h_offset = -16
 GraphNode/constants/title_offset = 20
-GraphNode/fonts/title_font = SubResource( 2 )
+GraphNode/fonts/title_font = SubResource("2")
 GraphNode/icons/close = null
 GraphNode/icons/port = null
 GraphNode/icons/resizer = null
 GraphNode/styles/breakpoint = null
 GraphNode/styles/comment = null
-GraphNode/styles/commentfocus = null
+GraphNode/styles/comment_focus = null
 GraphNode/styles/defaultfocus = null
 GraphNode/styles/defaultframe = null
 GraphNode/styles/frame = null
 GraphNode/styles/position = null
-GraphNode/styles/selectedframe = null
+GraphNode/styles/selected_frame = null
 GraphNode/styles/state_machine_frame = null
-GraphNode/styles/state_machine_selectedframe = null
-GridContainer/constants/hseparation = 4
-GridContainer/constants/vseparation = 4
+GraphNode/styles/state_machine_selected_frame = null
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 4
 GridContainer/constants/vseperation = 4
 HBoxContainer/constants/separation = 4
 HScrollBar/icons/decrement = null
@@ -1034,72 +1051,72 @@ HSplitContainer/icons/grabber = null
 HSplitContainer/styles/bg = null
 Icons/icons/close = null
 Icons/icons/logo = null
-ItemList/colors/font_color = Color( 0, 0, 0, 1 )
-ItemList/colors/font_color_selected = Color( 0, 0, 0, 1 )
-ItemList/colors/guide_color = Color( 0, 0, 0, 1 )
-ItemList/constants/hseparation = 4
+ItemList/colors/font_color = Color(0, 0, 0, 1)
+ItemList/colors/font_color_selected = Color(0, 0, 0, 1)
+ItemList/colors/guide_color = Color(0, 0, 0, 1)
+ItemList/constants/h_separation = 4
 ItemList/constants/icon_margin = 4
 ItemList/constants/line_separation = 2
-ItemList/constants/vseparation = 2
-ItemList/fonts/font = SubResource( 2 )
+ItemList/constants/v_separation = 2
+ItemList/fonts/font = SubResource("2")
 ItemList/styles/bg = null
-ItemList/styles/bg_focus = null
 ItemList/styles/cursor = null
 ItemList/styles/cursor_unfocused = null
+ItemList/styles/focus = null
 ItemList/styles/selected = null
 ItemList/styles/selected_focus = null
-Label/colors/font_color = Color( 0.258824, 0.258824, 0.258824, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/colors/font_color = Color(0.258824, 0.258824, 0.258824, 1)
+Label/colors/font_color_shadow = Color(0, 0, 0, 1)
+Label/colors/font_outline_modulate = Color(0, 0, 0, 1)
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = SubResource( 2 )
+Label/fonts/font = SubResource("2")
 Label/styles/normal = null
-LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
-LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/read_only = Color( 0, 0, 0, 1 )
-LineEdit/colors/selection_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color = Color(0, 0, 0, 1)
+LineEdit/colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+LineEdit/colors/cursor_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color_selected = Color(0, 0, 0, 1)
+LineEdit/colors/read_only = Color(0, 0, 0, 1)
+LineEdit/colors/selection_color = Color(0, 0, 0, 1)
 LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = SubResource( 2 )
+LineEdit/fonts/font = SubResource("2")
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
 LineEdit/styles/normal = null
 LineEdit/styles/read_only = null
-LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
-LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-LinkButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+LinkButton/colors/font_color = Color(0, 0, 0, 1)
+LinkButton/colors/font_color_hover = Color(0, 0, 0, 1)
+LinkButton/colors/font_color_pressed = Color(0, 0, 0, 1)
 LinkButton/constants/underline_spacing = 2
-LinkButton/fonts/font = SubResource( 2 )
+LinkButton/fonts/font = SubResource("2")
 LinkButton/styles/focus = null
-MarginContainer/constants/margin_bottom = 0
-MarginContainer/constants/margin_left = 0
-MarginContainer/constants/margin_right = 0
-MarginContainer/constants/margin_top = 0
-MenuButton/colors/font_color = Color( 0, 0, 0, 1 )
-MenuButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-MenuButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-MenuButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-MenuButton/constants/hseparation = 3
-MenuButton/fonts/font = SubResource( 2 )
+MarginContainer/constants/offset_bottom = 0
+MarginContainer/constants/offset_left = 0
+MarginContainer/constants/offset_right = 0
+MarginContainer/constants/offset_top = 0
+MenuButton/colors/font_color = Color(0, 0, 0, 1)
+MenuButton/colors/font_color_disabled = Color(0, 0, 0, 1)
+MenuButton/colors/font_color_hover = Color(0, 0, 0, 1)
+MenuButton/colors/font_color_pressed = Color(0, 0, 0, 1)
+MenuButton/constants/h_separation = 3
+MenuButton/fonts/font = SubResource("2")
 MenuButton/styles/disabled = null
 MenuButton/styles/focus = null
 MenuButton/styles/hover = null
 MenuButton/styles/normal = null
 MenuButton/styles/pressed = null
-OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-OptionButton/colors/icon_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_color_disabled = Color(0, 0, 0, 1)
+OptionButton/colors/font_color_hover = Color(0, 0, 0, 1)
+OptionButton/colors/font_color_pressed = Color(0, 0, 0, 1)
+OptionButton/colors/icon_color_hover = Color(0, 0, 0, 1)
 OptionButton/constants/arrow_margin = 2
-OptionButton/constants/hseparation = 2
+OptionButton/constants/h_separation = 2
 OptionButton/constants/modulate_arrow = 1
-OptionButton/fonts/font = SubResource( 2 )
+OptionButton/fonts/font = SubResource("2")
 OptionButton/icons/arrow = null
 OptionButton/styles/disabled = null
 OptionButton/styles/focus = null
@@ -1110,13 +1127,13 @@ Panel/styles/panel = null
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
 PanelContainer/styles/panel = null
-PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
-PopupMenu/constants/hseparation = 4
-PopupMenu/constants/vseparation = 4
-PopupMenu/fonts/font = SubResource( 2 )
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_color_accel = Color(0, 0, 0, 1)
+PopupMenu/colors/font_color_disabled = Color(0, 0, 0, 1)
+PopupMenu/colors/font_color_hover = Color(0, 0, 0, 1)
+PopupMenu/constants/h_separation = 4
+PopupMenu/constants/v_separation = 4
+PopupMenu/fonts/font = SubResource("2")
 PopupMenu/icons/checked = null
 PopupMenu/icons/radio_checked = null
 PopupMenu/icons/radio_unchecked = null
@@ -1136,40 +1153,59 @@ PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/pressed = null
 PopupMenu/styles/separator = null
 PopupPanel/styles/panel = null
-ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
-ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = SubResource( 2 )
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_color_shadow = Color(0, 0, 0, 1)
+ProgressBar/fonts/font = SubResource("2")
 ProgressBar/styles/bg = null
 ProgressBar/styles/fg = null
 ProjectSettingsEditor/styles/panel = null
-RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-RichTextLabel/colors/selection_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_color_selected = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_color_shadow = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/line_separation = 1
 RichTextLabel/constants/shadow_as_outline = 0
 RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = 1
-RichTextLabel/constants/table_hseparation = 3
-RichTextLabel/constants/table_vseparation = 3
-RichTextLabel/fonts/bold_font = SubResource( 2 )
-RichTextLabel/fonts/bold_italics_font = SubResource( 2 )
-RichTextLabel/fonts/italics_font = SubResource( 2 )
-RichTextLabel/fonts/mono_font = SubResource( 2 )
-RichTextLabel/fonts/normal_font = SubResource( 2 )
+RichTextLabel/constants/table_h_separation = 3
+RichTextLabel/constants/table_v_separation = 3
+RichTextLabel/fonts/bold_font = SubResource("2")
+RichTextLabel/fonts/bold_italics_font = SubResource("2")
+RichTextLabel/fonts/italics_font = SubResource("2")
+RichTextLabel/fonts/mono_font = SubResource("2")
+RichTextLabel/fonts/normal_font = SubResource("2")
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
 ScrollContainer/styles/bg = null
 SpinBox/icons/updown = null
-TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
-TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
-TabContainer/constants/hseparation = 4
+TabBar/colors/font_color_bg = Color(0, 0, 0, 1)
+TabBar/colors/font_color_disabled = Color(0, 0, 0, 1)
+TabBar/colors/font_color_fg = Color(0, 0, 0, 1)
+TabBar/constants/h_separation = 4
+TabBar/constants/label_valign_bg = 2
+TabBar/constants/label_valign_fg = 0
+TabBar/constants/top_margin = 24
+TabBar/fonts/font = SubResource("2")
+TabBar/icons/close = null
+TabBar/icons/decrement = null
+TabBar/icons/decrement_highlight = null
+TabBar/icons/increment = null
+TabBar/icons/increment_highlight = null
+TabBar/styles/button = null
+TabBar/styles/button_pressed = null
+TabBar/styles/panel = null
+TabBar/styles/tab_bg = null
+TabBar/styles/tab_disabled = null
+TabBar/styles/tab_fg = null
+TabContainer/colors/font_color_bg = Color(0, 0, 0, 1)
+TabContainer/colors/font_color_disabled = Color(0, 0, 0, 1)
+TabContainer/colors/font_color_fg = Color(0, 0, 0, 1)
+TabContainer/constants/h_separation = 4
 TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
 TabContainer/constants/side_margin = 8
 TabContainer/constants/top_margin = 24
-TabContainer/fonts/font = SubResource( 2 )
+TabContainer/fonts/font = SubResource("2")
 TabContainer/icons/decrement = null
 TabContainer/icons/decrement_highlight = null
 TabContainer/icons/increment = null
@@ -1181,95 +1217,65 @@ TabContainer/styles/panel = null
 TabContainer/styles/tab_bg = null
 TabContainer/styles/tab_disabled = null
 TabContainer/styles/tab_fg = null
-Tabs/colors/font_color_bg = Color( 0, 0, 0, 1 )
-Tabs/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Tabs/colors/font_color_fg = Color( 0, 0, 0, 1 )
-Tabs/constants/hseparation = 4
-Tabs/constants/label_valign_bg = 2
-Tabs/constants/label_valign_fg = 0
-Tabs/constants/top_margin = 24
-Tabs/fonts/font = SubResource( 2 )
-Tabs/icons/close = null
-Tabs/icons/decrement = null
-Tabs/icons/decrement_highlight = null
-Tabs/icons/increment = null
-Tabs/icons/increment_highlight = null
-Tabs/styles/button = null
-Tabs/styles/button_pressed = null
-Tabs/styles/panel = null
-Tabs/styles/tab_bg = null
-Tabs/styles/tab_disabled = null
-Tabs/styles/tab_fg = null
-TextEdit/colors/background_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/breakpoint_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/caret_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/code_folding_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/completion_background_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/completion_existing_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/completion_font_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/completion_scroll_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/completion_selected_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/current_line_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-TextEdit/colors/function_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/line_number_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/mark_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/member_variable_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/number_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/safe_line_number_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/selection_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/symbol_color = Color( 0, 0, 0, 1 )
-TextEdit/colors/word_highlighted_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/background_color = Color(0, 0, 0, 1)
+TextEdit/colors/brace_mismatch_color = Color(0, 0, 0, 1)
+TextEdit/colors/breakpoint_color = Color(0, 0, 0, 1)
+TextEdit/colors/caret_background_color = Color(0, 0, 0, 1)
+TextEdit/colors/caret_color = Color(0, 0, 0, 1)
+TextEdit/colors/code_folding_color = Color(0, 0, 0, 1)
+TextEdit/colors/completion_background_color = Color(0, 0, 0, 1)
+TextEdit/colors/completion_existing_color = Color(0, 0, 0, 1)
+TextEdit/colors/completion_font_color = Color(0, 0, 0, 1)
+TextEdit/colors/completion_scroll_color = Color(0, 0, 0, 1)
+TextEdit/colors/completion_selected_color = Color(0, 0, 0, 1)
+TextEdit/colors/current_line_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color_selected = Color(0, 0, 0, 1)
+TextEdit/colors/function_color = Color(0, 0, 0, 1)
+TextEdit/colors/line_number_color = Color(0, 0, 0, 1)
+TextEdit/colors/mark_color = Color(0, 0, 0, 1)
+TextEdit/colors/member_variable_color = Color(0, 0, 0, 1)
+TextEdit/colors/number_color = Color(0, 0, 0, 1)
+TextEdit/colors/safe_line_number_color = Color(0, 0, 0, 1)
+TextEdit/colors/selection_color = Color(0, 0, 0, 1)
+TextEdit/colors/symbol_color = Color(0, 0, 0, 1)
+TextEdit/colors/word_highlighted_color = Color(0, 0, 0, 1)
 TextEdit/constants/completion_lines = 7
 TextEdit/constants/completion_max_width = 50
 TextEdit/constants/completion_scroll_width = 3
 TextEdit/constants/line_spacing = 4
-TextEdit/fonts/font = SubResource( 2 )
+TextEdit/fonts/font = SubResource("2")
 TextEdit/icons/tab = null
 TextEdit/styles/completion = null
 TextEdit/styles/focus = null
 TextEdit/styles/normal = null
 TextEdit/styles/read_only = null
-ToolButton/colors/font_color = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
-ToolButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
-ToolButton/constants/hseparation = 3
-ToolButton/fonts/font = SubResource( 2 )
-ToolButton/styles/disabled = null
-ToolButton/styles/focus = null
-ToolButton/styles/hover = null
-ToolButton/styles/normal = null
-ToolButton/styles/pressed = null
-TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )
-TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+TooltipLabel/colors/font_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_color_shadow = Color(0, 0, 0, 1)
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
-TooltipLabel/fonts/font = SubResource( 2 )
+TooltipLabel/fonts/font = SubResource("2")
 TooltipPanel/styles/panel = null
-Tree/colors/cursor_color = Color( 0, 0, 0, 1 )
-Tree/colors/custom_button_font_highlight = Color( 0, 0, 0, 1 )
-Tree/colors/drop_position_color = Color( 0, 0, 0, 1 )
-Tree/colors/font_color = Color( 0, 0, 0, 1 )
-Tree/colors/font_color_selected = Color( 0, 0, 0, 1 )
-Tree/colors/guide_color = Color( 0, 0, 0, 1 )
-Tree/colors/relationship_line_color = Color( 0, 0, 0, 1 )
-Tree/colors/selection_color = Color( 0, 0, 0, 1 )
-Tree/colors/title_button_color = Color( 0, 0, 0, 1 )
+Tree/colors/cursor_color = Color(0, 0, 0, 1)
+Tree/colors/custom_button_font_highlight = Color(0, 0, 0, 1)
+Tree/colors/drop_position_color = Color(0, 0, 0, 1)
+Tree/colors/font_color = Color(0, 0, 0, 1)
+Tree/colors/font_color_selected = Color(0, 0, 0, 1)
+Tree/colors/guide_color = Color(0, 0, 0, 1)
+Tree/colors/relationship_line_color = Color(0, 0, 0, 1)
+Tree/colors/selection_color = Color(0, 0, 0, 1)
+Tree/colors/title_button_color = Color(0, 0, 0, 1)
 Tree/constants/button_margin = 4
 Tree/constants/draw_guides = 1
 Tree/constants/draw_relationship_lines = 0
 Tree/constants/guide_width = 2
-Tree/constants/hseparation = 4
+Tree/constants/h_separation = 4
 Tree/constants/item_margin = 12
 Tree/constants/scroll_border = 4
 Tree/constants/scroll_speed = 12
-Tree/constants/vseparation = 4
-Tree/fonts/font = SubResource( 2 )
-Tree/fonts/title_button_font = SubResource( 2 )
+Tree/constants/v_separation = 4
+Tree/fonts/font = SubResource("2")
+Tree/fonts/title_button_font = SubResource("2")
 Tree/icons/arrow = null
 Tree/icons/arrow_collapsed = null
 Tree/icons/arrow_up = null
@@ -1279,13 +1285,13 @@ Tree/icons/select_option = null
 Tree/icons/unchecked = null
 Tree/icons/updown = null
 Tree/styles/bg = null
-Tree/styles/bg_focus = null
 Tree/styles/button_pressed = null
 Tree/styles/cursor = null
 Tree/styles/cursor_unfocused = null
 Tree/styles/custom_button = null
 Tree/styles/custom_button_hover = null
 Tree/styles/custom_button_pressed = null
+Tree/styles/focus = null
 Tree/styles/selected = null
 Tree/styles/selected_focus = null
 Tree/styles/title_button_hover = null
@@ -1316,191 +1322,200 @@ VSplitContainer/constants/autohide = 1
 VSplitContainer/constants/separation = 12
 VSplitContainer/icons/grabber = null
 VSplitContainer/styles/bg = null
-WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
-WindowDialog/constants/close_h_ofs = 18
-WindowDialog/constants/close_v_ofs = 18
-WindowDialog/constants/scaleborder_size = 4
-WindowDialog/constants/title_height = 20
-WindowDialog/fonts/title_font = SubResource( 2 )
-WindowDialog/icons/close = null
-WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = null
+Window/colors/title_color = Color(0, 0, 0, 1)
+Window/constants/close_h_offset = 18
+Window/constants/close_v_offset = 18
+Window/constants/scaleborder_size = 4
+Window/constants/title_height = 20
+Window/fonts/title_font = SubResource("2")
+Window/icons/close = null
+Window/icons/close_highlight = null
+Window/styles/panel = null
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 610.0
-margin_bottom = 340.0
-rect_scale = Vector2( 1.22572, 1.22572 )
-theme = ExtResource( 15 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 170.019 ],
-"_edit_vertical_guides_": [ 362.026, 662.1 ]
-}
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 610.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.22572, 1.22572)
+theme = ExtResource("15")
+script = ExtResource("1")
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
-texture = ExtResource( 2 )
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2")
 
 [node name="Animation" type="Node2D" parent="."]
 
-[node name="Plateforme" type="Sprite" parent="Animation"]
-position = Vector2( 790.803, 566.923 )
-scale = Vector2( 0.608565, 0.608565 )
-texture = ExtResource( 3 )
+[node name="Plateforme" type="Sprite2D" parent="Animation"]
+position = Vector2(790.803, 566.923)
+scale = Vector2(0.608565, 0.608565)
+texture = ExtResource("3")
 
-[node name="Point1" type="Sprite" parent="Animation"]
-modulate = Color( 1, 1, 1, 0.984379 )
-position = Vector2( 693.495, 421.05 )
-texture = ExtResource( 4 )
+[node name="Point1" type="Sprite2D" parent="Animation"]
+modulate = Color(1, 1, 1, 0.984379)
+position = Vector2(693.495, 421.05)
+texture = ExtResource("4")
 
-[node name="Point2" type="Sprite" parent="Animation"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 887.293, 453.916 )
-texture = ExtResource( 5 )
+[node name="Point2" type="Sprite2D" parent="Animation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(887.293, 453.916)
+texture = ExtResource("5")
 
-[node name="Point3" type="Sprite" parent="Animation"]
-modulate = Color( 1, 1, 1, 0.204562 )
-position = Vector2( 790.759, 534.019 )
-texture = ExtResource( 6 )
+[node name="Point3" type="Sprite2D" parent="Animation"]
+modulate = Color(1, 1, 1, 0.204562)
+position = Vector2(790.759, 534.019)
+texture = ExtResource("6")
 
-[node name="Point4" type="Sprite" parent="Animation"]
-modulate = Color( 1, 1, 1, 0.991698 )
-position = Vector2( -133.505, 250.578 )
-texture = ExtResource( 7 )
+[node name="Point4" type="Sprite2D" parent="Animation"]
+modulate = Color(1, 1, 1, 0.991698)
+position = Vector2(-133.505, 250.578)
+texture = ExtResource("7")
 
-[node name="Point5" type="Sprite" parent="Animation"]
-modulate = Color( 1, 1, 1, 0.0106466 )
-position = Vector2( 525.804, 698.332 )
-texture = ExtResource( 8 )
+[node name="Point5" type="Sprite2D" parent="Animation"]
+modulate = Color(1, 1, 1, 0.0106466)
+position = Vector2(525.804, 698.332)
+texture = ExtResource("8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
 autoplay = "MainScreen idle"
-"anims/MainScreen idle" = SubResource( 1 )
+libraries = {
+"": SubResource("AnimationLibrary_0accn")
+}
 
-[node name="Cloud1" type="Sprite" parent="Animation"]
-position = Vector2( -176.938, 566.923 )
-scale = Vector2( 0.445225, 0.445225 )
-texture = ExtResource( 9 )
+[node name="Cloud1" type="Sprite2D" parent="Animation"]
+position = Vector2(-176.938, 566.923)
+scale = Vector2(0.445225, 0.445225)
+texture = ExtResource("9")
 
-[node name="Cloud2" type="Sprite" parent="Animation"]
-position = Vector2( 978.574, 328.599 )
-scale = Vector2( 0.836831, 0.836831 )
-texture = ExtResource( 10 )
+[node name="Cloud2" type="Sprite2D" parent="Animation"]
+position = Vector2(978.574, 328.599)
+scale = Vector2(0.836831, 0.836831)
+texture = ExtResource("10")
 
-[node name="Planet" type="Sprite" parent="Animation"]
-position = Vector2( 967.363, 344.881 )
+[node name="Planet" type="Sprite2D" parent="Animation"]
+position = Vector2(967.363, 344.881)
 rotation = 0.000199068
-scale = Vector2( 0.688109, 0.688109 )
-texture = ExtResource( 11 )
+scale = Vector2(0.688109, 0.688109)
+texture = ExtResource("11")
 
 [node name="ErrorLabel" type="Label" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1.06396
-margin_top = 197.992
-margin_right = 16.064
-margin_bottom = 229.992
+offset_left = 1.06396
+offset_top = 197.992
+offset_right = 16.064
+offset_bottom = 229.992
 grow_horizontal = 2
-theme = SubResource( 3 )
-custom_colors/font_color = Color( 0.47451, 0.47451, 0.47451, 1 )
+theme = SubResource("3")
 text = "R"
 
 [node name="LoginEntry" type="LineEdit" parent="."]
-margin_left = 610.0
-margin_top = 295.337
-margin_right = 1060.0
-margin_bottom = 415.337
-rect_scale = Vector2( 0.8, 0.8 )
-focus_neighbour_left = NodePath("../Label")
-focus_neighbour_bottom = NodePath("../PasswordEntry")
+layout_mode = 0
+offset_left = 610.0
+offset_top = 295.337
+offset_right = 1060.0
+offset_bottom = 415.337
+scale = Vector2(0.8, 0.8)
+focus_neighbor_left = NodePath("../Label")
+focus_neighbor_bottom = NodePath("../PasswordEntry")
 max_length = 21
 
 [node name="PasswordEntry" type="LineEdit" parent="."]
-margin_left = 610.0
-margin_top = 400.102
-margin_right = 1060.0
-margin_bottom = 520.102
-rect_scale = Vector2( 0.8, 0.8 )
+layout_mode = 0
+offset_left = 610.0
+offset_top = 400.102
+offset_right = 1060.0
+offset_bottom = 520.102
+scale = Vector2(0.8, 0.8)
 secret = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 410.371
-margin_top = 300.015
-margin_right = 681.371
-margin_bottom = 385.015
-rect_scale = Vector2( 0.8, 0.8 )
-focus_neighbour_right = NodePath("../LoginEntry")
-focus_neighbour_bottom = NodePath("../Label2")
+layout_mode = 0
+offset_left = 410.371
+offset_top = 300.015
+offset_right = 681.371
+offset_bottom = 385.015
+scale = Vector2(0.8, 0.8)
+focus_neighbor_right = NodePath("../LoginEntry")
+focus_neighbor_bottom = NodePath("../Label2")
 text = "Login: "
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 295.337
-margin_top = 406.891
-margin_right = 738.336
-margin_bottom = 491.891
-rect_scale = Vector2( 0.8, 0.8 )
-focus_neighbour_top = NodePath("../Label")
-focus_neighbour_right = NodePath("../PasswordEntry")
-custom_constants/shadow_offset_x = 0
+layout_mode = 0
+offset_left = 295.337
+offset_top = 406.891
+offset_right = 738.336
+offset_bottom = 491.891
+scale = Vector2(0.8, 0.8)
+focus_neighbor_top = NodePath("../Label")
+focus_neighbor_right = NodePath("../PasswordEntry")
 text = "Password:"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 860.403
-margin_top = 513.0
-margin_right = 1122.4
-margin_bottom = 621.0
-rect_scale = Vector2( 0.8, 0.8 )
+layout_mode = 0
+offset_left = 860.403
+offset_top = 513.0
+offset_right = 1122.4
+offset_bottom = 621.0
+scale = Vector2(0.8, 0.8)
 focus_mode = 0
-enabled_focus_mode = 0
 text = "Login"
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 494.403
-margin_top = 512.0
-margin_right = 889.403
-margin_bottom = 622.0
+layout_mode = 0
+offset_left = 494.403
+offset_top = 512.0
+offset_right = 889.403
+offset_bottom = 622.0
 grow_horizontal = 0
-rect_scale = Vector2( 0.8, 0.8 )
-focus_mode = 1
+scale = Vector2(0.8, 0.8)
 size_flags_horizontal = 0
-enabled_focus_mode = 1
+focus_mode = 1
 text = "Register"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -230.224
-margin_top = 41.6082
-margin_right = 2769.78
-margin_bottom = 1541.61
-rect_scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 14 )
+offset_left = -230.224
+offset_top = 41.6082
+offset_right = 2769.78
+offset_bottom = 1541.61
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("14")
 
 [node name="ServerLabel" type="Label" parent="."]
-margin_left = 20.3962
-margin_top = 17.9486
-margin_right = 540.396
-margin_bottom = 102.949
-rect_scale = Vector2( 0.3, 0.3 )
+layout_mode = 0
+offset_left = 20.3962
+offset_top = 17.9486
+offset_right = 540.396
+offset_bottom = 102.949
+scale = Vector2(0.3, 0.3)
 text = "Connected to: "
 
 [node name="OnlinePlayerLabel" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 51.3984
-margin_right = 556.0
-margin_bottom = 136.398
-rect_scale = Vector2( 0.3, 0.3 )
+layout_mode = 0
+offset_left = 20.0
+offset_top = 51.3984
+offset_right = 556.0
+offset_bottom = 136.398
+scale = Vector2(0.3, 0.3)
 text = "Online players:"
 
 [connection signal="ready" from="." to="." method="_on_Control_ready"]

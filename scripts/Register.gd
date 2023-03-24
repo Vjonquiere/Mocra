@@ -25,7 +25,7 @@ func _on_Button_pressed():
 		var uid = Networking.send_data_through_queue(request, "/")
 		var packet = [null, null]
 		while packet[1] != uid:
-			packet = yield(Networking, "packet_found")
+			packet = await Networking.packet_found
 		var recieved_data = packet[0]
 		print(recieved_data)
 		
@@ -46,7 +46,7 @@ func _on_Button_pressed():
 
 
 func _on_Button2_pressed():
-	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 
 
 func _on_Step1NextButton_pressed():

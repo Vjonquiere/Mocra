@@ -18,7 +18,7 @@ func set_infos(number, seller_name, quantity, price, cardId):
 	transactionID = number
 	cardID = cardId
 	$BuyLabel/SpinBox.max_value = int(quantity)
-	var card_infos = yield(card_infos_req(cardId), "completed")
+	var card_infos = await card_infos_req(cardId).completed
 	card_init(card_infos["name"], price, card_infos["scarcity"], quantity, seller_name)
 	update_price(1) 
 
@@ -28,7 +28,7 @@ func card_infos_req(cardId):
 	var uid = Networking.send_data_through_queue(req, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var res = packet[0]
 	return {"name":res[3], "scarcity":res[4]}
 

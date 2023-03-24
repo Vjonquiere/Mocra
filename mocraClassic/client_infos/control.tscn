@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Theme/default/theme.tres" type="Theme" id=1]
-[ext_resource path="res://mocraClassic/client_infos/shiny_credits.png" type="Texture" id=2]
-[ext_resource path="res://mocraClassic/client_infos/credits.png" type="Texture" id=3]
-[ext_resource path="res://mocraClassic/client_infos/boost.png" type="Texture" id=4]
+[ext_resource path="res://mocraClassic/client_infos/shiny_credits.png" type="Texture2D" id=2]
+[ext_resource path="res://mocraClassic/client_infos/credits.png" type="Texture2D" id=3]
+[ext_resource path="res://mocraClassic/client_infos/boost.png" type="Texture2D" id=4]
 [ext_resource path="res://mocraClassic/client_infos/credit_edit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://mocraClassic/client_infos/control.gd" type="Script" id=6]
 
 [node name="Control" type="Control"]
-margin_right = 400.0
-margin_bottom = 350.0
-rect_min_size = Vector2( 400, 350 )
+offset_right = 400.0
+offset_bottom = 350.0
+custom_minimum_size = Vector2( 400, 350 )
 theme = ExtResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
@@ -19,84 +19,84 @@ __meta__ = {
 }
 
 [node name="credits" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="creditsTexture" type="TextureRect" parent="credits"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 260.0
-margin_right = 360.0
-margin_bottom = 100.0
+offset_left = 260.0
+offset_right = 360.0
+offset_bottom = 100.0
 texture = ExtResource( 3 )
 
 [node name="creditsLabel" type="Label" parent="credits"]
-margin_left = 237.0
-margin_top = 7.0
-margin_right = 280.0
-margin_bottom = 92.0
+offset_left = 237.0
+offset_top = 7.0
+offset_right = 280.0
+offset_bottom = 92.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "0"
 
 [node name="Control" parent="credits" instance=ExtResource( 5 )]
-margin_left = -103.0
-margin_top = 62.0
-margin_right = -143.0
-margin_bottom = 22.0
-rect_scale = Vector2( 0.4, 0.4 )
+offset_left = -103.0
+offset_top = 62.0
+offset_right = -143.0
+offset_bottom = 22.0
+scale = Vector2( 0.4, 0.4 )
 
 [node name="shinyCredits" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="shinyCreditsTexture" type="TextureRect" parent="shinyCredits"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 260.0
-margin_top = 105.0
-margin_right = 360.0
-margin_bottom = 205.0
+offset_left = 260.0
+offset_top = 105.0
+offset_right = 360.0
+offset_bottom = 205.0
 texture = ExtResource( 2 )
 
 [node name="shinyCreditsLabel" type="Label" parent="shinyCredits"]
-margin_left = 237.0
-margin_top = 129.0
-margin_right = 280.0
-margin_bottom = 214.0
+offset_left = 237.0
+offset_top = 129.0
+offset_right = 280.0
+offset_bottom = 214.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "0"
 
 [node name="Control" parent="shinyCredits" instance=ExtResource( 5 )]
-margin_left = -103.0
-margin_top = 184.0
-margin_right = -143.0
-margin_bottom = 144.0
-rect_scale = Vector2( 0.4, 0.4 )
+offset_left = -103.0
+offset_top = 184.0
+offset_right = -143.0
+offset_bottom = 144.0
+scale = Vector2( 0.4, 0.4 )
 
 [node name="boost" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="boostTexture" type="TextureRect" parent="boost"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 260.0
-margin_top = 210.0
-margin_right = 360.0
-margin_bottom = 310.0
+offset_left = 260.0
+offset_top = 210.0
+offset_right = 360.0
+offset_bottom = 310.0
 texture = ExtResource( 4 )
 
 [node name="boostLabel" type="Label" parent="boost"]
-margin_left = 237.0
-margin_top = 254.0
-margin_right = 280.0
-margin_bottom = 339.0
+offset_left = 237.0
+offset_top = 254.0
+offset_right = 280.0
+offset_bottom = 339.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "0"

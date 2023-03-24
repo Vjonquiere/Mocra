@@ -10,8 +10,8 @@ var tile_set_p
 var tileset_tile_size
 var edition = false
 
-var tile_selector = load("res://mocraAdventure/map_editor/selector/Selector.tscn").instance()
-var entity_selector = load("res://mocraAdventure/map_editor/selector/entitySelector.tscn").instance()
+var tile_selector = load("res://mocraAdventure/map_editor/selector/Selector.tscn").instantiate()
+var entity_selector = load("res://mocraAdventure/map_editor/selector/entitySelector.tscn").instantiate()
 
 var collisionNode = Control.new() ## Used to detect if cursor is on tileMap
 
@@ -21,7 +21,7 @@ var mEntities = Entities.new()
 var mScriptState = ScriptStates.new()
 var mTiles = Tiles.new()
 
-var dialog = load("res://mocraAdventure/map_editor/dialog/dialog.tscn").instance().setup(mEntities)
+var dialog = load("res://mocraAdventure/map_editor/dialog/dialog.tscn").instantiate().setup(mEntities)
 
 var entities_models = {}
 
@@ -46,14 +46,14 @@ signal remove_script_state(entity_id)
 signal dialog_entered(status)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instance()
+	var menu = load("res://mocraAdventure/map_editor/Menu.tscn").instantiate()
 	$".".add_child(menu)
 	dialog.set_scale(Vector2(0.5,0.5))
 	dialog.hide()
 	error_timer_init()
 	entity_selector.set_node($".")
 	$".".add_child(entity_placer_timer)
-	entity_placer_timer.connect("timeout", self, "_on_entity_placer_timeout")
+	entity_placer_timer.connect("timeout",Callable(self,"_on_entity_placer_timeout"))
 	entity_placer_timer.set_wait_time(0.5)
 
 func load_tileset(path:String):
@@ -82,8 +82,8 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	
 	$".".add_child(collisionNode)
 	collisionNode.set_size(Vector2(tile_size*map_size[0],tile_size*map_size[1]))
-	collisionNode.connect("mouse_entered",self, "_on_mouse_entered")
-	collisionNode.connect("mouse_exited",self, "_on_mouse_exited")
+	collisionNode.connect("mouse_entered",Callable(self,"_on_mouse_entered"))
+	collisionNode.connect("mouse_exited",Callable(self,"_on_mouse_exited"))
 	
 	mEntities.set_parent(self)
 	
@@ -95,7 +95,7 @@ func _on_Node2D_init_editor(map_size:Array, tile_size:int, name:String, tile_set
 	tile_selector.visible = true
 	entity_selector.visible = true
 
-	$Camera2D._set_current(true)
+	$Camera2D.set_current(true)
 	edition = true
 	$Camera2D/CanvasLayer/GUI.visible = true
 	print("DEFAULT SCRIPT = ", default_script)
@@ -216,7 +216,7 @@ func place_tile(tile_index, tile, forced=false):
 func place_entity(entity_id, tile):
 	var _entity = mEntities.place_entity(tile, entity_id)
 	if  _entity != null: # Entity can be placed
-		var entity = load(_entity[1]).instance()
+		var entity = load(_entity[1]).instantiate()
 		mTiles.get_tile_map().add_child(entity)
 		entity.scale = Vector2(0.25,0.25) # Constant size reducing
 		entity.set_position(Vector2(tile[0]*100+_entity[2][0]*50, tile[1]*100+_entity[2][1]*50))
@@ -250,11 +250,11 @@ func update_entities_number_label() -> void:
 func _on_Node2D_tile_selected(tile_number):
 	selected_tile = tile_number
 	selected_type = "tile"
-	$Camera2D/CanvasLayer/GUI/deleteEntityButton.pressed = false
+	$Camera2D/CanvasLayer/GUI/deleteEntityButton.button_pressed = false
 
 func error_timer_init():
 	$".".add_child(error_timer)
-	error_timer.connect("timeout", self, "_on_error_timer_timeout")
+	error_timer.connect("timeout",Callable(self,"_on_error_timer_timeout"))
 	error_timer.set_one_shot(true)
 	error_timer.set_wait_time(5.0)
 
@@ -304,7 +304,7 @@ func map_has_spawn() -> bool: ## To update with new modules
 func _on_Node2D_entity_selected(entity_number):
 	selected_entity = entity_number
 	selected_type = "entity"
-	$Camera2D/CanvasLayer/GUI/deleteEntityButton.pressed = false
+	$Camera2D/CanvasLayer/GUI/deleteEntityButton.button_pressed = false
 	tile_selector.set_selected_tile(null)
 
 func _on_cameraSpeedVSlider_value_changed(value):

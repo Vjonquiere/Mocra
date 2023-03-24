@@ -17,6 +17,6 @@ func show():
 		$".".hide()
 
 func _on_Control_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if get_parent().has_method("show_notifications"):
 			get_parent().show_notifications()

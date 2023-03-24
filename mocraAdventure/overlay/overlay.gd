@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal remove_blur()
 
-onready var MA_parameters = load("res://mocraAdventure/MA_parameters/Control.tscn").instance()
+@onready var MA_parameters = load("res://mocraAdventure/MA_parameters/Control.tscn").instantiate()
 
 func _ready():
 	$lifeBars/l1.set_type("life")
@@ -43,7 +43,7 @@ func set_input_texts():
 	var actions = inputs.get_actions()
 	for i in range(len(actions)):
 #		print(actions[i])
-		var first_input = InputMap.get_action_list(actions[i])[0].as_text().split(" ")[0]
+		var first_input = InputMap.action_get_events(actions[i])[0].as_text().split(" ")[0]
 		if actions[i] == "object1":
 			$objects/o1.set_input_text(first_input)
 		elif actions[i] == "object2":
@@ -52,7 +52,7 @@ func set_input_texts():
 			$objects/o3.set_input_text(first_input)
 
 func _on_optionsButton_pressed():
-	get_node(".").add_child(load("res://mocraClassic/parameters/Control.tscn").instance())
+	get_node(".").add_child(load("res://mocraClassic/parameters/Control.tscn").instantiate())
 	get_node(".").add_child(MA_parameters)
 	$blur.visible = true
 

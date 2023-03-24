@@ -10,7 +10,7 @@ func setup_timer():
 	cycle_timer.set_wait_time(3)
 	cycle_timer.set_one_shot(false)
 	$".".add_child(cycle_timer)
-	cycle_timer.connect("timeout", self, "_on_cycle")
+	cycle_timer.connect("timeout",Callable(self,"_on_cycle"))
 
 func init_with_ids(notifications_ids):
 	setup_timer()
@@ -22,7 +22,7 @@ func get_notifications(notifications_ids):
 		var uid = Networking.send_data_through_queue(string, "/")
 		var packet = [null, null]
 		while packet[1] != uid:
-			packet = yield(Networking, "packet_found")
+			packet = await Networking.packet_found
 		notifications.append(packet[0])
 	$AnimationPlayer.play("display")
 	display_notifications()
@@ -32,16 +32,16 @@ func display_notifications():
 	for notification in notifications:
 		if paths.has(notification[0]):
 			var notification_preset = paths[notification[0]]
-			var inst = load("res://mocraClassic/notifications/notification_preset.tscn").instance().setup(notification_preset, notification)
+			var inst = load("res://mocraClassic/notifications/notification_preset.tscn").instantiate().setup(notification_preset, notification)
 			$VBoxContainer.add_child(inst)
 			inst.play_animation("display")
 			notifications_GUI.append(inst)
 
 func is_empty():
-	return notifications_GUI.empty()
+	return notifications_GUI.is_empty()
 
 func _on_cycle():
-	if notifications_GUI.empty():
+	if notifications_GUI.is_empty():
 		$AnimationPlayer.play("hide")
 		notifications = []
 		notifications_GUI = []
@@ -50,5 +50,5 @@ func _on_cycle():
 	notif.delete()
 
 func _on_moreButton_pressed():
-	var notification_summary = yield(load("res://mocraClassic/notifications/notification_summary.tscn").instance().setup(), "completed")
+	var notification_summary = await load("res://mocraClassic/notifications/notification_summary.tscn").instantiate().setup().completed
 	$".".add_child(notification_summary)

@@ -1,10 +1,10 @@
 extends Control
 
 var amount
-onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
-onready var icon = $backgroundTexture/iconTexture
-onready var label = $backgroundTexture/creditLabel
+@onready var icon = $backgroundTexture/iconTexture
+@onready var label = $backgroundTexture/creditLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if amount[0] == '-':

@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Theme/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://mocraAdventure/lobby/script.gd" type="Script" id=2]
-[ext_resource path="res://background.png" type="Texture" id=3]
-[ext_resource path="res://images/default.png" type="Texture" id=4]
-[ext_resource path="res://debugTextures/background_debug.png" type="Texture" id=5]
-[ext_resource path="res://images/default1.png" type="Texture" id=6]
-[ext_resource path="res://ubuntu150.tres" type="DynamicFont" id=7]
-[ext_resource path="res://images/default2.png" type="Texture" id=8]
+[ext_resource path="res://background.png" type="Texture2D" id=3]
+[ext_resource path="res://images/default.png" type="Texture2D" id=4]
+[ext_resource path="res://debugTextures/background_debug.png" type="Texture2D" id=5]
+[ext_resource path="res://images/default1.png" type="Texture2D" id=6]
+[ext_resource path="res://ubuntu150.tres" type="FontFile" id=7]
+[ext_resource path="res://images/default2.png" type="Texture2D" id=8]
 [ext_resource path="res://mocraAdventure/character_stats/Character_stats.tscn" type="PackedScene" id=9]
 
 [node name="Control" type="Control"]
@@ -17,116 +17,116 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="background" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource( 3 )
 
 [node name="LevelSelected" type="Control" parent="."]
-margin_left = 50.0
-margin_top = 100.0
-margin_right = 1150.0
-margin_bottom = 200.0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 1150.0
+offset_bottom = 200.0
 
 [node name="SelectedLevelLabel" type="Label" parent="LevelSelected"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -94.5
-margin_top = -13.0
-margin_right = 94.5
-margin_bottom = 13.0
+offset_left = -94.5
+offset_top = -13.0
+offset_right = 94.5
+offset_bottom = 13.0
 theme = ExtResource( 1 )
 text = "Selected Level: 000"
 
 [node name="LevelSelector" type="CenterContainer" parent="."]
 visible = false
-margin_left = 50.0
-margin_top = 100.0
-margin_right = 1150.0
-margin_bottom = 200.0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 1150.0
+offset_bottom = 200.0
 theme = ExtResource( 1 )
 
 [node name="background" type="TextureRect" parent="LevelSelector"]
-margin_right = 1100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 1100, 100 )
+offset_right = 1100.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 1100, 100 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="Label" type="Label" parent="LevelSelector"]
-margin_left = 485.0
-margin_top = 37.0
-margin_right = 614.0
-margin_bottom = 63.0
+offset_left = 485.0
+offset_top = 37.0
+offset_right = 614.0
+offset_bottom = 63.0
 text = "Select a level"
 align = 1
 
 [node name="background2" type="TextureRect" parent="."]
-margin_left = 1200.0
-margin_top = 100.0
-margin_right = 1900.0
-margin_bottom = 1050.0
-rect_min_size = Vector2( 700, 950 )
+offset_left = 1200.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 1050.0
+custom_minimum_size = Vector2( 700, 950 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="PlayerList" type="VBoxContainer" parent="."]
-margin_left = 1200.0
-margin_top = 100.0
-margin_right = 1900.0
-margin_bottom = 1050.0
+offset_left = 1200.0
+offset_top = 100.0
+offset_right = 1900.0
+offset_bottom = 1050.0
 
 [node name="LobbyInfos" type="Control" parent="."]
-margin_left = 25.0
-margin_top = 16.0
-margin_right = 1237.0
-margin_bottom = 65.9999
+offset_left = 25.0
+offset_top = 16.0
+offset_right = 1237.0
+offset_bottom = 65.9999
 
 [node name="TextureRect" type="TextureRect" parent="LobbyInfos"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.00488281
-margin_bottom = 0.000106812
+offset_right = -0.00488281
+offset_bottom = 0.000106812
 texture = ExtResource( 5 )
 expand = true
 
 [node name="LobbyCodeLabel" type="Label" parent="LobbyInfos"]
-margin_top = 12.0
-margin_right = 129.0
-margin_bottom = 38.0
+offset_top = 12.0
+offset_right = 129.0
+offset_bottom = 38.0
 text = "Lobby code : "
 
 [node name="LobbyCodeVar" type="Label" parent="LobbyInfos/LobbyCodeLabel"]
-margin_left = 132.419
-margin_right = 204.419
-margin_bottom = 26.0
+offset_left = 132.419
+offset_right = 204.419
+offset_bottom = 26.0
 text = "212121"
 
 [node name="PlayerNumberLabel" type="Label" parent="LobbyInfos"]
-margin_left = 279.0
-margin_top = 12.0
-margin_right = 483.0
-margin_bottom = 38.0
+offset_left = 279.0
+offset_top = 12.0
+offset_right = 483.0
+offset_bottom = 38.0
 text = "Player in this lobby : "
 
 [node name="PlayerNumberVar" type="Label" parent="LobbyInfos/PlayerNumberLabel"]
-margin_left = 209.177
-margin_right = 221.177
-margin_bottom = 26.0
+offset_left = 209.177
+offset_right = 221.177
+offset_bottom = 26.0
 text = "1"
 
 [node name="StatusLabel" type="Label" parent="LobbyInfos"]
-margin_left = 633.0
-margin_top = 12.0
-margin_right = 702.0
-margin_bottom = 38.0
+offset_left = 633.0
+offset_top = 12.0
+offset_right = 702.0
+offset_bottom = 38.0
 text = "Status:"
 
 [node name="StatusVar" type="Label" parent="LobbyInfos/StatusLabel"]
-margin_left = 75.598
-margin_right = 115.598
-margin_bottom = 26.0
+offset_left = 75.598
+offset_right = 115.598
+offset_bottom = 26.0
 text = "Waiting for players"
 
 [node name="LeaveButton" type="Button" parent="."]
@@ -134,53 +134,53 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -8867.08
-margin_top = -522.0
-margin_right = -8717.08
-margin_bottom = -472.0
-rect_min_size = Vector2( 150, 50 )
+offset_left = -8867.08
+offset_top = -522.0
+offset_right = -8717.08
+offset_bottom = -472.0
+custom_minimum_size = Vector2( 150, 50 )
 text = "Leave Room"
 
 [node name="CardsSelector2" type="Control" parent="."]
-margin_left = 50.0
-margin_top = 250.0
-margin_right = 1150.0
-margin_bottom = 1000.0
+offset_left = 50.0
+offset_top = 250.0
+offset_right = 1150.0
+offset_bottom = 1000.0
 
 [node name="background" type="TextureRect" parent="CardsSelector2"]
-margin_right = 1100.0
-margin_bottom = 750.0
-rect_min_size = Vector2( 1100, 750 )
+offset_right = 1100.0
+offset_bottom = 750.0
+custom_minimum_size = Vector2( 1100, 750 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="CardsSelector" type="HBoxContainer" parent="CardsSelector2"]
-margin_left = 25.0
-margin_top = 150.0
-margin_right = 1129.0
-margin_bottom = 550.0
+offset_left = 25.0
+offset_top = 150.0
+offset_right = 1129.0
+offset_bottom = 550.0
 custom_constants/separation = 50
 
 [node name="CardSelection" type="Control" parent="CardsSelector2/CardsSelector"]
-margin_right = 300.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 300, 400 )
+offset_right = 300.0
+offset_bottom = 400.0
+custom_minimum_size = Vector2( 300, 400 )
 
 [node name="background" type="TextureRect" parent="CardsSelector2/CardsSelector/CardSelection"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 300, 400 )
+offset_right = 40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2( 300, 400 )
 texture = ExtResource( 6 )
 expand = true
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/CardSelection"]
-margin_left = 198.0
-margin_top = 201.0
-margin_right = 534.0
-margin_bottom = 370.0
+offset_left = 198.0
+offset_top = 201.0
+offset_right = 534.0
+offset_bottom = 370.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = ExtResource( 7 )
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/CardSelection"]
@@ -188,43 +188,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -142.0
-margin_top = -30.0
-margin_right = -57.0
-margin_bottom = 139.001
+offset_left = -142.0
+offset_top = -30.0
+offset_right = -57.0
+offset_bottom = 139.001
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 7 )
 align = 1
 valign = 1
 
 [node name="CardAvatar" type="TextureRect" parent="CardsSelector2/CardsSelector/CardSelection"]
-margin_left = 51.2639
-margin_right = 251.264
-margin_bottom = 200.0
+offset_left = 51.2639
+offset_right = 251.264
+offset_bottom = 200.0
 
 [node name="Stats" parent="CardsSelector2/CardsSelector/CardSelection" instance=ExtResource( 9 )]
 position = Vector2( 154, 278 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="SpecialCards" type="Control" parent="CardsSelector2/CardsSelector"]
-margin_left = 350.0
-margin_right = 350.0
-margin_bottom = 400.0
+offset_left = 350.0
+offset_right = 350.0
+offset_bottom = 400.0
 
 [node name="ObjectsSelector" type="Control" parent="CardsSelector2/CardsSelector/SpecialCards"]
-margin_right = 700.0
-margin_bottom = 200.0
+offset_right = 700.0
+offset_bottom = 200.0
 
 [node name="object1" type="Control" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector"]
-margin_right = 180.0
-margin_bottom = 200.0
+offset_right = 180.0
+offset_bottom = 200.0
 
 [node name="background" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object1"]
-margin_right = 180.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 150, 200 )
+offset_right = 180.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 150, 200 )
 texture = ExtResource( 8 )
 expand = true
 
@@ -233,37 +233,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.5
-margin_top = 44.4155
-margin_right = 24.5
-margin_bottom = 70.4155
+offset_left = -24.5
+offset_top = 44.4155
+offset_right = 24.5
+offset_bottom = 70.4155
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object1"]
-margin_right = 40.0
-margin_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 26.0
 
 [node name="CardAvatar" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.7867
-margin_top = -73.3428
-margin_right = 149.213
-margin_bottom = 126.657
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = -50.7867
+offset_top = -73.3428
+offset_right = 149.213
+offset_bottom = 126.657
+scale = Vector2( 0.5, 0.5 )
 
 [node name="object2" type="Control" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector"]
-margin_left = 250.0
-margin_right = 430.0
-margin_bottom = 200.0
+offset_left = 250.0
+offset_right = 430.0
+offset_bottom = 200.0
 
 [node name="background" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object2"]
-margin_right = 180.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 150, 200 )
+offset_right = 180.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 150, 200 )
 texture = ExtResource( 8 )
 expand = true
 
@@ -272,102 +272,102 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.5
-margin_top = 50.5672
-margin_right = 24.5
-margin_bottom = 76.5672
+offset_left = -24.5
+offset_top = 50.5672
+offset_right = 24.5
+offset_bottom = 76.5672
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object2"]
-margin_right = 40.0
-margin_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 26.0
 
 [node name="CardAvatar" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object2"]
-margin_left = 41.011
-margin_top = 32.8089
-margin_right = 241.011
-margin_bottom = 232.809
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 41.011
+offset_top = 32.8089
+offset_right = 241.011
+offset_bottom = 232.809
+scale = Vector2( 0.5, 0.5 )
 
 [node name="object3" type="Control" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector"]
-margin_left = 500.0
-margin_right = 680.0
-margin_bottom = 200.0
+offset_left = 500.0
+offset_right = 680.0
+offset_bottom = 200.0
 
 [node name="background" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3"]
-margin_right = 180.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 150, 200 )
+offset_right = 180.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 150, 200 )
 texture = ExtResource( 8 )
 expand = true
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3"]
-margin_right = 40.0
-margin_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 26.0
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.5
-margin_top = 52.6177
-margin_right = 24.5
-margin_bottom = 78.6177
+offset_left = -24.5
+offset_top = 52.6177
+offset_right = 24.5
+offset_bottom = 78.6177
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardAvatar" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/ObjectsSelector/object3"]
-margin_left = 45.1122
-margin_top = 34.8594
-margin_right = 245.112
-margin_bottom = 234.859
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 45.1122
+offset_top = 34.8594
+offset_right = 245.112
+offset_bottom = 234.859
+scale = Vector2( 0.5, 0.5 )
 
 [node name="TerrainSelector" type="Control" parent="CardsSelector2/CardsSelector/SpecialCards"]
-margin_left = 30.0
-margin_top = 250.0
-margin_right = 630.0
-margin_bottom = 400.0
+offset_left = 30.0
+offset_top = 250.0
+offset_right = 630.0
+offset_bottom = 400.0
 
 [node name="background" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector"]
-margin_right = 600.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 600, 150 )
+offset_right = 600.0
+offset_bottom = 150.0
+custom_minimum_size = Vector2( 600, 150 )
 texture = ExtResource( 6 )
 expand = true
 
 [node name="AmountSelectedLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector"]
-margin_right = 40.0
-margin_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 26.0
 
 [node name="CardNameLabel" type="Label" parent="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.5
-margin_top = -13.0
-margin_right = 24.5
-margin_bottom = 13.0
+offset_left = -24.5
+offset_top = -13.0
+offset_right = 24.5
+offset_bottom = 13.0
 
 [node name="CardAvatar" type="TextureRect" parent="CardsSelector2/CardsSelector/SpecialCards/TerrainSelector"]
-margin_left = 143.539
-margin_top = 24.6067
-margin_right = 343.539
-margin_bottom = 224.607
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 143.539
+offset_top = 24.6067
+offset_right = 343.539
+offset_bottom = 224.607
+scale = Vector2( 0.5, 0.5 )
 
 [node name="ReadyButton" type="Button" parent="CardsSelector2"]
 anchor_left = 0.5
 anchor_top = 0.865
 anchor_right = 0.5
 anchor_bottom = 0.865
-margin_left = -59.0
-margin_top = -24.7501
-margin_right = 59.0
-margin_bottom = 25.2499
+offset_left = -59.0
+offset_top = -24.7501
+offset_right = 59.0
+offset_bottom = 25.2499
 toggle_mode = true
 text = "Ready"
 

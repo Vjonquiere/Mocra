@@ -50,8 +50,8 @@ func load_entities(map_path:String, entity_node):
 		var entity = entities_data[str(i)]
 		var uid = entity["uid"]
 		entities_uid.append(uid)
-		var type = load(entity_types[entity['type']]).instance()
-		var model = load(entity['path']).instance()
+		var type = load(entity_types[entity['type']]).instantiate()
+		var model = load(entity['path']).instantiate()
 		if entity["type"] == "life":
 			model.set_id(uid)
 			type.link_model(model)

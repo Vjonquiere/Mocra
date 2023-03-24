@@ -1,9 +1,9 @@
 extends Control
 
 
-onready var credits_widget = $credits/Control
-onready var shiny_credits_widget = $shinyCredits/Control
-onready var default_position = {$credits/Control: $credits/Control.get_position(), $shinycredits/Control: $shinyCredits/Control.get_position()}
+@onready var credits_widget = $credits/Control
+@onready var shiny_credits_widget = $shinyCredits/Control
+@onready var default_position = {$credits/Control: $credits/Control.get_position(), $shinycredits/Control: $shinyCredits/Control.get_position()}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$credits/Control.add_credits(5000)

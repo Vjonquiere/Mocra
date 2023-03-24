@@ -13,10 +13,10 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	$Light2D.set_color(Color("00ff1c"))
+	$PointLight2D.set_color(Color("00ff1c"))
 	$AnimationPlayer.play("open")
 
 
 func _on_Area2D_body_exited(body):
-	$Light2D.set_color(Color("ff0000"))
+	$PointLight2D.set_color(Color("ff0000"))
 	$AnimationPlayer.play("close")

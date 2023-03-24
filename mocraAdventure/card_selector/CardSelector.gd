@@ -29,7 +29,7 @@ func display_collection():
 	var uid = Networking.send_data_through_queue("get_collection_only_ids", "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var ids = packet[0]
 	ids.remove(len(ids)-1) ## DO NOT REMOVE
 	construct_cards(ids)
@@ -39,7 +39,7 @@ func search_cards() -> Array:
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	return rcv
 
@@ -48,7 +48,7 @@ func get_card_infos_mocra_classic(id:String) -> Array:
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	return rcv
 
@@ -57,32 +57,32 @@ func get_card_infos(id:String) -> Array:
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	return rcv
 
 
 func construct_cards(card_array:Array) -> void:
 	for i in range(len(card_array)):
-		var card_instance = card_preload.instance()
+		var card_instance = card_preload.instantiate()
 		$ScrollContainer/HBoxContainer.add_child(card_instance)
 		card_instance.set_position(Vector2(0,0))
 		
 		var card_infos
 		if advanced_selection:
-			card_infos = yield(get_card_infos(card_array[i]), "completed")
+			card_infos = await get_card_infos(card_array[i]).completed
 			card_instance.change_avatar(card_infos[0])
-			card_infos = yield(get_card_infos(card_array[i]), "completed")
+			card_infos = await get_card_infos(card_array[i]).completed
 			create_and_link_button(int(card_array[i]), card_infos[0], card_instance)
 		else:
-			card_infos = yield(get_card_infos_mocra_classic(card_array[i]), "completed")
+			card_infos = await get_card_infos_mocra_classic(card_array[i]).completed
 			create_and_link_button(int(card_array[i]), card_infos[3], card_instance)
 
 		match card_type_selected:
 			"object":
 				card_instance.change_informations(card_infos[2], card_infos[3])
 			"character":
-				card_instance.change_informations(card_infos[2], card_infos[3], card_infos[4], card_infos[5], card_infos[6], yield(get_number_of_owned_cards(card_array[i]), "completed"))
+				card_instance.change_informations(card_infos[2], card_infos[3], card_infos[4], card_infos[5], card_infos[6], await get_number_of_owned_cards(card_array[i]).completed)
 			"ground":
 				card_instance.change_informations(card_infos[0], card_infos[2])
 			"all":
@@ -93,7 +93,7 @@ func get_number_of_owned_cards(card_id):
 	var uid = Networking.send_data_through_queue(request, "/")
 	var packet = [null, null]
 	while packet[1] != uid:
-		packet = yield(Networking, "packet_found")
+		packet = await Networking.packet_found
 	var rcv = packet[0]
 	return rcv[0]
 
@@ -104,7 +104,7 @@ func create_and_link_button(card_id:int, card_name:String, card_node):
 	add_button.set_position(Vector2(80,400))
 	add_button.set_size(Vector2(300,125))
 	add_button.set_scale(Vector2(0.5,0.5))
-	add_button.connect("pressed", self, "select_card", [card_id, card_name, 1])
+	add_button.connect("pressed",Callable(self,"select_card").bind(card_id, card_name, 1))
 
 	if advanced_selection:
 		add_button.set_position(Vector2(50,350))
@@ -112,10 +112,10 @@ func create_and_link_button(card_id:int, card_name:String, card_node):
 		add_button.add_child(advanced_add_button)
 		advanced_add_button.set_text("Advanced selection")
 		advanced_add_button.set_position(Vector2(0,40))
-		advanced_add_button.connect("pressed", self, "advanced_card_selection", [card_node, card_name, card_id])
+		advanced_add_button.connect("pressed",Callable(self,"advanced_card_selection").bind(card_node, card_name, card_id))
 
 func advanced_card_selection(card_node, card_name:String, card_id:int):
-	var tools = load("res://mocraAdventure/card_number_selector/card_number_selector.tscn").instance()
+	var tools = load("res://mocraAdventure/card_number_selector/card_number_selector.tscn").instantiate()
 	get_node(".").add_child(tools)
 	tools.set_card_id(card_id)
 	tools.set_card_name(card_name)

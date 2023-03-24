@@ -9,7 +9,7 @@ func _ready():
 	$VBoxContainer/musicContainer/musicSlider.set_value(options["music_vol"])
 	$VBoxContainer/soundContainer/soundSlider.set_value(options["sound_vol"])
 	visual_control_pressed = options["visual_control"]
-	$VBoxContainer/visualContainer/CheckBox.pressed = visual_control_pressed
+	$VBoxContainer/visualContainer/CheckBox.button_pressed = visual_control_pressed
 
 
 
@@ -44,7 +44,7 @@ func _on_ConfirmationDialog_confirmed():
 
 
 func _on_controlsbindingButton_pressed():
-	var binding = load("res://mocraClassic/parameters/control_binding/control_binding.tscn").instance()
+	var binding = load("res://mocraClassic/parameters/control_binding/control_binding.tscn").instantiate()
 	$".".add_child(binding)
 
 func _on_CheckBox_toggled(button_pressed):

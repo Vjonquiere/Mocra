@@ -7,7 +7,7 @@ var dialog_load_path
 var entity_uid = null
 var has_child = false
 var entity_mod = null
-onready var sub_dialog
+@onready var sub_dialog
 
 signal close_dialog(data_array)
 # Called when the node enters the scene tree for the first time.
@@ -47,7 +47,7 @@ func reset():
 func _on_Button_pressed():
 	print("clicked")
 	if dialog_load_path != null:
-		sub_dialog = load(dialog_load_path).instance()
+		sub_dialog = load(dialog_load_path).instantiate()
 		$".".add_child(sub_dialog)
 		has_child = true
 

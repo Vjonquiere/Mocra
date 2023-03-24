@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-onready var all_lights = [[$firstRow/red, $firstRow/orange, $firstRow/green], [$secondRow/red, $secondRow/orange, $secondRow/green], [$thirdRow/red, $thirdRow/orange, $thirdRow/green]]
+@onready var all_lights = [[$firstRow/red, $firstRow/orange, $firstRow/green], [$secondRow/red, $secondRow/orange, $secondRow/green], [$thirdRow/red, $thirdRow/orange, $thirdRow/green]]
 var number = RandomNumberGenerator.new()
 var lights = []
 var lights_colors = []

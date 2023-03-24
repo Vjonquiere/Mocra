@@ -1,7 +1,7 @@
 extends Control
 
 
-onready var playerTags = [$playerTag1, $playerTag2, $playerTag3]
+@onready var playerTags = [$playerTag1, $playerTag2, $playerTag3]
 var cardTypes = ["character", "object1", "object2", "object3", "ground"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,4 +29,4 @@ func init(level_name, room_stats):
 
  
 func _on_quitButton_pressed():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

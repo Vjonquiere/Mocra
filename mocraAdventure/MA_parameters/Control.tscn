@@ -6,38 +6,38 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -995.0
+offset_bottom = -995.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="disconnectButton" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -470.0
-margin_bottom = 85.0
+offset_left = -470.0
+offset_bottom = 85.0
 text = "Disconnect "
 
 [node name="levelVar" type="Label" parent="."]
-margin_left = 213.0
-margin_right = 324.0
-margin_bottom = 85.0
+offset_left = 213.0
+offset_right = 324.0
+offset_bottom = 85.0
 text = "NA"
 
 [node name="levelLabel" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 85.0
+offset_right = 40.0
+offset_bottom = 85.0
 text = "Level:"
 
 [node name="playerLabel" type="Label" parent="."]
-margin_left = 519.0
-margin_right = 803.0
-margin_bottom = 85.0
+offset_left = 519.0
+offset_right = 803.0
+offset_bottom = 85.0
 text = "Players:"
 
 [node name="playerVar" type="Label" parent="."]
-margin_left = 803.0
-margin_right = 990.0
-margin_bottom = 85.0
+offset_left = 803.0
+offset_right = 990.0
+offset_bottom = 85.0
 text = "NA/4"
 
 [connection signal="pressed" from="disconnectButton" to="." method="_on_disconnectButton_pressed"]

@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 var colors = {"Common":"#7D7D7D", "Not Much Common":"#2c65e8", "Unusual":"#00D989", "Rare":"#C3DD25", "Extremely Rare":"#C40000", "Unbelievable":"#0091B4", "Mythical":"#FF9000", "RAINBOW":"#00CDAD"}
 var battle_points = {"Common": 20, "Not Much Common": 30, "Unusual": 45, "Rare": 60, "Extremely Rare": 70, "Unbelievable":80, "Mythical": 90, "RAINBOW": 100}

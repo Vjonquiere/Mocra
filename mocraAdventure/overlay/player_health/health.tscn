@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://mocraAdventure/overlay/player_health/health.gd" type="Script" id=1]
-[ext_resource path="res://mocraAdventure/overlay/player_health/textures/progress_extra.png" type="Texture" id=2]
-[ext_resource path="res://mocraAdventure/overlay/player_health/textures/under.png" type="Texture" id=3]
-[ext_resource path="res://mocraAdventure/overlay/player_health/textures/over.png" type="Texture" id=4]
-[ext_resource path="res://fonts/ubuntu50.tres" type="DynamicFont" id=5]
+[ext_resource path="res://mocraAdventure/overlay/player_health/textures/progress_extra.png" type="Texture2D" id=2]
+[ext_resource path="res://mocraAdventure/overlay/player_health/textures/under.png" type="Texture2D" id=3]
+[ext_resource path="res://mocraAdventure/overlay/player_health/textures/over.png" type="Texture2D" id=4]
+[ext_resource path="res://fonts/ubuntu50.tres" type="FontFile" id=5]
 
-[node name="lifeProgress" type="TextureProgress"]
+[node name="lifeProgress" type="TextureProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1470.0
-margin_bottom = -1030.0
+offset_right = -1470.0
+offset_bottom = -1030.0
 value = 99.0
 texture_under = ExtResource( 3 )
 texture_over = ExtResource( 4 )
@@ -22,10 +22,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -14.0
-margin_right = 64.0
-margin_bottom = 43.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 64.0
+offset_bottom = 43.0
+scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 5 )
 text = "100"
